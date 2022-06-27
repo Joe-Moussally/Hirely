@@ -45,4 +45,13 @@ class OfferController extends Controller
             'status' => 'deleted'
         ],200);
     }
+
+    //api that gets all the offer details
+    public function getOfferDetails($id) {
+        $offer = Offer::find($id);
+        
+        return response()->json([
+            'offer' => $offer
+        ],200);
+    }
 }

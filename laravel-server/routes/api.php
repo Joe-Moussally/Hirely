@@ -20,4 +20,5 @@ Route::group(['prefix' => 'offers'], function(){
     Route::post('/',[OfferController::class, 'addOffer']);
     Route::get('/',[OfferController::class, 'getOffers']);
     Route::post('/delete',[OfferController::class, 'deleteOffer']);
+    Route::get('/{id?}',[OfferController::class, 'getOfferDetails']);
 });
