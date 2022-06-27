@@ -21,9 +21,9 @@ class OfferController extends Controller
         ],200);
     }
 
+
     //api to add a Job Offer
     public function addOffer(Request $Request) {
-
         $offer = new Offer;
         $offer->position = $Request->position;
         $offer->description = $Request->description;
@@ -37,6 +37,7 @@ class OfferController extends Controller
         ],200);
     }
 
+
     //api to remove a specific offer
     public function deleteOffer($id) {
         Offer::find($id)->delete();
@@ -46,6 +47,7 @@ class OfferController extends Controller
         ],200);
     }
 
+    
     //api that gets all the offer details
     public function getOfferDetails($id) {
         $offer = Offer::find($id);
