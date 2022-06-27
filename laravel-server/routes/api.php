@@ -17,5 +17,6 @@ Route::group(['middleware' => 'api'], function($router) {
 
 //offer apis
 Route::group(['prefix' => 'offers'], function(){
-    Route::post('/add_offer',[OfferController::class, 'addOffer']);
+    Route::post('/',[OfferController::class, 'addOffer']);
+    Route::get('/',[OfferController::class, 'getOffers']);
 });

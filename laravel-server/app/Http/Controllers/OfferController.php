@@ -20,11 +20,20 @@ class OfferController extends Controller
         //getting authenticated user id
         $offer->user_id = Auth::user()->id;
         $offer->save();
-        
 
         return response()->json([
             'status' => 'success',
             'offer' => $offer
+        ],200);
+    }
+
+    //api that gets all offers
+    public function getOffers() {
+        $offers = Offer::orderBy('created_at','desc')->get();
+
+        return response()->json([
+            'status' => 'success',
+            'offers' => $offers
         ],200);
     }
 
