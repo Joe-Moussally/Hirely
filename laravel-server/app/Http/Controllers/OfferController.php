@@ -10,7 +10,17 @@ use Auth;
 
 class OfferController extends Controller
 {
-    
+      
+    //api that gets all offers
+    public function getOffers() {
+        $offers = Offer::orderBy('created_at','desc')->get();
+
+        return response()->json([
+            'status' => 'success',
+            'offers' => $offers
+        ],200);
+    }
+
     //api to add a Job Offer
     public function addOffer(Request $Request) {
 
@@ -27,14 +37,12 @@ class OfferController extends Controller
         ],200);
     }
 
-    //api that gets all offers
-    public function getOffers() {
-        $offers = Offer::orderBy('created_at','desc')->get();
+    //api to remove a specific offer
+    public function deleteOffer(Request $Request) {
+        Offer::find($Request->id)->delete();
 
         return response()->json([
-            'status' => 'success',
-            'offers' => $offers
+            'status' => 'deleted'
         ],200);
     }
-
 }
