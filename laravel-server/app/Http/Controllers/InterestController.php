@@ -8,6 +8,7 @@ use Auth;
 
 use App\Models\Interest;
 use App\Models\User;
+use App\Models\Offer;
 
 class InterestController extends Controller
 {
@@ -27,6 +28,15 @@ class InterestController extends Controller
     
     //api that retrieves the interested users in a job
     public function getInterested($id) {
+        $interests = Interest::select('user_id')->where('offer_id',$id)->get();
+        $users = [];
+        //iterate over userIds and get the users interested in the offer
+        foreach ($interests as $interest) {
+            array_push($users, User::find($interest->user_id));
+        }
 
+        return response()->json([
+            'users' => $users
+        ],200);
     }
 }

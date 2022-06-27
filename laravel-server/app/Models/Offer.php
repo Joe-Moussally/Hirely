@@ -13,7 +13,7 @@ class Offer extends Model
     //Eloquent relationship between interests and offers
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     //Eloquent relationship between interests and offers
