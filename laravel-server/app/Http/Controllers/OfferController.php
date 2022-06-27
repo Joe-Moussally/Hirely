@@ -38,8 +38,8 @@ class OfferController extends Controller
     }
 
     //api to remove a specific offer
-    public function deleteOffer(Request $Request) {
-        Offer::find($Request->id)->delete();
+    public function deleteOffer($id) {
+        Offer::find($id)->delete();
 
         return response()->json([
             'status' => 'deleted'
