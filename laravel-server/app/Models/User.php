@@ -62,4 +62,10 @@ class User extends Authenticatable implements JWTSubject {
     {
         return [];
     }
+
+    //Eloquents relationship
+    public function interests()
+    {
+        return $this->hasMany(interest::class);
+    }
 }
