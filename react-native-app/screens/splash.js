@@ -1,17 +1,17 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { globalStyles } from "../styles/global";
 
 export default function Splash() {
     return (
-        <View style={styles.container}>
-            <Text>Splash</Text>
+        <View style={globalStyles.container}>
+            <View style={styles.brandContainer}></View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding:24,
-        backgroundColor:'red',
+    brandContainer: {
+        height: 40
     }
 })
