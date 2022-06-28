@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Offer;
+use App\Models\Interest;
 
 use Auth;
 
@@ -41,6 +42,7 @@ class OfferController extends Controller
     //api to remove a specific offer
     public function deleteOffer($id) {
         Offer::find($id)->delete();
+        Interest::where('offer_id',$id)->delete();
 
         return response()->json([
             'status' => 'deleted'
