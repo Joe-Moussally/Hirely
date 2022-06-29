@@ -5,6 +5,7 @@ import Chats from '../screens/main-screens/Chats'
 import Jobs from '../screens/main-screens/Jobs'
 import MyJobs from '../screens/main-screens/MyJobs'
 import Profile from  '../screens/main-screens/Profile'
+import { StyleSheet } from 'react-native';
 
 
 export default function MainAppNavigation() {
@@ -21,6 +22,7 @@ export default function MainAppNavigation() {
         headerStyle:{
             backgroundColor:'#00a6ff',
         },
+        tabBarStyle:styles.tabBar
         }}>
             <Tab.Screen
             name="Jobs"
@@ -28,7 +30,7 @@ export default function MainAppNavigation() {
             options={{tabBarIcon:({color,size})=>(<Entypo name="magnifying-glass" size={size} color={color}/>)}}/>
 
             <Tab.Screen
-            name="MyJobs"
+            name="My Jobs"
             component={MyJobs}
             options={{tabBarIcon:({size, color})=>(<FontAwesome5 name="suitcase" size={size} color={color} />)}}/>
 
@@ -44,3 +46,13 @@ export default function MainAppNavigation() {
         </Tab.Navigator>
     )
 }
+
+const styles = StyleSheet.create({
+    tabBar:{
+        borderRadius:10,
+        width:'90%',
+        position:'absolute',
+        marginHorizontal:'5%',
+        marginBottom:12,
+    }
+})
