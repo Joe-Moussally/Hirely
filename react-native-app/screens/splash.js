@@ -1,14 +1,25 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { globalStyles } from "../styles/global";
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 export default function HirelySplash() {
     return (
         <View style={styles.SplashContainer}>
+
+        <LinearGradient
+          colors={['#0099ff', '#00e5ff' ]}
+          style={styles.gradient}
+        >
+
             <View style={styles.brandContainer}>
-                <Image source={require('../assets/app-logos/white-brand.png')}
-                        style={styles.brand}></Image>
+                <Image
+                source={require('../assets/app-logos/white-brand.png')}
+                style={styles.brand}></Image>
             </View>
+
+        </LinearGradient>
 
             <Text style={styles.splashText}>Find the talent you're looking for, or find the job of your dreams.</Text>
             
@@ -34,9 +45,8 @@ const styles = StyleSheet.create({
     brandContainer: {
         height: '50%',
         width:'100%',
-        backgroundColor:'#00b3ff',
+        // backgroundColor:'#00b3ff',
         borderRadius:1000,
-        transform: [{ scale: 1.5 },{ translateY:-40 }],
         alignItems:'center',
         justifyContent:'center'
     },
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 30,
         padding: 10,
-        paddingTop: '25%',
+        paddingTop: '30%',
         color:'#144e7a',
         marginBottom:'auto'
     },
@@ -56,7 +66,7 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'space-between',
         width:'80%',
-        marginBottom:20
+        marginBottom:'7%'
     },
     login: {
         backgroundColor:'#00b3ff',
@@ -84,5 +94,14 @@ const styles = StyleSheet.create({
         fontWeight:"bold",
         fontSize:25,
         textAlign:'center',
+    },
+    gradient:{
+        height: '50%',
+        width:'100%',
+        // backgroundColor:'#00b3ff',
+        borderRadius:1000,
+        transform: [{ scale: 1.5 },{ translateY:-40 }],
+        alignItems:'center',
+        justifyContent:'center'
     }
 })
