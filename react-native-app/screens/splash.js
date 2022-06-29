@@ -9,7 +9,7 @@ export default function HirelySplash() {
         <View style={styles.SplashContainer}>
 
         <LinearGradient
-          colors={['#0099ff', '#00e5ff' ]}
+          colors={['#006eff', '#00f7ff' ]}
           style={styles.gradient}
         >
 
