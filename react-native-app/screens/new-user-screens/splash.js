@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, StatusBar } from "reac
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-export default function HirelySplash() {
+export default function Splash() {
     return (
         <View style={styles.SplashContainer}>
             
@@ -15,7 +15,7 @@ export default function HirelySplash() {
 
                 <View style={styles.brandContainer}>
                     <Image
-                    source={require('../assets/app-logos/white-brand.png')}
+                    source={require('../../assets/app-logos/white-brand.png')}
                     style={styles.brand}></Image>
                 </View>
 
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'#00b3ff',
         borderRadius:1000,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
     },
     brand:{
         width:'70%',

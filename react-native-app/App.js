@@ -1,7 +1,7 @@
-import HirelySplash from './screens/splash';
+import NewUserStack from "./navigations/newUserStack";
 
 export default function App() {
   return (
-    <HirelySplash />
+    <NewUserStack />
   );
 }
