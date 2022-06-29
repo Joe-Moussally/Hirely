@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity, StatusBar } from "react-native";
-import { globalStyles } from "../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
 
 
@@ -58,23 +57,25 @@ const styles = StyleSheet.create({
     },
     splashText: {
         textAlign: 'center',
-        fontSize: 30,
-        padding: 10,
+        fontSize: 28,
+        padding: 15,
         paddingTop: '30%',
-        color:'#144e7a',
-        marginBottom:'auto'
+        color:'#0071ad',
+        marginBottom:'auto',
+        fontWeight:'bold'
     },
     buttonsContainer: {
         flexDirection:'row',
         justifyContent:'space-between',
-        width:'80%',
+        width:'90%',
         marginBottom:'7%'
     },
     login: {
-        backgroundColor:'#00b3ff',
+        backgroundColor:'#00a6ff',
         width:'45%',
-        height:45,
+        height:50,
         borderRadius:10,
+        display:'flex',
         justifyContent:'center',
         alignItems:'center'
     },
@@ -82,20 +83,21 @@ const styles = StyleSheet.create({
         color:'white',
         fontWeight:"bold",
         fontSize:25,
-        textAlign:'center',
     },
     signup: {
         width:'45%',
-        height:45,
+        height:50,
         borderRadius:10,
-        borderColor:'#00b3ff',
-        borderWidth:4
+        borderColor:'#00a6ff',
+        borderWidth:4,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
     },
     signupText: {
-        color:'#00b3ff',
+        color:'#00a6ff',
         fontWeight:"bold",
         fontSize:25,
-        textAlign:'center',
     },
     gradient:{
         height: '50%',
