@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity, StatusBar } from "reac
 import { LinearGradient } from 'expo-linear-gradient';
 
 
-export default function Splash() {
+export default function Splash({navigation}) {
     return (
         <View style={styles.SplashContainer}>
             
@@ -25,11 +25,15 @@ export default function Splash() {
                 
                 <View style={styles.buttonsContainer}>
 
-                    <TouchableOpacity style={styles.login}>
+                    <TouchableOpacity
+                    style={styles.login}
+                    onPress={()=> navigation.push('LogIn')}>
                         <Text style={styles.loginText}>Log In</Text> 
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.signup}>
+                    <TouchableOpacity
+                    style={styles.signup}
+                    onPress={()=> navigation.push('SignUp')}>
                         <Text style={styles.signupText}>Sign Up</Text> 
                     </TouchableOpacity>
                 </View>
