@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import { globalStyles } from "../styles/global";
 
 export default function HirelySplash() {
@@ -9,7 +9,14 @@ export default function HirelySplash() {
                 <Image source={require('../assets/app-logos/white-brand.png')}
                         style={styles.brand}></Image>
             </View>
-            <Text>HELLO</Text>
+
+            <Text style={styles.splashText}>Find the talent you're looking for, or find the job of your dreams.</Text>
+            
+            <View style={styles.buttonsContainer}>
+                <TouchableOpacity style={styles.login}>
+                    <Text style={styles.loginText}>LogIn</Text> 
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
@@ -31,5 +38,26 @@ const styles = StyleSheet.create({
     brand:{
         width:'70%',
         resizeMode:'contain'
+    },
+    splashText: {
+        textAlign: 'center',
+        fontSize: 30,
+        padding: 10,
+        paddingTop: '25%',
+        color:'#144e7a'
+    },
+    buttonsContainer: {
+        flexDirection:'row',
+    },
+    login: {
+        backgroundColor:'#00b3ff',
+        width:'40%',
+        height:45,
+        borderRadius:10,
+    },
+    loginText: {
+        color:'white',
+        fontWeight:"bold",
+        fontSize:25
     }
 })
