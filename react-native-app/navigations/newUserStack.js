@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator();
 
 export default function NewUserStack() {
     return(
-        <NavigationContainer>
+
             <Stack.Navigator
             screenOptions={{
                 headerTitle: ()=><Header />,
@@ -43,7 +43,7 @@ export default function NewUserStack() {
                 <Stack.Screen name="SignUp" component={SignUp} />
 
             </Stack.Navigator>
-        </NavigationContainer>
+
     )
 }
 

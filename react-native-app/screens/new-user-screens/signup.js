@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { globalStyles } from "../../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
+import axios from 'axios';
+
 export default function SignUp() {
 
     //initiazling the variables needed for signup
@@ -11,6 +13,14 @@ export default function SignUp() {
 
     const handleSignUp = () =>{
         console.log(fullName,email,password)
+        axios({
+            method:'POST',
+            data:{
+                email:email,
+                name:fullName,
+                password:password
+            }
+        })
     }
 
     return (
