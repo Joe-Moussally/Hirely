@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity, StatusBar } from "react-native";
 import { globalStyles } from "../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -7,32 +7,34 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function HirelySplash() {
     return (
         <View style={styles.SplashContainer}>
-
-        <LinearGradient
-          colors={['#006eff', '#00f7ff' ]}
-          style={styles.gradient}
-        >
-
-            <View style={styles.brandContainer}>
-                <Image
-                source={require('../assets/app-logos/white-brand.png')}
-                style={styles.brand}></Image>
-            </View>
-
-        </LinearGradient>
-
-            <Text style={styles.splashText}>Find the talent you're looking for, or find the job of your dreams.</Text>
             
-            <View style={styles.buttonsContainer}>
+            <StatusBar backgroundColor={'transparent'} barStyle = "light-content" hidden = {false} translucent = {true}/>
+            <LinearGradient
+            colors={['#006eff', '#00f7ff' ]}
+            style={styles.gradient}
+            >
 
-                <TouchableOpacity style={styles.login}>
-                    <Text style={styles.loginText}>Log In</Text> 
-                </TouchableOpacity>
+                <View style={styles.brandContainer}>
+                    <Image
+                    source={require('../assets/app-logos/white-brand.png')}
+                    style={styles.brand}></Image>
+                </View>
 
-                <TouchableOpacity style={styles.signup}>
-                    <Text style={styles.signupText}>Sign Up</Text> 
-                </TouchableOpacity>
-            </View>
+            </LinearGradient>
+
+                <Text style={styles.splashText}>Find the talent you're looking for, or find the job of your dreams.</Text>
+                
+                <View style={styles.buttonsContainer}>
+
+                    <TouchableOpacity style={styles.login}>
+                        <Text style={styles.loginText}>Log In</Text> 
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.signup}>
+                        <Text style={styles.signupText}>Sign Up</Text> 
+                    </TouchableOpacity>
+                </View>
+                
         </View>
     )
 }
@@ -70,7 +72,7 @@ const styles = StyleSheet.create({
     },
     login: {
         backgroundColor:'#00b3ff',
-        width:'40%',
+        width:'45%',
         height:45,
         borderRadius:10,
         justifyContent:'center',
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
         textAlign:'center',
     },
     signup: {
-        width:'40%',
+        width:'45%',
         height:45,
         borderRadius:10,
         borderColor:'#00b3ff',
