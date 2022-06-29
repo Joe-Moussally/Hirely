@@ -9,6 +9,7 @@ export default function HirelySplash() {
                 <Image source={require('../assets/app-logos/white-brand.png')}
                         style={styles.brand}></Image>
             </View>
+            <Text>HELLO</Text>
         </View>
     )
 }
@@ -23,12 +24,12 @@ const styles = StyleSheet.create({
         width:'100%',
         backgroundColor:'#00b3ff',
         borderRadius:1000,
-        transform: [{ scale: 1.3 }],
+        transform: [{ scale: 1.5 },{ translateY:-40 }],
         alignItems:'center',
         justifyContent:'center'
     },
     brand:{
-        width:'50%',
-        resizeMode:'aspect ratio'
+        width:'70%',
+        resizeMode:'contain'
     }
 })
