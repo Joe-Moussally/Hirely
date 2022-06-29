@@ -3,6 +3,8 @@ import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyb
 import { globalStyles } from "../../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function SignUp() {
 
@@ -11,15 +13,25 @@ export default function SignUp() {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
 
+    const navigation = useNavigation();
+
     const handleSignUp = () =>{
         console.log(fullName,email,password)
+        let data = new FormData()
+        data.append("name",fullName)
+        data.append("email",email)
+        data.append("password",password)
+        // {'name':fullName,'email':email,'password':password}
         axios({
             method:'POST',
-            data:{
-                email:email,
-                name:fullName,
-                password:password
-            }
+            url:'http://localhost:8000/api/register',
+            data:data
+        }).then((Response)=>{
+            console.log(Response.data)
+        }).catch((Error)=>{
+            console.log(Error);
+            console.log(Error.response.status);
+            console.log(Error.response.headers);
         })
     }
 

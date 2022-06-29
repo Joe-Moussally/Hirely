@@ -7,6 +7,7 @@ use App\Http\Controllers\JWTController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\InterestController;
 
+Route::middleware(['cors'])->group(function () {
 //JWT apis
 Route::group(['middleware' => 'api'], function($router) {
     Route::post('/register', [JWTController::class, 'register']);
@@ -28,4 +29,5 @@ Route::group(['prefix' => 'offers'], function(){
 Route::group(['prefix' => 'interests'], function(){
     Route::post('/{id?}',[InterestController::class, 'addInterest']);
     Route::get('/{id?}',[InterestController::class, 'getInterested']);
+});
 });

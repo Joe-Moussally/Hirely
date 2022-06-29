@@ -1,26 +1,11 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Splash from '../screens/new-user-screens/splash';
 import SignUp from '../screens/new-user-screens/signup';
 import LogIn from '../screens/new-user-screens/login';
 import Header from '../shared/header';
-
-
-// //screen functions to use in stack
-// function SplashScreen() {
-//     return (<Splash />);
-// }
-
-// function SignUpScreen() {
-//     return (<SignUp />);
-// }
-
-// function LogInScreen() {
-//     return (<LogIn />);
-// }
 
 
 //creating the stack navigator
