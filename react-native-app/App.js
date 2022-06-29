@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import Splash from './screens/splash';
+import HirelySplash from './screens/splash';
 
 export default function App() {
   return (
-    <Splash />
+    <HirelySplash />
   );
 }
