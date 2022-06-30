@@ -48,11 +48,11 @@ export default function MainAppNavigation() {
 }
 
 const styles = StyleSheet.create({
-    tabBar:{
-        borderRadius:10,
-        width:'90%',
-        position:'absolute',
-        marginHorizontal:'5%',
-        marginBottom:12,
-    }
+    // tabBar:{
+    //     borderRadius:10,
+    //     width:'90%',
+    //     position:'absolute',
+    //     marginHorizontal:'5%',
+    //     marginBottom:12,
+    // }
 })

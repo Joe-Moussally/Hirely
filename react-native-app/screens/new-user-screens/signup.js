@@ -15,23 +15,22 @@ export default function SignUp() {
 
     const navigation = useNavigation();
 
-    const handleSignUp = () =>{
+    const handleSignUp = async () =>{
         console.log(fullName,email,password)
         let data = new FormData()
         data.append("name",fullName)
         data.append("email",email)
         data.append("password",password)
         // {'name':fullName,'email':email,'password':password}
-        axios({
-            method:'POST',
-            url:'http://localhost:8000/api/register',
-            data:data
-        }).then((Response)=>{
-            console.log(Response.data)
-        }).catch((Error)=>{
-            console.log(Error);
-            console.log(Error.response.status);
-            console.log(Error.response.headers);
+        await axios({
+            method:'post',
+            url:'http://192.168.1.212:8000/api/register',
+            data:data,
+            headers: { 'Content-Type':'multipart/form-data;' },
+        }).then(()=>{
+            console.log('PASSED')
+        }).catch((Error) => {
+            console.log(Error)
         })
     }
 
