@@ -3,16 +3,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Profile() {
 
-    const getToken = async () => {
-        (AsyncStorage.getItem('token').then((val) => {
-            console.log(val)
+    const LogOut = () => {
+        console.log(AsyncStorage.getItem('token').then((value)=>{
+            console.log(value)
         }))
+        AsyncStorage.removeItem('token')
     }
 
     return (
         <>
             <Text>Profile</Text>
-            <Button title="LOGOUT" onPress={getToken}>Logout</Button>
+            <Button title="LOGOUT" onPress={LogOut}>Logout</Button>
         </>
     )
 }

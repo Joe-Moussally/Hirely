@@ -6,12 +6,37 @@ import Jobs from '../screens/main-screens/Jobs'
 import MyJobs from '../screens/main-screens/MyJobs'
 import Profile from  '../screens/main-screens/Profile'
 import { StyleSheet } from 'react-native';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { localhost } from '../globalVariables';
 
 
 export default function MainAppNavigation() {
 
+    const [user,setUser] = useState('')
+
     //creating the bottom navigation tab
     const Tab = createBottomTabNavigator()
+
+    //get user's detail and photo on load
+    useEffect(async ()=>{
+        let token
+        await AsyncStorage.getItem('token').then((val)=>{
+            token = val
+        })
+        console.log('TOKEN',token)
+
+        axios({
+            method:'POST',
+            headers:{
+                'Authorization':'Bearer '+token
+            },
+            url:'http://'+localhost+':8000/api/profile'
+        }).then((Response)=>{
+            console.log('HERE',Response.data)
+        })
+    },[])
 
     return(
         <Tab.Navigator
@@ -27,32 +52,33 @@ export default function MainAppNavigation() {
             <Tab.Screen
             name="Jobs"
             component={Jobs}
-            options={{tabBarIcon:({color,size})=>(<Entypo name="magnifying-glass" size={size} color={color}/>)}}/>
+            options={{tabBarIcon:({color})=>(<Entypo name="magnifying-glass" size={30} color={color}/>)}}/>
 
             <Tab.Screen
             name="My Jobs"
             component={MyJobs}
-            options={{tabBarIcon:({size, color})=>(<FontAwesome5 name="suitcase" size={size} color={color} />)}}/>
+            options={{tabBarIcon:({color})=>(<FontAwesome5 name="suitcase" size={30} color={color} />)}}/>
 
             <Tab.Screen
             name="Chats"
             component={Chats}
-            options={{tabBarIcon:({size, color})=>(<Ionicons name="ios-chatbubble-ellipses" size={size} color={color} />)}}/>
+            options={{tabBarIcon:({color})=>(<Ionicons name="ios-chatbubble-ellipses" size={30} color={color} />)}}/>
             
             <Tab.Screen
             name="Profile"
             component={Profile}
-            options={{tabBarIcon:({size, color})=>(<Ionicons name="person-sharp" size={size} color={color} />)}}/>
+            options={{tabBarIcon:({color})=>(<Ionicons name="person-sharp" size={30} color={color} />)}}/>
         </Tab.Navigator>
     )
 }
 
 const styles = StyleSheet.create({
-    // tabBar:{
-    //     borderRadius:10,
-    //     width:'90%',
-    //     position:'absolute',
-    //     marginHorizontal:'5%',
-    //     marginBottom:12,
-    // }
+    tabBar:{
+        borderRadius:10,
+        width:'95%',
+        height:60,
+        position:'absolute',
+        marginHorizontal:'2.5%',
+        marginBottom:12,
+    }
 })

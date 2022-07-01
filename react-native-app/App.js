@@ -7,13 +7,11 @@ import { useEffect, useState } from 'react';
 export default function App() {
 
   //fetch token on app execution to check if user is logged in
-  const [token,setToken] = useState('')
+  const [token,setToken] = useState(AsyncStorage.getItem('token'))
   
-
   useEffect(()=>{
 
     AsyncStorage.getItem('token').then((value)=>{
-      console.log(value)
       setToken(value)
     })
   },[token])
