@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard, processColor } from "react-native";
 import { globalStyles } from "../../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
+import { localhost } from "../../globalVariables";
 
 
 export default function SignUp() {
@@ -24,11 +25,12 @@ export default function SignUp() {
         // {'name':fullName,'email':email,'password':password}
         await axios({
             method:'post',
-            url:'http://192.168.1.212:8000/api/register',
+            url:'http://'+localhost+':8000/api/register',
             data:data,
             headers: { 'Content-Type':'multipart/form-data;' },
-        }).then(()=>{
-            console.log('PASSED')
+        }).then((Response)=>{
+            console.log(Response.data)
+            navigation.navigate('LogIn')
         }).catch((Error) => {
             console.log(Error)
         })

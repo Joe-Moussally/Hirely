@@ -11,7 +11,7 @@ import Header from '../shared/header';
 //creating the stack navigator
 const Stack = createNativeStackNavigator();
 
-export default function NewUserStack() {
+export default function GuestStack() {
     return(
 
             <Stack.Navigator
