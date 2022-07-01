@@ -13,18 +13,19 @@ export default function LogIn() {
     const [password,setPassword] = useState('')
     
     //function to check email and password on Login attempt
-    const handleLogIn = async () => {
+    const handleLogIn = () => {
         console.log(email,password)
         let data = new FormData()
         data.append("email",email)
         data.append("password",password)
-        await axios({
+        axios({
             method:'post',
             url:'http://'+localhost+':8000/api/login',
             data:data,
             headers: { 'Content-Type':'multipart/form-data;' },
-        }).then( async (Response)=>{
-            await AsyncStorage.setItem('token', Response.data["access_token"])
+        }).then((Response)=>{
+            console.log('here')
+            AsyncStorage.setItem('token', Response.data["access_token"])
         }).catch((Error) => {
             console.log(Error)
         })

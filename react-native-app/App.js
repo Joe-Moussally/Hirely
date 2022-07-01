@@ -8,13 +8,15 @@ export default function App() {
 
   //fetch token on app execution to check if user is logged in
   const [token,setToken] = useState('')
+  
 
   useEffect(()=>{
+
     AsyncStorage.getItem('token').then((value)=>{
       console.log(value)
       setToken(value)
     })
-  },[])
+  },[token])
 
   return (
     
