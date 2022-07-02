@@ -14,8 +14,9 @@ const AddJob = () => {
     const [requirement,setRequirement] = useState('')
 
     return (
-        <ScrollView>
+        
         <View style={styles.formContainer}>
+            <ScrollView>
             
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Job title <Text style={styles.required}>(Required)</Text></Text>
@@ -50,9 +51,9 @@ const AddJob = () => {
             <TouchableOpacity style={globalStyles.fullWidthButton}>
                 <Text style={globalStyles.fullWidthButtonText}>Post Job Offer</Text>
             </TouchableOpacity>
-
+            </ScrollView>
         </View>
-        </ScrollView>
+        
      );
 }
  
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     formContainer:{
         flex:1,
         backgroundColor:'white',
-        padding:20
+        paddingHorizontal:20
     },
     mulitline:{
         minHeight:150,
