@@ -12,7 +12,7 @@ const globalStyles = StyleSheet.create({
     },
     input:{
         borderWidth:2,
-        borderColor:'#808080',
+        borderColor:'#004f70',
         borderRadius:10,
         fontSize:21,
         padding:10,
@@ -37,6 +37,23 @@ const globalStyles = StyleSheet.create({
         fontSize:21,
         marginVertical: 7
     },
+    //ouline button
+    outlineButton:{
+        width:'85%',
+        borderColor:'#00aeff',
+        borderRadius:10,
+        borderWidth:4,
+        color:'red',
+        marginVertical:10,
+        marginHorizontal:'7.5%',
+        paddingVertical:11
+    },
+    outlineButtonText:{
+        color:'#00aeff',
+        fontWeight:'bold',
+        textAlign:'center',
+        fontSize:19
+    }
     //job offer container
 
 })
