@@ -1,4 +1,4 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { BottomTabView, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import MainHeader from '../shared/MainHeader'
 import Chats from '../screens/main-screens/Chats'
@@ -6,19 +6,24 @@ import Jobs from '../screens/main-screens/Jobs'
 import MyJobs from '../screens/main-screens/MyJobs'
 import Profile from  '../screens/main-screens/Profile'
 import { StyleSheet } from 'react-native';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { localhost } from '../globalVariables';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AddJob from '../screens/main-screens/AddJob';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
 export default function MainAppNavigation() {
 
+    //store user profile and token
     const [user,setUser] = useState('')
     const [token,setToken] = useState(async()=>await AsyncStorage.getItem('token').then((val)=> setToken(val)))
 
     //creating the bottom navigation tab
     const Tab = createBottomTabNavigator()
+    const Stack = createNativeStackNavigator()
 
     //get user's detail and photo on load
     useEffect(()=>{
@@ -38,6 +43,37 @@ export default function MainAppNavigation() {
         }
     ,[])
 
+    //Adding stack for My Jobs and Add Jobs Screen
+    function MyJobsStack({navigation, route}) {
+
+        const routeName = getFocusedRouteNameFromRoute(route);
+        useLayoutEffect(()=>{
+            if (routeName === "AddJobStack"){
+                navigation.setOptions({tabBarStyle: styles.hiddenTabBar});
+            }else {
+                navigation.setOptions({tabBarStyle: styles.tabBar});
+            }
+        },[navigation,route])
+
+
+        return(
+            <Stack.Navigator
+            screenOptions={{
+                headerTitle:'Add Job Offer'
+            }}>
+                <Stack.Screen
+                name='MyJobsStack'
+                component={MyJobs}
+                options={{headerShown: false}}/>
+
+                <Stack.Screen
+                name='AddJobStack'
+                component={AddJob}
+                />
+            </Stack.Navigator>
+        )
+    }
+
     return(
         <Tab.Navigator
         screenOptions={{
@@ -52,12 +88,12 @@ export default function MainAppNavigation() {
             <Tab.Screen
             name="Jobs"
             component={Jobs}
-            options={{tabBarIcon:({color})=>(<Entypo name="magnifying-glass" size={30} color={color}/>)}}/>
+            options={{tabBarIcon:({color})=>(<Entypo name="magnifying-glass" size={30} color={color}/>)}} />
 
             <Tab.Screen
             name="My Jobs"
-            component={MyJobs}
-            options={{tabBarIcon:({color})=>(<FontAwesome5 name="suitcase" size={30} color={color} />)}}/>
+            component={MyJobsStack}
+            options={{tabBarIcon:({color})=>(<FontAwesome5 name="suitcase" size={30} color={color} />)}} />
 
             <Tab.Screen
             name="Chats"
@@ -80,5 +116,8 @@ const styles = StyleSheet.create({
         position:'absolute',
         marginHorizontal:'2.5%',
         marginBottom:12,
+    },
+    hiddenTabBar:{
+        display:'none'
     }
 })
