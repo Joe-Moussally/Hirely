@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import Requirement from "../../components/Requirement";
 import { globalStyles } from "../../styles/global";
 
 const AddJob = () => {
@@ -9,15 +10,22 @@ const AddJob = () => {
     const [description,setDescription] = useState('')
 
     //track all requirements
-    const [requirements,setRequirements] = useState([])
+    const [requirements,setRequirements] = useState(['asdasd','dasdasdasd','dasdasdas','asdsad'])
     //track a single requirement
     const [requirement,setRequirement] = useState('')
+
+
+    //function to handle requirements adding
+    const addRequirement = () => {
+         123123
+    }
 
     return (
         
         <View style={styles.formContainer}>
             <ScrollView>
             
+            {/* JOB TITLE */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Job title <Text style={styles.required}>(Required)</Text></Text>
                 <TextInput
@@ -26,6 +34,7 @@ const AddJob = () => {
                 onChangeText={text=> setPosition(text)}/>
             </View>
 
+            {/* JOB DESCRIPTION */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Job description</Text>
                 <TextInput
@@ -35,6 +44,7 @@ const AddJob = () => {
                 onChangeText={text=> setDescription(text)}/>
             </View>
 
+            {/* JOB REQUIREMENTS */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Job requirements</Text>
                 <TextInput
@@ -47,6 +57,15 @@ const AddJob = () => {
             <TouchableOpacity style={globalStyles.outlineButton}>
                 <Text style={globalStyles.outlineButtonText}>Add Requirement</Text>
             </TouchableOpacity>
+        
+            {/* JOB REQUIREMENTS DISPLAY */}
+            <View style={globalStyles.inputContainer}>
+                {
+                    requirements.map((req) => (
+                        <Requirement text={req}/>
+                    ))
+                }
+            </View>
 
             <TouchableOpacity style={globalStyles.fullWidthButton}>
                 <Text style={globalStyles.fullWidthButtonText}>Post Job Offer</Text>
