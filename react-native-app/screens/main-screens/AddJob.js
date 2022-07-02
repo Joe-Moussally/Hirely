@@ -19,15 +19,16 @@ const AddJob = () => {
 
     // function to handle requirements adding
     const addRequirement = () => {
-        setRequirements([{key:key, text:requirement},...requirements])
+        setRequirements([...requirements,{key:key, text:requirement}])
         setKey(key+1)
-        console.log(key)
+        
+        //clear input
+        setRequirement('')
     }
 
     //function that remove the requirement from the list
     const removeRequirement = (key) => {
         setRequirements(requirements.filter((element) => element.key !== key))
-        console.log(key)
     }
 
     return (
@@ -57,11 +58,16 @@ const AddJob = () => {
             {/* JOB REQUIREMENTS */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Job requirements</Text>
+
                 <TextInput
                 style={globalStyles.input}
                 placeholder="Enter job requirement here"
                 multiline
-                onChangeText={text=> setRequirement(text)}/>
+                onChangeText={text=> setRequirement(text)}
+                >
+                    {requirement}
+                </TextInput>
+
             </View>
 
             <TouchableOpacity
@@ -83,7 +89,9 @@ const AddJob = () => {
                 }
             </View>
 
-            <TouchableOpacity style={globalStyles.fullWidthButton}>
+            <TouchableOpacity
+            style={globalStyles.fullWidthButton}
+            onPress={()=>console.log(requirements)}>
                 <Text style={globalStyles.fullWidthButtonText}>Post Job Offer</Text>
             </TouchableOpacity>
 

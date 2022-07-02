@@ -4,7 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 const Requirement = ({ text,key,removeRequirement }) => {
     return ( 
         <View style={styles.requirementContainer}>
-            <Text style={{fontSize:17}}>• {text+key}</Text>
+            <Text style={{fontSize:17}}>• {text}</Text>
 
             <TouchableOpacity
             style={styles.removeContainer}
