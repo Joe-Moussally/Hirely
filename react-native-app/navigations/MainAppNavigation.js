@@ -15,28 +15,30 @@ import { localhost } from '../globalVariables';
 export default function MainAppNavigation() {
 
     const [user,setUser] = useState('')
+    const [token,setToken] = useState(async()=>await AsyncStorage.getItem('token').then((val)=> setToken(val)))
 
     //creating the bottom navigation tab
     const Tab = createBottomTabNavigator()
 
     //get user's detail and photo on load
-    useEffect(async ()=>{
-        let token
-        await AsyncStorage.getItem('token').then((val)=>{
-            token = val
-        })
-        console.log('TOKEN',token)
+    useEffect(()=>{
+        console.log('here',token)
+            
 
-        axios({
-            method:'POST',
-            headers:{
-                'Authorization':'Bearer '+token
-            },
-            url:'http://'+localhost+':8000/api/profile'
-        }).then((Response)=>{
-            console.log('HERE',Response.data)
-        })
-    },[])
+
+            axios({
+                method:'POST',
+                headers:{
+                    'Authorization':'Bearer '+token
+                },
+                url:'http://'+localhost+':8000/api/profile'
+            }).then((Response)=>{
+                console.log('HERE',Response.data)
+            }).catch((err)=>{
+                console.log('error')
+            })
+        }
+    ,[])
 
     return(
         <Tab.Navigator
