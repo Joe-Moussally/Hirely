@@ -23,20 +23,18 @@ export default function MainAppNavigation() {
     //get user's detail and photo on load
     useEffect(()=>{
         console.log('here',token)
-            
 
-
-            axios({
-                method:'POST',
-                headers:{
-                    'Authorization':'Bearer '+token
-                },
-                url:'http://'+localhost+':8000/api/profile'
-            }).then((Response)=>{
-                console.log('HERE',Response.data)
-            }).catch((err)=>{
-                console.log('error')
-            })
+        axios({
+            method:'POST',
+            headers:{
+                'Authorization':'Bearer '+token
+            },
+            url:'http://'+localhost+':8000/api/profile'
+        }).then((Response)=>{
+            console.log('HERE',Response.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
         }
     ,[])
 

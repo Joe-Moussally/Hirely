@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
-export const globalStyles = StyleSheet.create({
+const globalStyles = StyleSheet.create({
     container: {
         flex:1,
-        padding:20,
+        padding:15,
     },
     blueTitle: {
         fontSize:32,
@@ -36,5 +36,9 @@ export const globalStyles = StyleSheet.create({
         fontWeight:'bold',
         fontSize:21,
         marginVertical: 7
-    }
+    },
+    //job offer container
+
 })
+
+export { globalStyles }
