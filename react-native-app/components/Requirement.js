@@ -1,12 +1,14 @@
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Entypo } from '@expo/vector-icons';
 
-const Requirement = (props) => {
+const Requirement = ({ text,key,removeRequirement }) => {
     return ( 
         <View style={styles.requirementContainer}>
-            <Text style={{fontSize:17}}>• {props.text}</Text>
+            <Text style={{fontSize:17}}>• {text+key}</Text>
 
-            <TouchableOpacity style={styles.removeContainer}>
+            <TouchableOpacity
+            style={styles.removeContainer}
+            onPress={removeRequirement}>
                 <Entypo name="minus" size={24} color="black" style={styles.removeIcon}/>
                 <Text style={styles.removeText}>Remove</Text>
             </TouchableOpacity>
