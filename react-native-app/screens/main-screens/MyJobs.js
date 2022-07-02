@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
         borderRadius:30,
         position:'absolute',
         left:'90%',
-        top:'85%'
+        top:'100%',
+        transform:[{translateY:-120}]
     },
     plus:{
         alignSelf:'center',
