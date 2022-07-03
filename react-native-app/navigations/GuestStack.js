@@ -11,7 +11,14 @@ import Header from '../shared/header';
 //creating the stack navigator
 const Stack = createNativeStackNavigator();
 
-export default function GuestStack() {
+export default function GuestStack(props) {
+
+    //defining guestStack Screens
+    const LogInScreen = () => (
+        <LogIn setToken={props.setToken}/>
+    )
+
+
     return(
 
             <Stack.Navigator
@@ -24,7 +31,7 @@ export default function GuestStack() {
                 }}}>
 
                 <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}}/>
-                <Stack.Screen name="LogIn" component={LogIn} />
+                <Stack.Screen name="LogIn" component={LogInScreen} />
                 <Stack.Screen name="SignUp" component={SignUp} />
 
             </Stack.Navigator>

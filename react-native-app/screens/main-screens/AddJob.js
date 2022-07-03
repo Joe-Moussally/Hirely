@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, FlatList } from "react-native";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import Requirement from "../../components/Requirement";
 import { globalStyles } from "../../styles/global";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AddJob = () => {
 
@@ -19,6 +20,7 @@ const AddJob = () => {
 
     // function to handle requirements adding
     const addRequirement = () => {
+        if (!requirement) return
         setRequirements([...requirements,{key:key, text:requirement}])
         setKey(key+1)
         
@@ -91,7 +93,9 @@ const AddJob = () => {
 
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
-            onPress={()=>console.log(requirements)}>
+            onPress={async()=>console.log(
+                await AsyncStorage.getItem('token').then((val)=>val)
+            )}>
                 <Text style={globalStyles.fullWidthButtonText}>Post Job Offer</Text>
             </TouchableOpacity>
 

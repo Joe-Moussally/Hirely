@@ -7,14 +7,13 @@ import { localhost } from "../../globalVariables";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from "@react-navigation/native";
 
-export default function LogIn() {
+export default function LogIn({setToken}) {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     
     //function to check email and password on Login attempt
     const handleLogIn = () => {
-        console.log(email,password)
         let data = new FormData()
         data.append("email",email)
         data.append("password",password)
@@ -26,6 +25,7 @@ export default function LogIn() {
         }).then((Response)=>{
             console.log('here')
             AsyncStorage.setItem('token', Response.data["access_token"])
+            setToken(Response.data["access_token"])
         }).catch((Error) => {
             console.log(Error)
         })
