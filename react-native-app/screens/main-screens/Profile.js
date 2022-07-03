@@ -6,17 +6,18 @@ import { globalStyles } from "../../styles/global";
 export default function Profile({ setTokenApp }) {
 
     //track user's info
-    const [user,setUser] = useState('')
+    const [user,setUser] = useState(async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))}))
 
     useEffect(()=>{
         //get user info from local storage
-        const getUser = async () => {
-            await AsyncStorage.getItem('user').then((user)=>{
-                setUser(JSON.parse(user))
-            })
-        }
-        getUser()
-        console.log('from profile.js',user)
+        // const getUser = async () => {
+        //     await AsyncStorage.getItem('user').then((user)=>{
+        //         setUser(JSON.parse(user))
+        //     })
+        // }
+        // getUser()
+        
+        console.log('PROFILEEE    ',user)
 
     },[])
     return (
@@ -34,7 +35,7 @@ export default function Profile({ setTokenApp }) {
             }
             <Text style={styles.name}>{user['name']}</Text>
 
-            <Button title="LOGOUT" onPress={() => setTokenApp(null)}/>
+            <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
 
         </View>
     )

@@ -29,13 +29,26 @@ export default function LogIn({setToken}) {
 
             //fetch user data to store locally
             setUser(Response.data["access_token"])
+
         }).catch((Error) => {
             console.log(Error)
         })
     }
 
-    const setUser = (token) => {
-        
+    //function that gives user info from token
+    //used on login
+    const setUser = async (token) => {
+        axios({
+            method:'POST',
+            url:'http://'+localhost+':8000/api/profile',
+            headers:{
+              'Authorization':'Bearer '+token
+            }
+          }).then(async (Response) => {
+            console.log('from login.js',Response.data)
+            await AsyncStorage.removeItem('user')
+            await AsyncStorage.setItem('user',JSON.stringify(Response.data))
+          })
     }
 
     return (

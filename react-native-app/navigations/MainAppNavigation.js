@@ -15,10 +15,9 @@ import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
-export default function MainAppNavigation({ setTokenApp }) {
+export default function MainAppNavigation({ setTokenApp,user }) {
 
-    //store user profile and token
-    const [user,setUser] = useState('')
+    //store user's token
     const [token,setToken] = useState(async()=>await AsyncStorage.getItem('token').then((val)=> setToken(val)))
 
     //creating the bottom navigation tab
