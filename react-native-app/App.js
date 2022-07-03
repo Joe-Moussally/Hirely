@@ -23,21 +23,21 @@ export default function App() {
     }
     fetchToken()
 
-    axios({
-      method:'POST',
-      url:'http://'+localhost+':8000/api/profile',
-      headers:{
-        'Authorization':'Bearer '+token
-      }
-    }).then(async (Response) => {
-      console.log('user',Response.data)
-      AsyncStorage.setItem('user',JSON.stringify(Response.data))
-    }).catch((err)=>{
-      //token expired or not found
-      if(err.response.status) {
-        setToken('')
-      }
-    })
+    // axios({
+    //   method:'POST',
+    //   url:'http://'+localhost+':8000/api/profile',
+    //   headers:{
+    //     'Authorization':'Bearer '+token
+    //   }
+    // }).then(async (Response) => {
+    //   console.log('from app.js',Response.data)
+    //   await AsyncStorage.setItem('user',JSON.stringify(Response.data))
+    // }).catch((err)=>{
+    //   //token expired or not found
+    //   if(err.response.status) {
+    //     setToken('')
+    //   }
+    // })
   },[])
 
   return (
@@ -45,8 +45,8 @@ export default function App() {
     <NavigationContainer>
 
       {token?
-      <MainAppNavigation />
-      :<GuestStack setToken={setToken}/>}
+      <MainAppNavigation setTokenApp={setToken}/>
+      :<GuestStack setTokenApp={setToken}/>}
       
     </NavigationContainer>
     

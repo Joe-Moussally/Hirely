@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { globalStyles } from "../../styles/global";
 
-export default function Profile() {
+export default function Profile({ setTokenApp }) {
 
     //track user's info
     const [user,setUser] = useState('')
@@ -16,7 +16,7 @@ export default function Profile() {
             })
         }
         getUser()
-        console.log(user)
+        console.log('from profile.js',user)
 
     },[])
     return (
@@ -33,6 +33,8 @@ export default function Profile() {
                 source={require('../../assets/profile/default_picture.jpg')} />
             }
             <Text style={styles.name}>{user['name']}</Text>
+
+            <Button title="LOGOUT" onPress={() => setTokenApp(null)}/>
 
         </View>
     )

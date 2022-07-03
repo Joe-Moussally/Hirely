@@ -15,7 +15,7 @@ import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
-export default function MainAppNavigation() {
+export default function MainAppNavigation({ setTokenApp }) {
 
     //store user profile and token
     const [user,setUser] = useState('')
@@ -74,6 +74,11 @@ export default function MainAppNavigation() {
         )
     }
 
+    //passing props to screens
+    const ProfileScreen = () => {
+        return <Profile setTokenApp={setTokenApp}/>
+    }
+
     return(
         <Tab.Navigator
         screenOptions={{
@@ -102,7 +107,7 @@ export default function MainAppNavigation() {
             
             <Tab.Screen
             name="Profile"
-            component={Profile}
+            component={ProfileScreen}
             options={{tabBarIcon:({color})=>(<Ionicons name="person-sharp" size={30} color={color} />)}}/>
         </Tab.Navigator>
     )

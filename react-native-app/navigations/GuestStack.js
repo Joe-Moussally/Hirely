@@ -11,11 +11,11 @@ import Header from '../shared/header';
 //creating the stack navigator
 const Stack = createNativeStackNavigator();
 
-export default function GuestStack(props) {
+export default function GuestStack({ setTokenApp }) {
 
     //defining guestStack Screens
     const LogInScreen = () => (
-        <LogIn setToken={props.setToken}/>
+        <LogIn setToken={setTokenApp}/>
     )
 
 

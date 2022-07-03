@@ -22,13 +22,20 @@ export default function LogIn({setToken}) {
             url:'http://'+localhost+':8000/api/login',
             data:data,
             headers: { 'Content-Type':'multipart/form-data;' },
-        }).then((Response)=>{
+        }).then(async (Response)=>{
             console.log('here')
-            AsyncStorage.setItem('token', Response.data["access_token"])
+            await AsyncStorage.setItem('token', Response.data["access_token"])
             setToken(Response.data["access_token"])
+
+            //fetch user data to store locally
+            setUser(Response.data["access_token"])
         }).catch((Error) => {
             console.log(Error)
         })
+    }
+
+    const setUser = (token) => {
+        
     }
 
     return (
