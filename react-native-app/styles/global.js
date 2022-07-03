@@ -53,6 +53,15 @@ const globalStyles = StyleSheet.create({
         fontWeight:'bold',
         textAlign:'center',
         fontSize:19
+    },
+    //profile screen
+    profilePicture:{
+        width:200,
+        height:200,
+        alignSelf:'center',
+        borderRadius:200/2,
+        borderWidth:3,
+        borderColor:'gray'
     }
     //job offer container
 
