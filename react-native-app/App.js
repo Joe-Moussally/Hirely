@@ -29,21 +29,21 @@ export default function App() {
       headers:{
         'Authorization':'Bearer '+token
       }
-    }).then((Response) => {
-      console.log(Response.data)
+    }).then(async (Response) => {
+      console.log('user',Response.data)
+      AsyncStorage.setItem('user',JSON.stringify(Response.data))
     }).catch((err)=>{
       //token expired or not found
       if(err.response.status) {
         setToken('')
       }
     })
-
-    
   },[])
 
   return (
     
     <NavigationContainer>
+
       {token?
       <MainAppNavigation />
       :<GuestStack setToken={setToken}/>}

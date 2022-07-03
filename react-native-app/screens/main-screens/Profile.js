@@ -1,19 +1,26 @@
-import { Button, Text } from "react-native";
+import { Button, Text, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from "react";
 
 export default function Profile() {
 
-    const LogOut = () => {
-        console.log(AsyncStorage.getItem('token').then((value)=>{
-            console.log(value)
-        }))
-        AsyncStorage.removeItem('token')
-    }
+    //track user's info
+    const [user,setUser] = useState('')
 
+    useEffect(()=>{
+        //get user info from local storage
+        const getUser = async () => {
+            await AsyncStorage.getItem('user').then((user)=>{
+                setUser(JSON.parse(user))
+            })
+        }
+        getUser()
+        console.log(user)
+
+    },[])
     return (
-        <>
-            <Text>Profile</Text>
-            <Button title="LOGOUT" onPress={LogOut}>Logout</Button>
-        </>
+        <View>
+            <Text>PROFILE</Text>
+        </View>
     )
 }
