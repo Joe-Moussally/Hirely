@@ -43,7 +43,15 @@ const AddJob = () => {
         let userId = await AsyncStorage.getItem('user').then((val)=>(
             JSON.parse(val)['id']
         ))
-        console.log(userId)
+        
+        //if job title input is empty
+        if(!position) {
+            setErrorMessage('Job title is required')
+            setTimeout(()=>{
+                setErrorMessage('')
+            },5000)
+            return
+        }
     }
 
     return (
@@ -136,6 +144,8 @@ const styles = StyleSheet.create({
         fontStyle:'italic'
     },
     error:{
-
+        color:'crimson',
+        alignSelf:'center',
+        fontSize:17,
     }
 })
