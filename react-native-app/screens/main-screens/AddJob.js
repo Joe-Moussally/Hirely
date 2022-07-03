@@ -18,6 +18,9 @@ const AddJob = () => {
     //track requirement keys
     const [key,setKey] = useState(0)
 
+    //track error messages displayed on screen
+    const [errorMessage, setErrorMessage] = useState('')
+
     // function to handle requirements adding
     const addRequirement = () => {
         if (!requirement) return
@@ -31,6 +34,16 @@ const AddJob = () => {
     //function that remove the requirement from the list
     const removeRequirement = (key) => {
         setRequirements(requirements.filter((element) => element.key !== key))
+    }
+
+    //function that runs when user presses add offer
+    const handleAdd = async () => {
+
+        //getting the user's Id
+        let userId = await AsyncStorage.getItem('user').then((val)=>(
+            JSON.parse(val)['id']
+        ))
+        console.log(userId)
     }
 
     return (
@@ -91,11 +104,12 @@ const AddJob = () => {
                 }
             </View>
 
+            {/* Error Message Text */}
+            <Text style={styles.error}>{errorMessage}</Text>
+
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
-            onPress={async()=>console.log(
-                await AsyncStorage.getItem('token').then((val)=>val)
-            )}>
+            onPress={handleAdd}>
                 <Text style={globalStyles.fullWidthButtonText}>Post Job Offer</Text>
             </TouchableOpacity>
 
@@ -120,5 +134,8 @@ const styles = StyleSheet.create({
     required:{
         color:'gray',
         fontStyle:'italic'
+    },
+    error:{
+
     }
 })

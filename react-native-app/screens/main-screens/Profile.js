@@ -8,20 +8,8 @@ export default function Profile({ setTokenApp }) {
     //track user's info
     const [user,setUser] = useState(async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))}))
 
-    useEffect(()=>{
-        //get user info from local storage
-        // const getUser = async () => {
-        //     await AsyncStorage.getItem('user').then((user)=>{
-        //         setUser(JSON.parse(user))
-        //     })
-        // }
-        // getUser()
-        
-        console.log('PROFILEEE    ',user)
-
-    },[])
     return (
-        <View style={globalStyles.container}>
+        <View style={[globalStyles.container,styles.profileContainer]}>
 
             {
                 //check if user has a profile picture
@@ -47,5 +35,8 @@ const styles = StyleSheet.create({
         margin:20,
         fontSize:24,
         fontWeight:'bold'
+    },
+    profileContainer:{
+        backgroundColor:'white'
     }
 })

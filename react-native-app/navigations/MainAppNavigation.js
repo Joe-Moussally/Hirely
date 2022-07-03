@@ -15,7 +15,7 @@ import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 
-export default function MainAppNavigation({ setTokenApp,user }) {
+export default function MainAppNavigation({ setTokenApp }) {
 
     //store user's token
     const [token,setToken] = useState(async()=>await AsyncStorage.getItem('token').then((val)=> setToken(val)))
@@ -58,7 +58,7 @@ export default function MainAppNavigation({ setTokenApp,user }) {
         return(
             <Stack.Navigator
             screenOptions={{
-                headerTitle:'Add Job Offer'
+                headerTitle:'Add Job Offer',
             }}>
                 <Stack.Screen
                 name='MyJobsStack'
@@ -87,7 +87,8 @@ export default function MainAppNavigation({ setTokenApp,user }) {
         headerStyle:{
             backgroundColor:'#00a6ff',
         },
-        tabBarStyle:styles.tabBar
+        tabBarStyle:styles.tabBar,
+        tabBarActiveTintColor:'#00a2ff'
         }}>
             <Tab.Screen
             name="Jobs"

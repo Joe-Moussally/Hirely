@@ -30,14 +30,13 @@ export default function App() {
         'Authorization':'Bearer '+token
       }
     }).then(async (Response) => {
-      console.log('from app.js',Response.data)
+
       await AsyncStorage.removeItem('user')
       await AsyncStorage.setItem('user',JSON.stringify(Response.data))
+
     }).catch((err)=>{
       //token expired or not found
-      if(err.response.status) {
-        setToken('')
-      }
+      setToken('')
     })
   },[])
 
