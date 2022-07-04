@@ -62,9 +62,11 @@ const globalStyles = StyleSheet.create({
         borderRadius:200/2,
         borderWidth:3,
         borderColor:'gray'
-    }
+    },
     //job offer container
-
+    jobContainer:{
+        
+    }
 })
 
 export { globalStyles }

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
+import { globalStyles } from "../../styles/global";
+import JobCard from "../../components/JobCard";
 
 
 export default function Jobs() {
@@ -25,7 +27,8 @@ export default function Jobs() {
                     url:'http://'+localhost+':8000/api/offers/',
         
                 }).then(Response => {
-                    console.log('jobs.js',Response.data)
+                    console.log('jobs.js',Response.data['offers'])
+                    setJobs(Response.data['offers'])
                 }).catch(err => {
                     console.log('JOBS.JS',err.response.status)
                 })
@@ -38,6 +41,12 @@ export default function Jobs() {
     },[])
 
     return (
-        <Text>Jobs</Text>
+        <View style={globalStyles.container}>
+            {
+                jobs.map(job=>(
+                    <JobCard job={job}/>
+                ))
+            }
+        </View>
     )
 }
