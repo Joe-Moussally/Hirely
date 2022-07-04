@@ -26,7 +26,7 @@ export default function MainAppNavigation({ setTokenApp }) {
 
     //get user's detail and photo on load
     useEffect(()=>{
-        console.log('here',token)
+        console.log('MAIN APP NAV',token)
 
         axios({
             method:'POST',
@@ -35,7 +35,7 @@ export default function MainAppNavigation({ setTokenApp }) {
             },
             url:'http://'+localhost+':8000/api/profile'
         }).then((Response)=>{
-            console.log('HERE',Response.data)
+            console.log('MAIN NAV',Response.data)
         }).catch((err)=>{
             console.log(err)
         })

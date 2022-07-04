@@ -23,9 +23,9 @@ export default function Jobs() {
                     url:'http://'+localhost+':8000/api/offers/',
         
                 }).then(Response => {
-                    console.log('jobs.js',Response.data)
+                    // console.log('jobs.js',Response.data)
                 }).catch(err => {
-                    console.log('JOBS.JS',err.response.status)
+                    // console.log('JOBS.JS',err.response.status)
                 })
             })
         }
