@@ -21,15 +21,14 @@ class OfferController extends Controller
         $user_id = Auth::user()['id'];
         $offers = Offer::where('user_id','!=',$user_id)->get();
 
-        $offer_user = [];
+
         foreach ($offers as $offer) {
-            $user = $offer->user;
-            array_push($offer_user, $user);
+            $offer['user'] = $offer->user;
         }
 
         return response()->json([
             'status' => 'success',
-            'offers' => [$offers,$offer_user][0],
+            'offers' => [$offers],
         ],200);
     }
 
