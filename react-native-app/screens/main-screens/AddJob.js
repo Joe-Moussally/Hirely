@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 
 import Requirement from "../../components/Requirement";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { localhost } from "../../globalVariables";
+import axios from 'axios'
 
 const AddJob = () => {
 
@@ -50,7 +52,27 @@ const AddJob = () => {
             return
         } else setErrorMessage('')
 
-        console.log(position, description,requirements)
+        // console.log(position, description,requirements)
+
+        let data = new FormData()
+
+        data.append('user_id',userId)
+        data.append('position',position)
+        data.append('description',description)
+        data.append('requirements',JSON.stringify(requirements))
+
+        axios({
+
+            headers: { 'Content-Type':'multipart/form-data;' },
+            method:'POST',
+            url:'http://'+localhost+':8000/api/offers/',
+            data:data
+
+        }).then(Response => {
+            console.log(Response.data)
+        }).catch(err => {
+            console.log('',err.response.status)
+        })
     }
 
     return (
