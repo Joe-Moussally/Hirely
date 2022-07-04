@@ -27,20 +27,24 @@ class OfferController extends Controller
     //api to add a Job Offer
     public function addOffer(Request $Request) {
 
-        // $offer = new Offer;
-        // $offer->position = $Request->position;
-        // $offer->description = $Request->description;
-        // //getting authenticated user id
-        // $offer->user_id = Auth::user()->id;
-        // $offer->save();
+        //getting the job info
+        $offer = new Offer;
+        $offer->position = $Request->position;
+        $offer->description = $Request->description;
+        $offer->user_id = $Request->user_id;
+        $offer->save();
+
+        $offer_id = $offer->id;
+
+        foreach (json_decode($Request->requirements) as $req) {
+            $requirment = new Requirement;
+            $requirment->offer_id = $offer_id;
+            $requirment->requirement = $req->text;
+            $requirment->save();
+        }
 
         return response()->json([
             'status' => 'success',
-            'user_id' => $Request->user_id,
-            'position' => $Request->position,
-            'description' => $Request->description,
-            'requirements' => json_decode($Request->requirements)
-
         ],200);
     }
 
