@@ -47,11 +47,10 @@ const AddJob = () => {
         //if job title input is empty
         if(!position) {
             setErrorMessage('Job title is required')
-            setTimeout(()=>{
-                setErrorMessage('')
-            },5000)
             return
-        }
+        } else setErrorMessage('')
+
+        console.log(position, description,requirements)
     }
 
     return (
@@ -93,6 +92,7 @@ const AddJob = () => {
 
             </View>
 
+            {/* Add Requirement button */}
             <TouchableOpacity
             style={globalStyles.outlineButton}
             onPress={addRequirement}
@@ -115,6 +115,7 @@ const AddJob = () => {
             {/* Error Message Text */}
             <Text style={styles.error}>{errorMessage}</Text>
 
+            {/* Post Job Offer Button */}
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
             onPress={handleAdd}>

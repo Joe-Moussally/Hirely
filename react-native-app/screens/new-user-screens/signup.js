@@ -17,22 +17,28 @@ export default function SignUp() {
     const navigation = useNavigation();
 
     const handleSignUp = async () =>{
-        console.log(fullName,email,password)
+
         let data = new FormData()
         data.append("name",fullName)
         data.append("email",email)
         data.append("password",password)
-        // {'name':fullName,'email':email,'password':password}
+
         await axios({
+
             method:'post',
             url:'http://'+localhost+':8000/api/register',
             data:data,
             headers: { 'Content-Type':'multipart/form-data;' },
+
         }).then((Response)=>{
+
             console.log(Response.data)
             navigation.navigate('LogIn')
+
         }).catch((Error) => {
+
             console.log(Error)
+
         })
     }
 
@@ -41,6 +47,7 @@ export default function SignUp() {
         <View style={globalStyles.container}>
             <Text style={globalStyles.blueTitle}>Sign Up</Text>
 
+            {/* Full Name Input */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Full Name</Text>
                 <TextInput
@@ -49,6 +56,7 @@ export default function SignUp() {
                 onChangeText={name=> setFullName(name)}/>
             </View>
 
+            {/* Email Input */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Email</Text>
                 <TextInput
@@ -57,6 +65,7 @@ export default function SignUp() {
                 onChangeText={email=> setEmail(email)}/>
             </View>
 
+            {/* Password Input */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Password</Text>
                 <TextInput
