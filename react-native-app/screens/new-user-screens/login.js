@@ -23,9 +23,10 @@ export default function LogIn({setToken}) {
             data:data,
             headers: { 'Content-Type':'multipart/form-data;' },
         }).then(async (Response)=>{
-            console.log('here')
+
             await AsyncStorage.setItem('token', Response.data["access_token"])
             setToken(Response.data["access_token"])
+            console.log('LOGIN.JS ',Response.data['access_token'])
 
             //fetch user data to store locally
             setUser(Response.data["access_token"])

@@ -10,8 +10,8 @@ class Offer extends Model
     use HasFactory;
 
 
-    //Eloquent relationship between interests and offers
-    public function users()
+    //Eloquent relationship between user and offers
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Offer;
 use App\Models\Requirement;
 use App\Models\Interest;
+use App\Models\User;
 
 use Auth;
 
@@ -14,12 +15,21 @@ class OfferController extends Controller
 {
       
     //api that gets all offers
+    //except the logged in user's offers
     public function getOffers() {
-        $offers = Offer::orderBy('created_at','desc')->get();
+        
+        $user_id = Auth::user()['id'];
+        $offers = Offer::where('user_id','!=',$user_id)->get();
+
+        $offer_user = [];
+        foreach ($offers as $offer) {
+            $user = $offer->user;
+            array_push($offer_user, $user);
+        }
 
         return response()->json([
             'status' => 'success',
-            'offers' => $offers
+            'offers' => [$offers,$offer_user][0],
         ],200);
     }
 
@@ -35,13 +45,6 @@ class OfferController extends Controller
         $offer->save();
 
         $offer_id = $offer->id;
-
-        foreach (json_decode($Request->requirements) as $req) {
-            $requirment = new Requirement;
-            $requirment->offer_id = $offer_id;
-            $requirment->requirement = $req->text;
-            $requirment->save();
-        }
 
         return response()->json([
             'status' => 'success',
