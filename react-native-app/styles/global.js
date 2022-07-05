@@ -64,9 +64,15 @@ const globalStyles = StyleSheet.create({
         borderColor:'gray'
     },
     //job offer container
-    jobContainer:{
-        
-    }
+    // jobCardContainer:{
+    //     flexDirection:'row',
+    //     marginVertical:20,
+    // },
+    // jobCardPicture:{
+    //     width:100,
+    //     height:100,
+    //     borderRadius:50
+    // }
 })
 
 export { globalStyles }

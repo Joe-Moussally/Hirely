@@ -14,13 +14,12 @@ use Auth;
 class OfferController extends Controller
 {
       
-    //api that gets all offers
+    //api that gets all offer position, poster and offer id
     //except the logged in user's offers
     public function getOffers() {
         
         $user_id = Auth::user()['id'];
-        $offers = Offer::where('user_id','!=',$user_id)->get();
-
+        $offers = Offer::select('id','position','user_id')->where('user_id','!=',$user_id)->get();
 
         foreach ($offers as $offer) {
             $offer['user'] = $offer->user;

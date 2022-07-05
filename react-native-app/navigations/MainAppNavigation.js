@@ -13,6 +13,7 @@ import { localhost } from '../globalVariables';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import JobDetails from '../screens/main-screens/JobDetails';
 
 
 export default function MainAppNavigation({ setTokenApp }) {
@@ -42,12 +43,13 @@ export default function MainAppNavigation({ setTokenApp }) {
         }
     ,[])
 
-    //Adding stack for My Jobs and Add Jobs Screen
+    //Adding stack for My Jobs (user's posted Jobs) and Add Jobs Screen
     function MyJobsStack({navigation, route}) {
 
+        //hiding header for pushed screens
         const routeName = getFocusedRouteNameFromRoute(route);
         useLayoutEffect(()=>{
-            if (routeName === "AddJobStack"){
+            if (routeName === "AddJobStack" || routeName === "MyJobDetailsStack"){
                 navigation.setOptions({tabBarStyle: styles.hiddenTabBar});
             }else {
                 navigation.setOptions({tabBarStyle: styles.tabBar});
@@ -56,10 +58,8 @@ export default function MainAppNavigation({ setTokenApp }) {
 
 
         return(
-            <Stack.Navigator
-            screenOptions={{
-                headerTitle:'Add Job Offer',
-            }}>
+            <Stack.Navigator>
+
                 <Stack.Screen
                 name='MyJobsStack'
                 component={MyJobs}
@@ -68,7 +68,44 @@ export default function MainAppNavigation({ setTokenApp }) {
                 <Stack.Screen
                 name='AddJobStack'
                 component={AddJob}
+                options={{headerTitle:'Add Job Offer'}}
                 />
+
+                {/* <Stack.Screen
+                name='MyJobDetailsStack'
+                component={JobDetails}
+                /> */}
+
+            </Stack.Navigator>
+        )
+    }
+
+    //Adding stack navigation for Jobs Screen
+    function JobsStack({navigation, route}) {
+
+        //hiding header for pushed screens
+        const routeName = getFocusedRouteNameFromRoute(route);
+        useLayoutEffect(()=>{
+            if (routeName === "JobDetailsStack"){
+                navigation.setOptions({tabBarStyle: styles.hiddenTabBar});
+            }else {
+                navigation.setOptions({tabBarStyle: styles.tabBar});
+            }
+        },[navigation,route])
+
+        return(
+            <Stack.Navigator>
+
+                <Stack.Screen
+                name='JobsStack'
+                component={Jobs}
+                options={{headerShown: false}}/>
+
+                <Stack.Screen
+                name='JobDetailsStack'
+                component={JobDetails}
+                />
+
             </Stack.Navigator>
         )
     }
@@ -92,7 +129,7 @@ export default function MainAppNavigation({ setTokenApp }) {
         }}>
             <Tab.Screen
             name="Jobs"
-            component={Jobs}
+            component={JobsStack}
             options={{tabBarIcon:({color})=>(<Entypo name="magnifying-glass" size={30} color={color}/>)}} />
 
             <Tab.Screen
