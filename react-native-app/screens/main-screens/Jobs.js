@@ -41,11 +41,9 @@ export default function Jobs() {
     },[])
 
     return (
-        <View style={[globalStyles.container,{backgroundColor:'white'}]}>
             <FlatList
             data={jobs}
             renderItem={({item}) => <JobCard job={item}/>}
-            />
-        </View>
+            style={{backgroundColor:'white'}}/>
     )
 }

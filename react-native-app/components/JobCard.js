@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
     jobCardContainer: {
         flexDirection:'row',
         marginVertical:17,
+        marginHorizontal:'2.5%',
         padding:20,
         alignItems:'center',
-        width: '100%',
+        width: '95%',
         height: 130,
         backgroundColor: "white",
         borderRadius: 19,
