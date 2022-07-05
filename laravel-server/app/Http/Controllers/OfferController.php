@@ -14,7 +14,7 @@ use Auth;
 class OfferController extends Controller
 {
       
-    //api that gets all offer position, poster and offer id
+    //api that gets all offer position, poster and offer idZ
     //except the logged in user's offers
     public function getOffers() {
         

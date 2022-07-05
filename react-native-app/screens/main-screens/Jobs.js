@@ -42,15 +42,10 @@ export default function Jobs() {
 
     return (
         <View style={[globalStyles.container,{backgroundColor:'white'}]}>
-            {/* {
-                jobs.map(job=>(
-                    <JobCard job={job}/>
-                ))
-            } */}
             <FlatList
             data={jobs}
-            renderItem={(item)=>(<JobCard job={item}/>)}
-            keyExtractor={job => job.id}/>
+            renderItem={({item}) => <JobCard job={item}/>}
+            />
         </View>
     )
 }
