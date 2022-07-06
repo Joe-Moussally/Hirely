@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import axios from 'axios';
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
@@ -9,13 +9,16 @@ const JobDetails = ({route}) => {
     console.log('ROUTE PARAMS',route.params.id)//offer_id
 
     const [details,setDetails] = useState('')
+    
+    //track logged in user to hide non related component
+    const [userId,setUserId] = useState('')
 
 
     useEffect(()=>{
 
         //get user's id
         const getUserId = async () => {
-            await AsyncStorage.getItem('user').then((user)=> console.log(JSON.parse(user).id))//logged in user id
+            await AsyncStorage.getItem('user').then((user)=> setUserId(JSON.parse(user).id))//logged in user id
         }
         getUserId()
 
@@ -100,6 +103,19 @@ const JobDetails = ({route}) => {
                 :<></>
             }
             
+            {
+                //check if user is the job poster
+                (userId == details.user['id'])?
+                
+                //remove offer button
+                <TouchableNativeFeedback>
+                    <View style={styles.removeButton}>
+                        <Text style={styles.removeButtonText}>Remove Offer</Text>
+                    </View>
+                </TouchableNativeFeedback>
+                :<></>
+            }
+
 
         </View>
         </ScrollView>
@@ -141,5 +157,19 @@ const styles = StyleSheet.create({
     },
     requirementText:{
         fontSize:17,
+    },
+    removeButton:{
+        backgroundColor:'crimson',
+        width:'80%',
+        marginHorizontal:'10%',
+        height:40,
+        borderRadius:10,
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    removeButtonText:{
+        fontSize:21,
+        fontWeight:'bold',
+        color:'white'
     }
 })
