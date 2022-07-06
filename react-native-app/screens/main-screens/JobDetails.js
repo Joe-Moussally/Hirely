@@ -24,7 +24,7 @@ const JobDetails = ({route}) => {
             method:'GET',
             url:'http://'+localhost+':8000/api/offers/'+route.params.id //offer id
         }).then(async (Response) => {
-            console.log(' JOB DETAILS',Response.data.user['picture'])
+            console.log(' JOB DETAILS',Response.data)
             setDetails(Response.data)
         }).catch((err)=>{
             console.log("ERROR JOB DETAILS")
@@ -50,6 +50,22 @@ const JobDetails = ({route}) => {
 
             </View>
 
+            {/* postion */}
+            <View style={styles.section}>
+
+                <Text style={styles.title}>Position</Text>
+                <Text style={styles.textDetails}>{details.offer['position']}</Text>
+
+            </View>
+
+            {/* postion
+            <View style={styles.section}>
+
+                <Text style={styles.title}>Position</Text>
+                <Text style={styles.textDetails}>{details.offer['position']}</Text>
+
+            </View> */}
+
         </View>
      );
 }
@@ -70,6 +86,18 @@ const styles = StyleSheet.create({
     },
     name:{
         fontSize:27,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        marginBottom:25
+    },
+    section:{
+        marginVertical:10
+    },
+    title:{
+        fontWeight:'bold',
+        fontSize:19
+    },
+    textDetails:{
+        fontSize:17,
+        padding:10
     }
 })
