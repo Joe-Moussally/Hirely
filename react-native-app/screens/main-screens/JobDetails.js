@@ -4,9 +4,10 @@ import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View } fr
 import axios from 'axios';
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
+import { useNavigation } from "@react-navigation/native";
 
 const JobDetails = ({route}) => {
-    console.log('ROUTE PARAMS',route.params.id)//offer_id
+    const navigation = useNavigation()
 
     const [details,setDetails] = useState('')
     
@@ -15,7 +16,14 @@ const JobDetails = ({route}) => {
 
     //function that remove the job offer from db
     const handleRemove = () => {
-        console.log(details)
+        
+        axios({
+            method:'POST',
+            url:'http://'+localhost+':8000/api/offers/delete/'+route.params.id //offer id
+        }).then((Response)=>{
+            console.log(Response.data)
+            navigation.navigate('MyJobsStack')
+        })
     }
 
     useEffect(()=>{

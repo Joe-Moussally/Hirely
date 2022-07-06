@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { DevSettings, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { globalStyles } from '../../styles/global'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
@@ -30,7 +30,7 @@ export default function MyJobs({navigation}) {
         }
 
         getUserOffers()
-    },[])
+    },[navigation])
 
     return (
         <View style={styles.container}>
