@@ -8,10 +8,12 @@ import { globalStyles } from "../../styles/global";
 const JobDetails = ({route}) => {
     console.log('ROUTE PARAMS',route.params.id)//offer_id
 
-    const [details,setDetails] = useState([])
+    const [details,setDetails] = useState('')
 
 
     useEffect(()=>{
+
+        //get user's id
         const getUserId = async () => {
             await AsyncStorage.getItem('user').then((user)=> console.log(JSON.parse(user).id))//logged in user id
         }
@@ -21,14 +23,19 @@ const JobDetails = ({route}) => {
         axios({
             method:'GET',
             url:'http://'+localhost+':8000/api/offers/'+route.params.id //offer id
-        }).then((Response) => {
-            console.log(' JOB DETAILS',Response.data)
+        }).then(async (Response) => {
+            console.log(' JOB DETAILS',Response.data.user['picture'])
             setDetails(Response.data)
         }).catch((err)=>{
             console.log("ERROR JOB DETAILS")
         })
     },[])
-    return ( 
+
+    return (
+
+        !details
+        ?<Text>Loaing</Text>
+        :
         <View style={globalStyles.container}>
 
             {/* Job Details Header */}
@@ -36,7 +43,7 @@ const JobDetails = ({route}) => {
 
                 {
                     details.user['picture']?
-                    <Image source={details.user['details']}/>:
+                    <Image source={details.user['picture']}/>:
                     <Image source={require('../../assets/profile/default_picture.jpg')} style={styles.picture}/>
                 }
                 <Text style={styles.name}>{details.user['name']}</Text>
