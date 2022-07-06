@@ -79,10 +79,10 @@ export default function MainAppNavigation({ setTokenApp }) {
                 options={{headerTitle:'Add Job Offer'}}
                 />
 
-                {/* <Stack.Screen
+                <Stack.Screen
                 name='MyJobDetailsStack'
                 component={JobDetails}
-                /> */}
+                />
 
             </Stack.Navigator>
         )

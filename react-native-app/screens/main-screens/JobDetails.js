@@ -13,6 +13,10 @@ const JobDetails = ({route}) => {
     //track logged in user to hide non related component
     const [userId,setUserId] = useState('')
 
+    //function that remove the job offer from db
+    const handleRemove = () => {
+        console.log(details)
+    }
 
     useEffect(()=>{
 
@@ -108,7 +112,8 @@ const JobDetails = ({route}) => {
                 (userId == details.user['id'])?
                 
                 //remove offer button
-                <TouchableNativeFeedback>
+                <TouchableNativeFeedback
+                onPress={handleRemove}>
                     <View style={styles.removeButton}>
                         <Text style={styles.removeButtonText}>Remove Offer</Text>
                     </View>

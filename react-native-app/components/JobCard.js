@@ -1,12 +1,12 @@
 import { Text, View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const JobCard = ({ job }) => {
     const navigation = useNavigation()
+    const route = useRoute();
 
     const viewJob = () => {
-        navigation.navigate('JobDetailsStack',{id:job.id})
+        navigation.navigate('JobDetailsStack',{id:job.id,route:route.name})
     }
 
     return (
