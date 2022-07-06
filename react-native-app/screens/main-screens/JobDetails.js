@@ -116,6 +116,18 @@ const JobDetails = ({route}) => {
                 :<></>
             }
 
+            {/* {
+                //check if user is not the offer poster
+                (userId != details.user['id'])?
+                
+                //remove offer button
+                <TouchableNativeFeedback>
+                    <View style={styles.removeButton}>
+                        <Text style={styles.removeButtonText}>Remove Offer</Text>
+                    </View>
+                </TouchableNativeFeedback>
+                :<></>
+            } */}
 
         </View>
         </ScrollView>

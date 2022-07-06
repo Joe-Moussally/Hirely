@@ -10,27 +10,12 @@ export default function MyJobs({navigation}) {
     return (
         <View style={globalStyles.container}>
 
-            {/* "Add Job" Modal here */}
-            <Modal visible={modalOpen} animationType="slide">
-
-                {/* Modal header */}
-                <View style={styles.modalHeader}>
-                    <TouchableOpacity>
-                        <Ionicons
-                        name="arrow-back"
-                        size={24} color="black"
-                        onPress={()=> setModalOpen(false)}/>
-                        <Text style={styles.headerTitle}>Add Job</Text>
-                    </TouchableOpacity>
-                </View>
-
-            </Modal>
-
-
             <Text>MyJobs</Text>
+
+
+            {/* Add Job Offer Button */}
             <TouchableOpacity
             style={styles.add}
-            // ()=>setModalOpen(true)
             onPress={()=>navigation.push('AddJobStack')}>
             <MaterialIcons name="add" size={30} color="white" style={styles.plus}/>
             </TouchableOpacity>
