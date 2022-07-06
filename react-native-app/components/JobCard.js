@@ -6,7 +6,14 @@ const JobCard = ({ job }) => {
     const route = useRoute();
 
     const viewJob = () => {
-        navigation.navigate('JobDetailsStack',{id:job.id,route:route.name})
+        if(route.name == 'MyJobsStack'){
+            navigation.navigate('MyJobDetailsStack',{id:job.id})
+            return
+        }
+        if(route.name == 'JobsStack') {
+            navigation.navigate('JobDetailsStack',{id:job.id})
+        }
+        
     }
 
     return (
