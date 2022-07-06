@@ -36,7 +36,7 @@ const JobDetails = ({route}) => {
         !details
         ?<Text>Loaing</Text>
         :
-        <ScrollView>
+        <ScrollView style={{backgroundColor:'white'}}>
         <View style={globalStyles.container}>
 
             {/* Job Details Header */}
@@ -68,26 +68,38 @@ const JobDetails = ({route}) => {
             </View>
 
             {/* description */}
-            <View style={styles.section}>
+            {
+                //checking if record exists
+                details.offer['description']?
+                <View style={styles.section}>
 
-                <Text style={styles.title}>Description</Text>
-                <Text style={styles.textDetails}>{details.offer['description']}</Text>
+                    <Text style={styles.title}>Description</Text>
+                    <Text style={styles.textDetails}>{details.offer['description']}</Text>
 
-            </View>
+                </View>
+                :<></>
+            }
+
 
             {/* requirements */}
-            <View style={styles.section}>
+            {
+                //checking if there are requirements for display
+                details.requirements.length?
+                <View style={styles.section}>
 
-                <Text style={styles.title}>Requirements</Text>
-                {
-                    details.requirements.map((req) => (
-                        <View style={styles.requirementsContainer}>
-                            <Text style={styles.requirementText}>• {req.requirement}</Text>
-                        </View>
-                    ))
-                }
+                    <Text style={styles.title}>Requirements</Text>
+                    {
+                        details.requirements.map((req) => (
+                            <View style={styles.requirementsContainer}>
+                                <Text style={styles.requirementText}>• {req.requirement}</Text>
+                            </View>
+                        ))
+                    }
 
-            </View>
+                </View>
+                :<></>
+            }
+            
 
         </View>
         </ScrollView>
