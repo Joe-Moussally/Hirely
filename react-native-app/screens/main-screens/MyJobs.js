@@ -1,17 +1,45 @@
-import { Button, Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { globalStyles } from '../../styles/global'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
+import { localhost } from "../../globalVariables";
+import JobCard from "../../components/JobCard";
 
 export default function MyJobs({navigation}) {
 
-    //track the modal if open or closed
-    const [modalOpen, setModalOpen] = useState(false)
+    const [jobs,setJobs] = useState([])
+
+    useEffect(()=>{
+        //get the user's job offers
+        const getUserOffers = () => {
+            AsyncStorage.getItem('token').then((token) => {
+                //fetch offers once token is ready
+                axios({
+                    headers:{'Authorization':'Bearer '+token},
+                    method:'GET',
+                    url:'http://'+localhost+':8000/api/offers/user'
+                }).then(Response => {
+                    console.log('MYJOBS',Response.data['offers'])
+                    setJobs(Response.data['offers'])
+                }).catch((err)=>{
+                    console.log("MYJOBS ERROR")
+                })
+            })
+        }
+
+        getUserOffers()
+    },[])
+
     return (
-        <View style={globalStyles.container}>
+        <View style={styles.container}>
 
-            <Text>MyJobs</Text>
-
+            <FlatList
+            data={jobs}
+            renderItem={({item}) => <JobCard job={item}/>}
+            keyExtractor={item => item.id}
+            style={{backgroundColor:'white',width:'100%',height:'100%'}}/>
 
             {/* Add Job Offer Button */}
             <TouchableOpacity
@@ -24,15 +52,19 @@ export default function MyJobs({navigation}) {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        backgroundColor:'white',
+        flex:1
+    },
     add:{
         backgroundColor:'#00a6ff',
         width:60,
         height:60,
         borderRadius:30,
         position:'absolute',
-        left:'90%',
+        left:'80%',
         top:'100%',
-        transform:[{translateY:-120}]
+        transform:[{translateY:-140}]
     },
     plus:{
         alignSelf:'center',
