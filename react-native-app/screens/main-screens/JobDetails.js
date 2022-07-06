@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import axios from 'axios';
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
@@ -36,6 +36,7 @@ const JobDetails = ({route}) => {
         !details
         ?<Text>Loaing</Text>
         :
+        <ScrollView>
         <View style={globalStyles.container}>
 
             {/* Job Details Header */}
@@ -58,15 +59,38 @@ const JobDetails = ({route}) => {
 
             </View>
 
-            {/* postion
+            {/* location */}
             <View style={styles.section}>
 
-                <Text style={styles.title}>Position</Text>
-                <Text style={styles.textDetails}>{details.offer['position']}</Text>
+                <Text style={styles.title}>Location</Text>
+                <Text style={styles.textDetails}>Location here</Text>
 
-            </View> */}
+            </View>
+
+            {/* description */}
+            <View style={styles.section}>
+
+                <Text style={styles.title}>Description</Text>
+                <Text style={styles.textDetails}>{details.offer['description']}</Text>
+
+            </View>
+
+            {/* requirements */}
+            <View style={styles.section}>
+
+                <Text style={styles.title}>Requirements</Text>
+                {
+                    details.requirements.map((req) => (
+                        <View style={styles.requirementsContainer}>
+                            <Text style={styles.requirementText}>• {req.requirement}</Text>
+                        </View>
+                    ))
+                }
+
+            </View>
 
         </View>
+        </ScrollView>
      );
 }
  
@@ -90,14 +114,20 @@ const styles = StyleSheet.create({
         marginBottom:25
     },
     section:{
-        marginVertical:10
+        marginVertical:10,
     },
     title:{
         fontWeight:'bold',
-        fontSize:19
+        fontSize:19,
     },
     textDetails:{
         fontSize:17,
         padding:10
+    },
+    requirementsContainer:{
+        padding:10
+    },
+    requirementText:{
+        fontSize:17,
     }
 })
