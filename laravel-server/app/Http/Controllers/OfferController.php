@@ -31,6 +31,21 @@ class OfferController extends Controller
         ],200);
     }
 
+    //get job offers posted by the user
+    public function getUserOffers() {
+        $user_id = Auth::user()['id'];
+        $offers = Offer::select('id','position','user_id')->where('user_id',$user_id)->get();
+
+        foreach ($offers as $offer) {
+            $offer['user'] = $offer->user;
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'offers' => $offers,
+        ],200);
+    }
+
 
     //api to add a Job Offer
     public function addOffer(Request $Request) {

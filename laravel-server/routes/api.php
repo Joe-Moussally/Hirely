@@ -21,6 +21,7 @@ Route::group(['middleware' => 'api'], function($router) {
 Route::group(['prefix' => 'offers'], function(){
     Route::post('/',[OfferController::class, 'addOffer']);
     Route::get('/',[OfferController::class, 'getOffers']);
+    Route::get('/user',[OfferController::class, 'getUserOffers']);
     Route::post('/delete/{id?}',[OfferController::class, 'deleteOffer']);
     Route::get('/{id?}',[OfferController::class, 'getOfferDetails']);
 });
