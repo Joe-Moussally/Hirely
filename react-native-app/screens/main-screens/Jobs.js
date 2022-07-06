@@ -44,6 +44,7 @@ export default function Jobs() {
             <FlatList
             data={jobs}
             renderItem={({item}) => <JobCard job={item}/>}
-            style={{backgroundColor:'white'}}/>
+            keyExtractor={item => item.id}
+            style={{backgroundColor:'white',marginBottom:60}}/>
     )
 }

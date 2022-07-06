@@ -63,10 +63,19 @@ class OfferController extends Controller
     
     //api that gets all the offer details
     public function getOfferDetails($id) {
+
+        //get the offer's details
         $offer = Offer::find($id);
+
+        $user = Offer::find($id)->user;
+
+        //get the offer's requirements
+        $requirements = Requirement::where('offer_id',$id)->get();
         
         return response()->json([
-            'offer' => $offer
+            'offer' => $offer,
+            'requirements' => $requirements,
+            'user' => $user
         ],200);
     }
 }

@@ -19,7 +19,7 @@ import JobDetails from '../screens/main-screens/JobDetails';
 export default function MainAppNavigation({ setTokenApp }) {
 
     //store user's token
-    const [token,setToken] = useState(async()=>await AsyncStorage.getItem('token').then((val)=> setToken(val)))
+    const [token,setToken] = useState('')
 
     //creating the bottom navigation tab
     const Tab = createBottomTabNavigator()
@@ -27,6 +27,14 @@ export default function MainAppNavigation({ setTokenApp }) {
 
     //get user's detail and photo on load
     useEffect(()=>{
+
+        //get user's token
+        const getToken = async () => {
+            await AsyncStorage.getItem('token').then((val)=> {
+                setToken(val)
+            })
+        }
+        getToken()
         console.log('MAIN APP NAV',token)
 
         axios({

@@ -6,8 +6,7 @@ const JobCard = ({ job }) => {
     const navigation = useNavigation()
 
     const viewJob = () => {
-        console.log('pressed')
-        navigation.navigate('JobDetailsStack',{job:job})
+        navigation.navigate('JobDetailsStack',{id:job.id})
     }
 
     return (
