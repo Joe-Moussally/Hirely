@@ -16,22 +16,18 @@ export default function MyJobs({navigation}) {
     useEffect(()=>{
 
         //get the user's job offers
-        const getUserOffers = () => {
-            AsyncStorage.getItem('token').then((token) => {
-                //fetch offers once token is ready
-                axios({
-                    headers:{'Authorization':'Bearer '+token},
-                    method:'GET',
-                    url:'http://'+localhost+':8000/api/offers/user'
-                }).then(Response => {
-                    setJobs(Response.data['offers'])
-                }).catch((err)=>{
-                    console.log("MYJOBS ERROR")
-                })
+        AsyncStorage.getItem('token').then((token) => {
+            //fetch offers once token is ready
+            axios({
+                headers:{'Authorization':'Bearer '+token},
+                method:'GET',
+                url:'http://'+localhost+':8000/api/offers/user'
+            }).then(Response => {
+                setJobs(Response.data['offers'])
+            }).catch((err)=>{
+                console.log("MYJOBS ERROR")
             })
-        }
-
-        getUserOffers()
+        })
     },[route.params])
 
     return (
