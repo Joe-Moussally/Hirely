@@ -5,8 +5,11 @@ import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { localhost } from "../../globalVariables";
 import axios from 'axios'
+import { useNavigation } from "@react-navigation/native";
 
 const AddJob = () => {
+
+    const navigation = useNavigation()
 
     //initializing job offer inputs
     const [position,setPosition] = useState('')
@@ -70,6 +73,7 @@ const AddJob = () => {
 
         }).then(Response => {
             console.log(Response.data)
+            navigation.pop()
         }).catch(err => {
             console.log('',err.response.status)
         })

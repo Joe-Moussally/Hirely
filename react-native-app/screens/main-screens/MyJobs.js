@@ -30,7 +30,7 @@ export default function MyJobs({navigation}) {
         }
 
         getUserOffers()
-    },[navigation])
+    },[jobs])
 
     return (
         <View style={styles.container}>
