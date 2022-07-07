@@ -64,7 +64,6 @@ export default function MainAppNavigation({ setTokenApp }) {
             }
         },[navigation,route])
 
-
         return(
             <Stack.Navigator>
 
