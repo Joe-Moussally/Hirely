@@ -30,5 +30,6 @@ Route::group(['prefix' => 'offers'], function(){
 Route::group(['prefix' => 'interests'], function(){
     Route::post('/{id?}',[InterestController::class, 'addInterest']);
     Route::get('/{id?}',[InterestController::class, 'getInterested']);
+    Route::get('/user/{id?}',[InterestController::class, 'checkInterest']);
 });
 });

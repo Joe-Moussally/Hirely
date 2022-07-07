@@ -49,6 +49,20 @@ const JobDetails = ({route}) => {
         }).catch((err)=>{
             console.log("ERROR JOB DETAILS")
         })
+
+        //check if user is already is interested in offer
+        AsyncStorage.getItem('token').then((token) => {
+            axios({
+                headers:{'Authorization':'Bearer '+token},
+                method:'GET',
+                url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
+            }).then((Response) => {
+                console.log('JOB DETAILS',Response.data)
+            }).catch((err) => {
+                console.log('JOB DETAILS ERROR',err.response.status)
+            })
+        })
+
     },[])
 
     return (

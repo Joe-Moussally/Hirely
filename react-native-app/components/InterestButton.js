@@ -3,6 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { localhost } from "../globalVariables";
 import { useEffect, useState } from "react";
 
 const InterestButton = ({interested, offerId}) => {
@@ -19,6 +20,8 @@ const InterestButton = ({interested, offerId}) => {
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
                 setIsInterested(true)
+            }).catch(()=>{
+                console.log("ERROR INTEREST BUTTON")
             })
         })
     }
