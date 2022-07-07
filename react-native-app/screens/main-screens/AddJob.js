@@ -72,10 +72,10 @@ const AddJob = () => {
             data:data
 
         }).then(Response => {
-            console.log(Response.data)
-            navigation.pop()
+            console.log('ADDED',Response.data['offer'])
+            navigation.navigate('MyJobsStack',{offer:Response.data['offer']})
         }).catch(err => {
-            console.log('',err.response.status)
+            console.log('ADD JOB',err.response.status)
         })
     }
 

@@ -6,12 +6,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
 import JobCard from "../../components/JobCard";
+import { useRoute } from "@react-navigation/native";
 
 export default function MyJobs({navigation}) {
 
+    const route = useRoute()
     const [jobs,setJobs] = useState([])
 
     useEffect(()=>{
+
         //get the user's job offers
         const getUserOffers = () => {
             AsyncStorage.getItem('token').then((token) => {
@@ -30,7 +33,7 @@ export default function MyJobs({navigation}) {
         }
 
         getUserOffers()
-    },[jobs])
+    },[route.params])
 
     return (
         <View style={styles.container}>
