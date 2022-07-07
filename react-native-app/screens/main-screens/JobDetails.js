@@ -1,10 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from "react-native";
 import axios from 'axios';
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import { useNavigation } from "@react-navigation/native";
+import InterestButton from "../../components/InterestButton";
 
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
@@ -129,6 +130,9 @@ const JobDetails = ({route}) => {
                 :<></>
             }
 
+            {/* Interested Button */}
+            <InterestButton />
+
             {/* {
                 //check if user is not the offer poster
                 (userId != details.user['id'])?
@@ -196,5 +200,5 @@ const styles = StyleSheet.create({
         fontSize:21,
         fontWeight:'bold',
         color:'white'
-    }
+    },
 })
