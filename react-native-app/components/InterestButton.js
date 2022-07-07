@@ -1,10 +1,25 @@
 import { StyleSheet } from "react-native";
 import { Text, TouchableOpacity } from "react-native";
 import { Entypo } from '@expo/vector-icons';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 const InterestButton = ({interested, offerId}) => {
+
+    //function to submit user's profile
+    const handleSubmit = () => {
+        //get user's token and send it with the request
+        AsyncStorage.getItem('token').then((token) => {
+            axios({
+                headers:{'Authorization':'Bearer '+token},
+                method:'POST',
+                url:'http://'+localhost+':8000/api/interests/'+offerId,
+            })
+        })
+    }
+
     return (
-        true?
+        interested?
         
         <TouchableOpacity
         style={styles.interested}
@@ -18,9 +33,9 @@ const InterestButton = ({interested, offerId}) => {
         :
 
         <TouchableOpacity
-        style={styles.interested}
-        onPress={() => console.log('Interest BUTTON', interested, offerId)}>
-            <Text style={styles.interestText}>Send Your Profile</Text> 
+        style={styles.notInterested}
+        onPress={handleSubmit}>
+            <Text style={styles.notInterestText}>Send Your Profile</Text> 
         </TouchableOpacity>
     );
 }
@@ -48,6 +63,7 @@ const styles = StyleSheet.create({
     notInterested: {
         backgroundColor:'white',
         width:'80%',
+        marginHorizontal:'10%',
         height:50,
         borderRadius:10,
         borderWidth:4,
