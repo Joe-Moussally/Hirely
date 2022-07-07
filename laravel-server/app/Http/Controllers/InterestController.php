@@ -43,13 +43,13 @@ class InterestController extends Controller
     //api to check if user in interested in offer
     public function checkInterest($id) {
         $interest->user_id = Auth::user()->id;
-        $check = Interest::where('offer_id',$id);
+        $check = Interest::where('offer_id',$id)->get();
 
         if(count($check) == 0) {
-            $interested = false
-        } else {
-            $interested = true
-        }
+            $interested = false;
+        }else{
+            $interested = true;
+        };
 
         return response()->json([
             'interested' => $interested
