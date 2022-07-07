@@ -82,6 +82,7 @@ export default function MainAppNavigation({ setTokenApp }) {
                 <Stack.Screen
                 name='MyJobDetailsStack'
                 component={JobDetails}
+                options={{headerTitle:'My Job Details'}}
                 />
 
             </Stack.Navigator>

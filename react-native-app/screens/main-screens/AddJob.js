@@ -64,6 +64,8 @@ const AddJob = () => {
         data.append('description',description)
         data.append('requirements',JSON.stringify(requirements))
 
+        console.log("REQUIREMENTSS ADD",requirements)
+
         axios({
 
             headers: { 'Content-Type':'multipart/form-data;' },

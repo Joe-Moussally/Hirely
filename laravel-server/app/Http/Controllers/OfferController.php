@@ -47,10 +47,10 @@ class OfferController extends Controller
     }
 
 
-    //api to add a Job Offer
+    //api to add a Job Offer along with its requirements
     public function addOffer(Request $Request) {
 
-        //getting the job info
+        //adding job info
         $offer = new Offer;
         $offer->position = $Request->position;
         $offer->description = $Request->description;
@@ -58,6 +58,15 @@ class OfferController extends Controller
         $offer->save();
 
         $offer_id = $offer->id;
+
+        //the job requirements
+        $requirements = json_decode($Request->requirements);
+        foreach($requirements as $element) {
+            $req = new Requirement;
+            $req->offer_id = $offer_id;
+            $req->requirement = $element->text;
+            $req->save();
+        }
 
         return response()->json([
             'status' => 'success',

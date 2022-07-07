@@ -24,7 +24,6 @@ export default function MyJobs({navigation}) {
                     method:'GET',
                     url:'http://'+localhost+':8000/api/offers/user'
                 }).then(Response => {
-                    console.log('MYJOBS',Response.data['offers'])
                     setJobs(Response.data['offers'])
                 }).catch((err)=>{
                     console.log("MYJOBS ERROR")
