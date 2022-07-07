@@ -78,6 +78,7 @@ class OfferController extends Controller
     //api to remove a specific offer
     public function deleteOffer($id) {
         Offer::find($id)->delete();
+        Requirement::where('offer_id',$id)->delete();
         Interest::where('offer_id',$id)->delete();
 
         return response()->json([
