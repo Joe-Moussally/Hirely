@@ -10,10 +10,14 @@ import InterestButton from "../../components/InterestButton";
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
 
+    //job details
     const [details,setDetails] = useState('')
     
     //track logged in user to hide non related component
     const [userId,setUserId] = useState('')
+
+    //check if user already applied for the job
+    const [interested,setIntersted] = useState(false)
 
     //function that remove the job offer from db
     const handleRemove = () => {
@@ -131,7 +135,14 @@ const JobDetails = ({route}) => {
             }
 
             {/* Interested Button */}
-            <InterestButton />
+            
+            {
+                (userId != details.user['id'])?
+                <InterestButton
+                interested={interested}
+                offerId={route.params.id}/>:
+                <></>
+            }
 
             {/* {
                 //check if user is not the offer poster

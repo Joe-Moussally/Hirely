@@ -1,12 +1,26 @@
 import { StyleSheet } from "react-native";
 import { Text, TouchableOpacity } from "react-native";
+import { Entypo } from '@expo/vector-icons';
 
 const InterestButton = ({interested, offerId}) => {
     return (
+        true?
+        
         <TouchableOpacity
         style={styles.interested}
-        onPress={() => console.log('PRESSED')}>
-            <Text style={styles.interestText}>Send Profile</Text> 
+        onPress={() => console.log('Interest BUTTON', interested, offerId)}>
+            <Text style={styles.interestText}>
+                <Entypo name="check" size={24} color="#22e000" />
+                Profile Sent
+            </Text> 
+        </TouchableOpacity>
+
+        :
+
+        <TouchableOpacity
+        style={styles.interested}
+        onPress={() => console.log('Interest BUTTON', interested, offerId)}>
+            <Text style={styles.interestText}>Send Your Profile</Text> 
         </TouchableOpacity>
     );
 }
@@ -21,13 +35,13 @@ const styles = StyleSheet.create({
         height:50,
         borderRadius:10,
         borderWidth:4,
-        borderColor:'#00a6ff',
+        borderColor:'#22e000',
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
     },
     interestText: {
-        color:'#00a6ff',
+        color:'#22e000',
         fontWeight:"bold",
         fontSize:25,
     },
