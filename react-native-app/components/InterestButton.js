@@ -3,8 +3,11 @@ import { Text, TouchableOpacity } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const InterestButton = ({interested, offerId}) => {
+
+    const [isInterested,setIsInterested] = useState(interested)
 
     //function to submit user's profile
     const handleSubmit = () => {
@@ -14,12 +17,19 @@ const InterestButton = ({interested, offerId}) => {
                 headers:{'Authorization':'Bearer '+token},
                 method:'POST',
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
+            }).then(()=>{
+                setIsInterested(true)
             })
         })
     }
 
+    useEffect(()=>{
+        //check if user was interested in job
+
+    },[])
+
     return (
-        interested?
+        isInterested?
         
         <TouchableOpacity
         style={styles.interested}
