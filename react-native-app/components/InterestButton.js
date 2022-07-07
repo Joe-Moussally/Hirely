@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 
 const InterestButton = ({interested, offerId}) => {
 
-    const [isInterested,setIsInterested] = useState(interested)
-
     //function to submit user's profile
     const handleSubmit = () => {
         //get user's token and send it with the request
@@ -19,24 +17,18 @@ const InterestButton = ({interested, offerId}) => {
                 method:'POST',
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
-                setIsInterested(true)
+                interested(true)
             }).catch(()=>{
                 console.log("ERROR INTEREST BUTTON")
             })
         })
     }
 
-    useEffect(()=>{
-        //check if user was interested in job
-
-    },[])
-
     return (
-        isInterested?
+        interested?
         
         <TouchableOpacity
-        style={styles.interested}
-        onPress={() => console.log('Interest BUTTON', interested, offerId)}>
+        style={styles.interested}>
             <Text style={styles.interestText}>
                 <Entypo name="check" size={24} color="#22e000" />
                 Profile Sent

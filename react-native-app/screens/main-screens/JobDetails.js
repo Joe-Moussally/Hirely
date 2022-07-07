@@ -17,7 +17,8 @@ const JobDetails = ({route}) => {
     const [userId,setUserId] = useState('')
 
     //check if user already applied for the job
-    const [interested,setIntersted] = useState(false)
+    const [interested,setIntersted] = useState('')
+
 
     //function that remove the job offer from db
     const handleRemove = () => {
@@ -50,18 +51,18 @@ const JobDetails = ({route}) => {
             console.log("ERROR JOB DETAILS")
         })
 
-        //check if user is already is interested in offer
-        AsyncStorage.getItem('token').then((token) => {
-            axios({
-                headers:{'Authorization':'Bearer '+token},
-                method:'GET',
-                url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
-            }).then((Response) => {
-                console.log('JOB DETAILS',Response.data)
-            }).catch((err) => {
-                console.log('JOB DETAILS ERROR',err.response.status)
+
+            //check if user is already is interested in offer
+            AsyncStorage.getItem('token').then((token) => {
+                axios({
+                    headers:{'Authorization':'Bearer '+token},
+                    method:'GET',
+                    url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
+                }).then((Response) => {
+                    setIntersted(Response.data.interested)
+                })
             })
-        })
+
 
     },[])
 
