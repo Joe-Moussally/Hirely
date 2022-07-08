@@ -6,7 +6,7 @@ import axios from "axios";
 const InterestedApplicantsList = ({offerId}) => {
 
     //array of  interested users
-    const [users,setUser] = useState([])
+    const [users,setUsers] = useState([])
 
     useEffect(()=>{
         axios({
@@ -14,6 +14,7 @@ const InterestedApplicantsList = ({offerId}) => {
             url:'http://'+localhost+':8000/api/interests/'+offerId //offer id
         }).then((Response) => {
             console.log('INTERESTED LISTTTTTTT',Response.data.users)
+            setUsers(Response.data.users)
         }).catch((err) => {
             console.log('INTERESTED LISTTTTTTT ERROR')
         })
@@ -22,6 +23,13 @@ const InterestedApplicantsList = ({offerId}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Interested Applicants</Text>
+            {
+                users?
+                users.map((user) => (
+                    <Text>{user.name}</Text>
+                )):
+                <></>
+            }
         </View>
         
     );
@@ -30,7 +38,7 @@ const InterestedApplicantsList = ({offerId}) => {
 export default InterestedApplicantsList;
 
 const styles  = StyleSheet.create({
-    
+
     container:{
         borderWidth:1,
         borderColor:'black',
