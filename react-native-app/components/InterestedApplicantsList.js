@@ -22,13 +22,15 @@ const InterestedApplicantsList = ({offerId}) => {
     },[])
 
     return (
+        (users.length == 0)?
+        <></>:
         <View style={styles.container}>
             <Text style={styles.title}>Interested Applicants</Text>
             <View style={styles.usersContainer}>
                 {
                     users?
                     users.map((user) => (
-                        <UserCard user={user}/>
+                        <UserCard user={user} />
                     )):
                     <></>
                 }

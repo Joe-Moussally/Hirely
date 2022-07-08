@@ -58,7 +58,7 @@ export default function MainAppNavigation({ setTokenApp }) {
         //hiding header for pushed screens
         const routeName = getFocusedRouteNameFromRoute(route);
         useLayoutEffect(()=>{
-            if (routeName === "AddJobStack" || routeName === "MyJobDetailsStack"){
+            if (routeName === "AddJobStack" || routeName === "MyJobDetailsStack" || routeName === "ViewProfileStack"){
                 navigation.setOptions({tabBarStyle: styles.hiddenTabBar});
             }else {
                 navigation.setOptions({tabBarStyle: styles.tabBar});

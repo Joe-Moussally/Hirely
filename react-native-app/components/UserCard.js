@@ -8,7 +8,7 @@ const UserCard = ({user}) => {
     return (
 
         <TouchableNativeFeedback
-        onPress={()=>navigation.push('ViewProfileStack',{id:user.id})}>
+        onPress={()=>navigation.push('ViewProfileStack',{user:user})}>
             <View style={styles.container}>
 
                 {
