@@ -1,9 +1,8 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 const UserCard = ({user}) => {
     return (
 
-        //flex direction row
         <View style={styles.container}>
 
             {
@@ -18,9 +17,8 @@ const UserCard = ({user}) => {
             }
 
             {/* flex direct column */}
-            <View >
-
-            </View>
+            
+            <Text style={styles.username}>{user.name}</Text>
 
         </View>
     );
@@ -30,6 +28,24 @@ export default UserCard;
 
 const styles = StyleSheet.create({
     container:{
-        width:'100%',
+        alignSelf:'center',
+        width:'108%',
+        flexDirection:'row',
+        alignItems:'center',
+        borderBottomWidth:1,
+        borderBottomColor:'gray'
+    },
+    picture:{
+        width:90,
+        height:90,
+        margin:8,
+        marginRight:25,
+        borderRadius:45,
+        borderWidth:1,
+        borderColor:'gray'
+    },
+    username:{
+        fontSize:20,
+        fontWeight:'500',
     }
 })
