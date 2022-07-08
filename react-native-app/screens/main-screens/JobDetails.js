@@ -20,19 +20,6 @@ const JobDetails = ({route}) => {
     //check if user already applied for the job
     const [interested,setIntersted] = useState('')
 
-
-    //function that remove the job offer from db
-    // const handleRemove = () => {
-        
-    //     axios({
-    //         method:'POST',
-    //         url:'http://'+localhost+':8000/api/offers/delete/'+route.params.id //offer id
-    //     }).then((Response)=>{
-    //         console.log(Response.data)
-    //         navigation.navigate('MyJobsStack')
-    //     })
-    // }
-
     useEffect(()=>{
 
         //get user's id
@@ -200,20 +187,6 @@ const styles = StyleSheet.create({
     requirementText:{
         fontSize:17,
     },
-    // removeButton:{
-    //     backgroundColor:'crimson',
-    //     width:'80%',
-    //     marginHorizontal:'10%',
-    //     height:40,
-    //     borderRadius:10,
-    //     justifyContent:'center',
-    //     alignItems:'center'
-    // },
-    // removeButtonText:{
-    //     fontSize:21,
-    //     fontWeight:'bold',
-    //     color:'white'
-    // },
     interestedTitle:{
         fontSize:22,
         borderWidth:1,
