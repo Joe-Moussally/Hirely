@@ -1,10 +1,14 @@
+import { useNavigation } from "@react-navigation/native";
 import { Image, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 
 const UserCard = ({user}) => {
+
+    const navigation = useNavigation()
+
     return (
 
         <TouchableNativeFeedback
-        onPress={()=>console.log(user.id)}>
+        onPress={()=>navigation.push('ViewProfileStack',{id:user.id})}>
             <View style={styles.container}>
 
                 {
