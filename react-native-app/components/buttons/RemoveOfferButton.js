@@ -1,19 +1,24 @@
 import { View,Text,TouchableNativeFeedback,StyleSheet } from "react-native";
+import { localhost } from "../../globalVariables";
+import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
-const RemoveOfferButton = () => {
+const RemoveOfferButton = ({offerId}) => {
+
+    const navigation = useNavigation()
 
     //function to handle removal of offer from the DB
     const handleRemove = () => {
         
         axios({
             method:'POST',
-            url:'http://'+localhost+':8000/api/offers/delete/'+route.params.id //offer id
+            url:'http://'+localhost+':8000/api/offers/delete/'+offerId //offer id
         }).then((Response)=>{
             console.log(Response.data)
             navigation.navigate('MyJobsStack')
         })
     }
-    
+
     return (
         <TouchableNativeFeedback
         onPress={handleRemove}>

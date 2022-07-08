@@ -6,6 +6,7 @@ import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import { useNavigation } from "@react-navigation/native";
 import InterestButton from "../../components/buttons/InterestButton";
+import RemoveOfferButton from "../../components/buttons/RemoveOfferButton";
 
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
@@ -21,16 +22,16 @@ const JobDetails = ({route}) => {
 
 
     //function that remove the job offer from db
-    const handleRemove = () => {
+    // const handleRemove = () => {
         
-        axios({
-            method:'POST',
-            url:'http://'+localhost+':8000/api/offers/delete/'+route.params.id //offer id
-        }).then((Response)=>{
-            console.log(Response.data)
-            navigation.navigate('MyJobsStack')
-        })
-    }
+    //     axios({
+    //         method:'POST',
+    //         url:'http://'+localhost+':8000/api/offers/delete/'+route.params.id //offer id
+    //     }).then((Response)=>{
+    //         console.log(Response.data)
+    //         navigation.navigate('MyJobsStack')
+    //     })
+    // }
 
     useEffect(()=>{
 
@@ -140,12 +141,7 @@ const JobDetails = ({route}) => {
                 (userId == details.user['id'])?
                 
                 //remove offer button
-                <TouchableNativeFeedback
-                onPress={handleRemove}>
-                    <View style={styles.removeButton}>
-                        <Text style={styles.removeButtonText}>Remove Offer</Text>
-                    </View>
-                </TouchableNativeFeedback>
+                <RemoveOfferButton offerId={route.params.id}/>
                 :<></>
             }
 
@@ -204,20 +200,20 @@ const styles = StyleSheet.create({
     requirementText:{
         fontSize:17,
     },
-    removeButton:{
-        backgroundColor:'crimson',
-        width:'80%',
-        marginHorizontal:'10%',
-        height:40,
-        borderRadius:10,
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    removeButtonText:{
-        fontSize:21,
-        fontWeight:'bold',
-        color:'white'
-    },
+    // removeButton:{
+    //     backgroundColor:'crimson',
+    //     width:'80%',
+    //     marginHorizontal:'10%',
+    //     height:40,
+    //     borderRadius:10,
+    //     justifyContent:'center',
+    //     alignItems:'center'
+    // },
+    // removeButtonText:{
+    //     fontSize:21,
+    //     fontWeight:'bold',
+    //     color:'white'
+    // },
     interestedTitle:{
         fontSize:22,
         borderWidth:1,
