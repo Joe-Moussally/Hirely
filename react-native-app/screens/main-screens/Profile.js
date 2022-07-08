@@ -1,8 +1,9 @@
-import { Button, Image, StyleSheet, Text, View, Platform } from "react-native";
+import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { globalStyles } from "../../styles/global";
 import * as ImagePicker from 'expo-image-picker';
+import axios from "axios";
 
 export default function Profile({ setTokenApp }) {
 
@@ -26,17 +27,35 @@ export default function Profile({ setTokenApp }) {
 
     },[])
 
-    const PickImage = async () => {
+    const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing:true,
             aspect:[1,1],
             quality:1
         })
-        console.log(result)
+        console.log(result.uri)
         if(!result.cancelled){
             setImage(result.uri)
         }
+
+        //upload the image to the server
+        let data = new FormData()
+        data.append('file',{
+            uri:result.uri,
+            type:result.type,
+            name:user.id
+        })
+        data.append('user_id',user.id)
+        axios({
+            method:'POST',
+            body:data,
+            headers:{
+                'Authorization':'Bearer ',
+                'Content-Type':'multipart/form-data'
+            }
+        })
+
     }
 
 
@@ -53,10 +72,15 @@ export default function Profile({ setTokenApp }) {
                 style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')} />
             }
+
+            <TouchableOpacity onPress={pickImage}>
+                <Text style={styles.changePicture}>Change Picture</Text>
+            </TouchableOpacity>
+
             <Text style={styles.name}>{user['name']}</Text>
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
-
+            {image && <Image source={{uri:image}} style={{width:200,height:200}}/>}
         </View>
     )
 }
@@ -70,5 +94,10 @@ const styles = StyleSheet.create({
     },
     profileContainer:{
         backgroundColor:'white'
+    },
+    changePicture:{
+        alignSelf:'center',
+        margin:12,
+        textDecorationLine:'underline'
     }
 })
