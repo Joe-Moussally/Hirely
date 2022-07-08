@@ -149,8 +149,8 @@ const JobDetails = ({route}) => {
                 :<></>
             }
 
+
             {/* Interested Button */}
-            
             {
                 (userId != details.user['id'])?
                 <InterestButton
@@ -158,19 +158,10 @@ const JobDetails = ({route}) => {
                 offerId={route.params.id}/>:
                 <></>
             }
+            
 
-            {/* {
-                //check if user is not the offer poster
-                (userId != details.user['id'])?
-                
-                //remove offer button
-                <TouchableNativeFeedback>
-                    <View style={styles.removeButton}>
-                        <Text style={styles.removeButtonText}>Remove Offer</Text>
-                    </View>
-                </TouchableNativeFeedback>
-                :<></>
-            } */}
+            {/* interested applicants section */}
+            <Text style={styles.interestedTitle}>Interested Applicants</Text>
 
         </View>
         </ScrollView>
@@ -227,4 +218,13 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         color:'white'
     },
+    interestedTitle:{
+        fontSize:22,
+        borderWidth:1,
+        borderColor:'black',
+        alignSelf:'center',
+        width:'114%',
+        textAlign:'center',
+        marginTop:20
+    }
 })
