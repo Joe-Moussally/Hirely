@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { localhost } from "../globalVariables";
 import axios from "axios";
+import UserCard from "./UserCard";
 
 const InterestedApplicantsList = ({offerId}) => {
 
@@ -23,13 +24,16 @@ const InterestedApplicantsList = ({offerId}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Interested Applicants</Text>
-            {
-                users?
-                users.map((user) => (
-                    <Text>{user.name}</Text>
-                )):
-                <></>
-            }
+            <View style={styles.usersContainer}>
+                {
+                    users?
+                    users.map((user) => (
+                        <UserCard user={user}/>
+                    )):
+                    <></>
+                }
+            </View>
+
         </View>
         
     );
@@ -40,14 +44,18 @@ export default InterestedApplicantsList;
 const styles  = StyleSheet.create({
 
     container:{
-        borderWidth:1,
-        borderColor:'black',
         alignSelf:'center',
-        width:'114%',
-        marginTop:20
+        width:'100%',
+        marginTop:35
     },
     title:{
+        alignSelf:'center',
+        borderWidth:1,
+        borderBottomColor:'black',
+        width:'110%',
         fontSize:22,
         textAlign:'center',
+    },
+    usersContainer:{
     }
 })

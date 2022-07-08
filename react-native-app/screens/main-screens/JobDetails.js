@@ -145,8 +145,13 @@ const JobDetails = ({route}) => {
             
 
             {/* interested applicants section */}
-            <InterestedApplicantsList offerId={route.params.id}/>
+            {
+                (userId != details.user['id'])?
+                <></>:
+                <InterestedApplicantsList offerId={route.params.id}/>
+            }
             
+
         </View>
         </ScrollView>
      );
