@@ -41,20 +41,19 @@ export default function Profile({ setTokenApp }) {
 
         //upload the image to the server
         let data = new FormData()
-        data.append('file',{
-            uri:result.uri,
-            type:result.type,
-            name:user.id
+        data.append('image',result.uri)
+
+        AsyncStorage.getItem('token').then((token) => {
+            axios({
+                method:'POST',
+                body:data,
+                headers:{
+                    'Authorization':'Bearer '+token,
+                    'Content-Type':'multipart/form-data'
+                }
+            })
         })
-        data.append('user_id',user.id)
-        axios({
-            method:'POST',
-            body:data,
-            headers:{
-                'Authorization':'Bearer ',
-                'Content-Type':'multipart/form-data'
-            }
-        })
+
 
     }
 

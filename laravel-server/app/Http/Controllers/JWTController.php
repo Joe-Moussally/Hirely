@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\User;
+
 class JWTController extends Controller
 {
     /**
@@ -102,6 +104,18 @@ class JWTController extends Controller
     public function profile()
     {
         return response()->json(auth()->user());
+    }
+
+
+    //function to upload user picture
+    public function uploadPicture(Request $Request) {
+        $user = User::find(Auth::user()->id);
+        $user->picture = $Request->image;
+        $user->save();
+
+        return response()->json([
+            'status'=>'added'
+        ],200);
     }
 
     /**
