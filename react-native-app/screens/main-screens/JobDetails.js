@@ -145,7 +145,7 @@ const JobDetails = ({route}) => {
 
             {/* interested applicants section */}
             <Text style={styles.interestedTitle}>Interested Applicants</Text>
-
+            
         </View>
         </ScrollView>
      );
