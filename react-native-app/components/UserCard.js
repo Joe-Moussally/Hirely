@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         width:'108%',
         flexDirection:'row',
         alignItems:'center',
-        borderBottomWidth:1,
+        borderBottomWidth:0.3,
         borderBottomColor:'gray'
     },
     picture:{

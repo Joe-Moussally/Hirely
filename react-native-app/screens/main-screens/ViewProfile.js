@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { Text, View,Image, StyleSheet } from "react-native";
 import { globalStyles } from "../../styles/global";
 
 const ViewProfile = ({route}) => {
+
+    const [user,setUser] = useState(route.params.user)
+
     return (
         <View style={[globalStyles.container,{backgroundColor:'white'}]}>
 
             {
-                route.params.user.picture?
+                user.picture?
                 <Image
                 style={styles.picture}
                 source={user.picture}/>:
@@ -14,6 +18,9 @@ const ViewProfile = ({route}) => {
                 style={styles.picture}
                 source={require('../../assets/profile/default_picture.jpg')}/>
             }
+            <Text style={styles.username}>{user.name}</Text>
+
+            
 
         </View>
     );
@@ -28,6 +35,13 @@ const styles = StyleSheet.create({
         borderRadius:90,
         borderWidth:2,
         borderColor:'#0096ed',
-        alignSelf:'center'
+        alignSelf:'center',
+        margin:10
+    },
+    username:{
+        fontSize:26,
+        fontWeight:'600',
+        alignSelf:'center',
+        margin:20
     }
 })
