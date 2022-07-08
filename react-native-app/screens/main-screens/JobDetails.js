@@ -5,7 +5,7 @@ import axios from 'axios';
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import { useNavigation } from "@react-navigation/native";
-import InterestButton from "../../components/InterestButton";
+import InterestButton from "../../components/buttons/InterestButton";
 
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
