@@ -13,7 +13,7 @@ const ViewProfile = ({route}) => {
                 user.picture?
                 <Image
                 style={styles.picture}
-                source={user.picture}/>:
+                source={{uri:user.picture}}/>:
                 <Image
                 style={styles.picture}
                 source={require('../../assets/profile/default_picture.jpg')}/>

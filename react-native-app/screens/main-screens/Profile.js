@@ -1,6 +1,7 @@
 import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
+import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import * as ImagePicker from 'expo-image-picker';
 import axios from "axios";
@@ -36,23 +37,32 @@ export default function Profile({ setTokenApp }) {
         })
         console.log(result.uri)
         if(!result.cancelled){
+
             setImage(result.uri)
+
+            //upload the image to the server
+            let data = new FormData()
+            data.append('image',result.uri)
+
+            AsyncStorage.getItem('token').then((token) => {
+
+                axios({
+                    method:'POST',
+                    data:data,
+                    headers:{
+                        'Authorization':'Bearer '+token,
+                        'Content-Type':'multipart/form-data'
+                    },
+                    url:'http://'+localhost+':8000/api/picture',
+
+                }).then((Response) => {
+
+                    console.log(Response.data)
+                })
+            })
         }
 
-        //upload the image to the server
-        let data = new FormData()
-        data.append('image',result.uri)
 
-        AsyncStorage.getItem('token').then((token) => {
-            axios({
-                method:'POST',
-                body:data,
-                headers:{
-                    'Authorization':'Bearer '+token,
-                    'Content-Type':'multipart/form-data'
-                }
-            })
-        })
 
 
     }

@@ -16,7 +16,7 @@ const UserCard = ({user}) => {
                     user.picture?
                     <Image
                     style={styles.picture}
-                    source={user.picture}/>:
+                    source={{uri:user.picture}}/>:
                     <Image
                     style={styles.picture}
                     source={require('../assets/profile/default_picture.jpg')}/>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         width:'108%',
         flexDirection:'row',
         alignItems:'center',
-        borderBottomWidth:0.3,
+        borderBottomWidth:1,
         borderBottomColor:'gray'
     },
     picture:{
