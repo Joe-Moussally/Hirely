@@ -7,6 +7,7 @@ import { globalStyles } from "../../styles/global";
 import { useNavigation } from "@react-navigation/native";
 import InterestButton from "../../components/buttons/InterestButton";
 import RemoveOfferButton from "../../components/buttons/RemoveOfferButton";
+import InterestedApplicantsList from "../../components/InterestedApplicantsList";
 
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
@@ -144,7 +145,7 @@ const JobDetails = ({route}) => {
             
 
             {/* interested applicants section */}
-            <Text style={styles.interestedTitle}>Interested Applicants</Text>
+            <InterestedApplicantsList offerId={route.params.id}/>
             
         </View>
         </ScrollView>
@@ -187,13 +188,4 @@ const styles = StyleSheet.create({
     requirementText:{
         fontSize:17,
     },
-    interestedTitle:{
-        fontSize:22,
-        borderWidth:1,
-        borderColor:'black',
-        alignSelf:'center',
-        width:'114%',
-        textAlign:'center',
-        marginTop:20
-    }
 })
