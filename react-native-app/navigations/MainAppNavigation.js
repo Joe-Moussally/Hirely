@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import JobDetails from '../screens/main-screens/JobDetails';
+import ViewProfile from '../screens/main-screens/ViewProfile';
 
 
 export default function MainAppNavigation({ setTokenApp }) {
@@ -82,6 +83,12 @@ export default function MainAppNavigation({ setTokenApp }) {
                 name='MyJobDetailsStack'
                 component={JobDetails}
                 options={{headerTitle:'My Job Details'}}
+                />
+
+                <Stack.Screen
+                name='ViewProfileStack'
+                component={ViewProfile}
+                options={{headerTitle:'Profile'}}
                 />
 
             </Stack.Navigator>

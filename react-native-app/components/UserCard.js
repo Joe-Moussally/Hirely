@@ -4,7 +4,7 @@ const UserCard = ({user}) => {
     return (
 
         <TouchableNativeFeedback
-        onPress={()=>console.log('PRESSED')}>
+        onPress={()=>console.log(user.id)}>
             <View style={styles.container}>
 
                 {
