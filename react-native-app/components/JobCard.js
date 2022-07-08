@@ -26,7 +26,7 @@ const JobCard = ({ job }) => {
                         job.user['picture']?
                         <Image
                         style={styles.jobCardPicture}
-                        source={job.user['picture']}/>:
+                        source={{uri:job.user['picture']}}/>:
                         <Image
                         style={styles.jobCardPicture}
                         source={require('../assets/profile/default_picture.jpg')} />

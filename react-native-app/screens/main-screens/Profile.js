@@ -76,7 +76,7 @@ export default function Profile({ setTokenApp }) {
                 user['picture']?
                 <Image
                 style={globalStyles.profilePicture}
-                source={user['picture']}/>:
+                source={{uri:user['picture']}}/>:
                 <Image
                 style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')} />
