@@ -9,12 +9,24 @@ import axios from "axios";
 export default function Profile({ setTokenApp }) {
 
     //track user's info
-    const [user,setUser] = useState(async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))}))
+    const [user,setUser] = useState('') //async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
 
     //track user's picture if updated
     const [image,setImage] = useState(null)
 
     useEffect(()=>{
+
+        //get user's profile from token
+        AsyncStorage.getItem('token').then((token) => {
+            axios({
+                method:'POST',
+                headers:{'Authorization':'Bearer '+token},
+                url:'http://'+localhost+':8000/api/profile'
+            }).then((Response) => {
+                console.log(('PROFILEEEEEEEEEEEEEEEEE',Response.data))
+                setUser(Response.data)
+            })
+        })
 
         const uploadImage = async () => {
             if(Platform.OS !== 'web'){
@@ -26,7 +38,7 @@ export default function Profile({ setTokenApp }) {
         }
         uploadImage()
 
-    },[])
+    },[image])
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -39,6 +51,9 @@ export default function Profile({ setTokenApp }) {
         if(!result.cancelled){
 
             setImage(result.uri)
+
+            //update user profile on local storage
+            async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
 
             //upload the image to the server
             let data = new FormData()
@@ -55,9 +70,6 @@ export default function Profile({ setTokenApp }) {
                     },
                     url:'http://'+localhost+':8000/api/picture',
 
-                }).then((Response) => {
-
-                    console.log(Response.data)
                 })
             })
         }
@@ -89,7 +101,6 @@ export default function Profile({ setTokenApp }) {
             <Text style={styles.name}>{user['name']}</Text>
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
-            {image && <Image source={{uri:image}} style={{width:200,height:200}}/>}
         </View>
     )
 }
