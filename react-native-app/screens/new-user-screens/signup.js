@@ -23,15 +23,14 @@ export default function SignUp() {
 
     const handleSignUp = async () =>{
 
-        //get user's location on signup
-        getLocation()
-
         if(!location) return
 
         let data = new FormData()
         data.append("name",fullName)
         data.append("email",email)
         data.append("password",password)
+        data.append('lat',location.coords.latitude)
+        data.append('lng',location.coords.longitude)
 
         await axios({
 
@@ -59,16 +58,19 @@ export default function SignUp() {
           Alert.alert('Permission','Enable location permission for sign up',[{
             text:'Go to settings',
             onPress:()=>Linking.openSettings()
-          },
-        {text:'Close',
-    onPress:()=>{return}}])
+            },
+            {text:'Close',
+            onPress:()=>{return}}])
           
           return;
         }
 
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
+        console.log('LOCATIONNNNNNNNN',location.coords.latitude)
     }
+
+    useEffect(()=>{getLocation()},[])
 
     return (
         <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
