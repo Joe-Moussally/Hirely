@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard, processColor } from "react-native";
+import React, { useState,useEffect } from "react";
+import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Linking, Alert } from "react-native";
+import * as Location from 'expo-location';
 import { globalStyles } from "../../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
@@ -14,9 +15,18 @@ export default function SignUp() {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
 
+    //track user's location on succesful signup
+    const [location, setLocation] = useState(null);
+    const [errorMsg, setErrorMsg] = useState(null);
+
     const navigation = useNavigation();
 
     const handleSignUp = async () =>{
+
+        //get user's location on signup
+        getLocation()
+
+        if(!location) return
 
         let data = new FormData()
         data.append("name",fullName)
@@ -40,6 +50,24 @@ export default function SignUp() {
             console.log(Error)
 
         })
+    }
+
+    //function to get user's location
+    const getLocation = async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync()
+        if (status !== 'granted') {
+          Alert.alert('Permission','Enable location permission for sign up',[{
+            text:'Go to settings',
+            onPress:()=>Linking.openSettings()
+          },
+        {text:'Close',
+    onPress:()=>{return}}])
+          
+          return;
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        setLocation(location);
     }
 
     return (

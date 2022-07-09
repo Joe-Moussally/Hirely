@@ -61,24 +61,29 @@ export default function Profile({ setTokenApp }) {
     const uploadImage = (imageInfo) => {
 
         let data = new FormData()
-        let picture = {uri:imageInfo.uri,
-                        name:user.id,
-                        type:'image'}
-        data.append('picture',picture)
+        data.append('uri',imageInfo.uri)
 
-        axios({
-            headers:{'Authorization':'Bearer '+user.token},
-            method:'POST',
-            data:data,
-            url:'http://'+localhost+':8000/api/picture',
-        }).then((Response) => {
-            console.log('UPLOAD IMAGE INFO',Response.data)
-        }).catch(err=>{
-            console.log(err.response.status)
+
+        AsyncStorage.getItem('token').then((token)=>{
+            axios({
+                headers:{
+                    'Authorization':'Bearer '+token,
+                    'Content-Type':'multipart/form-data'
+                },
+                method:'POST',
+                data:data,
+                url:'http://'+localhost+':8000/api/picture',
+            }).then((Response) => {
+                console.log('UPLOAD IMAGE INFO',Response.data)
+            }).catch(err=>{
+                console.log(err.response.status)
+            })
         })
+
 
     }
 
+    //reference: https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
     function dataURItoBlob(dataURI) {
         // convert base64/URLEncoded data component to raw binary data held in a string
         var byteString;
@@ -103,7 +108,7 @@ export default function Profile({ setTokenApp }) {
     return (
         <View style={[globalStyles.container,styles.profileContainer]}>
 
-            <Image style={{width:200,height:200}} source={{image}}/>
+            <Image style={{width:200,height:200}} source={{uri:image}}/>
             {
                 //check if user has a profile picture
                 user.picture?
