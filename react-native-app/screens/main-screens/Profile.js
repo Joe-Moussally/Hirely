@@ -23,7 +23,6 @@ export default function Profile({ setTokenApp }) {
                 headers:{'Authorization':'Bearer '+token},
                 url:'http://'+localhost+':8000/api/profile'
             }).then((Response) => {
-                console.log(('PROFILEEEEEEEEEEEEEEEEE',Response.data))
                 setUser(Response.data)
             })
         })
@@ -42,53 +41,75 @@ export default function Profile({ setTokenApp }) {
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing:true,
             aspect:[1,1],
-            quality:1
+            quality:1,
         })
-        console.log(result.uri)
         if(!result.cancelled){
-
-            setImage(result.uri)
+            console.log(result)
+            setImage(dataURItoBlob(result.uri))
+            console.log('IMAGE',typeof(image))
+            //call function to upload picture
+            uploadImage(result)
 
             //update user profile on local storage
-            async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
-
-            //upload the image to the server
-            let data = new FormData()
-            data.append('image',result.uri)
-
-            AsyncStorage.getItem('token').then((token) => {
-
-                axios({
-                    method:'POST',
-                    data:data,
-                    headers:{
-                        'Authorization':'Bearer '+token,
-                        'Content-Type':'multipart/form-data'
-                    },
-                    url:'http://'+localhost+':8000/api/picture',
-
-                })
-            })
+            // async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
         }
+    }
 
+    const uploadImage = (imageInfo) => {
 
+        let data = new FormData()
+        let picture = {uri:imageInfo.uri,
+                        name:user.id,
+                        type:'image'}
+        data.append('picture',picture)
 
+        axios({
+            headers:{'Authorization':'Bearer '+user.token},
+            method:'POST',
+            data:data,
+            url:'http://'+localhost+':8000/api/picture',
+        }).then((Response) => {
+            console.log('UPLOAD IMAGE INFO',Response.data)
+        }).catch(err=>{
+            console.log(err.response.status)
+        })
 
+    }
+
+    function dataURItoBlob(dataURI) {
+        // convert base64/URLEncoded data component to raw binary data held in a string
+        var byteString;
+        if (dataURI.split(',')[0].indexOf('base64') >= 0)
+            byteString = atob(dataURI.split(',')[1]);
+        else
+            byteString = unescape(dataURI.split(',')[1]);
+    
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    
+        // write the bytes of the string to a typed array
+        var ia = new Uint8Array(byteString.length);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+    
+        return new Blob([ia], {type:mimeString});
     }
 
 
     return (
         <View style={[globalStyles.container,styles.profileContainer]}>
 
+            <Image style={{width:200,height:200}} source={{image}}/>
             {
                 //check if user has a profile picture
-                user['picture']?
+                user.picture?
                 <Image
                 style={globalStyles.profilePicture}
-                source={{uri:user['picture']}}/>:
+                source={{uri:user.picture}}/>:
                 <Image
                 style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')} />

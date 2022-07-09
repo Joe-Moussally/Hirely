@@ -1,9 +1,14 @@
 import { Text, View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useEffect } from "react";
 
 const JobCard = ({ job }) => {
     const navigation = useNavigation()
     const route = useRoute();
+
+    useEffect(()=>{
+        console.log(job.user.picture)
+    },[])
 
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){
@@ -23,10 +28,10 @@ const JobCard = ({ job }) => {
             <View style={styles.jobCardContainer}>
                 
                     {
-                        job.user['picture']?
+                        job.user.picture?
                         <Image
                         style={styles.jobCardPicture}
-                        source={{uri:job.user['picture']}}/>:
+                        source={{uri:job.user.picture}}/>:
                         <Image
                         style={styles.jobCardPicture}
                         source={require('../assets/profile/default_picture.jpg')} />

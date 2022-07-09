@@ -112,10 +112,10 @@ class JWTController extends Controller
         // $user->picture = $Request->image;
         // $user->save();
 
-        User::where('id',$user_id)->update(array('picture'=>$Request->image));
+        // User::where('id',$user_id)->update(array('picture'=>$Request->picture->uri));
 
         return response()->json([
-            'status'=>$Request->image
+            'status'=>$Request->picture
         ],200);
     }
 

@@ -34,7 +34,6 @@ const JobDetails = ({route}) => {
             method:'GET',
             url:'http://'+localhost+':8000/api/offers/'+route.params.id //offer id
         }).then(async (Response) => {
-            console.log(' JOB DETAILS',Response.data)
             setDetails(Response.data)
         }).catch((err)=>{
             console.log("ERROR JOB DETAILS")

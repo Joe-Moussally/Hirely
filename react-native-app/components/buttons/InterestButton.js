@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 const InterestButton = ({interested, offerId}) => {
 
+    const [isInterested,setIsIntersted] = useState(interested)
+
     //function to submit user's profile
     const handleSubmit = () => {
         //get user's token and send it with the request
@@ -17,9 +19,9 @@ const InterestButton = ({interested, offerId}) => {
                 method:'POST',
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
-                interested(true)
-            }).catch(()=>{
-                console.log("ERROR INTEREST BUTTON")
+                setIsIntersted(true)
+            }).catch((err)=>{
+                console.log("ERROR INTEREST BUTTON",err)
             })
         })
     }
