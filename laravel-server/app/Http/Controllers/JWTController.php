@@ -37,11 +37,19 @@ class JWTController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-            ]);
+        // $user = User::create([
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'password' => Hash::make($request->password),
+        //     ]);
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->lng = $request->lng;
+        $user->lat = $request->lat;
+        $user->save();
 
         return response()->json([
             'message' => 'User successfully registered',
@@ -119,18 +127,6 @@ class JWTController extends Controller
 
         return response()->json([
             'status' => $fileName
-        ],200);
-    }
-
-    public function updateLocation(Request $Request) {
-        $user_id = Auth::user()->id;
-        $user = User::find($user_id);
-        $user->lng = $Request->lng;
-        $user->lat = $Request->lat;
-        $user->save();
-
-        return response()->json([
-            'status' => 'Location updated'
         ],200);
     }
 
