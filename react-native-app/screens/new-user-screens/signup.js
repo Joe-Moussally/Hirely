@@ -25,12 +25,14 @@ export default function SignUp() {
 
         if(!location) return
 
+        console.log(location.coords.latitude,location.coords.longitude)
+
         let data = new FormData()
         data.append("name",fullName)
         data.append("email",email)
         data.append("password",password)
-        data.append('lat',location.coords.latitude)
-        data.append('lng',location.coords.longitude)
+        data.append("lat",location.coords.latitude)
+        data.append("lng",location.coords.longitude)
 
         await axios({
 
