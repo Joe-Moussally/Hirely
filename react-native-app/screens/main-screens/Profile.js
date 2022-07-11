@@ -9,7 +9,7 @@ import axios from "axios";
 export default function Profile({ setTokenApp }) {
 
     //track user's info
-    const [user,setUser] = useState('') //async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
+    const [user,setUser] = useState('')
 
     //track user's picture if updated
     const [image,setImage] = useState(null)
@@ -24,6 +24,7 @@ export default function Profile({ setTokenApp }) {
                 url:'http://'+localhost+':8000/api/profile'
             }).then((Response) => {
                 setUser(Response.data)
+                setImage(user.picture)
             })
         })
 
@@ -110,10 +111,10 @@ export default function Profile({ setTokenApp }) {
 
             {
                 //check if user has a profile picture
-                user.picture?
+                image?
                 <Image
                 style={globalStyles.profilePicture}
-                source={{uri:user.picture}}/>:
+                source={{uri:image}}/>:
                 <Image
                 style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')} />
@@ -123,7 +124,7 @@ export default function Profile({ setTokenApp }) {
                 <Text style={styles.changePicture}>Change Picture</Text>
             </TouchableOpacity>
 
-            <Text style={styles.name}>{user['name']}</Text>
+            <Text style={styles.name}>{user.name}</Text>
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
         </View>

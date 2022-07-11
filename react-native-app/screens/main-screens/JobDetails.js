@@ -40,16 +40,16 @@ const JobDetails = ({route}) => {
         })
 
 
-            //check if user is already is interested in offer
-            AsyncStorage.getItem('token').then((token) => {
-                axios({
-                    headers:{'Authorization':'Bearer '+token},
-                    method:'GET',
-                    url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
-                }).then((Response) => {
-                    setIntersted(Response.data.interested)
-                })
+        //check if user is already is interested in offer
+        AsyncStorage.getItem('token').then((token) => {
+            axios({
+                headers:{'Authorization':'Bearer '+token},
+                method:'GET',
+                url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
+            }).then((Response) => {
+                setIntersted(Response.data.interested)
             })
+        })
 
 
     },[])
@@ -92,7 +92,7 @@ const JobDetails = ({route}) => {
 
             {/* description */}
             {
-                //checking if record exists
+                //checking if job details record exists
                 details.offer['description']?
                 <View style={styles.section}>
 

@@ -27,7 +27,7 @@ const InterestButton = ({interested, offerId}) => {
     }
 
     return (
-        interested?
+        isInterested?
         
         <TouchableOpacity
         style={styles.interested}>
