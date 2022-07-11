@@ -6,9 +6,7 @@ import axios from "axios";
 import { localhost } from "../../globalVariables";
 import { useEffect, useState } from "react";
 
-const InterestButton = ({interested, offerId}) => {
-
-    const [isInterested,setIsIntersted] = useState(interested)
+const InterestButton = ({interested, setInterested, offerId}) => {
 
     //function to submit user's profile
     const handleSubmit = () => {
@@ -19,7 +17,7 @@ const InterestButton = ({interested, offerId}) => {
                 method:'POST',
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
-                setIsIntersted(true)
+                setIntersted(true)
             }).catch((err)=>{
                 console.log("ERROR INTEREST BUTTON",err)
             })
@@ -27,7 +25,7 @@ const InterestButton = ({interested, offerId}) => {
     }
 
     return (
-        isInterested?
+        interested?
         
         <TouchableOpacity
         style={styles.interested}>
