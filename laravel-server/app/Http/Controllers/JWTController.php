@@ -37,12 +37,6 @@ class JWTController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        // $user = User::create([
-        //         'name' => $request->name,
-        //         'email' => $request->email,
-        //         'password' => Hash::make($request->password),
-        //     ]);
-
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -115,18 +109,16 @@ class JWTController extends Controller
 
     //function to upload user picture
     public function uploadPicture(Request $Request) {
-        $user_id = Auth::user()->id;
+        // $user_id = Auth::user()->id;
         // $user = User::find(Auth::user()->id);
         // $user->picture = $Request->image;
         // $user->save();
 
-        // User::where('id',$user_id)->update(array('picture'=>$Request->picture->uri));
-        $photo = $Request->uri;
-
-
+        User::where('id',Auth::user()->id)->update(array('picture'=>$Request->url));
 
         return response()->json([
-            'status' => $fileName
+            'status' => 'uploaded',
+            'url' => $Request->url
         ],200);
     }
 

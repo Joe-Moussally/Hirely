@@ -48,10 +48,14 @@ export default function Profile({ setTokenApp }) {
         })
         if(!result.cancelled){
             console.log(result)
-            setImage(dataURItoBlob(result.uri))
-            console.log('IMAGE',typeof(image))
+
+            let imageData = {
+                uri:result.uri,
+                type:'image/'+result.uri.split(".")[1],
+                name:'image_'+user.id+result.uri.split(".")[1]
+            }
             //call function to upload picture
-            uploadImage(result)
+            uploadImage(imageData)
 
             //update user profile on local storage
             // async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
@@ -60,55 +64,50 @@ export default function Profile({ setTokenApp }) {
 
     const uploadImage = (imageInfo) => {
 
-        let data = new FormData()
-        data.append('uri',imageInfo.uri)
+        const data = new FormData()
+        data.append('file',imageInfo)
+        data.append('upload_preset','profilePicture')
+        data.append('cloud_name','hirely')
 
+        fetch('https://api.cloudinary.com/v1_1/hirely/image/upload',{
+            method:'POST',
+            body:data
+            
+        }).then((Response) => Response.json())
+        .then(data => {
 
-        AsyncStorage.getItem('token').then((token)=>{
-            axios({
-                headers:{
-                    'Authorization':'Bearer '+token,
-                    'Content-Type':'multipart/form-data'
-                },
-                method:'POST',
-                data:data,
-                url:'http://'+localhost+':8000/api/picture',
-            }).then((Response) => {
-                console.log('UPLOAD IMAGE INFO',Response.data)
-            }).catch(err=>{
-                console.log(err.response.status)
+            //change user's image on profile screen
+            setImage(data.url)
+
+            // get user's token and set the image url in the picture column in user's table
+            AsyncStorage.getItem('token').then((token) => {
+
+                let imageData = new FormData()
+                imageData.append('url',data.url)
+
+                axios({
+                    headers:{
+                        'Authorization':'Bearer '+token,
+                        'Content-Type':'multipart/form-data'
+                    },
+                    method:'POST',
+                    data:imageData,
+                    url:'http://'+localhost+':8000/api/picture'
+
+                }).then((res) => {
+                    console.log(res.data)
+                }).catch((err)=>{
+                    console.log(err.response.status)
+                })
             })
+
         })
 
-
     }
-
-    //reference: https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
-    function dataURItoBlob(dataURI) {
-        // convert base64/URLEncoded data component to raw binary data held in a string
-        var byteString;
-        if (dataURI.split(',')[0].indexOf('base64') >= 0)
-            byteString = atob(dataURI.split(',')[1]);
-        else
-            byteString = unescape(dataURI.split(',')[1]);
-    
-        // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    
-        // write the bytes of the string to a typed array
-        var ia = new Uint8Array(byteString.length);
-        for (var i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
-        }
-    
-        return new Blob([ia], {type:mimeString});
-    }
-
 
     return (
         <View style={[globalStyles.container,styles.profileContainer]}>
 
-            <Image style={{width:200,height:200}} source={{uri:image}}/>
             {
                 //check if user has a profile picture
                 user.picture?
