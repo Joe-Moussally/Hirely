@@ -1,4 +1,6 @@
-import * as firebase from 'firebase'
+import { initializeApp, getApp } from 'firebase/app';
+import { initializeFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDVbGHyoM8e2-6RzlS-UYbqb8eLz0SuAAo",
@@ -10,11 +12,7 @@ const firebaseConfig = {
     measurementId: "G-TBM2RFRSYZ"
 };
 
-let app;
-if(firebase.apps.length === 0) {
-    app = firebase.initializeApp(firebaseConfig)
-}else{
-    app = firebase.app()
-}
+const app = initializeApp(firebaseConfig)
+const db = initializeFirestore(app, {experimentalForceLongPolling: true});
 
-const db = app.firestore()
+export { db };

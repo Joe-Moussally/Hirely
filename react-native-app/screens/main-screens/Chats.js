@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { Text } from "react-native";
+import { Button, Text } from "react-native";
 
-export default function Chats() {
+export default function Chats({navigation}) {
 
     useEffect(()=>{
 
@@ -11,6 +11,6 @@ export default function Chats() {
     },[])
 
     return (
-        <Text>Chats</Text>
+        <Button title="Go to Chat" onPress={()=>navigation.push('ChatStack')}/>
     )
 }

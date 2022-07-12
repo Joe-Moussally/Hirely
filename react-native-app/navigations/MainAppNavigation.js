@@ -15,6 +15,7 @@ import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import JobDetails from '../screens/main-screens/JobDetails';
 import ViewProfile from '../screens/main-screens/ViewProfile';
+import Chat from '../screens/main-screens/Chat';
 
 
 export default function MainAppNavigation({ setTokenApp }) {
@@ -126,6 +127,36 @@ export default function MainAppNavigation({ setTokenApp }) {
         )
     }
 
+    //adding Stack navigation for chats section
+    function ChatsStack({navigation, route}) {
+        //hiding header for pushed screens
+        const routeName = getFocusedRouteNameFromRoute(route);
+        useLayoutEffect(()=>{
+            if (routeName === "ChatStack"){
+                navigation.setOptions({tabBarStyle: styles.hiddenTabBar});
+            }else {
+                navigation.setOptions({tabBarStyle: styles.tabBar});
+            }
+        },[navigation,route])
+
+        return(
+            <Stack.Navigator>
+
+                <Stack.Screen
+                name='ChatsStack'
+                component={Chats}
+                options={{headerShown: false}}/>
+
+                <Stack.Screen
+                name='ChatStack'
+                options={{headerShown: false}}
+                component={Chat}
+                />
+
+            </Stack.Navigator>
+        )
+    }
+
     //passing props to screens
     const ProfileScreen = () => {
         return <Profile setTokenApp={setTokenApp}/>
@@ -155,7 +186,7 @@ export default function MainAppNavigation({ setTokenApp }) {
 
             <Tab.Screen
             name="Chats"
-            component={Chats}
+            component={ChatsStack}
             options={{tabBarIcon:({color})=>(<Ionicons name="ios-chatbubble-ellipses" size={30} color={color} />)}}/>
             
             <Tab.Screen

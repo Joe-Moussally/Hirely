@@ -1,14 +1,13 @@
 import { Text, View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const JobCard = ({ job }) => {
     const navigation = useNavigation()
     const route = useRoute();
 
-    useEffect(()=>{
-        console.log(job.user.picture)
-    },[])
+    //track the address of the job
+    const [address, setAdress] = useState('')
 
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){

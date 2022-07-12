@@ -8,6 +8,13 @@ import { useEffect, useState } from "react";
 
 const InterestButton = ({interested, setInterested, offerId}) => {
 
+    // //function to set interested to true in Job Details Screen
+    // const setTrue = () => {
+    //     setInterested(true)
+    // }
+
+    const [isInterested, setIsInterested] = useState(interested)
+
     //function to submit user's profile
     const handleSubmit = () => {
         //get user's token and send it with the request
@@ -17,7 +24,7 @@ const InterestButton = ({interested, setInterested, offerId}) => {
                 method:'POST',
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
-                setIntersted(true)
+                setIsInterested(true)
             }).catch((err)=>{
                 console.log("ERROR INTEREST BUTTON",err)
             })
@@ -25,7 +32,7 @@ const InterestButton = ({interested, setInterested, offerId}) => {
     }
 
     return (
-        interested?
+        isInterested?
         
         <TouchableOpacity
         style={styles.interested}>
