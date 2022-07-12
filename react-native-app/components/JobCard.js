@@ -76,10 +76,11 @@ const styles = StyleSheet.create({
     jobCardContainer: {
         flexDirection:'row',
         marginVertical:12,
-        marginHorizontal:'5%',
+        // marginHorizontal:'5%',
         padding:20,
         alignItems:'center',
-        width: '90%',
+        width:'90%',
+        alignSelf:'center',
         height: 125,
         backgroundColor: "white",
         borderRadius: 10,
@@ -109,7 +110,8 @@ const styles = StyleSheet.create({
         fontWeight:'bold'
     },
     cardPoster:{
-        marginVertical:10
+        marginVertical:10,
+        fontSize:17
     },
     // cardLocationContainer:{
     //     width:'100%',
@@ -120,12 +122,11 @@ const styles = StyleSheet.create({
     //     transform:[{translateY:-20},{translateX:-20}]
     // },
     cardLocationContainer:{
-        // borderWidth:1,
-        // borderColor:'red',
+        borderWidth:1,
+        borderColor:'red',
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'flex-end',
-        width:'90%'
+        marginLeft:'auto',
     },
     cardLocationText:{
 

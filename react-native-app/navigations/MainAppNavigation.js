@@ -176,7 +176,8 @@ export default function MainAppNavigation({ setTokenApp }) {
             backgroundColor:'#00a6ff',
         },
         tabBarStyle:styles.tabBar,
-        tabBarActiveTintColor:'#00a2ff'
+        tabBarActiveTintColor:'white',
+        tabBarInactiveTintColor:'#abceff'
         }}>
             <Tab.Screen
             name="Jobs"
@@ -203,12 +204,14 @@ export default function MainAppNavigation({ setTokenApp }) {
 
 const styles = StyleSheet.create({
     tabBar:{
-        borderRadius:10,
-        width:'95%',
-        height:60,
+        // borderRadius:10,
+        // width:'95%',
+        height:65,
         position:'absolute',
-        marginHorizontal:'2.5%',
-        marginBottom:12,
+        paddingBottom:7,
+        // marginHorizontal:'2.5%',
+        // marginBottom:12,
+        backgroundColor:'#00a6ff'
     },
     hiddenTabBar:{
         display:'none'
