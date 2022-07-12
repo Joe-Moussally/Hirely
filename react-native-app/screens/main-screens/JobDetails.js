@@ -1,13 +1,17 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Dimensions } from 'react-native';
 import { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from "react-native";
+
 import axios from 'axios';
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import { useNavigation } from "@react-navigation/native";
+
 import InterestButton from "../../components/buttons/InterestButton";
 import RemoveOfferButton from "../../components/buttons/RemoveOfferButton";
 import InterestedApplicantsList from "../../components/InterestedApplicantsList";
+
 
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
@@ -163,9 +167,9 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     picture:{
-        width:150,
-        height:150,
-        borderRadius:75,
+        width:'55%',
+        aspectRatio:1/1,
+        borderRadius:Dimensions.get('window').width/2,
         borderWidth:2,
         borderColor:'gray',
         margin:25

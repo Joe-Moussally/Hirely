@@ -122,8 +122,6 @@ const styles = StyleSheet.create({
     //     transform:[{translateY:-20},{translateX:-20}]
     // },
     cardLocationContainer:{
-        borderWidth:1,
-        borderColor:'red',
         flexDirection:'row',
         alignItems:'center',
         marginLeft:'auto',
