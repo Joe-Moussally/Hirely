@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
     },
     jobCardPicture:{
-        width:100,
-        height:100,
+        width:'30%',
+        aspectRatio:1/1,
         borderRadius:50,
         borderWidth:1,
         borderColor:'#c7c7c7'
