@@ -40,6 +40,8 @@ export default function MyJobs({navigation}) {
 
             <Search setValue={setValue}/>
 
+            <Text>{value}</Text>
+
             <FlatList
             data={jobs}
             renderItem={({item}) => <JobCard job={item}/>}

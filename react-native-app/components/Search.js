@@ -1,13 +1,15 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
-const Search = () => {
+const Search = ({setValue}) => {
+
     return (
         <View style={styles.container}>
 
                 <Ionicons name="search" size={30} color="#969696" style={styles.icon}/>
                 <TextInput
                 placeholder="Search Jobs..."
+                onChangeText={input => setValue(input)}
                 style={styles.input}/>
 
         </View>
