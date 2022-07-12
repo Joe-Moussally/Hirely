@@ -18,7 +18,7 @@ const JobCard = ({ job }) => {
             return
         }
         if(route.name == 'JobsStack') {
-            navigation.navigate('JobDetailsStack',{id:job.id,address:address})
+            navigation.navigate('JobDetailsStack',{id:job.id,address:address,position:job.position})
         }
         
     }

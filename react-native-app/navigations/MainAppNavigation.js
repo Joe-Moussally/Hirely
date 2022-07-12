@@ -1,4 +1,4 @@
-import { BottomTabView, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Entypo, FontAwesome5, Ionicons } from '@expo/vector-icons';
 import MainHeader from '../shared/MainHeader'
 import Chats from '../screens/main-screens/Chats'
@@ -83,13 +83,13 @@ export default function MainAppNavigation({ setTokenApp }) {
                 <Stack.Screen
                 name='MyJobDetailsStack'
                 component={JobDetails}
-                options={{headerTitle:'My Job Details'}}
+                options={({route}) => ({title: route.params.position+' Job Details'})}
                 />
 
                 <Stack.Screen
                 name='ViewProfileStack'
                 component={ViewProfile}
-                options={{headerTitle:'Profile'}}
+                options={({route}) => ({headerTitle: route.params.user.name+"'s Profile"})}
                 />
 
             </Stack.Navigator>
@@ -119,7 +119,7 @@ export default function MainAppNavigation({ setTokenApp }) {
 
                 <Stack.Screen
                 name='JobDetailsStack'
-                options={{headerTitle:'Job Details'}}
+                options={({route}) => ({title: route.params.position+' Job Details'})}
                 component={JobDetails}
                 />
 
@@ -170,14 +170,13 @@ export default function MainAppNavigation({ setTokenApp }) {
         <Tab.Navigator
         screenOptions={{
         headerTitle: ()=><MainHeader />,
-        // headerBackVisible:true,
         headerTintColor:'white',
         headerStyle:{
             backgroundColor:'#00a6ff',
         },
         tabBarStyle:styles.tabBar,
         tabBarActiveTintColor:'white',
-        tabBarInactiveTintColor:'#abceff'
+        tabBarInactiveTintColor:'#abceff',
         }}>
             <Tab.Screen
             name="Jobs"
