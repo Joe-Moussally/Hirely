@@ -57,21 +57,21 @@ const JobCard = ({ job }) => {
 const styles = StyleSheet.create({
     jobCardContainer: {
         flexDirection:'row',
-        marginVertical:17,
-        marginHorizontal:'2.5%',
+        marginVertical:12,
+        marginHorizontal:'5%',
         padding:20,
         alignItems:'center',
-        width: '95%',
-        height: 130,
+        width: '90%',
+        height: 125,
         backgroundColor: "white",
-        borderRadius: 19,
-        shadowColor: "rgba(0,0,0,0.72)",
+        borderRadius: 10,
+        shadowColor: "rgba(0,0,0,0.1)",
         shadowOffset: {
             width: 0,
-            height: 3
+            height: 20
         },
-        elevation: 10,
-        shadowOpacity: 0.34,
+        elevation: 4,
+        shadowOpacity: 0.001,
         shadowRadius: 10,
     },
     jobCardPicture:{

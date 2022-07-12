@@ -133,7 +133,11 @@ export default function MainAppNavigation({ setTokenApp }) {
         const routeName = getFocusedRouteNameFromRoute(route);
         useLayoutEffect(()=>{
             if (routeName === "ChatStack"){
-                navigation.setOptions({tabBarStyle: styles.hiddenTabBar});
+                navigation.setOptions({
+                    tabBarStyle: styles.hiddenTabBar,
+                    headerShown:false,
+                    
+                });
             }else {
                 navigation.setOptions({tabBarStyle: styles.tabBar});
             }

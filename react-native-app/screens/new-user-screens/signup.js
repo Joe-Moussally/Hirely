@@ -70,6 +70,11 @@ export default function SignUp() {
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
         console.log('LOCATIONNNNNNNNN',location.coords.latitude)
+        let address = await Location.reverseGeocodeAsync({
+            latitude:location.coords.latitude,
+            longitude:location.coords.longitude
+        })
+        console.log('HEREEE ADDRESS',address[0].city)
     }
 
     useEffect(()=>{getLocation()},[])

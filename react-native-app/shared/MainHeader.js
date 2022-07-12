@@ -9,8 +9,7 @@ export default function MainHeader() {
             <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back} />
             <Image
             source={require('../assets/app-logos/white-brand.png')}
-            style={styles.image}>
-            </Image>
+            style={styles.image}/>
             
         </View>
     )
