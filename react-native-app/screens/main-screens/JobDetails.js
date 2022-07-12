@@ -90,7 +90,7 @@ const JobDetails = ({route}) => {
             <View style={styles.section}>
 
                 <Text style={styles.title}>Location</Text>
-                <Text style={styles.textDetails}>Location here</Text>
+                <Text style={styles.textDetails}>{route.params.address}</Text>
 
             </View>
 

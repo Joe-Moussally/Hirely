@@ -15,7 +15,7 @@ import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import JobDetails from '../screens/main-screens/JobDetails';
 import ViewProfile from '../screens/main-screens/ViewProfile';
-import Chat from '../screens/main-screens/Chat';
+import Chat from '../components/Chat';
 
 
 export default function MainAppNavigation({ setTokenApp }) {

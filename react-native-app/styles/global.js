@@ -59,7 +59,7 @@ const globalStyles = StyleSheet.create({
         alignSelf:'center',
         borderWidth:3,
         borderColor:'#0096ed',
-        width:'55%',
+        width:200,
         aspectRatio:1/1,
         borderRadius:Dimensions.get('window').width/2,
     },
