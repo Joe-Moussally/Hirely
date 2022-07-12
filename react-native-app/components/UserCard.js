@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Image, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 
 const UserCard = ({user}) => {
 
@@ -43,11 +43,11 @@ const styles = StyleSheet.create({
         borderBottomColor:'gray'
     },
     picture:{
-        width:90,
-        height:90,
         margin:8,
+        width:'18%',
+        aspectRatio:1/1,
+        borderRadius:Dimensions.get('window').width/2,
         marginRight:25,
-        borderRadius:45,
         borderWidth:1.25,
         borderColor:'gray'
     },

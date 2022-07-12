@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
 const globalStyles = StyleSheet.create({
     container: {
@@ -56,12 +56,12 @@ const globalStyles = StyleSheet.create({
     },
     //profile screen
     profilePicture:{
-        width:200,
-        height:200,
         alignSelf:'center',
-        borderRadius:200/2,
         borderWidth:3,
-        borderColor:'gray'
+        borderColor:'gray',
+        width:'55%',
+        aspectRatio:1/1,
+        borderRadius:Dimensions.get('window').width/2,
     },
     //job offer container
     // jobCardContainer:{
