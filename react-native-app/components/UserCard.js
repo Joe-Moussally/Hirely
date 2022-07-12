@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
         aspectRatio:1/1,
         borderRadius:Dimensions.get('window').width/2,
         marginRight:25,
-        borderWidth:1.25,
-        borderColor:'gray'
+        borderWidth:2,
+        borderColor:'#0096ed'
     },
     username:{
         fontSize:20,

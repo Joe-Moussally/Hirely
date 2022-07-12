@@ -58,7 +58,7 @@ const globalStyles = StyleSheet.create({
     profilePicture:{
         alignSelf:'center',
         borderWidth:3,
-        borderColor:'gray',
+        borderColor:'#0096ed',
         width:'55%',
         aspectRatio:1/1,
         borderRadius:Dimensions.get('window').width/2,

@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
         aspectRatio:1/1,
         borderRadius:Dimensions.get('window').width/2,
         borderWidth:2,
-        borderColor:'gray',
+        borderColor:'#0096ed',
         margin:25
     },
     name:{

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View,Image, StyleSheet } from "react-native";
+import { Text, View,Image, StyleSheet, Dimensions } from "react-native";
 import { globalStyles } from "../../styles/global";
 
 const ViewProfile = ({route}) => {
@@ -12,10 +12,10 @@ const ViewProfile = ({route}) => {
             {
                 user.picture?
                 <Image
-                style={styles.picture}
+                style={globalStyles.profilePicture}
                 source={{uri:user.picture}}/>:
                 <Image
-                style={styles.picture}
+                style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')}/>
             }
             <Text style={styles.username}>{user.name}</Text>
@@ -29,15 +29,6 @@ const ViewProfile = ({route}) => {
 export default ViewProfile;
 
 const styles = StyleSheet.create({
-    picture:{
-        width:180,
-        height:180,
-        borderRadius:90,
-        borderWidth:2,
-        borderColor:'#0096ed',
-        alignSelf:'center',
-        margin:10
-    },
     username:{
         fontSize:26,
         fontWeight:'600',

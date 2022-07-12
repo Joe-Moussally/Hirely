@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
         width:'30%',
         aspectRatio:1/1,
         borderRadius:50,
-        borderWidth:1,
-        borderColor:'#c7c7c7'
+        borderWidth:2,
+        borderColor:'#0096ed'
     },
     jobCardInfoContainer:{
         margin:20,
@@ -113,14 +113,6 @@ const styles = StyleSheet.create({
         marginVertical:10,
         fontSize:17
     },
-    // cardLocationContainer:{
-    //     width:'100%',
-    //     alignItems:'flex-end',
-    //     transform:[{translateY:5},{translateX:-10}],
-    // },
-    // cardLocationText:{
-    //     transform:[{translateY:-20},{translateX:-20}]
-    // },
     cardLocationContainer:{
         flexDirection:'row',
         alignItems:'center',
