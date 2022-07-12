@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TextInput, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
@@ -40,10 +40,14 @@ export default function Jobs() {
     },[])
 
     return (
+        <View style={{flex:1}}>
+            <TextInput />
             <FlatList
             data={jobs}
             renderItem={({item}) => <JobCard job={item}/>}
             keyExtractor={item => item.id}
             style={{backgroundColor:'white',marginBottom:60}}/>
+        </View>
+
     )
 }

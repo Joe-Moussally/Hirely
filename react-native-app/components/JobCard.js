@@ -11,7 +11,7 @@ const JobCard = ({ job }) => {
     //track the address of the job
     const [address, setAdress] = useState('')
 
-    //routing to the c
+
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){
             navigation.navigate('MyJobDetailsStack',{id:job.id,address:address,position:job.position})
