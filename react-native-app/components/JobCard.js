@@ -14,11 +14,11 @@ const JobCard = ({ job }) => {
     //routing to the c
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){
-            navigation.navigate('MyJobDetailsStack',{id:job.id})
+            navigation.navigate('MyJobDetailsStack',{id:job.id,address:address})
             return
         }
         if(route.name == 'JobsStack') {
-            navigation.navigate('JobDetailsStack',{id:job.id})
+            navigation.navigate('JobDetailsStack',{id:job.id,address:address})
         }
         
     }

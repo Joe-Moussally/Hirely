@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
@@ -10,7 +10,7 @@ export default function Jobs() {
 
     const [jobs,setJobs] = useState([])
 
-    useEffect(()=>{
+    useLayoutEffect(()=>{
 
         let token
         const getOffers = async () => {
