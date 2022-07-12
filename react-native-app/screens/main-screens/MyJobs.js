@@ -7,11 +7,16 @@ import axios from "axios";
 import { localhost } from "../../globalVariables";
 import JobCard from "../../components/JobCard";
 import { useRoute } from "@react-navigation/native";
+import Search from "../../components/Search";
 
 export default function MyJobs({navigation}) {
 
     const route = useRoute()
+
     const [jobs,setJobs] = useState([])
+
+    //track the search value
+    const [value,setValue] = useState('')
 
     useEffect(()=>{
 
@@ -32,6 +37,8 @@ export default function MyJobs({navigation}) {
 
     return (
         <View style={styles.container}>
+
+            <Search setValue={setValue}/>
 
             <FlatList
             data={jobs}

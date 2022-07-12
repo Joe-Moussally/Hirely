@@ -5,6 +5,7 @@ import axios from "axios";
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import JobCard from "../../components/JobCard";
+import Search from "../../components/Search";
 
 export default function Jobs() {
 
@@ -40,8 +41,10 @@ export default function Jobs() {
     },[])
 
     return (
-        <View style={{flex:1}}>
-            <TextInput />
+        <View style={{flex:1,backgroundColor:'white'}}>
+            
+            <Search />
+
             <FlatList
             data={jobs}
             renderItem={({item}) => <JobCard job={item}/>}
