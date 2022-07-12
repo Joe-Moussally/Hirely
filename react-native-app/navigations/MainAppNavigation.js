@@ -139,7 +139,7 @@ export default function MainAppNavigation({ setTokenApp }) {
                     
                 });
             }else {
-                navigation.setOptions({tabBarStyle: styles.tabBar});
+                navigation.setOptions({tabBarStyle: styles.tabBar, headerShown:true});
             }
         },[navigation,route])
 
