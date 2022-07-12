@@ -1,6 +1,8 @@
 import { Text, View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
+import * as Location from 'expo-location';
+import { MaterialIcons } from "@expo/vector-icons";
 
 const JobCard = ({ job }) => {
     const navigation = useNavigation()
@@ -9,6 +11,7 @@ const JobCard = ({ job }) => {
     //track the address of the job
     const [address, setAdress] = useState('')
 
+    //routing to the c
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){
             navigation.navigate('MyJobDetailsStack',{id:job.id})
@@ -19,6 +22,20 @@ const JobCard = ({ job }) => {
         }
         
     }
+
+    useEffect(()=>{
+        
+        const getCityName = async () => {
+            let addressInfo = await Location.reverseGeocodeAsync({
+                latitude:Number(job.user.lat),
+                longitude:Number(job.user.lng)
+            })
+
+            setAdress(addressInfo[0].city)
+        }
+        getCityName()
+        
+    },[])
 
     return (
 
@@ -41,10 +58,11 @@ const JobCard = ({ job }) => {
 
                         <Text style={styles.cardPosition}>{job.position}</Text>
                         <Text style={styles.cardPoster}>{job.user['name']}</Text>
-                        {/* <View style={styles.cardLocationContainer}>
-                                <MaterialIcons name="location-on" size={18} color="black" />
-                                <Text style={styles.cardLocationText}>LOCATION</Text>
-                        </View> */}
+
+                        <View style={styles.cardLocationContainer}>
+                                <MaterialIcons name="location-on" size={18} color="crimson" />
+                                <Text style={styles.cardLocationText}>{address}</Text>
+                        </View>
                          
                     </View>
                 
@@ -65,7 +83,7 @@ const styles = StyleSheet.create({
         height: 125,
         backgroundColor: "white",
         borderRadius: 10,
-        shadowColor: "rgba(0,0,0,0.1)",
+        shadowColor: "rgba(0,0,0,0.72)",
         shadowOffset: {
             width: 0,
             height: 20
@@ -96,10 +114,22 @@ const styles = StyleSheet.create({
     // cardLocationContainer:{
     //     width:'100%',
     //     alignItems:'flex-end',
+    //     transform:[{translateY:5},{translateX:-10}],
     // },
     // cardLocationText:{
     //     transform:[{translateY:-20},{translateX:-20}]
-    // }
+    // },
+    cardLocationContainer:{
+        // borderWidth:1,
+        // borderColor:'red',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'flex-end',
+        width:'90%'
+    },
+    cardLocationText:{
+
+    }
   });
  
 export default JobCard;
