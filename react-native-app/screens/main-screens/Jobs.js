@@ -10,6 +10,10 @@ import Search from "../../components/Search";
 export default function Jobs() {
 
     const [jobs,setJobs] = useState([])
+    const [filteredJobs,setFilteredJobs] = useState([])
+
+    //track the search value
+    const [value,setValue] = useState('')
 
     useLayoutEffect(()=>{
 
@@ -40,13 +44,18 @@ export default function Jobs() {
 
     },[])
 
+    //function to filter data according to search
+    const filterData = () => {
+
+    }
+
     return (
         <View style={{flex:1,backgroundColor:'white'}}>
             
-            <Search />
+            <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
 
             <FlatList
-            data={jobs}
+            data={filteredJobs}
             renderItem={({item}) => <JobCard job={item}/>}
             keyExtractor={item => item.id}
             style={{backgroundColor:'white',marginBottom:60}}/>

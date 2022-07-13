@@ -14,6 +14,7 @@ export default function MyJobs({navigation}) {
     const route = useRoute()
 
     const [jobs,setJobs] = useState([])
+    const [filteredJobs,setFilteredJobs] = useState([])
 
     //track the search value
     const [value,setValue] = useState('')
@@ -35,18 +36,31 @@ export default function MyJobs({navigation}) {
         })
     },[route.params])
 
+    //useEffect for search input changes
+    useEffect(()=>{
+        //filter data according to search
+        setFilteredJobs([])
+        let filteredArray = []
+        let lowerCaseSearch = value.toLocaleLowerCase()
+        jobs.filter(job => {
+            let jobPositionLowercase = job.position.toLocaleLowerCase()
+            if(jobPositionLowercase.includes(lowerCaseSearch)) {
+                filteredArray.push(job)
+                setFilteredJobs(filteredArray)
+            }
+        })
+    },[value])
+
     return (
         <View style={styles.container}>
 
-            <Search setValue={setValue}/>
-
-            <Text>{value}</Text>
+            <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
 
             <FlatList
-            data={jobs}
+            data={filteredJobs}
             renderItem={({item}) => <JobCard job={item}/>}
             keyExtractor={item => item.id}
-            style={{backgroundColor:'white',width:'100%',height:'100%'}}/>
+            style={{backgroundColor:'white',width:'100%',height:'100%',marginBottom:60}}/>
 
             {/* Add Job Offer Button */}
             <TouchableOpacity
