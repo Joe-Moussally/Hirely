@@ -25,15 +25,16 @@ const JobCard = ({ job }) => {
 
     useEffect(()=>{
         
+        let addressInfo
         const getCityName = async () => {
-            let addressInfo = await Location.reverseGeocodeAsync({
+            addressInfo = await Location.reverseGeocodeAsync({
                 latitude:Number(job.user.lat),
                 longitude:Number(job.user.lng)
             })
-
             setAdress(addressInfo[0].city)
         }
         getCityName()
+        
         
     },[])
 
