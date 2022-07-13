@@ -21,7 +21,9 @@ const Search = ({setValue}) => {
                     setValue(input)
                     setTextInput(input)
                     }}
-                style={styles.input}/>
+                style={styles.input}
+                value={textInput}
+                />
 
                 {
                     textInput?
@@ -30,6 +32,7 @@ const Search = ({setValue}) => {
                     size={30}
                     color="#969696"
                     style={styles.close}
+                    onPress={()=>{setTextInput('')}}
                     />
                     :
                     <></>
