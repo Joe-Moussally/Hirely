@@ -1,8 +1,11 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { useState } from "react";
 
 const Search = ({setValue}) => {
+
+    const [textInput,setTextInput] = useState('')
 
     return (
         <View style={styles.container}>
@@ -14,14 +17,23 @@ const Search = ({setValue}) => {
 
                 <TextInput
                 placeholder="Search Jobs..."
-                onChangeText={input => setValue(input)}
+                onChangeText={input => {
+                    setValue(input)
+                    setTextInput(input)
+                    }}
                 style={styles.input}/>
 
-                <AntDesign
-                name="close" 
-                size={30}
-                color="#969696"
-                style={styles.close}/>
+                {
+                    textInput?
+                    <AntDesign
+                    name="close" 
+                    size={30}
+                    color="#969696"
+                    style={styles.close}/>
+                    :
+                    <></>
+                }
+
 
         </View>
     );
