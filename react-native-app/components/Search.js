@@ -1,16 +1,27 @@
 import { StyleSheet, TextInput, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const Search = ({setValue}) => {
 
     return (
         <View style={styles.container}>
 
-                <Ionicons name="search" size={30} color="#969696" style={styles.icon}/>
+                <Ionicons
+                name="search" size={30}
+                color="#969696" 
+                style={styles.icon}/>
+
                 <TextInput
                 placeholder="Search Jobs..."
                 onChangeText={input => setValue(input)}
                 style={styles.input}/>
+
+                <AntDesign
+                name="close" 
+                size={30}
+                color="#969696"
+                style={styles.close}/>
 
         </View>
     );
@@ -24,6 +35,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#e6e6e6',
         borderRadius:10,
         margin:10,
+        alignItems:'center'
     },
     input:{
         fontSize:17,
@@ -32,5 +44,9 @@ const styles = StyleSheet.create({
     },
     icon:{
         padding:5
+    },
+    close:{
+        marginLeft:'auto',
+        marginRight:5
     }
 })
