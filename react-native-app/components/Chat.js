@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 
 
@@ -26,8 +26,11 @@ export default function Chat({ route }) {
 
 
     return (
-        <GiftedChat 
-        messages={messages}
-        />
+        <View style={{flex:1}}>
+            <GiftedChat 
+            messages={messages}
+            />
+            <Text>{route.params.contactId}</Text>
+        </View>
     )
 }

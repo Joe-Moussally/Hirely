@@ -1,8 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback } from "react-native";
 import { globalStyles } from "../../styles/global";
 
-const ViewProfile = ({route,navigation}) => {
+const ViewProfile = ({route}) => {
+
+    const navigation = useNavigation()
 
     const [user,setUser] = useState(route.params.user)
 
@@ -23,7 +26,11 @@ const ViewProfile = ({route,navigation}) => {
             <TouchableNativeFeedback onPress={() => {
                 navigation.pop()
                 navigation.pop()
-                navigation.navigate('ChatStack',{contactId:route.params.user.id})
+                navigation.navigate('Chats',{
+                    screen:'ChatStack',
+                    params: {contactId:route.params.user.id}
+                })
+                // navigation.navigate('Chats',{screen:'ChatStack',contactId:route.params.user.id})
                 }}>
                 <View style={globalStyles.outlineButton}>
                     <Text style={globalStyles.outlineButtonText}>Message</Text>
