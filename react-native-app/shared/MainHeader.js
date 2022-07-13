@@ -6,10 +6,10 @@ import { StatusBar } from "react-native";
 export default function MainHeader() {
     return(
         <View style={styles.header}>
+
+            {/* <StatusBar backgroundColor={'transparent'} barStyle = "light-content" animated={true} hidden = {false} translucent = {true}/> */}
             
-            <StatusBar backgroundColor={'transparent'} barStyle = "light-content" hidden = {false} translucent = {true}/>
-            
-            <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back} />
+            <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back}/>
             <Image
             source={require('../assets/app-logos/white-brand.png')}
             style={styles.image}/>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         margin:0,
-        padding:0
+        padding:0,
     },
     image:{
         resizeMode:'contain',

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback } from "react-native";
 import { globalStyles } from "../../styles/global";
 
-const ViewProfile = ({route}) => {
+const ViewProfile = ({route,navigation}) => {
 
     const [user,setUser] = useState(route.params.user)
 
@@ -20,7 +20,7 @@ const ViewProfile = ({route}) => {
             }
             <Text style={styles.username}>{user.name}</Text>
 
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={() => navigation.navigate('ChatStack',{contactId:route.params.user.id})}>
                 <View style={globalStyles.outlineButton}>
                     <Text style={globalStyles.outlineButtonText}>Message</Text>
                 </View>
