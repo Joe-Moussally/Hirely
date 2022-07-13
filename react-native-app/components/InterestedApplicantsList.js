@@ -48,16 +48,18 @@ const styles  = StyleSheet.create({
     container:{
         alignSelf:'center',
         width:'100%',
-        marginTop:35
     },
     title:{
         alignSelf:'center',
         borderWidth:1,
-        borderBottomColor:'black',
+        borderBottomColor:'#cccccc',
+        borderTopColor:'#cccccc',
         width:'110%',
-        fontSize:22,
+        fontSize:27,
         textAlign:'center',
+        color:'#058de8',
+        fontWeight:'bold',
+        marginVertical:3,
+        marginTop:30
     },
-    usersContainer:{
-    }
 })

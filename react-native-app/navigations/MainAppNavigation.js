@@ -203,13 +203,9 @@ export default function MainAppNavigation({ setTokenApp }) {
 
 const styles = StyleSheet.create({
     tabBar:{
-        // borderRadius:10,
-        // width:'95%',
         height:65,
         position:'absolute',
         paddingBottom:7,
-        // marginHorizontal:'2.5%',
-        // marginBottom:12,
         backgroundColor:'#00a6ff'
     },
     hiddenTabBar:{

@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     jobCardContainer: {
         flexDirection:'row',
         marginVertical:12,
-        // marginHorizontal:'5%',
         padding:20,
         alignItems:'center',
         width:'90%',

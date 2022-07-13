@@ -36,15 +36,17 @@ export default UserCard;
 const styles = StyleSheet.create({
     container:{
         alignSelf:'center',
-        width:'108%',
+        width:'100%',
         flexDirection:'row',
         alignItems:'center',
-        borderBottomWidth:1,
-        borderBottomColor:'gray'
+        borderWidth:1,
+        borderRadius:10,
+        borderColor:'rgba(0,0,0,0.12)',
+        marginVertical:13
     },
     picture:{
         margin:8,
-        width:'18%',
+        width:'23%',
         aspectRatio:1/1,
         borderRadius:Dimensions.get('window').width/2,
         marginRight:25,
