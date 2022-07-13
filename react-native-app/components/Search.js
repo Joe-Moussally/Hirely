@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     input:{
         fontSize:17,
         padding:5,
-        color:'#737373'
+        color:'#737373',
+        width:'100%'
     },
     icon:{
         padding:5
