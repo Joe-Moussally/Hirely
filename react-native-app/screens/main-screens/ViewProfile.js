@@ -30,7 +30,6 @@ const ViewProfile = ({route}) => {
                     screen:'ChatStack',
                     params: {contactId:route.params.user.id}
                 })
-                // navigation.navigate('Chats',{screen:'ChatStack',contactId:route.params.user.id})
                 }}>
                 <View style={globalStyles.outlineButton}>
                     <Text style={globalStyles.outlineButtonText}>Message</Text>
