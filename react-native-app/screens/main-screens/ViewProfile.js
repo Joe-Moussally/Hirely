@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View,Image, StyleSheet, Dimensions } from "react-native";
+import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback } from "react-native";
 import { globalStyles } from "../../styles/global";
 
 const ViewProfile = ({route}) => {
@@ -20,7 +20,11 @@ const ViewProfile = ({route}) => {
             }
             <Text style={styles.username}>{user.name}</Text>
 
-            
+            <TouchableNativeFeedback>
+                <View style={globalStyles.outlineButton}>
+                    <Text style={globalStyles.outlineButtonText}>Message</Text>
+                </View>
+            </TouchableNativeFeedback>
 
         </View>
     );
