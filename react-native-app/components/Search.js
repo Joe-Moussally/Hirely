@@ -30,7 +30,7 @@ const Search = ({setValue}) => {
                     <AntDesign
                     name="close" 
                     size={30}
-                    color="#969696"
+                    color="#6b6b6b"
                     style={styles.close}
                     onPress={()=>{setTextInput('')}}
                     />
