@@ -10,6 +10,8 @@ const InterestedApplicantsList = ({offerId}) => {
     const [users,setUsers] = useState([])
 
     useEffect(()=>{
+
+        //get interested users
         axios({
             method:'GET',
             url:'http://'+localhost+':8000/api/interests/'+offerId //offer id

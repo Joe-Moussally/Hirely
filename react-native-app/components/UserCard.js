@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderRadius:10,
         borderColor:'rgba(0,0,0,0.12)',
-        marginVertical:13
+        marginVertical:13,
     },
     picture:{
         margin:8,

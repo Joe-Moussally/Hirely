@@ -23,14 +23,36 @@ const JobDetails = ({route}) => {
     const [userId,setUserId] = useState('')
 
     //check if user already applied for the job
-    const [interested,setIntersted] = useState('')
+    const [interested,setIntersted] = useState(false)
 
     useEffect(()=>{
+        console.log("BEFOREEEE",interested)
 
         //get user's id
         const getUserId = async () => {
             await AsyncStorage.getItem('user').then((user)=> setUserId(JSON.parse(user).id))//logged in user id
         }
+
+        
+        //function to check if user is interested
+        const checkIsInterested = async () => {
+            //check if user is already is interested in offer
+            await AsyncStorage.getItem('token').then((token) => {
+                axios({
+                    headers:{'Authorization':'Bearer '+token},
+                    method:'GET',
+                    url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
+                }).then((Response) => {
+                    if(Response.data.interested) {
+                        console.log("ISSS INTERESTED")
+                        setIntersted(true)
+                    }
+                    console.log("AFTERRRRRRRR",interested)
+                })
+            })
+        }
+        checkIsInterested()
+
         getUserId()
 
         //fetch offer detail and requirements
@@ -42,19 +64,6 @@ const JobDetails = ({route}) => {
         }).catch((err)=>{
             console.log("ERROR JOB DETAILS")
         })
-
-
-        //check if user is already is interested in offer
-        AsyncStorage.getItem('token').then((token) => {
-            axios({
-                headers:{'Authorization':'Bearer '+token},
-                method:'GET',
-                url:'http://'+localhost+':8000/api/interests/user/'+route.params.id
-            }).then((Response) => {
-                setIntersted(Response.data.interested)
-            })
-        })
-
 
     },[])
 
@@ -142,6 +151,7 @@ const JobDetails = ({route}) => {
                 (userId != details.user['id'])?
                 <InterestButton
                 interested={interested}
+                setInterested={setIntersted}
                 offerId={route.params.id}/>:
                 <></>
             }

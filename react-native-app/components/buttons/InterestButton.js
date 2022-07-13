@@ -24,7 +24,7 @@ const InterestButton = ({interested, setInterested, offerId}) => {
                 method:'POST',
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
-                setIsInterested(true)
+                setInterested(true)
             }).catch((err)=>{
                 console.log("ERROR INTEREST BUTTON",err)
             })
@@ -32,7 +32,7 @@ const InterestButton = ({interested, setInterested, offerId}) => {
     }
 
     return (
-        isInterested?
+        interested?
         
         <TouchableOpacity
         style={styles.interested}>
