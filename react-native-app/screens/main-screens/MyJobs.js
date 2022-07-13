@@ -39,7 +39,7 @@ export default function MyJobs({navigation}) {
     //useEffect for search input changes
     useEffect(()=>{
         //filter data according to search
-        setFilteredJobs([])
+        setFilteredJobs(jobs)
         let filteredArray = []
         let lowerCaseSearch = value.toLocaleLowerCase()
         jobs.filter(job => {

@@ -33,6 +33,7 @@ export default function Jobs() {
                 }).then(Response => {
                     console.log('jobs.js',Response.data['offers'])
                     setJobs(Response.data['offers'])
+                    setFilteredJobs(Response.data['offers'])
                 }).catch(err => {
                     console.log('JOBS.JS',err.response.status)
                 })
@@ -47,7 +48,6 @@ export default function Jobs() {
     //useEffect for search input changes
     useEffect(()=>{
         //filter data according to search
-        setFilteredJobs([])
         let filteredArray = []
         let lowerCaseSearch = value.toLocaleLowerCase()
         jobs.filter(job => {
