@@ -1,10 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from "react-native";
 
 export default function MainHeader() {
     return(
         <View style={styles.header}>
+            
+            <StatusBar backgroundColor={'transparent'} barStyle = "light-content" hidden = {false} translucent = {true}/>
             
             <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back} />
             <Image

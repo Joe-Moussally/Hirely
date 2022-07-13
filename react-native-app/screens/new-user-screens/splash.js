@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity, StatusBar } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity, StatusBar, Dimensions } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
 
@@ -48,10 +48,9 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     brandContainer: {
-        height: '50%',
+        // height: '50%',
         width:'100%',
-        // backgroundColor:'#00b3ff',
-        borderRadius:1000,
+        borderRadius:Dimensions.get('window').width,
         alignItems:'center',
         justifyContent:'center',
     },
@@ -106,7 +105,6 @@ const styles = StyleSheet.create({
     gradient:{
         height: '50%',
         width:'100%',
-        // backgroundColor:'#00b3ff',
         borderRadius:1000,
         transform: [{ scale: 1.5 },{ translateY:-40 }],
         alignItems:'center',
