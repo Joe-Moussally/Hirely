@@ -20,7 +20,11 @@ const ViewProfile = ({route,navigation}) => {
             }
             <Text style={styles.username}>{user.name}</Text>
 
-            <TouchableNativeFeedback onPress={() => navigation.navigate('ChatStack',{contactId:route.params.user.id})}>
+            <TouchableNativeFeedback onPress={() => {
+                navigation.pop()
+                navigation.pop()
+                navigation.navigate('ChatStack',{contactId:route.params.user.id})
+                }}>
                 <View style={globalStyles.outlineButton}>
                     <Text style={globalStyles.outlineButtonText}>Message</Text>
                 </View>

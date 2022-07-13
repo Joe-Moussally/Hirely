@@ -3,9 +3,10 @@ import { Text } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 
 
-export default function Chat() {
+export default function Chat({ route }) {
 
     const [messages,setMessages] = useState([])
+    const [contactId,setContactId] = useState(route.params.contactId)
 
     //get the user's chats
     useEffect(() => {
