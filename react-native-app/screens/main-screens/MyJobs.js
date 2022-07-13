@@ -30,6 +30,7 @@ export default function MyJobs({navigation}) {
                 url:'http://'+localhost+':8000/api/offers/user'
             }).then(Response => {
                 setJobs(Response.data['offers'])
+                setFilteredJobs(Response.data['offers'])
             }).catch((err)=>{
                 console.log("MYJOBS ERROR")
             })
@@ -39,7 +40,7 @@ export default function MyJobs({navigation}) {
     //useEffect for search input changes
     useEffect(()=>{
         //filter data according to search
-        setFilteredJobs(jobs)
+        
         let filteredArray = []
         let lowerCaseSearch = value.toLocaleLowerCase()
         jobs.filter(job => {
@@ -47,6 +48,8 @@ export default function MyJobs({navigation}) {
             if(jobPositionLowercase.includes(lowerCaseSearch)) {
                 filteredArray.push(job)
                 setFilteredJobs(filteredArray)
+            } else {
+                setFilteredJobs([])
             }
         })
     },[value])

@@ -29,7 +29,8 @@ const Search = ({setValue}) => {
                     name="close" 
                     size={30}
                     color="#969696"
-                    style={styles.close}/>
+                    style={styles.close}
+                    />
                     :
                     <></>
                 }

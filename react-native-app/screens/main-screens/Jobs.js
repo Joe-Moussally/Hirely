@@ -55,6 +55,8 @@ export default function Jobs() {
             if(jobPositionLowercase.includes(lowerCaseSearch)) {
                 filteredArray.push(job)
                 setFilteredJobs(filteredArray)
+            } else {
+                setFilteredJobs([])
             }
         })
     },[value])
