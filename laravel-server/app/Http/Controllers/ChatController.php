@@ -13,6 +13,6 @@ class ChatController extends Controller
 
         return response()->json([
             'contact' => $contact
-        ],200)
+        ],200);
     }
 }

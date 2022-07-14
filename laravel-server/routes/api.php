@@ -37,6 +37,6 @@ Route::middleware(['cors'])->group(function () {
 
     //chat apis
     Route::group(['prefix' => 'users'], function(){
-        Route::get('/{id?}',[ChatController::class, 'getContactInfo'])
+        Route::get('/{id?}',[ChatController::class, 'getContactInfo']);
     });
 });

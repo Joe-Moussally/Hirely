@@ -1,11 +1,21 @@
 import { StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { localhost } from "../globalVariables";
+import axios from "axios";
 
 const ChatHeader = ({contactId}) => {
 
+    const [contact,setContact] = useState('')
+
     useEffect(()=>{
         //get the user's information
+        axios({
+            method:'GET',
+            url:'http://'+localhost+':8000/api/users/'+contactId,
+        }).then((res) => {
+            console.log(res.data)
+        })
     },[])
 
     return (
