@@ -69,7 +69,7 @@ export default function Chat({ route }) {
 
     return (
         <View style={{flex:1,backgroundColor:'white'}}>
-            <ChatHeader />
+            <ChatHeader contactId={route.params.contactId}/>
             <GiftedChat 
             messages={messages}
             showAvatarForEveryMessage={true}
@@ -80,7 +80,6 @@ export default function Chat({ route }) {
                 avatar:user.picture
             }}
             />
-            <Text>{route.params.contactId} + {user.id}</Text>
         </View>
     )
 }

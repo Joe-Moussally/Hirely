@@ -1,16 +1,24 @@
-import { StyleSheet, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import { useEffect } from "react";
 
-const ChatHeader = () => {
+const ChatHeader = ({contactId}) => {
+
+    useEffect(()=>{
+        //get the user's information
+    },[])
+
     return (
         <View style={styles.headerContainer}>
             <TouchableOpacity>
                 <Ionicons
                 name="arrow-back"
-                size={24}
+                size={26}
                 color="black"
                 style={styles.backArrow}/>
+                
             </TouchableOpacity>
+            <Text>{contactId}</Text>
 
         </View>
     );
@@ -28,12 +36,5 @@ const styles = StyleSheet.create({
     },
     backArrow:{
         margin:10,
-        borderWidth:1,
-        borderColor:'black',
-        alignSelf:'center',
-        paddingTop:3,
-        paddingLeft:3,
-        paddingHorizontal:2,
-        borderRadius:20
     }
 })
