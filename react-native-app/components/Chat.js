@@ -49,8 +49,6 @@ export default function Chat({ route }) {
     }, []);
 
     const onSend = useCallback((messages = []) => {
-        // setMessages(previousMessages => GiftedChat.
-        //     append(previousMessages, messages))
             const {
                 _id,
                 createdAt,
