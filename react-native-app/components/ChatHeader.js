@@ -3,8 +3,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from "react";
 import { localhost } from "../globalVariables";
 import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
 const ChatHeader = ({contactId}) => {
+
+    //defining react navigation
+    const navigation = useNavigation()
 
     const [contact,setContact] = useState('')
 
@@ -20,7 +24,8 @@ const ChatHeader = ({contactId}) => {
 
     return (
         <View style={styles.headerContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={()=> navigation.navigate('ChatsStack')}>
                 <Ionicons
                 name="arrow-back"
                 size={26}
@@ -35,6 +40,7 @@ const ChatHeader = ({contactId}) => {
                 source={{uri:contact.picture}}
                 style={styles.picture}/>:
                 <Image
+                style={styles.picture}
                 source={require('../assets/profile/default_picture.jpg')}/>
             }
 
@@ -49,17 +55,19 @@ export default ChatHeader;
 
 const styles = StyleSheet.create({
     headerContainer:{
-        height:55,
+        height:57,
         width:'100%',
-        backgroundColor:'red',
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        borderBottomColor:'gray',
+        borderBottomWidth:.4
     },
     backArrow:{
         margin:10,
     },
     picture:{
-        width:20,
-        height:20
+        width:45,
+        height:45,
+        borderRadius:25
     }
 })
