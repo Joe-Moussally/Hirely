@@ -15,9 +15,7 @@ export default function Chat({ route }) {
     //queries
     // const q = query(chatsRef, where('reciever','==',route.params.contactId))
     
-
     const [messages,setMessages] = useState([])
-    const [contactId,setContactId] = useState(route.params.contactId)
     
     //track the logged in user's id
     const [user,setUser] = useState('')
@@ -25,29 +23,33 @@ export default function Chat({ route }) {
     //get the user's chats
     useEffect(() => {
 
+        //get the user's id
+        AsyncStorage.getItem('user').then(user=>{
+            setUser(JSON.parse(user))
+        })
+
         //--------------FIREBASE--------------//
 
-
-        //get collection of data
-        getDocs(chatsRef).then((snapshot) => {
+        onSnapshot(chatsRef,(snapshot) => {
+            let array = []
             snapshot.docs.forEach((message) => {
-                setMessages(previousMessages => {
-                    return [...previousMessages,message.data()]
+                array.push({
+                    _id: message.data()._id,
+                    text: message.data().text,
+                    createdAt: message.data().createdAt.toDate(),
+                    user: message.data().user
                 })
             })
+            setMessages(array)
         })
-        console.log('MESSAGESSS',messages)
         //------------------------------------//
 
-        //get the user's id
-        AsyncStorage.getItem('user').then(user=>{setUser(JSON.parse(user))})
 
-        setMessages([])
     }, []);
 
     const onSend = useCallback((messages = []) => {
-        setMessages(previousMessages => GiftedChat.
-            append(previousMessages, messages))
+        // setMessages(previousMessages => GiftedChat.
+        //     append(previousMessages, messages))
             const {
                 _id,
                 createdAt,
@@ -58,8 +60,8 @@ export default function Chat({ route }) {
                 _id,
                 createdAt,
                 text,
-                user,
-                reciever:route.params.contactId
+                user
+                // reciever:route.params.contactId
             })
             
     }, [])
@@ -70,7 +72,7 @@ export default function Chat({ route }) {
             <GiftedChat 
             messages={messages}
             showAvatarForEveryMessage={true}
-            onSend={onSend}
+            onSend={messages => onSend(messages)}
             user={{
                 _id:user.id,
                 name:user.name,
