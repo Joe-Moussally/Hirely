@@ -45,7 +45,7 @@ const ChatHeader = ({contactId}) => {
             }
 
 
-            <Text>{contact.name}</Text>
+            <Text style={styles.name}>{contact.name}</Text>
 
         </View>
     );
@@ -55,7 +55,7 @@ export default ChatHeader;
 
 const styles = StyleSheet.create({
     headerContainer:{
-        height:57,
+        height:65,
         width:'100%',
         flexDirection:'row',
         alignItems:'center',
@@ -66,8 +66,13 @@ const styles = StyleSheet.create({
         margin:10,
     },
     picture:{
-        width:45,
-        height:45,
+        width:50,
+        height:50,
         borderRadius:25
+    },
+    name:{
+         fontSize:21,
+         fontWeight:'600',
+         marginHorizontal:20
     }
 })
