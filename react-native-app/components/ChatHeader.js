@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from "react";
 import { localhost } from "../globalVariables";
@@ -14,7 +14,7 @@ const ChatHeader = ({contactId}) => {
             method:'GET',
             url:'http://'+localhost+':8000/api/users/'+contactId,
         }).then((res) => {
-            console.log(res.data)
+            setContact(res.data.contact)
         })
     },[])
 
@@ -28,7 +28,18 @@ const ChatHeader = ({contactId}) => {
                 style={styles.backArrow}/>
                 
             </TouchableOpacity>
-            <Text>{contactId}</Text>
+
+            {
+                contact.picture?
+                <Image
+                source={{uri:contact.picture}}
+                style={styles.picture}/>:
+                <Image
+                source={require('../assets/profile/default_picture.jpg')}/>
+            }
+
+
+            <Text>{contact.name}</Text>
 
         </View>
     );
@@ -46,5 +57,9 @@ const styles = StyleSheet.create({
     },
     backArrow:{
         margin:10,
+    },
+    picture:{
+        width:20,
+        height:20
     }
 })
