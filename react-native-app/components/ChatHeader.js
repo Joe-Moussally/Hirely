@@ -29,7 +29,7 @@ const ChatHeader = ({contactId}) => {
                 <Ionicons
                 name="arrow-back"
                 size={26}
-                color="black"
+                color="white"
                 style={styles.backArrow}/>
                 
             </TouchableOpacity>
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         borderBottomColor:'gray',
-        borderBottomWidth:.4
+        borderBottomWidth:.4,
+        backgroundColor:'#1c99ff'
     },
     backArrow:{
         margin:10,
@@ -68,11 +69,14 @@ const styles = StyleSheet.create({
     picture:{
         width:50,
         height:50,
-        borderRadius:25
+        borderRadius:25,
+        borderWidth:2,
+        borderColor:'white'
     },
     name:{
          fontSize:21,
          fontWeight:'600',
-         marginHorizontal:20
+         marginHorizontal:20,
+         color:'white'
     }
 })
