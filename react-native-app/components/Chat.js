@@ -6,6 +6,7 @@ import { GiftedChat } from "react-native-gifted-chat";
 //firebase
 import { collection, getDocs,addDoc, query, where, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
+import ChatHeader from "./ChatHeader";
 
 export default function Chat({ route }) {
 
@@ -68,6 +69,7 @@ export default function Chat({ route }) {
 
     return (
         <View style={{flex:1,backgroundColor:'white'}}>
+            <ChatHeader />
             <GiftedChat 
             messages={messages}
             showAvatarForEveryMessage={true}
