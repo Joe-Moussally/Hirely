@@ -40,6 +40,7 @@ export default function Chat({ route }) {
                     user: message.data().user
                 })
             })
+            array.sort((a, b) => b.createdAt - a.createdAt)
             setMessages(array)
         })
         //------------------------------------//
