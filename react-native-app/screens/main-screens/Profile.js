@@ -1,9 +1,10 @@
 import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity, TouchableNativeFeedback } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import * as ImagePicker from 'expo-image-picker';
+import * as DocumentPicker from 'expo-document-picker';
 import axios from "axios";
 
 export default function Profile({ setTokenApp }) {
@@ -103,6 +104,11 @@ export default function Profile({ setTokenApp }) {
 
     }
 
+    //function to fetch PDF from local storage
+    const fetchPDF = async () => {
+        const res = await DocumentPicker.getDocumentAsync({type:'application/pdf'})
+    };
+
     return (
         <View style={[globalStyles.container,styles.profileContainer]}>
 
@@ -123,12 +129,18 @@ export default function Profile({ setTokenApp }) {
 
             <Text style={styles.name}>{user.name}</Text>
 
-            {/* Upload CV Button */}
-            <TouchableNativeFeedback>
-                <View style={globalStyles.outlineButton}>
-                    <Text style={globalStyles.outlineButtonText}>Upload CV</Text>
-                </View>
-            </TouchableNativeFeedback>
+            {/* Upload CV Button OR View CV Button*/}
+            {
+                !user.cv?
+                <TouchableNativeFeedback
+                onPress={fetchPDF}>
+                    <View style={globalStyles.outlineButton}>
+                        <Text style={globalStyles.outlineButtonText}>Upload CV</Text>
+                    </View>
+                </TouchableNativeFeedback>:
+                <></>
+            }
+
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
         </View>
