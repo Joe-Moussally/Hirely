@@ -14,7 +14,7 @@ export default function Chat({ route }) {
     const chatsRef = collection(db,'chats')
 
     //queries
-    // const q = query(chatsRef, where('reciever','==',route.params.contactId))
+    let q;
     
     const [messages,setMessages] = useState([])
     
@@ -27,23 +27,30 @@ export default function Chat({ route }) {
         //get the user's id
         AsyncStorage.getItem('user').then(user=>{
             setUser(JSON.parse(user))
+
+            //set query to fetch appropriate messages according to the user's id
+            q = query(chatsRef)
+
+            onSnapshot(q,(snapshot) => {
+                let array = []
+                snapshot.docs.forEach((message) => {
+                    array.push({
+                        _id: message.data()._id,
+                        text: message.data().text,
+                        createdAt: message.data().createdAt.toDate(),
+                        user: message.data().user
+                    })
+                })
+                array.sort((a, b) => b.createdAt - a.createdAt)
+                setMessages(array)
+            })
+        }).catch((err) => {
+            console.log('err')
         })
 
         //--------------FIREBASE--------------//
 
-        onSnapshot(chatsRef,(snapshot) => {
-            let array = []
-            snapshot.docs.forEach((message) => {
-                array.push({
-                    _id: message.data()._id,
-                    text: message.data().text,
-                    createdAt: message.data().createdAt.toDate(),
-                    user: message.data().user
-                })
-            })
-            array.sort((a, b) => b.createdAt - a.createdAt)
-            setMessages(array)
-        })
+
         //------------------------------------//
 
 
@@ -60,8 +67,9 @@ export default function Chat({ route }) {
                 _id,
                 createdAt,
                 text,
-                user
-                // reciever:route.params.contactId
+                user,
+                from:user._id,
+                to:route.params.contactId
             })
             
     }, [])

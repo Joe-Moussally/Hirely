@@ -44,9 +44,9 @@ export default function App() {
     
     <NavigationContainer>
 
-      {token?
-      <MainAppNavigation setTokenApp={setToken}/>
-      :<GuestStack setTokenApp={setToken}/>}
+      {!token?
+      <GuestStack setTokenApp={setToken}/>
+      :<MainAppNavigation setTokenApp={setToken}/>}
       
     </NavigationContainer>
     
