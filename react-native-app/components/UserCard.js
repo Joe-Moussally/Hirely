@@ -13,10 +13,10 @@ const UserCard = ({user}) => {
 
                 {
                     //check user's picture
-                    user.picture?
+                    user.picture_base64?
                     <Image
                     style={styles.picture}
-                    source={{uri:user.picture}}/>:
+                    source={{uri:'data:image/png;base64,'+user.picture_base64}}/>:
                     <Image
                     style={styles.picture}
                     source={require('../assets/profile/default_picture.jpg')}/>
