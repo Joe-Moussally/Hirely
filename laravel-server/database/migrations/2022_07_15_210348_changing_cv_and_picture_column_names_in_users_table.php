@@ -14,7 +14,8 @@ class ChangingCvAndPictureColumnNamesInUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->renameColumn('cv', 'cv_base64');
+            $table->renameColumn('picture', 'picture_base64');
         });
     }
 
