@@ -45,10 +45,10 @@ const JobCard = ({ job }) => {
             <View style={styles.jobCardContainer}>
                 
                     {
-                        job.user.picture?
+                        job.user.picture_base64?
                         <Image
                         style={styles.jobCardPicture}
-                        source={{uri:job.user.picture}}/>:
+                        source={{uri:'data:image/png;base64,'+job.user.picture_base64}}/>:
                         <Image
                         style={styles.jobCardPicture}
                         source={require('../assets/profile/default_picture.jpg')} />
