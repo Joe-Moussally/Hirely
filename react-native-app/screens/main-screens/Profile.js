@@ -126,6 +126,20 @@ export default function Profile({ setTokenApp }) {
         })
     };
 
+    //function to pick and upload picture in base64
+    const uploadPicture = async () => {
+        let res = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing:true,
+            aspect:[1,1],
+            quality:1,
+        })
+        if(!res.cancelled){
+            const base64 = await FileSystem.readAsStringAsync(res.uri,{encoding:'base64'})
+            console.log(base64)
+        }
+    }
+
     return (
         <View style={[globalStyles.container,styles.profileContainer]}>
 
@@ -140,7 +154,7 @@ export default function Profile({ setTokenApp }) {
                 source={require('../../assets/profile/default_picture.jpg')} />
             }
 
-            <TouchableOpacity onPress={pickImage}>
+            <TouchableOpacity onPress={uploadPicture}>
                 <Text style={styles.changePicture}>Change Picture</Text>
             </TouchableOpacity>
 
