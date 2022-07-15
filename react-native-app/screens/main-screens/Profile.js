@@ -110,6 +110,20 @@ export default function Profile({ setTokenApp }) {
         //get pdf uri and convert it to base64
         const res = await DocumentPicker.getDocumentAsync({type:'application/pdf'})
         const base64 = await FileSystem.readAsStringAsync(res.uri,{encoding:'base64'})
+        //upload pdf base to users table
+        let data = new FormData()
+        data.append('cv_base64',base64)
+        AsyncStorage.getItem('token').then(token => {
+            axios({
+                headers:{
+                    'Authorization':'Bearer '+token
+                },
+                method:'POST',
+                url:'http://'+localhost+':8000/api/cv',
+                data:{'cv_base64':base64}
+            }).then(res => {console.log(res)})
+            .catch(err => {console.log(err.response.status)}) 
+        })
     };
 
     return (

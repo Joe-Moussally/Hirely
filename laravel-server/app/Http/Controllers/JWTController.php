@@ -122,6 +122,16 @@ class JWTController extends Controller
         ],200);
     }
 
+    public function uploadPDF(Request $Request) {
+        $user = User::find(Auth::user()->id);
+        $user->cv_base64 = $Request->cv_base64;
+        $user->save();
+
+        return response()->json([
+            'status' => 'uploaded',
+        ],200);
+    }
+
     /**
      * Get the token array structure.
      *

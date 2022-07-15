@@ -16,6 +16,7 @@ Route::middleware(['cors'])->group(function () {
         Route::post('/logout', [JWTController::class, 'logout']);
         Route::post('/refresh', [JWTController::class, 'refresh']);
         Route::post('/profile', [JWTController::class, 'profile']);
+        Route::post('/cv', [JWTController::class, 'uploadPDF']);
         Route::post('/picture', [JWTController::class, 'uploadPicture']);
     });
 
