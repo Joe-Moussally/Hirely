@@ -109,16 +109,12 @@ class JWTController extends Controller
 
     //function to upload user picture
     public function uploadPicture(Request $Request) {
-        // $user_id = Auth::user()->id;
-        // $user = User::find(Auth::user()->id);
-        // $user->picture = $Request->image;
-        // $user->save();
-
-        User::where('id',Auth::user()->id)->update(array('picture'=>$Request->url));
+        $user = User::find(Auth::user()->id);
+        $user->picture_base64 = $Request->picture_base64;
+        $user->save();
 
         return response()->json([
             'status' => 'uploaded',
-            'url' => $Request->url
         ],200);
     }
 

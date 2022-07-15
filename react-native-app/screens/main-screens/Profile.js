@@ -26,93 +26,19 @@ export default function Profile({ setTokenApp }) {
                 url:'http://'+localhost+':8000/api/profile'
             }).then((Response) => {
                 setUser(Response.data)
-                setImage(user.picture)
+                setImage('data:image/png;base64,'+user.picture_base64)
             })
         })
-
-        const uploadImage = async () => {
-            if(Platform.OS !== 'web'){
-                const {status} = await ImagePicker.requestMediaLibraryPermissionsAsync()
-                if(status !== 'granted') {
-                    alert('Permission is required to select a picture')
-                }
-            }
-        }
-        uploadImage()
 
     },[image])
-
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing:true,
-            aspect:[1,1],
-            quality:1,
-        })
-        if(!result.cancelled){
-            console.log(result)
-
-            let imageData = {
-                uri:result.uri,
-                type:'image/'+result.uri.split(".")[1],
-                name:'image_'+user.id+result.uri.split(".")[1]
-            }
-            //call function to upload picture
-            uploadImage(imageData)
-        }
-    }
-
-    const uploadImage = (imageInfo) => {
-
-        const data = new FormData()
-        data.append('file',imageInfo)
-        data.append('upload_preset','profilePicture')
-        data.append('cloud_name','hirely')
-
-        fetch('https://api.cloudinary.com/v1_1/hirely/image/upload',{
-            method:'POST',
-            body:data
-            
-        }).then((Response) => Response.json())
-        .then(data => {
-
-            //change user's image on profile screen
-            setImage(data.url)
-
-            // get user's token and set the image url in the picture column in user's table
-            AsyncStorage.getItem('token').then((token) => {
-
-                let imageData = new FormData()
-                imageData.append('url',data.url)
-
-                axios({
-                    headers:{
-                        'Authorization':'Bearer '+token,
-                        'Content-Type':'multipart/form-data'
-                    },
-                    method:'POST',
-                    data:imageData,
-                    url:'http://'+localhost+':8000/api/picture'
-
-                }).then((res) => {
-                    console.log(res.data)
-                }).catch((err)=>{
-                    console.log(err.response.status)
-                })
-            })
-
-        })
-
-    }
 
     //function to fetch PDF from local storage
     const fetchPDF = async () => {
         //get pdf uri and convert it to base64
         const res = await DocumentPicker.getDocumentAsync({type:'application/pdf'})
         const base64 = await FileSystem.readAsStringAsync(res.uri,{encoding:'base64'})
+
         //upload pdf base to users table
-        let data = new FormData()
-        data.append('cv_base64',base64)
         AsyncStorage.getItem('token').then(token => {
             axios({
                 headers:{
@@ -137,6 +63,21 @@ export default function Profile({ setTokenApp }) {
         if(!res.cancelled){
             const base64 = await FileSystem.readAsStringAsync(res.uri,{encoding:'base64'})
             console.log(base64)
+            //uploading image
+            AsyncStorage.getItem('token').then(token => {
+                axios({
+                    headers:{
+                        'Authorization':'Bearer '+token
+                    },
+                    method:'POST',
+                    url:'http://'+localhost+':8000/api/picture',
+                    data:{'picture_base64':base64}
+                }).then(res => {
+                    console.log('res')
+                    setImage('data:image/png;base64,'+base64)
+                })
+                .catch(err => {console.log(err.response.status)}) 
+            })
         }
     }
 
