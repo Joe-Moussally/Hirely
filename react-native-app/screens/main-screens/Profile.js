@@ -1,10 +1,11 @@
 import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity, TouchableNativeFeedback } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
+import * as FileSystem from 'expo-file-system';
 import axios from "axios";
 
 export default function Profile({ setTokenApp }) {
@@ -106,7 +107,9 @@ export default function Profile({ setTokenApp }) {
 
     //function to fetch PDF from local storage
     const fetchPDF = async () => {
+        //get pdf uri and convert it to base64
         const res = await DocumentPicker.getDocumentAsync({type:'application/pdf'})
+        const base64 = await FileSystem.readAsStringAsync(res.uri,{encoding:'base64'})
     };
 
     return (
