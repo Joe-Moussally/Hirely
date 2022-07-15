@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 //firebase
 import { collection, getDocs,addDoc, query, where, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
+import ChatsCards from "../../components/chat_components/ChatsCards";
 
 export default function Chats({navigation}) {
 
@@ -24,7 +25,7 @@ export default function Chats({navigation}) {
 
             //set query to fetch appropriate messages according to the user's id
             let q1 = query(chatsRef,where('user._id','==',user.id))
-            
+
             let array = []
             getDocs(q1).then((messages) => {
                 messages.forEach( message => {
@@ -33,6 +34,7 @@ export default function Chats({navigation}) {
                         text: message.data().text,
                         createdAt: message.data().createdAt.toDate(),
                         user: message.data().user,
+                        to:message.data().to
                     })   
                 })
 
@@ -48,6 +50,6 @@ export default function Chats({navigation}) {
     },[])
 
     return (
-        <Button title="Go to Chat" onPress={()=>navigation.push('ChatStack')}/>
+        <ChatsCards userMessages={chats}/>
     )
 }
