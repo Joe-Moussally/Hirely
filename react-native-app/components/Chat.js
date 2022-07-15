@@ -80,7 +80,7 @@ export default function Chat({ route }) {
             <ChatHeader contactId={route.params.contactId}/>
             <GiftedChat 
             messages={messages}
-            showAvatarForEveryMessage={true}
+            showAvatarForEveryMessage={false}
             onSend={messages => onSend(messages)}
             user={{
                 _id:user.id,

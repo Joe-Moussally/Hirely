@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity, TouchableNativeFeedback } from "react-native";
+import { Button, Image, StyleSheet, Text, View, TouchableOpacity, TouchableNativeFeedback } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { localhost } from "../../globalVariables";
@@ -6,6 +6,7 @@ import { globalStyles } from "../../styles/global";
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
+import WebView from "react-native-webview";
 import axios from "axios";
 
 export default function Profile({ setTokenApp }) {
@@ -30,7 +31,7 @@ export default function Profile({ setTokenApp }) {
             })
         })
 
-    },[])
+    },[image])
 
     //function to fetch PDF from local storage
     const fetchPDF = async () => {
@@ -73,7 +74,6 @@ export default function Profile({ setTokenApp }) {
                     url:'http://'+localhost+':8000/api/picture',
                     data:{'picture_base64':base64}
                 }).then(res => {
-                    console.log('res')
                     setImage('data:image/png;base64,'+base64)
                 })
                 .catch(err => {console.log(err.response.status)}) 
@@ -113,6 +113,9 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
+            <WebView
+            originWhitelist={['*']} 
+            source={{uri:'data:application/pdf;base64,'+user.cv_base64}}/>
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
         </View>
