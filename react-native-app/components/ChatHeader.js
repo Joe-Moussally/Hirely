@@ -35,9 +35,9 @@ const ChatHeader = ({contactId}) => {
             </TouchableOpacity>
 
             {
-                contact.picture?
+                contact.picture_base64?
                 <Image
-                source={{uri:contact.picture}}
+                source={{uri:'data:image/png;base64,'+contact.picture_base64}}
                 style={styles.picture}/>:
                 <Image
                 style={styles.picture}
