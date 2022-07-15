@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity } from "react-native";
+import { Button, Image, StyleSheet, Text, View, Platform, TouchableOpacity, TouchableNativeFeedback } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { localhost } from "../../globalVariables";
@@ -57,9 +57,6 @@ export default function Profile({ setTokenApp }) {
             }
             //call function to upload picture
             uploadImage(imageData)
-
-            //update user profile on local storage
-            // async () => await AsyncStorage.getItem('user').then((val)=>{setUser(JSON.parse(val))})
         }
     }
 
@@ -126,6 +123,13 @@ export default function Profile({ setTokenApp }) {
 
             <Text style={styles.name}>{user.name}</Text>
 
+            {/* Upload CV Button */}
+            <TouchableNativeFeedback>
+                <View style={globalStyles.outlineButton}>
+                    <Text style={globalStyles.outlineButtonText}>Upload CV</Text>
+                </View>
+            </TouchableNativeFeedback>
+
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
         </View>
     )
@@ -145,5 +149,6 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         margin:12,
         textDecorationLine:'underline'
-    }
+    },
+
 })
