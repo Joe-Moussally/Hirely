@@ -13,10 +13,10 @@ const ViewProfile = ({route}) => {
         <View style={[globalStyles.container,{backgroundColor:'white'}]}>
 
             {
-                user.picture?
+                user.picture_base64?
                 <Image
                 style={globalStyles.profilePicture}
-                source={{uri:user.picture}}/>:
+                source={{uri:'data:image/png;base64,'+user.picture_base64}}/>:
                 <Image
                 style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')}/>

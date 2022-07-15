@@ -79,8 +79,8 @@ const JobDetails = ({route}) => {
             <View style={styles.header}>
 
                 {
-                    details.user.picture?
-                    <Image source={{uri:details.user.picture}} style={styles.picture}/>:
+                    details.user.picture_base64?
+                    <Image source={{uri:'data:image/png;base64,'+details.user.picture_base64}} style={styles.picture}/>:
                     <Image source={require('../../assets/profile/default_picture.jpg')} style={styles.picture}/>
                 }
                 <Text style={styles.name}>{details.user['name']}</Text>

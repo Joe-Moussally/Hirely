@@ -30,7 +30,7 @@ export default function Profile({ setTokenApp }) {
             })
         })
 
-    },[image])
+    },[])
 
     //function to fetch PDF from local storage
     const fetchPDF = async () => {
