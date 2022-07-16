@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -7,21 +8,31 @@ import { localhost } from '../../globalVariables'
 const ContactCard = ({id}) => {
 
     const navigation = useNavigation()
-
+    const [user,setUser] = useState('')
     const [contact,setContact] = useState('')
 
     useEffect(()=>{
         
-        //get contact's info from id
-        axios({
-            method:'GET',
-            url:'http://'+localhost+':8000/api/users/'+id,
-        }).then(res => {
-            setContact(res.data.contact[0])
+        AsyncStorage.getItem('user').then(obj => {
+            setUser(JSON.parse(obj))
+            console.log(user.id,id)
+            if (user.id == id) return
+
+            //get contact's info from id
+            axios({
+                method:'GET',
+                url:'http://'+localhost+':8000/api/users/'+id,
+            }).then(res => {
+                setContact(res.data.contact[0])
+            })
         })
+
+
         
     },[])
 
+    //if user id == contact id -> do not render
+    if (user.id == id) return <></>
     return (
         <TouchableNativeFeedback
         onPress={() => {navigation.navigate('ChatStack',{

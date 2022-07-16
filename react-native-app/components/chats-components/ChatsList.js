@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import axios from 'axios'
 import ContactCard from "./ContactCard";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ChatsList = ({ contactIds }) => {
 
