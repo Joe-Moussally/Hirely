@@ -17,6 +17,8 @@ export default function Jobs() {
     //track the search value
     const [value,setValue] = useState('')
 
+    const [isLoading,setIsLoading] = useState(true)
+
     useLayoutEffect(()=>{
 
         let token
@@ -36,6 +38,7 @@ export default function Jobs() {
                     console.log('jobs.js',Response.data['offers'])
                     setJobs(Response.data['offers'])
                     setFilteredJobs(Response.data['offers'])
+                    setIsLoading(false)
                 }).catch(err => {
                     console.log('JOBS.JS',err.response.status)
                 })
@@ -74,7 +77,7 @@ export default function Jobs() {
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
 
             {
-                jobs?
+                isLoading?
                 <View style={globalStyles.loadingContainer}>
                 <ActivityIndicator
                     size={55}
