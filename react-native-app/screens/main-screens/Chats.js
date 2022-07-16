@@ -31,9 +31,11 @@ export default function Chats() {
 
             let user = await AsyncStorage.getItem('user')
 
+            //firebase queries
             let q1 = query(chatsRef,where('from','==',JSON.parse(user).id))
             let q2 = query(chatsRef,where('to','==',JSON.parse(user).id))
 
+            //fetching the messages from firestore
             await getDocs(q1,q2).then((snapshot) => {
                 let chats = []
                 snapshot.docs.forEach((message) => {
@@ -41,6 +43,7 @@ export default function Chats() {
                 })
                 setMessages(chats)
 
+                //get the contact ids from messages
                 chats.forEach(message => {
                         if(!contactsArray.includes(message.from)) {
                             contactsArray.push(message.from)
@@ -52,8 +55,6 @@ export default function Chats() {
                 
                 setContactsId(contactsArray)
                 setisLoading(false)
-                console.log('CONTACTS ID',contactsId)
-                // getContactIds()
             }).catch(err => {
                 console.log('error here')
             })
@@ -71,6 +72,6 @@ export default function Chats() {
         </View>
         :
 
-        <ChatsList contactIds={contactsId}/>
+        <ChatsList messages={messages} contactIds={contactsId}/>
     )
 }
