@@ -1,16 +1,26 @@
-import { useEffect } from "react";
-import { Text } from "react-native";
+import { useEffect, useState } from "react";
+import { FlatList, Text, View } from "react-native";
+import axios from 'axios'
+import ContactCard from "./ContactCard";
 
-const ChatsList = ({ userMessages }) => {
+const ChatsList = ({ contactIds }) => {
 
     useEffect(()=>{
-        console.log(userMessages)
 
-        //function to get the user's contacts from messages
+        console.log('HERE',contactIds)
+
+        //get the contacts name and photo from id
+
+
     },[])
 
     return (
-        <Text>CHATS LIST</Text>
+        <View style={{flex:1}}>
+            <FlatList
+            data={contactIds}
+            renderItem={({item}) => <ContactCard id={item}/>}/>
+        </View>
+        
     );
 }
  

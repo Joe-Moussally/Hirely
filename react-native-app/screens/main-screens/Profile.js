@@ -114,10 +114,10 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
-            <WebView
+            {/* <WebView
             originWhitelist={['*']} 
             source={{uri:'data:application/pdf;base64,'+user.cv_base64}}
-            style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/>
+            style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/> */}
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
         </View>
