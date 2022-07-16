@@ -14,14 +14,23 @@ const ContactCard = ({id}) => {
             method:'GET',
             url:'http://'+localhost+':8000/api/users/'+id,
         }).then(res => {
-            setContact(res.data.contact)
-            console.log(res.data.contact[0].name)
+            setContact(res.data.contact[0])
         })
         
     },[])
 
     return (
         <View style={styles.cardContainer}>
+            {
+                contact.picture_base64?
+                <Image
+                style={styles.picture}
+                source={{uri:'data:image/png;base64,'+contact.picture_base64}}/>:
+                <Image
+                style={styles.picture}
+                source={require('../../assets/profile/default_picture.jpg')}/>
+            }
+            
             <Text style={styles.contactName}>{contact.name}</Text>
         </View>
     );
