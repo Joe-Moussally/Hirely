@@ -16,6 +16,7 @@ export default function Jobs() {
     //track the search value
     const [value,setValue] = useState('')
 
+    //track when the data is loaded or not
     const [isLoading,setIsLoading] = useState(true)
 
     useLayoutEffect(()=>{

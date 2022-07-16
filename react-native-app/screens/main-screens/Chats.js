@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
-import { Button, Text } from "react-native";
+import { ActivityIndicator, Button, Text, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // //firebase
 import { collection, getDocs,addDoc, query, where, onSnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
 import ChatsList from "../../components/chats-components/ChatsList";
+import { globalStyles } from "../../styles/global";
 
 export default function Chats() {
 
     //track user messages to get the contacts
     const [messages,setMessages] = useState([])
     
+    //track if the data is loaded or not
+    const [isLoading,setisLoading] = useState(true)
+
     //track the contact ids
     const [contactsId,setContactsId] = useState('')
     let contactsArray = []
@@ -47,6 +51,7 @@ export default function Chats() {
                 })
                 
                 setContactsId(contactsArray)
+                setisLoading(false)
                 console.log('CONTACTS ID',contactsId)
                 // getContactIds()
             }).catch(err => {
@@ -58,6 +63,14 @@ export default function Chats() {
     },[])
 
     return (
+        isLoading?
+        <View style={globalStyles.loadingContainer}>
+        <ActivityIndicator
+            size={55}
+            color='#00a6ff'/> 
+        </View>
+        :
+
         <ChatsList contactIds={contactsId}/>
     )
 }
