@@ -5,22 +5,22 @@ import { localhost } from "../globalVariables";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 
-const ChatHeader = ({contactId}) => {
+const ChatHeader = ({contact}) => {
 
     //defining react navigation
     const navigation = useNavigation()
 
-    const [contact,setContact] = useState('')
+    // const [contact,setContact] = useState('')
 
-    useEffect(()=>{
-        //get the user's information
-        axios({
-            method:'GET',
-            url:'http://'+localhost+':8000/api/users/'+contactId,
-        }).then((res) => {
-            setContact(res.data.contact)
-        })
-    },[])
+    // useEffect(()=>{
+    //     //get the user's information
+    //     axios({
+    //         method:'GET',
+    //         url:'http://'+localhost+':8000/api/users/'+contactId,
+    //     }).then((res) => {
+    //         setContact(res.data.contact[0])
+    //     })
+    // },[])
 
     return (
         <View style={styles.headerContainer}>

@@ -1,9 +1,12 @@
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import { localhost } from '../../globalVariables'
 
 const ContactCard = ({id}) => {
+
+    const navigation = useNavigation()
 
     const [contact,setContact] = useState('')
 
@@ -20,19 +23,24 @@ const ContactCard = ({id}) => {
     },[])
 
     return (
-        <View style={styles.cardContainer}>
-            {
-                contact.picture_base64?
-                <Image
-                style={styles.picture}
-                source={{uri:'data:image/png;base64,'+contact.picture_base64}}/>:
-                <Image
-                style={styles.picture}
-                source={require('../../assets/profile/default_picture.jpg')}/>
-            }
-            
-            <Text style={styles.contactName}>{contact.name}</Text>
-        </View>
+        <TouchableNativeFeedback
+        onPress={() => {navigation.navigate('ChatStack',{
+            contact:contact
+        })}}>
+            <View style={styles.cardContainer}>
+                {
+                    contact.picture_base64?
+                    <Image
+                    style={styles.picture}
+                    source={{uri:'data:image/png;base64,'+contact.picture_base64}}/>:
+                    <Image
+                    style={styles.picture}
+                    source={require('../../assets/profile/default_picture.jpg')}/>
+                }
+                
+                <Text style={styles.contactName}>{contact.name}</Text>
+            </View>
+        </TouchableNativeFeedback>
     );
 }
  
@@ -41,13 +49,21 @@ export default ContactCard;
 const styles = StyleSheet.create({
     picture:{
         width:65,
-        height:65
+        height:65,
+        borderRadius:35,
+        borderWidth:2,
+        borderColor:'#0091ff',
+        margin:10
     },
     cardContainer:{
         width:'100%',
-        height:60
+        height:90,
+        flexDirection:'row',
+        borderBottomColor:'#f0f0f0',
+        borderBottomWidth:1,
+        alignItems:'center'
     },
     contactName:{
-        fontSize:24
+        fontSize:21
     }
 })

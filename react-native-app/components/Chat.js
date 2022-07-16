@@ -24,6 +24,8 @@ export default function Chat({ route }) {
     //get the user's chats
     useEffect(() => {
 
+        console.log('PAAAAAAAAARAAAAAAAAAAMMMMMMMMMMMMMMSSSSSSSSssss',route.params.contact)
+
         //get the user's id
         AsyncStorage.getItem('user').then(user=>{
             setUser(JSON.parse(user))
@@ -69,7 +71,7 @@ export default function Chat({ route }) {
                 text,
                 user,
                 from:user._id,
-                to:route.params.contactId
+                to:route.params.contact.id
             })
             
     }, [])
@@ -77,7 +79,7 @@ export default function Chat({ route }) {
 
     return (
         <View style={{flex:1,backgroundColor:'white'}}>
-            <ChatHeader contactId={route.params.contactId}/>
+            <ChatHeader contact={route.params.contact}/>
             <GiftedChat 
             messages={messages}
             showAvatarForEveryMessage={false}
