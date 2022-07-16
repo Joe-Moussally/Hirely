@@ -6,7 +6,6 @@ import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import JobCard from "../../components/JobCard";
 import Search from "../../components/Search";
-import AppLoading from 'expo-app-loading';
 
 
 export default function Jobs() {

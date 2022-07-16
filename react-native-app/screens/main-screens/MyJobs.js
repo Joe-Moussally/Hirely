@@ -8,7 +8,7 @@ import { localhost } from "../../globalVariables";
 import JobCard from "../../components/JobCard";
 import { useRoute } from "@react-navigation/native";
 import Search from "../../components/Search";
-import AppLoading from 'expo-app-loading';
+
 
 export default function MyJobs({navigation}) {
 
@@ -19,6 +19,9 @@ export default function MyJobs({navigation}) {
 
     //track the search value
     const [value,setValue] = useState('')
+
+    //track when the data is loaded or not
+    const [isLoading,setIsLoading] = useState(true)
 
     useEffect(()=>{
 
@@ -32,6 +35,7 @@ export default function MyJobs({navigation}) {
             }).then(Response => {
                 setJobs(Response.data['offers'])
                 setFilteredJobs(Response.data['offers'])
+                setIsLoading(false)
             }).catch((err)=>{
                 console.log("MYJOBS ERROR")
             })
@@ -65,11 +69,20 @@ export default function MyJobs({navigation}) {
 
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
 
-            <FlatList
-            data={filteredJobs}
-            renderItem={({item}) => <JobCard job={item}/>}
-            keyExtractor={item => item.id}
-            style={{backgroundColor:'white',width:'100%',height:'100%',marginBottom:60}}/>
+            {
+                isLoading?
+                <View style={globalStyles.loadingContainer}>
+                <ActivityIndicator
+                    size={55}
+                    color='#00a6ff'/> 
+                </View>
+                :
+                <FlatList
+                data={filteredJobs}
+                renderItem={({item}) => <JobCard job={item}/>}
+                keyExtractor={item => item.id}
+                style={{backgroundColor:'white',width:'100%',height:'100%',marginBottom:60}}/>
+            }
 
             {/* Add Job Offer Button */}
             <TouchableOpacity
