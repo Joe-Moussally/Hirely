@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableNativeFeedback, View } from "react-native";
 import { localhost } from '../../globalVariables'
 
-const ContactCard = ({id}) => {
+const ContactCard = ({id,messages}) => {
 
     const navigation = useNavigation()
     const [user,setUser] = useState('')
@@ -36,6 +36,7 @@ const ContactCard = ({id}) => {
     return (
         <TouchableNativeFeedback
         onPress={() => {navigation.navigate('ChatStack',{
+            messages:messages,
             contact:contact
         })}}>
             <View style={styles.cardContainer}>
@@ -75,6 +76,7 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     contactName:{
-        fontSize:21
+        fontSize:21,
+        fontWeight:'500'
     }
 })

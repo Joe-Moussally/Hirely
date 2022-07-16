@@ -25,30 +25,37 @@ export default function Chat({ route }) {
     useEffect(() => {
 
         //get the user's id
-        AsyncStorage.getItem('user').then(user=>{
-            setUser(JSON.parse(user))
+        AsyncStorage.getItem('user').then(obj=>{
+            setUser(JSON.parse(obj))
+
+            
+            //--------------FIREBASE--------------//
 
             //set query to fetch appropriate messages according to the user's id
-            q = query(chatsRef)
-
-            onSnapshot(q,(snapshot) => {
+            q = query(chatsRef,where('from','==',JSON.parse(obj).id))
+            let q2 = query(chatsRef,where('to','==',JSON.parse(obj).id))
+            onSnapshot(q,q2,(snapshot) => {
                 let array = []
+                let contactId = route.params.contact.id
+                console.log('CONTACTID',contactId)
                 snapshot.docs.forEach((message) => {
-                    array.push({
-                        _id: message.data()._id,
-                        text: message.data().text,
-                        createdAt: message.data().createdAt.toDate(),
-                        user: message.data().user
-                    })
+                    if(message.data().from == contactId || message.data().to == contactId) {
+                        array.push({
+                            _id: message.data()._id,
+                            text: message.data().text,
+                            createdAt: message.data().createdAt.toDate(),
+                            user: message.data().user
+                        })
+                    }
+
                 })
                 array.sort((a, b) => b.createdAt - a.createdAt)
                 setMessages(array)
             })
         }).catch((err) => {
-            console.log('err')
+            console.warn(err)
         })
 
-        //--------------FIREBASE--------------//
 
 
         //------------------------------------//
@@ -68,8 +75,10 @@ export default function Chat({ route }) {
                 createdAt,
                 text,
                 user,
-                from:user._id,
+                from:user.id,
                 to:route.params.contact.id
+            }).catch(err => {
+                console.warn(err)
             })
             
     }, [])
@@ -86,7 +95,6 @@ export default function Chat({ route }) {
             user={{
                 _id:user.id,
                 name:user.name,
-                avatar:user.picture
             }}
             />
         </View>

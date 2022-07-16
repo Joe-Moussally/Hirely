@@ -4,13 +4,29 @@ import axios from 'axios'
 import ContactCard from "./ContactCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const ChatsList = ({ contactIds }) => {
+const ChatsList = ({ contactIds,messages,user }) => {
+
+    const [conversationMessages,setConversationMessages] = useState([])
+
+    useEffect(()=>{
+        
+
+    },[])
 
     return (
         <View style={styles.container}>
             <FlatList
             data={contactIds}
-            renderItem={({item}) => <ContactCard id={item}/>}/>
+            renderItem={({item}) => {
+                let conversationMessages = []
+                messages.forEach(message => {
+                    if((message.from == item || message.to == item) && (message.from == user.id || message.to == user.id)) {
+                        conversationMessages.push(message)
+                    }
+                    
+                });
+                return <ContactCard id={item} messages={conversationMessages}/>
+            }}/>
         </View>
         
     );

@@ -10,6 +10,8 @@ import { globalStyles } from "../../styles/global";
 
 export default function Chats() {
 
+    const [user,setUser] = useState('')
+
     //track user messages to get the contacts
     const [messages,setMessages] = useState([])
     
@@ -30,6 +32,7 @@ export default function Chats() {
         const getMessages = async () => {
 
             let user = await AsyncStorage.getItem('user')
+            setUser(JSON.parse(user))
 
             //firebase queries
             let q1 = query(chatsRef,where('from','==',JSON.parse(user).id))
@@ -72,6 +75,6 @@ export default function Chats() {
         </View>
         :
 
-        <ChatsList messages={messages} contactIds={contactsId}/>
+        <ChatsList user={user} messages={messages} contactIds={contactsId}/>
     )
 }

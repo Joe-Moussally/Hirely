@@ -9,7 +9,7 @@ use App\Models\User;
 class ChatController extends Controller
 {
     public function getContactInfo($id) {
-        $contact = User::select('name','picture_base64')->where('id',$id)->get();
+        $contact = User::select('id','name','picture_base64')->where('id',$id)->get();
 
         return response()->json([
             'contact' => $contact
