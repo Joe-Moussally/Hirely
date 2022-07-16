@@ -32,8 +32,8 @@ export default function Chat({ route }) {
             //--------------FIREBASE--------------//
 
             //set query to fetch appropriate messages according to the user's id
-            q = query(chatsRef,where('from','==',JSON.parse(obj).id))
-            let q2 = query(chatsRef,where('to','==',JSON.parse(obj).id))
+            q = query(chatsRef)
+            let q2 = query(chatsRef)
             onSnapshot(q,q2,(snapshot) => {
                 let array = []
                 let contactId = route.params.contact.id
@@ -75,7 +75,7 @@ export default function Chat({ route }) {
                 createdAt,
                 text,
                 user,
-                from:user.id,
+                from:route.params.user.id,
                 to:route.params.contact.id
             }).catch(err => {
                 console.warn(err)
@@ -93,8 +93,8 @@ export default function Chat({ route }) {
             renderAvatar={()=>{return <View/>}}
             onSend={messages => onSend(messages)}
             user={{
-                _id:user.id,
-                name:user.name,
+                _id:route.params.user.id,
+                name:route.params.user.name,
             }}
             />
         </View>

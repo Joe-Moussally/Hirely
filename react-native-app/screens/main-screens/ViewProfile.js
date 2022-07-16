@@ -1,13 +1,22 @@
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback } from "react-native";
 import { globalStyles } from "../../styles/global";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const ViewProfile = ({route}) => {
 
     const navigation = useNavigation()
 
     const [user,setUser] = useState(route.params.user)
+    const [signedInUser,setSignedInUser] = useState('')
+
+    useEffect(()=>{
+        AsyncStorage.getItem('user').then(obj=>{
+            setSignedInUser(JSON.parse(obj))
+        })
+    },[])
 
     return (
         <View style={[globalStyles.container,{backgroundColor:'white'}]}>
@@ -28,7 +37,10 @@ const ViewProfile = ({route}) => {
                 navigation.pop()
                 navigation.navigate('Chats',{
                     screen:'ChatStack',
-                    params: {contact:route.params.user}
+                    params: {
+                        contact:route.params.user,
+                        user:signedInUser
+                    }
                 })
                 }}>
                 <View style={globalStyles.outlineButton}>

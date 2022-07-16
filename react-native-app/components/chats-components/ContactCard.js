@@ -36,6 +36,7 @@ const ContactCard = ({id,messages}) => {
     return (
         <TouchableNativeFeedback
         onPress={() => {navigation.navigate('ChatStack',{
+            user:user,
             messages:messages,
             contact:contact
         })}}>

@@ -39,7 +39,7 @@ export default function Chats() {
             let q2 = query(chatsRef,where('to','==',JSON.parse(user).id))
 
             //fetching the messages from firestore
-            await getDocs(q1,q2).then((snapshot) => {
+            onSnapshot(q2,(snapshot) => {
                 let chats = []
                 snapshot.docs.forEach((message) => {
                     chats.push({...message.data()})
@@ -58,8 +58,6 @@ export default function Chats() {
                 
                 setContactsId(contactsArray)
                 setisLoading(false)
-            }).catch(err => {
-                console.log('error here')
             })
         }
         getMessages()
