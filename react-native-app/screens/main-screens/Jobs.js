@@ -1,11 +1,13 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { FlatList, Text, TextInput, View } from "react-native";
+import { FlatList, ActivityIndicator, View } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import JobCard from "../../components/JobCard";
 import Search from "../../components/Search";
+import AppLoading from 'expo-app-loading';
+
 
 export default function Jobs() {
 
@@ -65,15 +67,28 @@ export default function Jobs() {
     },[value])
 
     return (
+
+
         <View style={{flex:1,backgroundColor:'white'}}>
             
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
 
-            <FlatList
-            data={filteredJobs}
-            renderItem={({item}) => <JobCard job={item}/>}
-            keyExtractor={item => item.id}
-            style={{backgroundColor:'white',marginBottom:60}}/>
+            {
+                jobs?
+                <View style={globalStyles.loadingContainer}>
+                <ActivityIndicator
+                    size={55}
+                    color='#00a6ff'/> 
+                </View>
+                :
+                <FlatList
+                data={filteredJobs}
+                renderItem={({item}) => <JobCard job={item}/>}
+                keyExtractor={item => item.id}
+                style={{backgroundColor:'white',marginBottom:60}}/>
+            }
+
+
         </View>
 
     )

@@ -1,4 +1,4 @@
-import { DevSettings, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, DevSettings, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { globalStyles } from '../../styles/global'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";
@@ -8,6 +8,7 @@ import { localhost } from "../../globalVariables";
 import JobCard from "../../components/JobCard";
 import { useRoute } from "@react-navigation/native";
 import Search from "../../components/Search";
+import AppLoading from 'expo-app-loading';
 
 export default function MyJobs({navigation}) {
 
@@ -57,6 +58,9 @@ export default function MyJobs({navigation}) {
     },[value])
 
     return (
+        !jobs?
+        <ActivityIndicator size='large' color='#00a6ff'/>:
+        
         <View style={styles.container}>
 
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
