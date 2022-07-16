@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Dimensions } from 'react-native';
+import { ActivityIndicator, Dimensions } from 'react-native';
 import { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from "react-native";
 
@@ -69,9 +69,14 @@ const JobDetails = ({route}) => {
 
     return (
 
-        !details
-        ?<Text>Loaing</Text>
+        !details?
+        <View style={globalStyles.loadingContainer}>
+        <ActivityIndicator
+            size={55}
+            color='#00a6ff'/> 
+        </View>
         :
+
         <ScrollView style={{backgroundColor:'white'}}>
         <View style={globalStyles.container}>
 

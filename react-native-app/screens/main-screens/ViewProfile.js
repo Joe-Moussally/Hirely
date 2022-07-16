@@ -28,7 +28,7 @@ const ViewProfile = ({route}) => {
                 navigation.pop()
                 navigation.navigate('Chats',{
                     screen:'ChatStack',
-                    params: {contactId:route.params.user.id}
+                    params: {contact:route.params.user}
                 })
                 }}>
                 <View style={globalStyles.outlineButton}>
