@@ -16,6 +16,7 @@ export default function Profile({ setTokenApp }) {
 
     //track user's picture if updated
     const [image,setImage] = useState(null)
+    const [cv,setCv] = useState('')
 
     useEffect(()=>{
 
@@ -25,7 +26,7 @@ export default function Profile({ setTokenApp }) {
                 method:'POST',
                 headers:{'Authorization':'Bearer '+token},
                 url:'http://'+localhost+':8000/api/profile'
-            }).then((Response) => {
+            }).then(async(Response) => {
                 setUser(Response.data)
                 setImage('data:image/png;base64,'+user.picture_base64)
             })
@@ -73,9 +74,9 @@ export default function Profile({ setTokenApp }) {
                     method:'POST',
                     url:'http://'+localhost+':8000/api/picture',
                     data:{'picture_base64':base64}
-                }).then(res => {
+                }).then(async (res) => {
                     setImage('data:image/png;base64,'+base64)
-                })
+                }) 
                 .catch(err => {console.log(err.response.status)}) 
             })
         }
@@ -115,7 +116,8 @@ export default function Profile({ setTokenApp }) {
 
             <WebView
             originWhitelist={['*']} 
-            source={{uri:'data:application/pdf;base64,'+user.cv_base64}}/>
+            source={{uri:'data:application/pdf;base64,'+user.cv_base64}}
+            style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/>
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
         </View>
