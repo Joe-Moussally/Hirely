@@ -5,15 +5,6 @@ import ContactCard from "./ContactCard";
 
 const ChatsList = ({ contactIds }) => {
 
-    useEffect(()=>{
-
-        console.log('HERE',contactIds)
-
-        //get the contacts name and photo from id
-
-
-    },[])
-
     return (
         <View style={{flex:1}}>
             <FlatList

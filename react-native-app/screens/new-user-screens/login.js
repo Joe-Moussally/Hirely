@@ -46,7 +46,6 @@ export default function LogIn({setToken}) {
               'Authorization':'Bearer '+token
             }
           }).then(async (Response) => {
-            console.log('from login.js',Response.data)
             await AsyncStorage.removeItem('user')
             await AsyncStorage.setItem('user',JSON.stringify(Response.data))
           })
