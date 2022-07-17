@@ -19,12 +19,15 @@ const EditProfileActivities = () => {
                 style={globalStyles.input}
                 placeholder="Describe yourself..."
                 multiline
-                onChangeText={about=> {
-                    setAbout(about)
+                value={about}
+                onChangeText={about=> {        
+                    if(about.length<50) {
+                        setAbout(about)
+                    }
                     setAboutLength(about.length)
                 }}
                 />
-                <Text style={styles.characterCoutner}>{aboutLength}/200</Text>
+                <Text style={styles.characterCoutner}>{aboutLength}/50</Text>
             </View>
 
         </View>
