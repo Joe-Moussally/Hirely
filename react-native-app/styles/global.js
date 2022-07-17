@@ -77,7 +77,7 @@ const globalStyles = StyleSheet.create({
     skillCard:{
         margin:10,
         backgroundColor:'#00b3ff',
-        paddingHorizontal:10,
+        paddingHorizontal:15,
         paddingVertical:5,
         borderRadius:100
     },
