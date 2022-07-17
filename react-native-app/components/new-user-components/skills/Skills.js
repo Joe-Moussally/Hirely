@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { globalStyles } from "../../../styles/global";
+import SkillCard from "./SkillCard";
 
 const Skills = ({ setSkillsArray }) => {
 
@@ -8,6 +9,16 @@ const Skills = ({ setSkillsArray }) => {
     const [skill,setSkill] = useState('')
     const [skills,setSkills] = useState([])
     const [skillLength,setSkillLength] = useState(0)
+
+    
+    //function to add skill to array of skills
+    const addSkill = () => {
+        if(skills.length>5) return //warn user
+        setSkills(previousSkills => [...previousSkills,skill])
+        setSkill('')//clear input
+        console.log(skills)
+    }
+
 
     return (
         <View>
@@ -28,7 +39,8 @@ const Skills = ({ setSkillsArray }) => {
                     />
                     <Text style={styles.characterCoutner}>{skillLength}/20</Text>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                    onPress={addSkill}>
                         <View style={globalStyles.outlineButton}>
                             <Text style={globalStyles.outlineButtonText}>Add Skill</Text>
                         </View>
@@ -37,7 +49,9 @@ const Skills = ({ setSkillsArray }) => {
 
             {/* Skills cards container */}
             <View style={globalStyles.skillsContainer}>
-
+                    {
+                        skills.map((element => <SkillCard skill={element} removable={true}/>))
+                    }
             </View>
 
         </View>
