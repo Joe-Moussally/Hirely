@@ -31,9 +31,7 @@ const AddJob = () => {
         if (!requirement) return
         setRequirements([...requirements,{key:key, text:requirement}])
         setKey(key+1)
-        
-        //clear input
-        setRequirement('')
+        setRequirement('')//clear input
     }
 
     //function that remove the requirement from the list

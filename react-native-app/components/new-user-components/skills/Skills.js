@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { globalStyles } from "../../../styles/global";
 import SkillCard from "./SkillCard";
@@ -9,16 +9,26 @@ const Skills = ({ setSkillsArray }) => {
     const [skill,setSkill] = useState('')
     const [skills,setSkills] = useState([])
     const [skillLength,setSkillLength] = useState(0)
+    //track skill key in array
+    const [key,setKey] = useState(0)
 
+    useEffect(()=>{console.log(skills)},[])
     
     //function to add skill to array of skills
     const addSkill = () => {
-        if(skills.length>5) return //warn user
-        setSkills(previousSkills => [...previousSkills,skill])
+        if (!skill) return //if input is empty
+        if(skills.length>5) return //warn user max 5 skills
+        setSkills(prevSkills => [...prevSkills,{key:key, text:skill}])
+        setKey(key+1)
         setSkill('')//clear input
-        console.log(skills)
+        setSkillLength(0)
     }
 
+    //function to handle removing skill from array
+    const removeSkill = (key) => {
+        //find the index of skill
+        setSkills(skills.filter((element) => element.key !== key))
+    }
 
     return (
         <View>
@@ -50,7 +60,12 @@ const Skills = ({ setSkillsArray }) => {
             {/* Skills cards container */}
             <View style={globalStyles.skillsContainer}>
                     {
-                        skills.map((element => <SkillCard skill={element} removable={true}/>))
+                        skills.map((element => 
+                        <SkillCard
+                        skill={element.text}
+                        key={element.key}
+                        removable={true}
+                        removeSkill={() => removeSkill(element.key)}/>))
                     }
             </View>
 

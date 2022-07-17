@@ -77,14 +77,20 @@ const globalStyles = StyleSheet.create({
     skillCard:{
         margin:10,
         backgroundColor:'#00b3ff',
-        paddingHorizontal:15,
+        paddingHorizontal:12,
         paddingVertical:5,
-        borderRadius:100
+        borderRadius:100,
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center'
     },
     skillText:{
         fontSize:19,
         fontWeight:'bold',
         color:'white'
+    },
+    removeSkillIcon:{
+        marginLeft:5
     }
 })
 
