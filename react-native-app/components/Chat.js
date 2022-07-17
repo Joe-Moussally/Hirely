@@ -16,7 +16,7 @@ export default function Chat({ route }) {
     //queries
     let q;
     
-    const [messages,setMessages] = useState([])
+    const [messages,setMessages] = useState(route.params.messages)
     
     //track the logged in user's id
     const [user,setUser] = useState('')
@@ -37,9 +37,8 @@ export default function Chat({ route }) {
             onSnapshot(q,q2,(snapshot) => {
                 let array = []
                 let contactId = route.params.contact.id
-                console.log('CONTACTID',contactId)
                 snapshot.docs.forEach((message) => {
-                    if(message.data().from == contactId || message.data().to == contactId) {
+                    if((message.data().from == contactId && message.data().to == user.id) || (message.data().from == user.id && message.data().to == contactId)) {
                         array.push({
                             _id: message.data()._id,
                             text: message.data().text,

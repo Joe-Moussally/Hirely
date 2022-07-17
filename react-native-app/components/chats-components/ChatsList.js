@@ -8,11 +8,6 @@ const ChatsList = ({ contactIds,messages,user }) => {
 
     const [conversationMessages,setConversationMessages] = useState([])
 
-    useEffect(()=>{
-        
-
-    },[])
-
     return (
         <View style={styles.container}>
             <FlatList
@@ -20,7 +15,7 @@ const ChatsList = ({ contactIds,messages,user }) => {
             renderItem={({item}) => {
                 let conversationMessages = []
                 messages.forEach(message => {
-                    if((message.from == item || message.to == item) && (message.from == user.id || message.to == user.id)) {
+                    if((message.from == item && message.to == user.id) || (message.from == user.id || message.to == item)) {
                         conversationMessages.push(message)
                     }
                     
