@@ -71,10 +71,20 @@ const globalStyles = StyleSheet.create({
         alignItems:'center'
     },
     skillsContainer:{
-
+        flexDirection:'row',
+        flexWrap:'wrap'
     },
-    skillCards:{
-
+    skillCard:{
+        margin:10,
+        backgroundColor:'#00b3ff',
+        paddingHorizontal:10,
+        paddingVertical:5,
+        borderRadius:100
+    },
+    skillText:{
+        fontSize:19,
+        fontWeight:'bold',
+        color:'white'
     }
 })
 
