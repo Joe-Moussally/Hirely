@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Skills from "../../../components/new-user-components/skills/Skills";
 import { globalStyles } from "../../../styles/global";
 
@@ -45,6 +45,10 @@ const EditProfileActivities = () => {
 
                 {/* Skills section */}
                 <Skills setSkillsArray={setSkillsArray}/>
+
+                <TouchableOpacity style={globalStyles.fullWidthButton}>
+                    <Text style={globalStyles.fullWidthButtonText}>Complete Profile</Text>
+                </TouchableOpacity>
             
             </ScrollView>
             
