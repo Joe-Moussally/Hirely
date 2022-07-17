@@ -6,6 +6,7 @@ import Splash from '../screens/new-user-screens/splash';
 import SignUp from '../screens/new-user-screens/signup';
 import LogIn from '../screens/new-user-screens/login';
 import Header from '../shared/header';
+import EditProfileActivities from '../screens/new-user-screens/profile-activities-screens/EditProfileActivities';
 
 
 //creating the stack navigator
@@ -33,6 +34,7 @@ export default function GuestStack({ setTokenApp }) {
                 <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}}/>
                 <Stack.Screen name="LogIn" component={LogInScreen} />
                 <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="Activities" component={EditProfileActivities} />
 
             </Stack.Navigator>
 
