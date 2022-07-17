@@ -18,6 +18,8 @@ const EditProfileActivities = ({route}) => {
     const [skillsArray,setSkillsArray] = useState([])
 
     const handleSignUp = () => {
+
+        //adding the email and password of the user
         axios({
 
             headers: { 'Content-Type':'multipart/form-data;' },
