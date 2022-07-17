@@ -9,6 +9,9 @@ const EditProfileActivities = () => {
     //track length of about
     const [aboutLength,setAboutLength] = useState(0)
 
+    //track skills array
+    const [skillsArray,setSkillsArray] = useState([])
+
     return (
         
         <View style={globalStyles.container}>
@@ -37,7 +40,7 @@ const EditProfileActivities = () => {
                 </View>
 
                 {/* Skills section */}
-                <Skills />
+                <Skills setSkillsArray={setSkillsArray}/>
             
             </ScrollView>
             

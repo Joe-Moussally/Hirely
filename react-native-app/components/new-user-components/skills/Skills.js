@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { globalStyles } from "../../../styles/global";
 
-const Skills = () => {
+const Skills = ({ setSkillsArray }) => {
 
     //track skills input
     const [skill,setSkill] = useState('')
@@ -27,6 +27,17 @@ const Skills = () => {
                     }}
                     />
                     <Text style={styles.characterCoutner}>{skillLength}/20</Text>
+
+                    <TouchableOpacity>
+                        <View style={globalStyles.outlineButton}>
+                            <Text style={globalStyles.outlineButtonText}>Add Skill</Text>
+                        </View>
+                    </TouchableOpacity>
+            </View>
+
+            {/* Skills cards container */}
+            <View style={globalStyles.skillsContainer}>
+
             </View>
 
         </View>

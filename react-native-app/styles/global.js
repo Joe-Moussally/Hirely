@@ -47,7 +47,7 @@ const globalStyles = StyleSheet.create({
         color:'red',
         marginVertical:10,
         marginHorizontal:'7.5%',
-        paddingVertical:11
+        paddingVertical:7
     },
     outlineButtonText:{
         color:'#00aeff',
@@ -69,6 +69,12 @@ const globalStyles = StyleSheet.create({
         backgroundColor:'white',
         justifyContent:'center',
         alignItems:'center'
+    },
+    skillsContainer:{
+
+    },
+    skillCards:{
+
     }
 })
 
