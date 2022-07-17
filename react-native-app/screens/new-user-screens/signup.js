@@ -23,7 +23,7 @@ export default function SignUp() {
 
     const handleSignUp = async () =>{
 
-        if(!location) return
+        if(!location) return //warn user to enable location
 
         console.log(location.coords.latitude,location.coords.longitude)
 
@@ -36,19 +36,19 @@ export default function SignUp() {
 
         await axios({
 
+            headers: { 'Content-Type':'multipart/form-data;' },
             method:'post',
             url:'http://'+localhost+':8000/api/register',
             data:data,
-            headers: { 'Content-Type':'multipart/form-data;' },
 
         }).then((Response)=>{
 
             console.log(Response.data)
-            navigation.navigate('LogIn')
+            navigation.navigate('Activities')
 
         }).catch((Error) => {
 
-            console.log(Error)
+            console.warn(Error.response.status)
 
         })
     }
