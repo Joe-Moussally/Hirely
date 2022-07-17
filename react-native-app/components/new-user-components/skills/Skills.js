@@ -7,6 +7,7 @@ const Skills = () => {
     //track skills input
     const [skill,setSkill] = useState('')
     const [skills,setSkills] = useState([])
+    const [skillLength,setSkillLength] = useState(0)
 
     return (
         <View>
@@ -17,7 +18,15 @@ const Skills = () => {
                     style={globalStyles.input}
                     placeholder="Drawing, Hiking..."
                     multiline
+                    value={skill}
+                    onChangeText={text => {
+                        if(text.length < 20) {
+                            setSkill(text)
+                        }
+                        setSkillLength(text.length)
+                    }}
                     />
+                    <Text style={styles.characterCoutner}>{skillLength}/20</Text>
             </View>
 
         </View>
@@ -31,5 +40,9 @@ const styles = StyleSheet.create({
         fontStyle:'italic',
         color:'gray',
         fontWeight:'normal'
+    },
+    characterCoutner:{
+        color:'gray',
+        marginLeft:5
     }
 })
