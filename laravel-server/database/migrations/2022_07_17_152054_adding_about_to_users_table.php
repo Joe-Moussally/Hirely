@@ -14,7 +14,7 @@ class AddingAboutToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('about',200)->nullable();
+            $table->string('about',200)->nullable()->after('password');
         });
     }
 
