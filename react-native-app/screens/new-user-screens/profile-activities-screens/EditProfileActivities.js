@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import Skills from "../../../components/new-user-components/skills/Skills";
 import { globalStyles } from "../../../styles/global";
 
 const EditProfileActivities = () => {
@@ -34,6 +35,9 @@ const EditProfileActivities = () => {
                     />
                     <Text style={styles.characterCoutner}>{aboutLength}/150</Text>
                 </View>
+
+                {/* Skills section */}
+                <Skills />
             
             </ScrollView>
             
