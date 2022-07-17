@@ -17,8 +17,9 @@ const Skills = ({ setSkillsArray }) => {
     //function to add skill to array of skills
     const addSkill = () => {
         if (!skill) return //if input is empty
-        if(skills.length>5) return //warn user max 5 skills
+        if(skills.length>4) return //warn user max 5 skills
         setSkills(prevSkills => [...prevSkills,{key:key, text:skill}])
+        setSkillsArray(skills) //update state in parent component (form)
         setKey(key+1)
         setSkill('')//clear input
         setSkillLength(0)
