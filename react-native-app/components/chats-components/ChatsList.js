@@ -6,8 +6,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ChatsList = ({ contactIds,messages,user }) => {
 
-    const [conversationMessages,setConversationMessages] = useState([])
-
     return (
         <View style={styles.container}>
             <FlatList
@@ -15,7 +13,7 @@ const ChatsList = ({ contactIds,messages,user }) => {
             renderItem={({item}) => {
                 let conversationMessages = []
                 messages.forEach(message => {
-                    if((message.from == item && message.to == user.id) || (message.from == user.id || message.to == item)) {
+                    if((message.from == item && message.to == user.id) || (message.from == user.id && message.to == item)) {
                         conversationMessages.push(message)
                     }
                     

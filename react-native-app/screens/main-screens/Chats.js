@@ -27,8 +27,6 @@ export default function Chats() {
     
     useEffect(()=>{
 
-  
-        
         const getMessages = async () => {
 
             let user = await AsyncStorage.getItem('user')
@@ -39,10 +37,10 @@ export default function Chats() {
             let q2 = query(chatsRef,where('to','==',JSON.parse(user).id))
 
             //fetching the messages from firestore
-            onSnapshot(q2,(snapshot) => {
+            onSnapshot(chatsRef,(snapshot) => {
                 let chats = []
                 snapshot.docs.forEach((message) => {
-                    chats.push({...message.data()})
+                    chats.push(message.data())
                 })
                 setMessages(chats)
 

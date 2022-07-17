@@ -10,6 +10,7 @@ const ContactCard = ({id,messages}) => {
     const navigation = useNavigation()
     const [user,setUser] = useState('')
     const [contact,setContact] = useState('')
+    const [conversation,setConversation] = useState([])
 
     useEffect(()=>{
         
@@ -27,7 +28,13 @@ const ContactCard = ({id,messages}) => {
             })
         })
 
-
+        let array = []
+        messages.forEach(message => {
+            if((message.from == id && message.to == user.id) || (message.from == user.id && message.to == id)) {
+                array.push(message)
+            }
+        });
+        setConversation(array)
         
     },[])
 
@@ -37,7 +44,7 @@ const ContactCard = ({id,messages}) => {
         <TouchableNativeFeedback
         onPress={() => {navigation.navigate('ChatStack',{
             user:user,
-            messages:messages,
+            messages:conversation,
             contact:contact
         })}}>
             <View style={styles.cardContainer}>

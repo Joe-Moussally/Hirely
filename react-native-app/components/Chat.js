@@ -19,42 +19,33 @@ export default function Chat({ route }) {
     const [messages,setMessages] = useState(route.params.messages)
     
     //track the logged in user's id
-    const [user,setUser] = useState('')
+    const [user,setUser] = useState(route.params.user)
 
     //get the user's chats
     useEffect(() => {
+        
+        //--------------FIREBASE--------------//
 
-        //get the user's id
-        AsyncStorage.getItem('user').then(obj=>{
-            setUser(JSON.parse(obj))
+        //set query to fetch appropriate messages according to the user's id
+        q = query(chatsRef)
+        let q2 = query(chatsRef)
+        onSnapshot(chatsRef,(snapshot) => {
+            let array = []
+            let contactId = route.params.contact.id
+            snapshot.docs.forEach((message) => {
+                if((message.data().from == contactId && message.data().to == user.id) || (message.data().from == user.id && message.data().to == contactId)) {
+                    array.push({
+                        _id: message.data()._id,
+                        text: message.data().text,
+                        createdAt: message.data().createdAt.toDate(),
+                        user: message.data().user
+                    })
+                }
 
-            
-            //--------------FIREBASE--------------//
-
-            //set query to fetch appropriate messages according to the user's id
-            q = query(chatsRef)
-            let q2 = query(chatsRef)
-            onSnapshot(q,q2,(snapshot) => {
-                let array = []
-                let contactId = route.params.contact.id
-                snapshot.docs.forEach((message) => {
-                    if((message.data().from == contactId && message.data().to == user.id) || (message.data().from == user.id && message.data().to == contactId)) {
-                        array.push({
-                            _id: message.data()._id,
-                            text: message.data().text,
-                            createdAt: message.data().createdAt.toDate(),
-                            user: message.data().user
-                        })
-                    }
-
-                })
-                array.sort((a, b) => b.createdAt - a.createdAt)
-                setMessages(array)
             })
-        }).catch((err) => {
-            console.warn(err)
+            array.sort((a, b) => b.createdAt - a.createdAt)
+            setMessages(array)
         })
-
 
 
         //------------------------------------//
