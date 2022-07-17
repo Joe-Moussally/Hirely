@@ -17,7 +17,7 @@ const Skills = ({ setSkillsArray }) => {
     //function to add skill to array of skills
     const addSkill = () => {
         if (!skill) return //if input is empty
-        if(skills.length>4) return //warn user max 5 skills
+        if(skills.length>5) return //warn user max 5 skills
         setSkills(prevSkills => [...prevSkills,{key:key, text:skill}])
         setSkillsArray(skills) //update state in parent component (form)
         setKey(key+1)
@@ -35,11 +35,11 @@ const Skills = ({ setSkillsArray }) => {
         <View>
 
             <View style={globalStyles.inputContainer}>
-                    <Text style={globalStyles.inputLabel}>Enter you skills <Text style={styles.grayedOut}>(max. 5)</Text></Text>
+                    <Text style={globalStyles.inputLabel}>Enter you skills <Text style={styles.grayedOut}>(max. 6)</Text></Text>
                     <TextInput
                     style={globalStyles.input}
                     placeholder="Drawing, Hiking..."
-                    multiline
+                    multiline={false}
                     value={skill}
                     onChangeText={text => {
                         if(text.length < 20) {

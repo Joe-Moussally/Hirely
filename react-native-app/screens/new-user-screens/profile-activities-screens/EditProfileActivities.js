@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import Skills from "../../../components/new-user-components/skills/Skills";
 import { globalStyles } from "../../../styles/global";
@@ -11,6 +11,10 @@ const EditProfileActivities = () => {
 
     //track skills array
     const [skillsArray,setSkillsArray] = useState([])
+
+    useEffect(()=>{
+        console.log(skillsArray)
+    },['skillsArray',skillsArray])
 
     return (
         
