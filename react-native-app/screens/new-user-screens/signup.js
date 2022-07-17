@@ -34,23 +34,8 @@ export default function SignUp() {
         data.append("lat",location.coords.latitude)
         data.append("lng",location.coords.longitude)
 
-        await axios({
+        navigation.navigate('Activities',{FormData:data})
 
-            headers: { 'Content-Type':'multipart/form-data;' },
-            method:'post',
-            url:'http://'+localhost+':8000/api/register',
-            data:data,
-
-        }).then((Response)=>{
-
-            console.log(Response.data)
-            navigation.navigate('Activities')
-
-        }).catch((Error) => {
-
-            console.warn(Error.response.status)
-
-        })
     }
 
     //function to get user's location
@@ -69,12 +54,10 @@ export default function SignUp() {
 
         let location = await Location.getCurrentPositionAsync({});
         setLocation(location);
-        console.log('LOCATIONNNNNNNNN',location.coords.latitude)
         let address = await Location.reverseGeocodeAsync({
             latitude:location.coords.latitude,
             longitude:location.coords.longitude
         })
-        console.log('HEREEE ADDRESS',address[0].city)
     }
 
     useEffect(()=>{getLocation()},[])

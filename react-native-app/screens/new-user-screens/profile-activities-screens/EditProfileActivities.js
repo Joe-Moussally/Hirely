@@ -1,9 +1,14 @@
+import { TabRouter, useNavigation } from "@react-navigation/native";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Skills from "../../../components/new-user-components/skills/Skills";
+import { localhost } from "../../../globalVariables";
 import { globalStyles } from "../../../styles/global";
 
-const EditProfileActivities = () => {
+const EditProfileActivities = ({route}) => {
+
+    const navigation = useNavigation()
 
     const [about,setAbout] = useState('')
     //track length of about
@@ -12,9 +17,25 @@ const EditProfileActivities = () => {
     //track skills array
     const [skillsArray,setSkillsArray] = useState([])
 
-    useEffect(()=>{
-        console.log(skillsArray)
-    },['skillsArray',skillsArray])
+    const handleSignUp = () => {
+        axios({
+
+            headers: { 'Content-Type':'multipart/form-data;' },
+            method:'post',
+            url:'http://'+localhost+':8000/api/register',
+            data:route.params.FormData,
+
+        }).then((Response)=>{
+
+            console.log('ADDDDDDDEEEEEEEEEEEDDDDDDDDDDDDDDDDDDDDDD',Response.data)
+            navigation.navigate('Splash')
+
+        }).catch((Error) => {
+
+            console.warn(Error.response.status)
+
+        })
+    }
 
     return (
         
@@ -46,7 +67,9 @@ const EditProfileActivities = () => {
                 {/* Skills section */}
                 <Skills setSkillsArray={setSkillsArray}/>
 
-                <TouchableOpacity style={globalStyles.fullWidthButton}>
+                <TouchableOpacity
+                style={globalStyles.fullWidthButton}
+                onPress={handleSignUp}>
                     <Text style={globalStyles.fullWidthButtonText}>Complete Profile</Text>
                 </TouchableOpacity>
             
