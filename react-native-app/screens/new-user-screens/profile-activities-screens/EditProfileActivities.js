@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { globalStyles } from "../../../styles/global";
 
 const EditProfileActivities = () => {
@@ -9,28 +9,36 @@ const EditProfileActivities = () => {
     const [aboutLength,setAboutLength] = useState(0)
 
     return (
+        
         <View style={globalStyles.container}>
 
             <Text style={globalStyles.blueTitle}>Profile Activities</Text>
 
-            <View style={globalStyles.inputContainer}>
-                <Text style={globalStyles.inputLabel}>Describe yourself in a few words</Text>
-                <TextInput
-                style={globalStyles.input}
-                placeholder="Describe yourself..."
-                multiline
-                value={about}
-                onChangeText={about=> {        
-                    if(about.length<50) {
-                        setAbout(about)
-                    }
-                    setAboutLength(about.length)
-                }}
-                />
-                <Text style={styles.characterCoutner}>{aboutLength}/50</Text>
-            </View>
+            <ScrollView>
 
+                
+
+                <View style={globalStyles.inputContainer}>
+                    <Text style={globalStyles.inputLabel}>Describe yourself in a few words</Text>
+                    <TextInput
+                    style={globalStyles.input}
+                    placeholder="Describe yourself..."
+                    multiline
+                    value={about}
+                    onChangeText={about=> {        
+                        if(about.length<150) {
+                            setAbout(about)
+                        }
+                        setAboutLength(about.length)
+                    }}
+                    />
+                    <Text style={styles.characterCoutner}>{aboutLength}/150</Text>
+                </View>
+            
+            </ScrollView>
+            
         </View>
+        
     );
 }
  
