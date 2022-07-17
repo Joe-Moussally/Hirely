@@ -7,6 +7,8 @@ use App\Http\Controllers\JWTController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\SkillController;
+
 
 Route::middleware(['cors'])->group(function () {
     //JWT apis
@@ -39,5 +41,11 @@ Route::middleware(['cors'])->group(function () {
     //chat apis
     Route::group(['prefix' => 'users'], function(){
         Route::get('/{id?}',[ChatController::class, 'getContactInfo']);
+    });
+
+    //skills apis
+    Route::group(['prefix' => 'skills'], function(){
+        // Route::get('/{id?}',[ChatController::class, 'getContactInfo']);
+        Route::post('/{id?}',[InterestController::class, 'addInterest']);
     });
 });
