@@ -124,6 +124,7 @@ class JWTController extends Controller
     public function removePicture() {
         $user = User::find(Auth::user()->id);
         $user->picture_base64 = null;
+        $user->save();
 
         return response()->json([
             'status' => 'deleted',

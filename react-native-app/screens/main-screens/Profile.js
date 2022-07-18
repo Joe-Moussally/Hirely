@@ -135,7 +135,17 @@ export default function Profile({ setTokenApp }) {
 
     //function to delete the user's picture
     const removePicture = () => {
-
+        AsyncStorage.getItem('token').then((token) => {
+            axios({
+                headers:{
+                    'Authorization':'Bearer '+token
+                },
+                method:'POST',
+                url:'http://'+localhost+':8000/api/remove_picture',
+            }).then(() => {
+                setImage('')
+            })
+        })
     }
 
     return (
