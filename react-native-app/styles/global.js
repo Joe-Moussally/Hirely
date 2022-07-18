@@ -91,6 +91,19 @@ const globalStyles = StyleSheet.create({
     },
     removeSkillIcon:{
         marginLeft:5
+    },
+    sectionContainer:{
+        marginVertical:10,
+    },
+    sectionTitle:{
+        fontSize:21,
+        fontWeight:'bold',
+    },
+    sectionBody:{
+        marginLeft:10,
+        marginTop:10,
+        fontSize:16,
+        
     }
 })
 

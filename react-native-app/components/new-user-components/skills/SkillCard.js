@@ -3,7 +3,7 @@ import { globalStyles } from "../../../styles/global";
 import { Ionicons } from '@expo/vector-icons';
 
 //removable: if card can be removed when editing profile
-const SkillCard = ({ skill,removable,setSkills,removeSkill }) => {
+const SkillCard = ({ skill,removable,removeSkill }) => {
     return (
         <View style={globalStyles.skillCard}>
             <Text style={globalStyles.skillText}>{skill}</Text>

@@ -95,7 +95,7 @@ const EditProfileActivities = ({route,setAppToken}) => {
                 </View>
 
                 {/* Skills section */}
-                <Skills setSkillsArray={setSkillsArray}/>
+                <Skills setSkillsArray={setSkillsArray} removable={true}/>
 
                 <TouchableOpacity
                 style={globalStyles.fullWidthButton}

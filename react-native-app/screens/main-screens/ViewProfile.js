@@ -3,18 +3,36 @@ import { useEffect, useState } from "react";
 import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback } from "react-native";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
+import { localhost } from "../../globalVariables";
+import Skills from "../../components/new-user-components/skills/Skills";
+import SkillCard from "../../components/new-user-components/skills/SkillCard";
 
 
 const ViewProfile = ({route}) => {
 
     const navigation = useNavigation()
 
-    const [user,setUser] = useState(route.params.user)
+    const [user,setUser] = useState(route.params.user) 
     const [signedInUser,setSignedInUser] = useState('')
+
+    //track user's activities (About and Skills)
+    const [about,setAbout] = useState('')
+    const [skills,setSkills]= useState([])
 
     useEffect(()=>{
         AsyncStorage.getItem('user').then(obj=>{
             setSignedInUser(JSON.parse(obj))
+        })
+
+        axios({
+            method:'GET',
+            url:'http://'+localhost+':8000/api/activities/'+route.params.user.id,
+        }).then(res => {
+            
+            setAbout(res.data.about)
+            setSkills(res.data.skills)
+            console.log('SKILLS',skills)
         })
     },[])
 
@@ -30,7 +48,36 @@ const ViewProfile = ({route}) => {
                 style={globalStyles.profilePicture}
                 source={require('../../assets/profile/default_picture.jpg')}/>
             }
+
             <Text style={styles.username}>{user.name}</Text>
+
+            {
+                //user's about
+                about?
+                <View style={globalStyles.sectionContainer}>
+                    <Text style={globalStyles.sectionTitle}>About</Text>
+                    <Text style={globalStyles.sectionBody}>{about}</Text>
+                </View>:
+                <></>
+            }
+
+            {
+                (skills.length)?
+                <View style={globalStyles.sectionContainer}>
+                    <Text style={globalStyles.sectionTitle}>Skills</Text>
+                    
+                    {/* Skill cards container */}
+                    <View style={globalStyles.skillsContainer}>
+                        {
+                            skills.map(element => (
+                                <SkillCard removable={false} skill={element.skill}/>
+                            ))
+                        }
+                    </View>
+
+                </View>:
+                <></>
+            }
 
             <TouchableNativeFeedback onPress={() => {
                 navigation.pop()

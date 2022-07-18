@@ -8,6 +8,7 @@ use App\Models\User;
 
 class SkillController extends Controller
 {
+    //add a skill and about to user profile
     public function addActivities(Request $Request,$id) {
         $skills = json_decode($Request->skills);
 
@@ -29,6 +30,7 @@ class SkillController extends Controller
         ],200);
     }
 
+    //get skills and about of a user profile
     public function getActivities($id) {
         $about = User::select('about')->where('id',$id)->get();
         $skills = Skill::select('skill')->where('user_id',$id)->get();
