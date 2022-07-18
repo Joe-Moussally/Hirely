@@ -9,6 +9,7 @@ import * as FileSystem from 'expo-file-system';
 import WebView from "react-native-webview";
 import axios from "axios";
 import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
 
 export default function Profile({ setTokenApp }) {
@@ -149,6 +150,7 @@ export default function Profile({ setTokenApp }) {
     }
 
     return (
+        
         <View style={styles.profileContainer}>
         <ScrollView>
 
@@ -213,7 +215,7 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
-            {/* Upload CV Button OR View CV Button*/}
+            {/* Upload CV Button OR View CV Button
             {
                 !user.cv_base64?
                 <TouchableNativeFeedback
@@ -223,7 +225,7 @@ export default function Profile({ setTokenApp }) {
                     </View>
                 </TouchableNativeFeedback>:
                 <></>
-            }
+            } */}
 
             {/* {
                 user.cv_base64?
@@ -235,9 +237,20 @@ export default function Profile({ setTokenApp }) {
             } */}
             
 
-            <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
+            {/* <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/> */}
+
+            {/* Log Out Button */}
+            <TouchableNativeFeedback
+            onPress={()=>setTokenApp(null)}>
+                <View style={styles.logOutContainer}>
+                    <MaterialIcons name="logout" size={24} color="white" />
+                    <Text style={styles.logOutText}>Log Out</Text>
+                </View>
+            </TouchableNativeFeedback>
+
         </ScrollView>
         </View>
+        
     )
 }
 
@@ -297,6 +310,22 @@ const styles = StyleSheet.create({
         marginHorizontal:5,
         color:'#4d0909',
         fontWeight:'bold'
+    },
+    logOutContainer:{
+        height:40,
+        width:'90%',
+        alignSelf:'center',
+        backgroundColor:'#bf0000',
+        marginVertical:30,
+        borderRadius:10,
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    logOutText:{
+        color:'white',
+        fontWeight:'bold',
+        fontSize:21
     }
 
 })
