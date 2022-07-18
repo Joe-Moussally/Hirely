@@ -120,6 +120,16 @@ class JWTController extends Controller
         ],200);
     }
 
+    //function to remove puctire from user's profile
+    public function removePicture() {
+        $user = User::find(Auth::user()->id);
+        $user->picture_base64 = null;
+
+        return response()->json([
+            'status' => 'deleted',
+        ],200);
+    }
+
     public function uploadPDF(Request $Request) {
         $user = User::find(Auth::user()->id);
         $user->cv_base64 = $Request->cv_base64;
