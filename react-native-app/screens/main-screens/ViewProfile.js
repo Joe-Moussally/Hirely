@@ -22,7 +22,7 @@ const ViewProfile = ({route}) => {
     const [skills,setSkills]= useState([])
 
     //whatsapp message
-    let whatsappMessage = 'Hello'+user.name+'! My name is '+signedInUser.name+' and I saw that you are interested in our job offer.'
+    let whatsappMessage = 'Hello '+user.name+'! My name is '+signedInUser.name+' and I saw that you are interested in our job offer.'
 
     useEffect(()=>{
         AsyncStorage.getItem('user').then(obj=>{

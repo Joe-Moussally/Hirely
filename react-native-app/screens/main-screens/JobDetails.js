@@ -182,9 +182,9 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     picture:{
-        width:'55%',
-        aspectRatio:1/1,
-        borderRadius:Dimensions.get('window').width/2,
+        width:200,
+        height:200,
+        borderRadius:Dimensions.get('window').width,
         borderWidth:2,
         borderColor:'#0096ed',
         margin:25

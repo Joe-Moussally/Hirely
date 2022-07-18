@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, View, TouchableOpacity, TouchableNativeFeedback } from "react-native";
+import { Button, Image, StyleSheet, Text, View, TouchableOpacity, TouchableNativeFeedback, ScrollView } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { localhost } from "../../globalVariables";
@@ -17,6 +17,48 @@ export default function Profile({ setTokenApp }) {
     //track user's picture if updated
     const [image,setImage] = useState(null)
     const [cv,setCv] = useState('')
+
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+    const Base64 = {
+        btoa: (input = '')  => {
+          let str = input;
+          let output = '';
+      
+          for (let block = 0, charCode, i = 0, map = chars;
+          str.charAt(i | 0) || (map = '=', i % 1);
+          output += map.charAt(63 & block >> 8 - i % 1 * 8)) {
+      
+            charCode = str.charCodeAt(i += 3/4);
+      
+            if (charCode > 0xFF) {
+              throw new Error("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range.");
+            }
+            
+            block = block << 8 | charCode;
+          }
+          
+          return output;
+        },
+      
+        atob: (input = '') => {
+          let str = input.replace(/=+$/, '');
+          let output = '';
+      
+          if (str.length % 4 == 1) {
+            throw new Error("'atob' failed: The string to be decoded is not correctly encoded.");
+          }
+          for (let bc = 0, bs = 0, buffer, i = 0;
+            buffer = str.charAt(i++);
+      
+            ~buffer && (bs = bc % 4 ? bs * 64 + buffer : buffer,
+              bc++ % 4) ? output += String.fromCharCode(255 & bs >> (-2 * bc & 6)) : 0
+          ) {
+            buffer = chars.indexOf(buffer);
+          }
+      
+          return output;
+        }
+      };
 
     useEffect(()=>{
 
@@ -84,6 +126,7 @@ export default function Profile({ setTokenApp }) {
 
     return (
         <View style={[globalStyles.container,styles.profileContainer]}>
+        <ScrollView>
 
             {
                 //check if user has a profile picture
@@ -102,9 +145,19 @@ export default function Profile({ setTokenApp }) {
 
             <Text style={styles.name}>{user.name}</Text>
 
+            {
+                //user's about
+                user.about?
+                <View style={globalStyles.sectionContainer}>
+                    <Text style={globalStyles.sectionTitle}>About</Text>
+                    <Text style={globalStyles.sectionBody}>{user.about}</Text>
+                </View>:
+                <></>
+            }
+
             {/* Upload CV Button OR View CV Button*/}
             {
-                !user.cv?
+                !user.cv_base64?
                 <TouchableNativeFeedback
                 onPress={fetchPDF}>
                     <View style={globalStyles.outlineButton}>
@@ -114,12 +167,18 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
-            {/* <WebView
-            originWhitelist={['*']} 
-            source={{uri:'data:application/pdf;base64,'+user.cv_base64}}
-            style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/> */}
+            {
+                user.cv_base64?
+                <WebView
+                originWhitelist={['*']} 
+                source={{uri:'data:application/pdf;base64,'+user.cv_base64}}
+                style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/>:
+                <></>
+            }
+            
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
+        </ScrollView>
         </View>
     )
 }
