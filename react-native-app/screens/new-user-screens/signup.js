@@ -16,6 +16,7 @@ export default function SignUp() {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const [number,setNumber] = useState('')
+    const [city,setCity] = useState('')
 
     //track user's location on succesful signup
     const [location, setLocation] = useState(null);
@@ -36,6 +37,7 @@ export default function SignUp() {
         data.append("lat",location.coords.latitude)
         data.append("lng",location.coords.longitude)
         data.append('number',number)
+        data.append('city',city)
 
         navigation.navigate('Activities',{FormData:data})
 
@@ -61,6 +63,7 @@ export default function SignUp() {
             latitude:location.coords.latitude,
             longitude:location.coords.longitude
         })
+        setCity(addressInfo[0].city)
     }
 
     useEffect(()=>{getLocation()},[])

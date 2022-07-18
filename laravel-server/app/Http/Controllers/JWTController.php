@@ -44,6 +44,7 @@ class JWTController extends Controller
         $user->lng = $request->lng;
         $user->lat = $request->lat;
         $user->number = $request->number;
+        $user->city = $request->city;
         $user->save();
 
         return response()->json([
