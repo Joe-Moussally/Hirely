@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback } from "react-native";
+import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback, ScrollView } from "react-native";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
@@ -37,7 +37,9 @@ const ViewProfile = ({route}) => {
     },[])
 
     return (
+        
         <View style={[globalStyles.container,{backgroundColor:'white'}]}>
+        <ScrollView>
 
             {
                 user.picture_base64?
@@ -94,8 +96,9 @@ const ViewProfile = ({route}) => {
                     <Text style={globalStyles.outlineButtonText}>Message</Text>
                 </View>
             </TouchableNativeFeedback>
-
+        </ScrollView>
         </View>
+        
     );
 }
  
