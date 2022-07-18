@@ -8,6 +8,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
 import WebView from "react-native-webview";
 import axios from "axios";
+import { AntDesign } from '@expo/vector-icons';
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
 
 export default function Profile({ setTokenApp }) {
@@ -132,6 +133,11 @@ export default function Profile({ setTokenApp }) {
         }
     }
 
+    //function to delete the user's picture
+    const removePicture = () => {
+
+    }
+
     return (
         <View style={styles.profileContainer}>
         <ScrollView>
@@ -147,9 +153,24 @@ export default function Profile({ setTokenApp }) {
                 source={require('../../assets/profile/default_picture.jpg')} />
             }
 
-            <TouchableOpacity onPress={uploadPicture}>
-                <Text style={styles.changePicture}>Change Picture</Text>
-            </TouchableOpacity>
+            <View style={styles.buttonsContainer}>
+
+                <TouchableOpacity onPress={uploadPicture}>
+                    <View style={styles.changePictureContainer}>
+                        <AntDesign name="picture" size={24} color="#2a4d09" />      
+                        <Text style={styles.changePictureText}>Change Picture</Text>
+                    </View>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={removePicture}>
+                    <View style={styles.removePictureContainer}>
+                        <AntDesign name="close" size={24} color="black" />      
+                        <Text style={styles.removePictureText}>Remove Picture</Text>
+                    </View>
+                </TouchableOpacity>
+
+            </View>
+
 
             <Text style={styles.name}>{user.name}</Text>
 
@@ -221,13 +242,51 @@ const styles = StyleSheet.create({
     profileContainer:{
         backgroundColor:'white',
         paddingHorizontal:15,
-        paddingBottom:70,
+        marginBottom:70,
         paddingTop:15
     },
     changePicture:{
-        alignSelf:'center',
+        alignItems:'center',
+        justifyContent:'center',
         margin:12,
-        textDecorationLine:'underline'
+        // textDecorationLine:'underline'
+        paddingHorizontal:10,
+        paddingVertical:5,
+        backgroundColor:'gray'
     },
+    buttonsContainer:{
+        flexDirection:'row',
+        justifyContent:'center'
+    },
+    changePictureContainer:{
+        alignItems:'center',
+        justifyContent:'center',
+        margin:10,
+        flexDirection:'row',
+        backgroundColor:'#caff99',
+        paddingHorizontal:13,
+        paddingVertical:4,
+        borderRadius:10,
+    },
+    changePictureText:{
+        marginHorizontal:5,
+        color:'#2a4d09',
+        fontWeight:'bold'
+    },
+    removePictureContainer:{
+        alignItems:'center',
+        justifyContent:'center',
+        margin:10,
+        flexDirection:'row',
+        backgroundColor:'#fc9d9d',
+        paddingHorizontal:13,
+        paddingVertical:4,
+        borderRadius:10,
+    },
+    removePictureText:{
+        marginHorizontal:5,
+        color:'#4d0909',
+        fontWeight:'bold'
+    }
 
 })
