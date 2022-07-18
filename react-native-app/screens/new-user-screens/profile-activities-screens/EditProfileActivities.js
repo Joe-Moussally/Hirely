@@ -33,10 +33,13 @@ const EditProfileActivities = ({route,setAppToken}) => {
         }).then((Response)=>{
             setUser(Response.data.user)
 
-            // 2) adding the skills with the new user id
+
+            // 2) adding the skills and about with the new user id
             let skillsData = new FormData()
             skillsData.append('skills',JSON.stringify(skillsArray))
             console.log('SKKKILLLLSSSS',skillsArray)
+
+            //adding skills
             axios({
                 headers: { 'Content-Type':'multipart/form-data;' },
                 method:'POST',
@@ -44,8 +47,13 @@ const EditProfileActivities = ({route,setAppToken}) => {
                 data:skillsData
             }).then(res=>{
                 console.log(res.data)
-                navigation.navigate('Splash')
+                navigation.pop()
+                navigation.pop()
+                navigation.navigate('LogIn')
             }).catch(err=>console.warn(err.response.status))
+
+            //adding about
+
 
         }).catch((Error) => {
 
