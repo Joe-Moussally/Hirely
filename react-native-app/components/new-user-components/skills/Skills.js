@@ -12,23 +12,27 @@ const Skills = ({ setSkillsArray }) => {
     //track skill key in array
     const [key,setKey] = useState(0)
 
-    useEffect(()=>{console.log(skills)},[])
+    useEffect(()=>{setSkills([...skills])
+    console.log(skills)},[skillLength])
     
     //function to add skill to array of skills
     const addSkill = () => {
         if (!skill) return //if input is empty
-        if(skills.length>5) return //warn user max 5 skills
+        if(skills.length>5) return //warn user max 6 skills
         setSkills(prevSkills => [...prevSkills,{key:key, text:skill}])
+        // setSkills(skills)
         setSkillsArray(skills) //update state in parent component (form)
         setKey(key+1)
         setSkill('')//clear input
         setSkillLength(0)
+        console.log(skills)
     }
 
     //function to handle removing skill from array
     const removeSkill = (key) => {
         //find the index of skill
         setSkills(skills.filter((element) => element.key !== key))
+        console.log(skills)
     }
 
     return (

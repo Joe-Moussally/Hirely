@@ -6,7 +6,7 @@ import Skills from "../../../components/new-user-components/skills/Skills";
 import { localhost } from "../../../globalVariables";
 import { globalStyles } from "../../../styles/global";
 
-const EditProfileActivities = ({route}) => {
+const EditProfileActivities = ({route,setAppToken}) => {
 
     const navigation = useNavigation()
 
@@ -14,29 +14,49 @@ const EditProfileActivities = ({route}) => {
     //track length of about
     const [aboutLength,setAboutLength] = useState(0)
 
+    //track the user's id and credentials on successful login
+    const [user,setUser] = useState('')
+
     //track skills array
     const [skillsArray,setSkillsArray] = useState([])
 
     const handleSignUp = () => {
 
-        //adding the email and password of the user
+        // 1) adding the email and password of the user
         axios({
 
             headers: { 'Content-Type':'multipart/form-data;' },
-            method:'post',
+            method:'POST',
             url:'http://'+localhost+':8000/api/register',
             data:route.params.FormData,
 
         }).then((Response)=>{
+            setUser(Response.data.user)
 
-            console.log('ADDDDDDDEEEEEEEEEEEDDDDDDDDDDDDDDDDDDDDDD',Response.data)
-            navigation.navigate('Splash')
+            // 2) adding the skills with the new user id
+            let skillsData = new FormData()
+            skillsData.append('skills',JSON.stringify(skillsArray))
+            console.log('SKKKILLLLSSSS',skillsArray)
+            axios({
+                headers: { 'Content-Type':'multipart/form-data;' },
+                method:'POST',
+                url:'http://'+localhost+':8000/api/skills/'+Response.data.user.id,
+                data:skillsData
+            }).then(res=>{
+                console.log(res.data)
+                navigation.navigate('Splash')
+            }).catch(err=>console.warn(err.response.status))
 
         }).catch((Error) => {
 
             console.warn(Error.response.status)
 
         })
+
+
+
+        
+        // 3) set the user token to redirect to the main app navigation
     }
 
     return (

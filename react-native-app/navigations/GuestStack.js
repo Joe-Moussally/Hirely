@@ -34,7 +34,7 @@ export default function GuestStack({ setTokenApp }) {
                 <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}}/>
                 <Stack.Screen name="LogIn" component={LogInScreen} />
                 <Stack.Screen name="SignUp" component={SignUp} />
-                <Stack.Screen name="Activities" component={EditProfileActivities} />
+                <Stack.Screen name="Activities" component={EditProfileActivities} setTokenApp={setTokenApp}/>
 
             </Stack.Navigator>
 
@@ -49,7 +49,3 @@ const styles = StyleSheet.create({
         backgroundColor:'red'
     }
 })
-
-{/* <Image 
-            source={require('../assets/app-logos/white-brand.png')}
-            style={styles.headerImage}/> */}
