@@ -150,9 +150,9 @@ export default function Profile({ setTokenApp }) {
     }
 
     return (
-        
-        <View style={styles.profileContainer}>
         <ScrollView>
+        <View style={styles.profileContainer}>
+        
 
             {
                 //check if user has a profile picture
@@ -253,8 +253,9 @@ export default function Profile({ setTokenApp }) {
                 </View>
             </TouchableNativeFeedback>
 
-        </ScrollView>
+        
         </View>
+        </ScrollView>
         
     )
 }
