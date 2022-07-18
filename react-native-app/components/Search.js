@@ -32,7 +32,10 @@ const Search = ({setValue}) => {
                     size={30}
                     color="#6b6b6b"
                     style={styles.close}
-                    onPress={()=>{setTextInput('')}}
+                    onPress={()=>{
+                        setTextInput('')
+                        setValue('')
+                    }}
                     />
                     :
                     <></>
