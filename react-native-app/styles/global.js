@@ -98,6 +98,7 @@ const globalStyles = StyleSheet.create({
     sectionTitle:{
         fontSize:21,
         fontWeight:'bold',
+        color:'#205a8a'
     },
     sectionBody:{
         marginLeft:10,
