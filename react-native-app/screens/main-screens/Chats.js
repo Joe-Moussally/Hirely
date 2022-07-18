@@ -42,29 +42,7 @@ export default function Chats() {
                 snapshot.docs.forEach((message) => {
                     chats.push(message.data())
                 })
-                setMessages(chats)
-
-                //get the contact ids from messages
-                chats.forEach(message => {
-                        if(!contactsArray.includes(message.from)) {
-                            contactsArray.push(message.from)
-                        }
-                        if(!contactsArray.includes(message.to)) {
-                            contactsArray.push(message.to)
-                        }
-                })
-                
-                setContactsId(contactsArray)
-                setisLoading(false)
-            })
-
-            //fetching the messages from firestore
-            onSnapshot(q1,(snapshot) => {
-                let chats = []
-                snapshot.docs.forEach((message) => {
-                    chats.push(message.data())
-                })
-                setMessages(chats)
+                setMessages(previous => [...previous,chats])
 
                 //get the contact ids from messages
                 chats.forEach(message => {

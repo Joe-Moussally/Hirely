@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
-import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Linking, Alert } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Linking, Alert, ScrollView, StyleSheet } from "react-native";
 import * as Location from 'expo-location';
+import PhoneInput from 'react-native-phone-input'
 import { globalStyles } from "../../styles/global";
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
@@ -14,6 +15,7 @@ export default function SignUp() {
     const [fullName,setFullName] = useState('')
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const [number,setNumber] = useState('')
 
     //track user's location on succesful signup
     const [location, setLocation] = useState(null);
@@ -65,6 +67,7 @@ export default function SignUp() {
     return (
         <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
         <View style={globalStyles.container}>
+        <ScrollView>
             <Text style={globalStyles.blueTitle}>Sign Up</Text>
 
             {/* Full Name Input */}
@@ -95,6 +98,13 @@ export default function SignUp() {
                 onChangeText={password=> setPassword(password)}/>
             </View>
 
+            {/* Phone Number Input */}
+            <View style={globalStyles.inputContainer}>
+                <Text style={globalStyles.inputLabel}>Phone Number</Text>
+                <PhoneInput
+                style={[globalStyles.input,styles.phoneInput]}/>
+            </View>
+
             
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
@@ -107,8 +117,14 @@ export default function SignUp() {
                 </LinearGradient>
             </TouchableOpacity>
             
-
+        </ScrollView>
         </View>
         </TouchableWithoutFeedback>
     )
 }
+
+const styles = StyleSheet.create({
+    phoneInput:{
+        padding: 16
+    }
+})
