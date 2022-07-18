@@ -12,8 +12,12 @@ const Skills = ({ setSkillsArray }) => {
     //track skill key in array
     const [key,setKey] = useState(0)
 
-    useEffect(()=>{setSkills([...skills])
-    console.log(skills)},[skillLength])
+    useEffect(()=>{
+        //fixing bug not considering last elements
+        setSkills([...skills])
+        setSkillsArray(skills)
+        console.log('EFFECT',skills
+    )},[skillLength])
     
     //function to add skill to array of skills
     const addSkill = () => {
