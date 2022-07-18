@@ -87,7 +87,7 @@ export default function Profile({ setTokenApp }) {
 
             {
                 //check if user has a profile picture
-                image?
+                user.picture_base64?
                 <Image
                 style={globalStyles.profilePicture}
                 source={{uri:image}}/>:

@@ -43,6 +43,7 @@ class JWTController extends Controller
         $user->password = Hash::make($request->password);
         $user->lng = $request->lng;
         $user->lat = $request->lat;
+        $user->number = $request->number;
         $user->save();
 
         return response()->json([

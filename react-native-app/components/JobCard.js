@@ -38,6 +38,8 @@ const JobCard = ({ job }) => {
         
     },[])
 
+    if (!job.user) return <></>
+
     return (
 
         <TouchableNativeFeedback onPress={viewJob}>
