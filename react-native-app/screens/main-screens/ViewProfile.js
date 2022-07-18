@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback, ScrollView, TouchableOpacity, Linking } from "react-native";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
@@ -20,6 +20,9 @@ const ViewProfile = ({route}) => {
     //track user's activities (About and Skills)
     const [about,setAbout] = useState('')
     const [skills,setSkills]= useState([])
+
+    //whatsapp message
+    let whatsappMessage = 'Hello'+user.name+'! My name is '+signedInUser.name+' and I saw that you are interested in our job offer.'
 
     useEffect(()=>{
         AsyncStorage.getItem('user').then(obj=>{
@@ -100,7 +103,9 @@ const ViewProfile = ({route}) => {
             </TouchableNativeFeedback>
 
             {/* Message on whatsapp */}
-            <TouchableOpacity style={globalStyles.whatsappButtonContainer}>
+            <TouchableOpacity
+            style={globalStyles.whatsappButtonContainer}
+            onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
                 <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
                 <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
             </TouchableOpacity>
