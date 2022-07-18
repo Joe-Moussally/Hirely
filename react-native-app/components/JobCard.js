@@ -64,7 +64,7 @@ const JobCard = ({ job }) => {
 
                         <View style={styles.cardLocationContainer}>
                                 <MaterialIcons name="location-on" size={18} color="crimson" />
-                                <Text style={styles.cardLocationText}>{address}</Text>
+                                <Text style={styles.cardLocationText}>{job.user.city}</Text>
                         </View>
                          
                     </View>
