@@ -25,7 +25,7 @@ export default function SignUp() {
 
     const handleSignUp = async () =>{
 
-        if(!location) return //warn user to enable location
+        if(!fullName || !email || !password || !number || !location) return //warn user to enable location
 
         console.log(location.coords.latitude,location.coords.longitude)
 
@@ -35,6 +35,7 @@ export default function SignUp() {
         data.append("password",password)
         data.append("lat",location.coords.latitude)
         data.append("lng",location.coords.longitude)
+        data.append('number',number)
 
         navigation.navigate('Activities',{FormData:data})
 
@@ -102,7 +103,8 @@ export default function SignUp() {
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Phone Number</Text>
                 <PhoneInput
-                style={[globalStyles.input,styles.phoneInput]}/>
+                style={[globalStyles.input,styles.phoneInput]}
+                onChangePhoneNumber={setNumber}/>
             </View>
 
             
@@ -125,6 +127,7 @@ export default function SignUp() {
 
 const styles = StyleSheet.create({
     phoneInput:{
-        padding: 16
+        padding: 16,
+        fontSize:42
     }
 })
