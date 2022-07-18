@@ -5,7 +5,6 @@ import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
-import Skills from "../../components/new-user-components/skills/Skills";
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
 import { FontAwesome } from '@expo/vector-icons';
 

@@ -8,6 +8,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
 import WebView from "react-native-webview";
 import axios from "axios";
+import SkillCard from "../../components/new-user-components/skills/SkillCard";
 
 export default function Profile({ setTokenApp }) {
 
@@ -16,7 +17,7 @@ export default function Profile({ setTokenApp }) {
 
     //track user's picture if updated
     const [image,setImage] = useState(null)
-    const [cv,setCv] = useState('')
+    const [skills,setSkills] = useState([])
 
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     const Base64 = {
@@ -72,6 +73,13 @@ export default function Profile({ setTokenApp }) {
                 setUser(Response.data)
                 setImage('data:image/png;base64,'+user.picture_base64)
             })
+
+            axios({
+                method:'GET',
+                url:'http://'+localhost+':8000/api/activities/'+user.id,
+            }).then(res => {
+                setSkills(res.data.skills)
+            })
         })
 
     },[image])
@@ -125,7 +133,7 @@ export default function Profile({ setTokenApp }) {
     }
 
     return (
-        <View style={[globalStyles.container,styles.profileContainer]}>
+        <View style={styles.profileContainer}>
         <ScrollView>
 
             {
@@ -155,6 +163,25 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
+            {
+                //user's skills
+                (skills.length)?
+                <View style={globalStyles.sectionContainer}>
+                    <Text style={globalStyles.sectionTitle}>Skills</Text>
+                    
+                    {/* Skill cards container */}
+                    <View style={globalStyles.skillsContainer}>
+                        {
+                            skills.map(element => (
+                                <SkillCard removable={false} skill={element.skill}/>
+                            ))
+                        }
+                    </View>
+
+                </View>:
+                <></>
+            }
+
             {/* Upload CV Button OR View CV Button*/}
             {
                 !user.cv_base64?
@@ -167,14 +194,14 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
-            {
+            {/* {
                 user.cv_base64?
                 <WebView
                 originWhitelist={['*']} 
                 source={{uri:'data:application/pdf;base64,'+user.cv_base64}}
                 style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/>:
                 <></>
-            }
+            } */}
             
 
             <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/>
@@ -188,10 +215,14 @@ const styles = StyleSheet.create({
         alignSelf:'center',
         margin:20,
         fontSize:24,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        padding:0
     },
     profileContainer:{
-        backgroundColor:'white'
+        backgroundColor:'white',
+        paddingHorizontal:15,
+        paddingBottom:70,
+        paddingTop:15
     },
     changePicture:{
         alignSelf:'center',
