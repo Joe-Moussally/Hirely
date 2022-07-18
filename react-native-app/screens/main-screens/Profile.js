@@ -174,12 +174,17 @@ export default function Profile({ setTokenApp }) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={removePicture}>
-                    <View style={styles.removePictureContainer}>
-                        <AntDesign name="close" size={24} color="black" />      
-                        <Text style={styles.removePictureText}>Remove Picture</Text>
-                    </View>
-                </TouchableOpacity>
+                {
+                    user.picture_base64?
+                    <TouchableOpacity onPress={removePicture}>
+                        <View style={styles.removePictureContainer}>
+                            <AntDesign name="close" size={24} color="black" />      
+                            <Text style={styles.removePictureText}>Remove Picture</Text>
+                        </View>
+                    </TouchableOpacity>:<></>
+                }
+
+
 
             </View>
 
