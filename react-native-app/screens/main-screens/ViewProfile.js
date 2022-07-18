@@ -1,12 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback, ScrollView } from "react-native";
+import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback, ScrollView, TouchableOpacity } from "react-native";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
 import Skills from "../../components/new-user-components/skills/Skills";
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
+import { FontAwesome } from '@expo/vector-icons';
 
 
 const ViewProfile = ({route}) => {
@@ -81,6 +82,7 @@ const ViewProfile = ({route}) => {
                 <></>
             }
 
+            {/* Message Button */}
             <TouchableNativeFeedback onPress={() => {
                 navigation.pop()
                 navigation.pop()
@@ -96,6 +98,12 @@ const ViewProfile = ({route}) => {
                     <Text style={globalStyles.outlineButtonText}>Message</Text>
                 </View>
             </TouchableNativeFeedback>
+
+            {/* Message on whatsapp */}
+            <TouchableOpacity style={globalStyles.whatsappButtonContainer}>
+                <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
+                <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
+            </TouchableOpacity>
         </ScrollView>
         </View>
         

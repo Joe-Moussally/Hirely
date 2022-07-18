@@ -105,7 +105,29 @@ const globalStyles = StyleSheet.create({
         marginTop:10,
         fontSize:16,
         
+    },
+    //whatsapp button
+    whatsappButtonContainer:{
+        width:'85%',
+        borderColor:'#6adb00',
+        borderRadius:10,
+        borderWidth:4,
+        color:'red',
+        marginVertical:10,
+        marginHorizontal:'7.5%',
+        paddingVertical:7,
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    whatsappButtonText:{
+        color:'#6adb00',
+        fontWeight:'bold',
+        textAlign:'center',
+        fontSize:19
     }
-})
+
+},)
 
 export { globalStyles }
