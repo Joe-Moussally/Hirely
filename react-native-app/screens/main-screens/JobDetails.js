@@ -13,6 +13,7 @@ import RemoveOfferButton from "../../components/buttons/RemoveOfferButton";
 import InterestedApplicantsList from "../../components/InterestedApplicantsList";
 
 
+
 const JobDetails = ({route}) => {
     const navigation = useNavigation()
 

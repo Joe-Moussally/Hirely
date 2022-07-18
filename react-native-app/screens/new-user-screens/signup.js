@@ -63,7 +63,8 @@ export default function SignUp() {
             latitude:location.coords.latitude,
             longitude:location.coords.longitude
         })
-        setCity(addressInfo[0].city)
+        setCity(address[0].city)
+        
     }
 
     useEffect(()=>{getLocation()},[])

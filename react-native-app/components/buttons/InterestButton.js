@@ -8,11 +8,6 @@ import { useEffect, useState } from "react";
 
 const InterestButton = ({interested, setInterested, offerId}) => {
 
-    // //function to set interested to true in Job Details Screen
-    // const setTrue = () => {
-    //     setInterested(true)
-    // }
-
     const [isInterested, setIsInterested] = useState(interested)
 
     //function to submit user's profile
