@@ -35,16 +35,16 @@ const EditProfileActivities = ({route,setAppToken}) => {
 
 
             // 2) adding the skills and about with the new user id
-            let skillsData = new FormData()
-            skillsData.append('skills',JSON.stringify(skillsArray))
-            console.log('SKKKILLLLSSSS',skillsArray)
+            let data = new FormData()
+            data.append('skills',JSON.stringify(skillsArray))
+            data.append('about',about)
 
             //adding skills
             axios({
                 headers: { 'Content-Type':'multipart/form-data;' },
                 method:'POST',
-                url:'http://'+localhost+':8000/api/skills/'+Response.data.user.id,
-                data:skillsData
+                url:'http://'+localhost+':8000/api/activities/'+Response.data.user.id,
+                data:data
             }).then(res=>{
                 console.log(res.data)
                 navigation.pop()
