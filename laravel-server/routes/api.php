@@ -43,8 +43,9 @@ Route::middleware(['cors'])->group(function () {
         Route::get('/{id?}',[ChatController::class, 'getContactInfo']);
     });
 
-    //skills apis
+    //activities(skills and about) apis
     Route::group(['prefix' => 'activities'], function(){
-        Route::post('/{id?}',[SkillController::class, 'addSkills']);
+        Route::post('/{id?}',[SkillController::class, 'addActivities']);
+        Route::get('/{id?}',[SkillController::class, 'getActivities']);
     });
 });
