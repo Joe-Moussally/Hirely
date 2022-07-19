@@ -84,38 +84,47 @@ const ViewProfile = ({route}) => {
                 <></>
             }
 
-            {/* Message Button */}
-            <TouchableNativeFeedback onPress={() => {
-                navigation.pop()
-                navigation.pop()
-                navigation.navigate('Chats',{
-                    screen:'ChatStack',
-                    params: {
-                        contact:route.params.user,
-                        user:signedInUser
-                    }
-                })
-                }}>
-                <View style={globalStyles.outlineButton}>
-                    <Text style={globalStyles.outlineButtonText}>Message</Text>
-                </View>
-            </TouchableNativeFeedback>
+            <View style={styles.getInTouchTextContainer}>
+                <Text style={styles.getInTouchText}>Get In Touch</Text>
+            </View>
 
-            {/* Message on whatsapp */}
-            <TouchableOpacity
-            style={globalStyles.whatsappButtonContainer}
-            onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
-                <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
-                <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
-            </TouchableOpacity>
+            <View style={styles.getInTouchContainer}>
 
-            {/* Call applicant's number */}
-            <TouchableOpacity
-            style={globalStyles.callButtonContainer}
-            onPress={() => Linking.openURL('tel:'+user.number)}>
-                <Ionicons name="ios-call" size={24} color="#6e6e6e" style={{marginRight:5}}/>
-                <Text style={globalStyles.callButtonText}>Phone Call</Text>
-            </TouchableOpacity>
+                {/* Message Button */}
+                <TouchableNativeFeedback onPress={() => {
+                    navigation.pop()
+                    navigation.pop()
+                    navigation.navigate('Chats',{
+                        screen:'ChatStack',
+                        params: {
+                            contact:route.params.user,
+                            user:signedInUser
+                        }
+                    })
+                    }}>
+                    <View style={globalStyles.outlineButton}>
+                        <Text style={globalStyles.outlineButtonText}>Message</Text>
+                    </View>
+                </TouchableNativeFeedback>
+
+                {/* Message on whatsapp */}
+                <TouchableOpacity
+                style={globalStyles.whatsappButtonContainer}
+                onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
+                    <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
+                    <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
+                </TouchableOpacity>
+
+                {/* Call applicant's number */}
+                <TouchableOpacity
+                style={globalStyles.callButtonContainer}
+                onPress={() => Linking.openURL('tel:'+user.number)}>
+                    <Ionicons name="ios-call" size={24} color="#6e6e6e" style={{marginRight:5}}/>
+                    <Text style={globalStyles.callButtonText}>Phone Call</Text>
+                </TouchableOpacity>
+
+            </View>
+
         </ScrollView>
         </View>
         
@@ -130,5 +139,26 @@ const styles = StyleSheet.create({
         fontWeight:'600',
         alignSelf:'center',
         margin:20
+    },
+    getInTouchText:{
+        alignSelf:'center',
+        fontSize:21,
+        fontWeight:'bold',
+        color:'#205a8a',
+        
+    },
+    getInTouchTextContainer:{
+        backgroundColor:'white',
+        transform:[{translateY:17}],
+        zIndex:1,
+        width:200,
+        alignSelf:'center'
+    },
+    getInTouchContainer:{
+        borderWidth:1,
+        borderColor:'#bfbfbf',
+        paddingVertical:30,
+        borderRadius:20,
+        zIndex:0
     }
 })
