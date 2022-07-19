@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { globalStyles } from "../../../styles/global";
-import SkillCard from "./SkillCard";
+import { StyleSheet, Text,View,TextInput,TouchableOpacity } from "react-native";
+import { globalStyles } from "../../styles/global";
+import SkillCard from "../new-user-components/skills/SkillCard";
 
-const Skills = ({ setSkillsArray }) => {
+const EditProfileSkills = ({setSkillsArray,skillsArray}) => {
 
     //track skills input
     const [skill,setSkill] = useState('')
-    const [skills,setSkills] = useState([])
+    const [skills,setSkills] = useState(skillsArray)
     const [skillLength,setSkillLength] = useState(0)
     //track skill key in array
     const [key,setKey] = useState(0)
@@ -17,6 +17,13 @@ const Skills = ({ setSkillsArray }) => {
         setSkills([...skills])
         setSkillsArray(skills)
     },[skillLength])
+
+    //function to handle removing skill from array
+    const removeSkill = (key) => {
+        //find the index of skill
+        setSkills(skills.filter((element) => element.skill !== key))
+        console.log(skills)
+    }
     
     //function to add skill to array of skills
     const addSkill = () => {
@@ -28,13 +35,6 @@ const Skills = ({ setSkillsArray }) => {
         setKey(key+1)
         setSkill('')//clear input
         setSkillLength(0)
-        console.log(skills)
-    }
-
-    //function to handle removing skill from array
-    const removeSkill = (key) => {
-        //find the index of skill
-        setSkills(skills.filter((element) => element.key !== key))
         console.log(skills)
     }
 
@@ -70,10 +70,10 @@ const Skills = ({ setSkillsArray }) => {
                     {
                         skills.map((element => 
                         <SkillCard
-                        skill={element.text}
-                        key={element.key}
+                        skill={element.skill}
+                        key={element.skill}
                         removable={true}
-                        removeSkill={() => removeSkill(element.key)}/>))
+                        removeSkill={() => removeSkill(element.skill)}/>))
                     }
             </View>
 
@@ -81,7 +81,7 @@ const Skills = ({ setSkillsArray }) => {
     );
 }
  
-export default Skills;
+export default EditProfileSkills;
 
 const styles = StyleSheet.create({
     grayedOut:{

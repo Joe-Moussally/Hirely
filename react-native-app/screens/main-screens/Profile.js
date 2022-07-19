@@ -252,7 +252,9 @@ export default function Profile({ setTokenApp }) {
             {/* Edit Profile Activites Button */}
             <TouchableOpacity
             style={globalStyles.outlineButton}
-            onPress={() => {navigation.push('EditStack')}}>
+            onPress={() => {
+                navigation.push('EditStack',{about:user.about,skills:skills})
+            }}>
                 <Text style={globalStyles.outlineButtonText}>Edit Profile</Text>
             </TouchableOpacity>
 
