@@ -65,7 +65,7 @@ export default function Chats() {
     return (
         isLoading?
         <View style={globalStyles.loadingContainer}>
-        <ActivityIndicator
+            <ActivityIndicator
             size={55}
             color='#00a6ff'/> 
         </View>

@@ -13,7 +13,8 @@ export default function MainHeader() {
             <Image
             source={require('../assets/app-logos/white-brand.png')}
             style={styles.image}/>
-            
+    
+            <Text style={{fontSize:37,color:'white',fontWeight:'bold',marginLeft:'-10%'}}>:</Text>
         </View>
     )
 }
@@ -21,7 +22,8 @@ export default function MainHeader() {
 const styles = StyleSheet.create({
     header:{
         height:40,
-        width:'95%',
+        width:'0%',
+        alignSelf:'center',
         display:'flex',
         flexDirection:'row',
         alignItems:'center',

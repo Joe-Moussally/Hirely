@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, View, TouchableOpacity, TouchableNativeFeedback, ScrollView } from "react-native";
+import { Button, Image, StyleSheet, Text, View, TouchableOpacity, TouchableNativeFeedback, ScrollView, ActivityIndicator } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from "react";
 import { localhost } from "../../globalVariables";
@@ -11,6 +11,7 @@ import axios from "axios";
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
+import PdfReader from "rn-pdf-reader-js";
 
 export default function Profile({ setTokenApp }) {
 
@@ -150,6 +151,7 @@ export default function Profile({ setTokenApp }) {
     }
 
     return (
+        user?
         <ScrollView>
         <View style={styles.profileContainer}>
         
@@ -240,22 +242,30 @@ export default function Profile({ setTokenApp }) {
                 style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/>:
                 <></>
             } */}
-            
 
-            {/* <Button title="LOGOUT" onPress={()=>setTokenApp(null)}/> */}
+            {/* <PdfReader
+            source={{base64:'data:application/pdf;base64,'+Base64.atob(user.cv_base64)}}
+            style={{height:200,width:'80%'}}/> */}
+            
 
             {/* Log Out Button */}
             <TouchableNativeFeedback
             onPress={()=>setTokenApp(null)}>
                 <View style={styles.logOutContainer}>
-                    <MaterialIcons name="logout" size={24} color="white" />
+                    <MaterialIcons name="logout" size={21} color="#bf0000"/>
                     <Text style={styles.logOutText}>Log Out</Text>
                 </View>
             </TouchableNativeFeedback>
 
         
         </View>
-        </ScrollView>
+        </ScrollView>:
+
+        <View style={globalStyles.loadingContainer}>
+            <ActivityIndicator
+            size={55}
+            color='#00a6ff'/> 
+        </View>
         
     )
 }
@@ -315,23 +325,24 @@ const styles = StyleSheet.create({
     removePictureText:{
         marginHorizontal:5,
         color:'#4d0909',
-        fontWeight:'bold'
+        fontWeight:'bold',
     },
     logOutContainer:{
         height:40,
         width:'90%',
         alignSelf:'center',
-        backgroundColor:'#bf0000',
-        marginVertical:30,
+        // backgroundColor:'#bf0000',
+        marginTop:30,
         borderRadius:10,
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center'
     },
     logOutText:{
-        color:'white',
+        color:'#bf0000',
         fontWeight:'bold',
-        fontSize:21
+        fontSize:18,
+        textDecorationLine:'underline'
     }
 
 })
