@@ -16,7 +16,7 @@ const ContactCard = ({id,messages}) => {
         
         AsyncStorage.getItem('user').then(obj => {
             setUser(JSON.parse(obj))
-            console.log(user.id,id)
+            console.log(JSON.parse(obj).id,id)
             if (user.id == id) return
 
             //get contact's info from id
@@ -26,15 +26,18 @@ const ContactCard = ({id,messages}) => {
             }).then(res => {
                 setContact(res.data.contact[0])
             })
+
+            let array = []
+            messages.forEach(message => {
+                if((message[0].from == id && message[0].to == user.id) || (message[0].from == user.id && message[0].to == id)) {
+                    array.push(message)
+                }
+            });
+            setConversation(array)
+            
         })
 
-        let array = []
-        messages.forEach(message => {
-            if((message.from == id && message.to == user.id) || (message.from == user.id && message.to == id)) {
-                array.push(message)
-            }
-        });
-        setConversation(array)
+
         
     },[])
 
@@ -42,7 +45,8 @@ const ContactCard = ({id,messages}) => {
     if (user.id == id) return <></>
     return (
         <TouchableNativeFeedback
-        onPress={() => {navigation.navigate('ChatStack',{
+        onPress={() => {
+            navigation.navigate('ChatStack',{
             user:user,
             messages:conversation,
             contact:contact

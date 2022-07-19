@@ -60,8 +60,8 @@ const globalStyles = StyleSheet.create({
         alignSelf:'center',
         borderWidth:3,
         borderColor:'#0096ed',
-        width:200,
-        height:200,
+        width:225,
+        height:225,
         borderRadius:Dimensions.get('window').width/2,
     },
     loadingContainer:{

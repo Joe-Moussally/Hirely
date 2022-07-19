@@ -24,6 +24,7 @@ export default function Chat({ route }) {
     //get the user's chats
     useEffect(() => {
         
+
         //--------------FIREBASE--------------//
 
         //set query to fetch appropriate messages according to the user's id
@@ -33,7 +34,7 @@ export default function Chat({ route }) {
             let array = []
             let contactId = route.params.contact.id
             snapshot.docs.forEach((message) => {
-                if((message.data().from == contactId && message.data().to == user.id) || (message.data().from == user.id && message.data().to == contactId)) {
+                if((message.data().from == contactId && message.data().to == route.params.user.id) || (message.data().from == route.params.user.id && message.data().to == contactId)) {
                     array.push({
                         _id: message.data()._id,
                         text: message.data().text,

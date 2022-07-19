@@ -173,7 +173,7 @@ export default function Profile({ setTokenApp }) {
 
                 <TouchableOpacity onPress={uploadPicture}>
                     <View style={styles.changePictureContainer}>
-                        <AntDesign name="picture" size={24} color="#2a4d09" />      
+                        <AntDesign name="picture" size={16} color="#2a4d09" />      
                         <Text style={styles.changePictureText}>Change Picture</Text>
                     </View>
                 </TouchableOpacity>
@@ -182,7 +182,7 @@ export default function Profile({ setTokenApp }) {
                     user.picture_base64?
                     <TouchableOpacity onPress={removePicture}>
                         <View style={styles.removePictureContainer}>
-                            <AntDesign name="close" size={24} color="black" />      
+                            <AntDesign name="close" size={16} color="black" />      
                             <Text style={styles.removePictureText}>Remove Picture</Text>
                         </View>
                     </TouchableOpacity>:<></>
@@ -298,7 +298,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         margin:12,
-        // textDecorationLine:'underline'
         paddingHorizontal:10,
         paddingVertical:5,
         backgroundColor:'gray'
@@ -310,25 +309,26 @@ const styles = StyleSheet.create({
     changePictureContainer:{
         alignItems:'center',
         justifyContent:'center',
-        margin:10,
+        margin:7,
         flexDirection:'row',
         backgroundColor:'#caff99',
-        paddingHorizontal:13,
+        paddingHorizontal:9,
         paddingVertical:4,
         borderRadius:10,
     },
     changePictureText:{
         marginHorizontal:5,
         color:'#2a4d09',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        fontSize:12
     },
     removePictureContainer:{
         alignItems:'center',
         justifyContent:'center',
-        margin:10,
+        margin:7,
         flexDirection:'row',
         backgroundColor:'#fc9d9d',
-        paddingHorizontal:13,
+        paddingHorizontal:9,
         paddingVertical:4,
         borderRadius:10,
     },
@@ -336,6 +336,7 @@ const styles = StyleSheet.create({
         marginHorizontal:5,
         color:'#4d0909',
         fontWeight:'bold',
+        fontSize:12
     },
     logOutContainer:{
         height:40,
