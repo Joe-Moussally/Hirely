@@ -16,6 +16,7 @@ import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import JobDetails from '../screens/main-screens/JobDetails';
 import ViewProfile from '../screens/main-screens/ViewProfile';
 import Chat from '../components/Chat';
+import EditProfile from '../screens/main-screens/EditProfile';
 
 
 export default function MainAppNavigation({ setTokenApp }) {
@@ -160,6 +161,41 @@ export default function MainAppNavigation({ setTokenApp }) {
             </Stack.Navigator>
         )
     }
+
+    //adding Stack navigation for profile section
+    function ProfileStack({navigation, route}) {
+        //hiding header for pushed screens
+        const routeName = getFocusedRouteNameFromRoute(route);
+        useLayoutEffect(()=>{
+            if (routeName === "EditStack"){
+                navigation.setOptions({
+                    tabBarStyle: styles.hiddenTabBar,
+                    headerShown:false,
+                    
+                });
+            }else {
+                navigation.setOptions({tabBarStyle: styles.tabBar, headerShown:true});
+            }
+        },[navigation,route])
+
+        return(
+            <Stack.Navigator>
+
+                <Stack.Screen
+                name='ProfileStack'
+                component={ProfileScreen}
+                options={{headerShown: false}}/>
+
+                <Stack.Screen
+                name='EditStack'
+                options={{headerShown: false}}
+                component={EditProfile}
+                />
+
+            </Stack.Navigator>
+        )
+    }
+
 
     //passing props to screens
     const ProfileScreen = () => {

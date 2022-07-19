@@ -12,8 +12,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
 import PdfReader from "rn-pdf-reader-js";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Profile({ setTokenApp }) {
+
+    const navigation = useNavigation()
 
     //track user's info
     const [user,setUser] = useState('')
@@ -247,8 +250,10 @@ export default function Profile({ setTokenApp }) {
             style={{height:200,width:'80%'}}/> */}
             
             {/* Edit Profile Activites Button */}
-            <TouchableOpacity style={globalStyles.outlineButton}>
-                <Text style={globalStyles.outlineButtonText}>Edit Profile Activities</Text>
+            <TouchableOpacity
+            style={globalStyles.outlineButton}
+            onPress={() => {navigation.push('EditStack')}}>
+                <Text style={globalStyles.outlineButtonText}>Edit Profile</Text>
             </TouchableOpacity>
 
             {/* Log Out Button */}
