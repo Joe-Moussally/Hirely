@@ -215,7 +215,7 @@ export default function Profile({ setTokenApp }) {
                     <View style={globalStyles.skillsContainer}>
                         {
                             skills.map(element => (
-                                <SkillCard removable={false} skill={element.skill}/>
+                                <SkillCard removable={false} skill={element.skill} key={element.skill}/>
                             ))
                         }
                     </View>
@@ -253,7 +253,7 @@ export default function Profile({ setTokenApp }) {
             <TouchableOpacity
             style={globalStyles.outlineButton}
             onPress={() => {
-                navigation.push('EditStack',{about:user.about,skills:skills})
+                navigation.push('EditStack',{name:user.name,about:user.about,skills:skills})
             }}>
                 <Text style={globalStyles.outlineButtonText}>Edit Profile</Text>
             </TouchableOpacity>

@@ -42,7 +42,7 @@ const EditProfileSkills = ({setSkillsArray,skillsArray}) => {
         <View>
 
             <View style={globalStyles.inputContainer}>
-                    <Text style={globalStyles.inputLabel}>Enter you skills <Text style={styles.grayedOut}>(max. 6)</Text></Text>
+                    <Text style={globalStyles.inputLabel}>Enter your skills <Text style={styles.grayedOut}>(max. 6)</Text></Text>
                     <TextInput
                     style={globalStyles.input}
                     placeholder="Drawing, Hiking..."

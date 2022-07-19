@@ -16,48 +16,13 @@ const EditProfile = ({route}) => {
     const [aboutLength,setAboutLength] = useState(0)
 
     //track the user's id and credentials on successful login
-    const [user,setUser] = useState('')
+    const [name,setName] = useState(route.params.name)
 
     //track skills array
     const [skillsArray,setSkillsArray] = useState(route.params.skills)
 
     const handleUpdate = () => {
-
-        // // 1) adding the email and password of the user
-        // axios({
-
-        //     headers: { 'Content-Type':'multipart/form-data;' },
-        //     method:'POST',
-        //     url:'http://'+localhost+':8000/api/register',
-        //     data:route.params.FormData,
-
-        // }).then((Response)=>{
-        //     setUser(Response.data.user)
-
-
-        //     // 2) adding the skills and about with the new user id
-        //     let data = new FormData()
-        //     data.append('skills',JSON.stringify(skillsArray))
-        //     data.append('about',about)
-
-        //     //adding skills
-        //     axios({
-        //         headers: { 'Content-Type':'multipart/form-data;' },
-        //         method:'POST',
-        //         url:'http://'+localhost+':8000/api/activities/'+Response.data.user.id,
-        //         data:data
-        //     }).then(res=>{
-        //         console.log(res.data)
-        //         navigation.pop()
-        //         navigation.pop()
-        //         navigation.navigate('LogIn')
-        //     }).catch(err=>console.warn(err.response.status))
-
-        //     //adding about
-
-        // }).catch((Error) => {
-        //     console.warn(Error.response.status)
-        // })
+        console.log('ABOUT',about)
     }
 
     return (
@@ -69,6 +34,18 @@ const EditProfile = ({route}) => {
             <ScrollView>
 
                 
+                <View style={globalStyles.inputContainer}>
+                    <Text style={globalStyles.inputLabel}>Change your Full Name</Text>
+                    <TextInput
+                    style={globalStyles.input}
+                    placeholder="Jim Carrey"
+                    multiline
+                    value={name}
+                    onChangeText={setName}
+                    />
+                    <Text style={styles.characterCoutner}>{aboutLength}/150</Text>
+                </View>
+
 
                 <View style={globalStyles.inputContainer}>
                     <Text style={globalStyles.inputLabel}>Describe yourself in a few words</Text>
@@ -93,7 +70,7 @@ const EditProfile = ({route}) => {
                 <TouchableOpacity
                 style={globalStyles.fullWidthButton}
                 onPress={handleUpdate}>
-                    <Text style={globalStyles.fullWidthButtonText}>Complete Profile</Text>
+                    <Text style={globalStyles.fullWidthButtonText}>Update Profile</Text>
                 </TouchableOpacity>
             
             </ScrollView>
