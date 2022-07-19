@@ -24,7 +24,7 @@ const EditProfile = ({route}) => {
     const [skillsArray,setSkillsArray] = useState(route.params.skills)
 
     const handleUpdate = () => {
-        console.log('ABOUT',name)
+
         //get user's token then update the profile
         AsyncStorage.getItem('token').then((token) => {
 
@@ -35,10 +35,11 @@ const EditProfile = ({route}) => {
                 data:{
                     name:name,
                     about:about,
-                    skills:skillsArray
+                    skills:JSON.stringify(skillsArray)
                 }
             }).then(res => {
                 console.log(res.data)
+                navigation.pop()
             }).catch(err => {
                 console.warn(err);
             })

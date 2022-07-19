@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\Skill;
+
 class JWTController extends Controller
 {
     /**
@@ -109,8 +111,30 @@ class JWTController extends Controller
         return response()->json(auth()->user());
     }
 
-    public function updateProfile() {
+    //function to update user's name, about and skills
+    public function updateProfile(Request $Request) {
+        
+        //delete all user's previous skills and store new ones
+        $previous_skills = Skill::where('user_id',Auth::user()->id)->get();
+        foreach ($previous_skills as $skill) {
+            $skill->delete();
+        }
 
+        //insert the new skills
+        $skills = json_decode($Request->skills);
+        foreach($skills as $skill) {
+            $new_skill = new Skill;
+            $new_skill->user_id = Auth::user()->id;
+            $new_skill->skill = $skill->skill;
+            $new_skill->save();
+        }
+
+        //update user's name and about
+        $user = User::find(Auth::user()->id);
+        $user->name = $Request->name;
+        $user->about = $Request->about;
+        $user->save();
+        
 
         return response()->json([
             'status' => 'updated',

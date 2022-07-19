@@ -29,7 +29,7 @@ const EditProfileSkills = ({setSkillsArray,skillsArray}) => {
     const addSkill = () => {
         if (!skill) return //if input is empty
         if(skills.length>5) return //warn user max 6 skills
-        setSkills(prevSkills => [...prevSkills,{key:key, text:skill}])
+        setSkills(prevSkills => [...prevSkills,{key:key, skill:skill}])
         // setSkills(skills)
         setSkillsArray(skills) //update state in parent component (form)
         setKey(key+1)
