@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     profileContainer:{
         backgroundColor:'white',
         paddingHorizontal:15,
-        marginBottom:70,
+        paddingBottom:70,
         paddingTop:15
     },
     changePicture:{

@@ -126,6 +126,27 @@ const globalStyles = StyleSheet.create({
         fontWeight:'bold',
         textAlign:'center',
         fontSize:19
+    },
+    //call button
+    callButtonContainer:{
+        width:'85%',
+        borderColor:'#6e6e6e',
+        borderRadius:10,
+        borderWidth:4,
+        color:'red',
+        marginVertical:10,
+        marginHorizontal:'7.5%',
+        paddingVertical:7,
+        alignItems:'center',
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    callButtonText:{
+        color:'#6e6e6e',
+        fontWeight:'bold',
+        textAlign:'center',
+        fontSize:19
     }
 
 },)

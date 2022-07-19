@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome,Ionicons } from '@expo/vector-icons';
 
 
 const ViewProfile = ({route}) => {
@@ -107,6 +107,14 @@ const ViewProfile = ({route}) => {
             onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
                 <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
                 <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
+            </TouchableOpacity>
+
+            {/* Call applicant's number */}
+            <TouchableOpacity
+            style={globalStyles.callButtonContainer}
+            onPress={() => Linking.openURL('tel:'+user.number)}>
+                <Ionicons name="ios-call" size={24} color="#6e6e6e" style={{marginRight:5}}/>
+                <Text style={globalStyles.callButtonText}>Phone Call</Text>
             </TouchableOpacity>
         </ScrollView>
         </View>
