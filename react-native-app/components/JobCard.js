@@ -1,42 +1,22 @@
 import { Text, View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { useEffect, useState } from "react";
-import * as Location from 'expo-location';
 import { MaterialIcons } from "@expo/vector-icons";
 
 const JobCard = ({ job }) => {
     const navigation = useNavigation()
     const route = useRoute();
 
-    //track the address of the job
-    const [address, setAdress] = useState('')
-
 
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){
-            navigation.navigate('MyJobDetailsStack',{id:job.id,address:address,position:job.position})
+            navigation.navigate('MyJobDetailsStack',{id:job.id,address:job.user.city,position:job.position})
             return
         }
         if(route.name == 'JobsStack') {
-            navigation.navigate('JobDetailsStack',{id:job.id,address:address,position:job.position})
+            navigation.navigate('JobDetailsStack',{id:job.id,address:job.user.city,position:job.position})
         }
         
     }
-
-    useEffect(()=>{
-        
-        let addressInfo
-        const getCityName = async () => {
-            addressInfo = await Location.reverseGeocodeAsync({
-                latitude:Number(job.user.lat),
-                longitude:Number(job.user.lng)
-            })
-            setAdress(addressInfo[0].city)
-        }
-        getCityName()
-        
-        
-    },[])
 
     if (!job.user) return <></>
 
