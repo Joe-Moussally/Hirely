@@ -154,7 +154,6 @@ export default function Profile({ setTokenApp }) {
         user?
         <ScrollView>
         <View style={styles.profileContainer}>
-        
 
             {
                 //check if user has a profile picture
@@ -247,6 +246,10 @@ export default function Profile({ setTokenApp }) {
             source={{base64:'data:application/pdf;base64,'+Base64.atob(user.cv_base64)}}
             style={{height:200,width:'80%'}}/> */}
             
+            {/* Edit Profile Activites Button */}
+            <TouchableOpacity style={globalStyles.outlineButton}>
+                <Text style={globalStyles.outlineButtonText}>Edit Profile Activities</Text>
+            </TouchableOpacity>
 
             {/* Log Out Button */}
             <TouchableNativeFeedback
