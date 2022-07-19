@@ -155,7 +155,7 @@ export default function Profile({ setTokenApp }) {
 
     return (
         user?
-        <ScrollView>
+        <ScrollView style={{backgroundColor:'white'}}>
         <View style={styles.profileContainer}>
 
             {

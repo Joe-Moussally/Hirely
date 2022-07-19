@@ -170,8 +170,6 @@ export default function MainAppNavigation({ setTokenApp }) {
             if (routeName === "EditStack"){
                 navigation.setOptions({
                     tabBarStyle: styles.hiddenTabBar,
-                    headerShown:false,
-                    
                 });
             }else {
                 navigation.setOptions({tabBarStyle: styles.tabBar, headerShown:true});
@@ -231,7 +229,7 @@ export default function MainAppNavigation({ setTokenApp }) {
             
             <Tab.Screen
             name="Profile"
-            component={ProfileScreen}
+            component={ProfileStack}
             options={{tabBarIcon:({color})=>(<Ionicons name="person-sharp" size={30} color={color} />)}}/>
         </Tab.Navigator>
     )
