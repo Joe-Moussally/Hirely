@@ -6,6 +6,8 @@ import Skills from "../../components/new-user-components/skills/Skills";
 import EditProfileSkills from "../../components/profile-components/EditProfileSkills";
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const EditProfile = ({route}) => {
 
@@ -22,7 +24,25 @@ const EditProfile = ({route}) => {
     const [skillsArray,setSkillsArray] = useState(route.params.skills)
 
     const handleUpdate = () => {
-        console.log('ABOUT',about)
+        console.log('ABOUT',name)
+        //get user's token then update the profile
+        AsyncStorage.getItem('token').then((token) => {
+
+            axios({
+                headers:{'Authorization':'Bearer '+token,},
+                method:'POST',
+                url:'http://'+localhost+':8000/api/update',
+                data:{
+                    name:name,
+                    about:about,
+                    skills:skillsArray
+                }
+            }).then(res => {
+                console.log(res.data)
+            }).catch(err => {
+                console.warn(err);
+            })
+        })
     }
 
     return (
@@ -43,7 +63,6 @@ const EditProfile = ({route}) => {
                     value={name}
                     onChangeText={setName}
                     />
-                    <Text style={styles.characterCoutner}>{aboutLength}/150</Text>
                 </View>
 
 

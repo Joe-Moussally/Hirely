@@ -109,6 +109,14 @@ class JWTController extends Controller
         return response()->json(auth()->user());
     }
 
+    public function updateProfile() {
+
+
+        return response()->json([
+            'status' => 'updated',
+        ],200);
+    }
+
 
     //function to upload user picture
     public function uploadPicture(Request $Request) {
