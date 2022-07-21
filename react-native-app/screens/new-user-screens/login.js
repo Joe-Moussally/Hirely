@@ -11,9 +11,24 @@ export default function LogIn({setToken}) {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+
+    const [errorMessage,setErrorMessage] = useState('')
+
+    //function to display error message with timeout
+    const displayError = (message) => {
+        setErrorMessage(message)
+        setTimeout(() => {setErrorMessage('')},4000)
+    }
     
     //function to check email and password on Login attempt
     const handleLogIn = () => {
+
+        //if empty fields, display error
+        if(!email || !password) {
+            displayError('All fields are required')
+            return
+        }
+
         let data = new FormData()
         data.append("email",email)
         data.append("password",password)
@@ -31,8 +46,10 @@ export default function LogIn({setToken}) {
             //fetch user data to store locally
             setUser(Response.data["access_token"])
 
-        }).catch((Error) => {
-            console.log(Error)
+        }).catch((err) => {
+            if (err.response.status) {
+                displayError('Email/Password is incorrect')
+            }
         })
     }
 
@@ -73,7 +90,8 @@ export default function LogIn({setToken}) {
                 onChangeText={password=> setPassword(password)}/>
             </View>
 
-            
+            <Text style={globalStyles.errorMessage}>{errorMessage}</Text>
+
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
             onPress={handleLogIn}>
