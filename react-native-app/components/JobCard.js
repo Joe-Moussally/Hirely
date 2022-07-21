@@ -7,8 +7,6 @@ const JobCard = ({ job }) => {
     const navigation = useNavigation()
     const route = useRoute();
 
-    useEffect(()=>{console.log(job)},[])
-
     const viewJob = () => {
         if(route.name == 'MyJobsStack'){
             navigation.navigate('MyJobDetailsStack',{id:job.id,address:job.user.city,position:job.position})
@@ -43,7 +41,7 @@ const JobCard = ({ job }) => {
 
                         <Text style={styles.cardPosition}>{job.position}</Text>
                         <Text style={styles.cardPoster}>{job.user['name']}</Text>
-                        <Text>{job['salary']}ASD</Text>
+                        <Text>{job.salary}ASD</Text>
 
                         <View style={styles.cardLocationContainer}>
                                 <MaterialIcons name="location-on" size={18} color="crimson" />

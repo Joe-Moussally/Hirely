@@ -19,7 +19,7 @@ class OfferController extends Controller
     public function getOffers() {
         
         $user_id = Auth::user()['id'];
-        $offers = Offer::select('id','position','user_id','salary','salary_period')->where('user_id','!=',$user_id)->orderBy('created_at','desc')->get();
+        $offers = Offer::select('id','position','salary','salary_period','user_id')->where('user_id','!=',$user_id)->orderBy('created_at','desc')->get();
 
         foreach ($offers as $offer) {
             $offer['user'] = $offer->user;
@@ -34,7 +34,7 @@ class OfferController extends Controller
     //get job offers posted by the user
     public function getUserOffers() {
         $user_id = Auth::user()['id'];
-        $offers = Offer::select('id','position','user_id')->where('user_id',$user_id)->get();
+        $offers = Offer::select('id','position','user_id','salary','salary_period')->where('user_id',$user_id)->get();
 
         foreach ($offers as $offer) {
             $offer['user'] = $offer->user;
