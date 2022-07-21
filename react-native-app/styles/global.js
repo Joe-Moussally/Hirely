@@ -147,6 +147,9 @@ const globalStyles = StyleSheet.create({
         fontWeight:'bold',
         textAlign:'center',
         fontSize:19
+    },
+    errorMessage:{
+        color:'#c2112f'
     }
 
 },)
