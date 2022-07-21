@@ -26,7 +26,11 @@ export default function SignUp() {
 
     const handleSignUp = async () =>{
 
-        if(!fullName || !email || !password || !number || !location) return //warn user to enable location
+        //if a fields is empty
+        if(!fullName || !email || !password || !number || !location) {
+            setErrorMsg('All fields are required')
+            return
+        }
 
         console.log(location.coords.latitude,location.coords.longitude)
 
@@ -110,6 +114,7 @@ export default function SignUp() {
                 onChangePhoneNumber={setNumber}/>
             </View>
 
+            <Text style={globalStyles.errorMessage}>{errorMsg}</Text>
             
             <TouchableOpacity
             style={globalStyles.fullWidthButton}

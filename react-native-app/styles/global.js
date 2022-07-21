@@ -149,7 +149,8 @@ const globalStyles = StyleSheet.create({
         fontSize:19
     },
     errorMessage:{
-        color:'#c2112f'
+        color:'#c2112f',
+        fontSize:19,
     }
 
 },)
