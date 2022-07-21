@@ -15,28 +15,25 @@ export default function App() {
 
   //validate if token has expired
   useEffect(()=>{
+    AsyncStorage.getItem('token').then((value)=>{
+      setToken(value)
 
-    const fetchToken = async () => {
-      await AsyncStorage.getItem('token').then((value)=>{
-        setToken(value)
+      axios({
+        method:'POST',
+        url:'http://'+localhost+':8000/api/profile',
+        headers:{
+          'Authorization':'Bearer '+value
+        }
+      }).then(async (Response) => {
+  
+        await AsyncStorage.removeItem('user')
+        await AsyncStorage.setItem('user',JSON.stringify(Response.data))
+  
+      }).catch((err)=>{
+        //token expired or not found
+        console.warn(err)
+        setToken('')
       })
-    }
-    fetchToken()
-
-    axios({
-      method:'POST',
-      url:'http://'+localhost+':8000/api/profile',
-      headers:{
-        'Authorization':'Bearer '+token
-      }
-    }).then(async (Response) => {
-
-      await AsyncStorage.removeItem('user')
-      await AsyncStorage.setItem('user',JSON.stringify(Response.data))
-
-    }).catch((err)=>{
-      //token expired or not found
-      setToken('')
     })
   },[])
 
