@@ -16,7 +16,7 @@ const EditProfileSkills = ({setSkillsArray,skillsArray}) => {
         //fixing bug not considering last elements
         setSkills([...skills])
         setSkillsArray(skills)
-    },[skillLength])
+    },[skills.length])
 
     //function to handle removing skill from array
     const removeSkill = (key) => {
