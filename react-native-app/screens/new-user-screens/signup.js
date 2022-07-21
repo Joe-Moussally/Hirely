@@ -27,8 +27,12 @@ export default function SignUp() {
     const handleSignUp = async () =>{
 
         //if a fields is empty
-        if(!fullName || !email || !password || !number || !location) {
+        if(!fullName || !email || !password || !number ) {
             setErrorMsg('All fields are required')
+            return
+        }
+        if(password.length<6) {
+            setErrorMsg('Password must be at least 6 characters')
             return
         }
 

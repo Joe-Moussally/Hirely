@@ -150,7 +150,9 @@ const globalStyles = StyleSheet.create({
     },
     errorMessage:{
         color:'#c2112f',
-        fontSize:19,
+        fontSize:17,
+        alignSelf:'center',
+        marginVertical:10
     }
 
 },)
