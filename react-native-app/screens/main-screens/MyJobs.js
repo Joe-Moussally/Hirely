@@ -8,6 +8,7 @@ import { localhost } from "../../globalVariables";
 import JobCard from "../../components/JobCard";
 import { useRoute } from "@react-navigation/native";
 import Search from "../../components/Search";
+import EmptyScreenText from "../../components/EmptyScreenText";
 
 
 export default function MyJobs({navigation}) {
@@ -61,10 +62,7 @@ export default function MyJobs({navigation}) {
         })
     },[value])
 
-    return (
-        !jobs?
-        <ActivityIndicator size='large' color='#00a6ff'/>:
-        
+    return (        
         <View style={styles.container}>
 
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
@@ -72,10 +70,13 @@ export default function MyJobs({navigation}) {
             {
                 isLoading?
                 <View style={globalStyles.loadingContainer}>
-                <ActivityIndicator
+                    <ActivityIndicator
                     size={55}
                     color='#00a6ff'/> 
                 </View>
+                :
+                jobs.length == 0?
+                <EmptyScreenText text="You don't have any jobs poster"/>
                 :
                 <FlatList
                 data={filteredJobs}
