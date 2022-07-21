@@ -24,7 +24,8 @@ const AddJob = () => {
 
     //track boolean value for payment info
     const [addSalaryInfo,setAddSalaryInfo] = useState(false)
-    const [salaryPeriod,setSalaryPeriod] = useState('Hour')
+    const [salaryPeriod,setSalaryPeriod] = useState('hour')
+    const [salary,setSalary] = useState('')
 
     //track requirement keys
     const [key,setKey] = useState(0)
@@ -118,16 +119,23 @@ const AddJob = () => {
                     style={styles.checkbox}
                     value={addSalaryInfo}
                     onValueChange={setAddSalaryInfo}
-                    color={addSalaryInfo ? '#0084ff' : undefined}/>
+                    color={addSalaryInfo ? '#00bbff' : undefined}/>
                     <Text style={styles.addSalaryText}>Add salary information</Text>
                 </View>
 
                 {
                     addSalaryInfo?
-                    <View style={styles.addSalaryContainer}>
+                    <View style={styles.salaryInfoContainer}>
+                        <TextInput
+                        keyboardType="number-pad"
+                        value={salary}
+                        onChangeText={setSalary}
+                        style={styles.salaryInput}/>
+                        <Text style={styles.dollarSign}>$/</Text>
                         <Picker
                         selectedValue={salaryPeriod}
                         onValueChange={setSalaryPeriod}
+                        
                         style={{width:'40%'}}
                         >
                             <Picker.item value="hour" label="Hour" />
@@ -135,7 +143,8 @@ const AddJob = () => {
                             <Picker.item value="year" label="Year" />
                         </Picker>
                     </View>:
-                    <></>}
+                    <></>
+                }
 
             </View>
 
@@ -221,5 +230,22 @@ const styles = StyleSheet.create({
     },
     addSalaryText:{
         color:'#696969'
+    },
+    salaryInfoContainer:{
+        borderWidth:2,
+        borderRadius:10,
+        borderColor:'#004f70',
+        flexDirection:'row',
+        justifyContent:'space-between',
+        alignItems:'center'
+    },
+    salaryInput:{
+        fontSize:21,
+        padding:10,
+        width:'40%'
+    },
+    dollarSign:{
+        fontSize:22,
+        color:'#6e6e6e'
     }
 })
