@@ -40,7 +40,12 @@ export default function SignUp() {
             return
         }
         if(password.length<6) {
-            setErrorMsg('Password must be at least 6 characters')
+            displayError('Password must be at least 6 characters')
+            return
+        }
+        if (!location) {
+            displayError('Location is required for signup')
+            Location.requestForegroundPermissionsAsync()
             return
         }
 
