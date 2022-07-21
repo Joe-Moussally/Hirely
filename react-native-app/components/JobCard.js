@@ -41,6 +41,7 @@ const JobCard = ({ job }) => {
 
                         <Text style={styles.cardPosition}>{job.position}</Text>
                         <Text style={styles.cardPoster}>{job.user['name']}</Text>
+                        <Text>HERE</Text>
 
                         <View style={styles.cardLocationContainer}>
                                 <MaterialIcons name="location-on" size={18} color="crimson" />
@@ -59,11 +60,12 @@ const styles = StyleSheet.create({
     jobCardContainer: {
         flexDirection:'row',
         marginVertical:12,
-        padding:20,
+        paddingHorizontal:20,
+        paddingVertical:10,
         alignItems:'center',
         width:'90%',
         alignSelf:'center',
-        height: 125,
+        height: 140,
         backgroundColor: "white",
         borderRadius: 10,
         shadowColor: "rgba(0,0,0,0.72)",
@@ -85,7 +87,8 @@ const styles = StyleSheet.create({
     jobCardInfoContainer:{
         margin:20,
         height:'100%',
-        width:'67%'
+        width:'67%',
+        justifyContent:'space-between'
     },
     cardPosition:{
         fontSize:23,
@@ -99,6 +102,9 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         marginLeft:'auto',
+    },
+    salaryText:{
+
     },
     cardLocationText:{
 
