@@ -39,7 +39,7 @@ const EditProfile = ({route}) => {
                 }
             }).then(res => {
                 console.log(res.data)
-                navigation.pop()
+                navigation.navigate('ProfileStack',{changed:true})
             }).catch(err => {
                 console.warn(err);
             })

@@ -89,7 +89,7 @@ export default function Profile({ setTokenApp }) {
             })
         })
 
-    },[image])
+    },[image,route.params])
 
     //function to fetch PDF from local storage
     const fetchPDF = async () => {

@@ -115,10 +115,10 @@ class JWTController extends Controller
     public function updateProfile(Request $Request) {
         
         //delete all user's previous skills and store new ones
-        $previous_skills = Skill::where('user_id',Auth::user()->id)->get();
-        foreach ($previous_skills as $skill) {
-            $skill->delete();
-        }
+        Skill::where('user_id',Auth::user()->id)->delete();
+        // foreach ($previous_skills as $skill) {
+        //     $skill->delete();
+        // }
 
         //insert the new skills
         $skills = json_decode($Request->skills);
