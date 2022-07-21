@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { localhost } from "../../globalVariables";
 import axios from 'axios'
 import { useNavigation } from "@react-navigation/native";
+import { Picker } from "@react-native-picker/picker";
 
 const AddJob = () => {
 
@@ -23,6 +24,7 @@ const AddJob = () => {
 
     //track boolean value for payment info
     const [addSalaryInfo,setAddSalaryInfo] = useState(false)
+    const [salaryPeriod,setSalaryPeriod] = useState('Hour')
 
     //track requirement keys
     const [key,setKey] = useState(0)
@@ -120,7 +122,20 @@ const AddJob = () => {
                     <Text style={styles.addSalaryText}>Add salary information</Text>
                 </View>
 
-                <Text>{addSalaryInfo?"TRUE":"FALSE"}</Text>
+                {
+                    addSalaryInfo?
+                    <View style={styles.addSalaryContainer}>
+                        <Picker
+                        selectedValue={salaryPeriod}
+                        onValueChange={setSalaryPeriod}
+                        style={{width:'40%'}}
+                        >
+                            <Picker.item value="hour" label="Hour" />
+                            <Picker.item value="month" label="Month" />
+                            <Picker.item value="year" label="Year" />
+                        </Picker>
+                    </View>:
+                    <></>}
 
             </View>
 
