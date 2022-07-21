@@ -24,11 +24,19 @@ export default function SignUp() {
 
     const navigation = useNavigation();
 
+    //function to diplay error messages
+    const displayError = (message) => {
+        setErrorMsg(message)
+        setTimeout(() => {
+            setErrorMsg('')}
+        ,3200)
+    }
+
     const handleSignUp = async () =>{
 
         //if a fields is empty
         if(!fullName || !email || !password || !number ) {
-            setErrorMsg('All fields are required')
+            displayError('All fields are required')
             return
         }
         if(password.length<6) {
