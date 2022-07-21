@@ -76,7 +76,7 @@ export default function MyJobs({navigation}) {
                 </View>
                 :
                 jobs.length == 0?
-                <EmptyScreenText text="You don't have any jobs poster"/>
+                <EmptyScreenText text="You don't have any jobs posted"/>
                 :
                 <FlatList
                 data={filteredJobs}

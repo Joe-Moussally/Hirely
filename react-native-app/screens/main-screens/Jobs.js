@@ -6,6 +6,7 @@ import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import JobCard from "../../components/JobCard";
 import Search from "../../components/Search";
+import EmptyScreenText from "../../components/EmptyScreenText";
 
 
 export default function Jobs() {
@@ -84,6 +85,8 @@ export default function Jobs() {
                     color='#00a6ff'/> 
                 </View>
                 :
+                jobs.length == 0?
+                <EmptyScreenText text="There are no jobs posted recently"/>:
                 <FlatList
                 data={filteredJobs}
                 renderItem={({item}) => <JobCard job={item}/>}

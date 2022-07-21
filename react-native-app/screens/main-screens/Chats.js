@@ -7,6 +7,7 @@ import { collection, getDocs,addDoc, query, where, onSnapshot, doc } from "fireb
 import { db } from "../../firebase";
 import ChatsList from "../../components/chats-components/ChatsList";
 import { globalStyles } from "../../styles/global";
+import EmptyScreenText from "../../components/EmptyScreenText";
 
 export default function Chats() {
 
@@ -91,6 +92,10 @@ export default function Chats() {
             color='#00a6ff'/> 
         </View>
         :
+        (contactsId.length == 0)?
+        <View style={globalStyles.container}>
+            <EmptyScreenText text="You don't have any messages"/>
+        </View>:
 
         <ChatsList user={user} messages={messages} contactIds={contactsId}/>
     )
