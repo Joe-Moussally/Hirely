@@ -1,7 +1,6 @@
 import { Text, View, Image, StyleSheet, TouchableNativeFeedback } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { MaterialIcons } from "@expo/vector-icons";
-import { useEffect } from "react";
+import { MaterialIcons,FontAwesome5 } from "@expo/vector-icons";
 
 const JobCard = ({ job }) => {
     const navigation = useNavigation()
@@ -41,7 +40,9 @@ const JobCard = ({ job }) => {
 
                         <Text style={styles.cardPosition}>{job.position}</Text>
                         <Text style={styles.cardPoster}>{job.user['name']}</Text>
-                        <Text>{job.salary}ASD</Text>
+                        <Text style={styles.salaryText}>
+                            <FontAwesome5 name="dollar-sign" size={14} color="#00cf45" /> {job.salary} $/{job.salary_period}
+                        </Text>
 
                         <View style={styles.cardLocationContainer}>
                                 <MaterialIcons name="location-on" size={18} color="crimson" />
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     },
     cardPoster:{
         marginVertical:10,
-        fontSize:17
+        fontSize:18,
     },
     cardLocationContainer:{
         flexDirection:'row',
@@ -104,7 +105,8 @@ const styles = StyleSheet.create({
         marginLeft:'auto',
     },
     salaryText:{
-
+        fontStyle:'italic',
+        color:'#4d4d4d'
     },
     cardLocationText:{
 
