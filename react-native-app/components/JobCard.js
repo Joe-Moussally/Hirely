@@ -40,9 +40,14 @@ const JobCard = ({ job }) => {
 
                         <Text style={styles.cardPosition}>{job.position}</Text>
                         <Text style={styles.cardPoster}>{job.user['name']}</Text>
-                        <Text style={styles.salaryText}>
-                            <FontAwesome5 name="dollar-sign" size={14} color="#00cf45" /> {job.salary} $/{job.salary_period}
-                        </Text>
+
+                        {
+                            job.salary?
+                            <Text style={styles.salaryText}>
+                                <FontAwesome5 name="dollar-sign" size={14} color="#00cf45" /> {job.salary} $/{job.salary_period}
+                            </Text>:<></>
+                        }
+
 
                         <View style={styles.cardLocationContainer}>
                                 <MaterialIcons name="location-on" size={18} color="crimson" />
