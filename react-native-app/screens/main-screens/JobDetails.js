@@ -122,6 +122,16 @@ const JobDetails = ({route}) => {
                 :<></>
             }
 
+            {
+                //checking if job salary exists
+                details.offer['salary']?
+                <View style={styles.section}>
+                    <Text style={styles.title}>Salary</Text>
+                    <Text style={styles.textDetails}>{details.offer.salary} $/{details.offer.salary_period}</Text>
+                </View>:<></>
+
+            }
+
 
             {/* requirements */}
             {
