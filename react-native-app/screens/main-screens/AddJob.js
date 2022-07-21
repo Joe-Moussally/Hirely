@@ -69,7 +69,7 @@ const AddJob = () => {
         data.append('description',description)
         data.append('requirements',JSON.stringify(requirements))
         data.append('salary',salary)
-        data.append('salary_preiod',salaryPeriod)
+        data.append('salary_period',salaryPeriod)
 
         axios({
 

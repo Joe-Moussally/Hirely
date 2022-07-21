@@ -55,6 +55,8 @@ class OfferController extends Controller
         $offer->position = $Request->position;
         $offer->description = $Request->description;
         $offer->user_id = $Request->user_id;
+        $offer->salary = $Request->salary;
+        $offer->salary_period = $Request->salary_period;
         $offer->save();
 
         $offer_id = $offer->id;
