@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import Checkbox from 'expo-checkbox'
 import Requirement from "../../components/Requirement";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -19,6 +20,9 @@ const AddJob = () => {
     const [requirements,setRequirements] = useState([])
     //track a single requirement
     const [requirement,setRequirement] = useState('')
+
+    //track boolean value for payment info
+    const [addSalaryInfo,setAddSalaryInfo] = useState(false)
 
     //track requirement keys
     const [key,setKey] = useState(0)
@@ -103,6 +107,24 @@ const AddJob = () => {
                 onChangeText={text=> setDescription(text)}/>
             </View>
 
+            {/* Job Salary info */}
+            <View style={globalStyles.inputContainer}>
+                <Text style={globalStyles.inputLabel}>Job Salary</Text>
+
+                <View style={styles.addSalaryContainer}>
+                    <Checkbox
+                    style={styles.checkbox}
+                    value={addSalaryInfo}
+                    onValueChange={setAddSalaryInfo}
+                    color={addSalaryInfo ? '#0084ff' : undefined}/>
+                    <Text style={styles.addSalaryText}>Add salary information</Text>
+                </View>
+
+                <Text>{addSalaryInfo?"TRUE":"FALSE"}</Text>
+
+            </View>
+
+
             {/* JOB REQUIREMENTS */}
             <View style={globalStyles.inputContainer}>
                 <Text style={globalStyles.inputLabel}>Job requirements</Text>
@@ -174,5 +196,15 @@ const styles = StyleSheet.create({
         color:'crimson',
         alignSelf:'center',
         fontSize:17,
+    },
+    checkbox:{
+        margin:8
+    },
+    addSalaryContainer:{
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    addSalaryText:{
+        color:'#696969'
     }
 })

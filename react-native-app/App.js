@@ -18,6 +18,7 @@ export default function App() {
     AsyncStorage.getItem('token').then((value)=>{
       setToken(value)
 
+      //get user's data
       axios({
         method:'POST',
         url:'http://'+localhost+':8000/api/profile',
