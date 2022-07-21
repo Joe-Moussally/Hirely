@@ -43,9 +43,13 @@ export default function SignUp() {
             displayError('Password must be at least 6 characters')
             return
         }
+        if(!email.includes('@')) {
+            displayError('Email must be in correct format')
+            return
+        }
         if (!location) {
             displayError('Location is required for signup')
-            Location.requestForegroundPermissionsAsync()
+            await Location.requestForegroundPermissionsAsync()
             return
         }
 
@@ -100,7 +104,7 @@ export default function SignUp() {
                 <Text style={globalStyles.inputLabel}>Full Name</Text>
                 <TextInput
                 style={globalStyles.input}
-                placeholder="John Doe"
+                placeholder="Kevin Durant"
                 onChangeText={name=> setFullName(name)}/>
             </View>
 
