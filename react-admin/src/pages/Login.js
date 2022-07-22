@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { localhost } from '../globalVariables';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const nav = useNavigate()
 
     const [errorMessage,setErrorMessage] = useState('')
 
@@ -33,7 +36,10 @@ const Login = () => {
                 url:'http://'+localhost+':8000/api/profile'
             }).then(res2 => {
                 console.log(res2.data.role)
-                if (res2.data.role) {displayError('Only Admins are allowed')}
+                if (res2.data.role == 'user') {displayError('Only Admins are allowed')}
+                if (res2.data.role == 'admin') {
+                    nav('/dashboard')
+                }
             })
         }).catch((err) => {
             if (err.response.status == 401) {
