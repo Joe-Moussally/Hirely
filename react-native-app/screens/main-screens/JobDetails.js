@@ -81,7 +81,7 @@ const JobDetails = ({route}) => {
         
         <View >
 
-            <ScreenHeader text="Job Details"/>
+            <ScreenHeader text={details.offer.position+' Job Position'}/>
 
             <ScrollView style={{backgroundColor:'white'}}>
             <View style={globalStyles.container}>

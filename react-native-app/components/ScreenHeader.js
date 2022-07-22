@@ -13,7 +13,7 @@ const ScreenHeader = ({ text, }) => {
             onPress={() => {navigation.pop()}}>
                 <AntDesign name="back" size={24} color="black" style={{marginRight:20}}/>
             </TouchableOpacity>
-            <Text style={globalStyles.blueTitle}>{text}</Text>
+            <Text style={styles.blueTitle}>{text}</Text>
         </View>
     );
 }
@@ -25,6 +25,13 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         padding:10,
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+    },
+    blueTitle:{
+        fontSize:24,
+        fontWeight:'bold',
+        color:'#00a6ff',
+        flexWrap:'wrap',
+        width:'90%'
     }
 })
