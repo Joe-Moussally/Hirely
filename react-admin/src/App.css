@@ -94,3 +94,14 @@
   font-size: 21px;
   font-weight: bold;
 }
+
+@media screen and (max-width: 845px){
+  .hero-container {
+    display: none;
+  }
+  .form-container {
+    width: 70%;
+    height: 600px;
+    min-width: 500px;
+  }
+}
