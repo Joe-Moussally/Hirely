@@ -7,6 +7,7 @@ import axios from "axios";
 import { localhost } from "../../globalVariables";
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
 import { FontAwesome,Ionicons } from '@expo/vector-icons';
+import ScreenHeader from "../../components/ScreenHeader";
 
 
 const ViewProfile = ({route}) => {
@@ -41,91 +42,96 @@ const ViewProfile = ({route}) => {
 
     return (
         
-        <View style={[globalStyles.container,{backgroundColor:'white'}]}>
-        <ScrollView>
+        <View style={{flex:1}}>
 
-            {
-                user.picture_base64?
-                <Image
-                style={globalStyles.profilePicture}
-                source={{uri:'data:image/png;base64,'+user.picture_base64}}/>:
-                <Image
-                style={globalStyles.profilePicture}
-                source={require('../../assets/profile/default_picture.jpg')}/>
-            }
+            <ScreenHeader text={user.name+"'s Profile"}/>
+            
+            <View style={[globalStyles.container,{backgroundColor:'white'}]}>
+            <ScrollView>
 
-            <Text style={styles.username}>{user.name}</Text>
+                {
+                    user.picture_base64?
+                    <Image
+                    style={globalStyles.profilePicture}
+                    source={{uri:'data:image/png;base64,'+user.picture_base64}}/>:
+                    <Image
+                    style={globalStyles.profilePicture}
+                    source={require('../../assets/profile/default_picture.jpg')}/>
+                }
 
-            {
-                //user's about
-                about?
-                <View style={globalStyles.sectionContainer}>
-                    <Text style={globalStyles.sectionTitle}>About</Text>
-                    <Text style={globalStyles.sectionBody}>{about}</Text>
-                </View>:
-                <></>
-            }
+                <Text style={styles.username}>{user.name}</Text>
 
-            {
-                (skills.length)?
-                <View style={globalStyles.sectionContainer}>
-                    <Text style={globalStyles.sectionTitle}>Skills</Text>
-                    
-                    {/* Skill cards container */}
-                    <View style={globalStyles.skillsContainer}>
-                        {
-                            skills.map(element => (
-                                <SkillCard removable={false} skill={element.skill}/>
-                            ))
-                        }
-                    </View>
+                {
+                    //user's about
+                    about?
+                    <View style={globalStyles.sectionContainer}>
+                        <Text style={globalStyles.sectionTitle}>About</Text>
+                        <Text style={globalStyles.sectionBody}>{about}</Text>
+                    </View>:
+                    <></>
+                }
 
-                </View>:
-                <></>
-            }
+                {
+                    (skills.length)?
+                    <View style={globalStyles.sectionContainer}>
+                        <Text style={globalStyles.sectionTitle}>Skills</Text>
+                        
+                        {/* Skill cards container */}
+                        <View style={globalStyles.skillsContainer}>
+                            {
+                                skills.map(element => (
+                                    <SkillCard removable={false} skill={element.skill}/>
+                                ))
+                            }
+                        </View>
 
-            <View style={styles.getInTouchTextContainer}>
-                <Text style={styles.getInTouchText}>Get In Touch</Text>
+                    </View>:
+                    <></>
+                }
+
+                <View style={styles.getInTouchTextContainer}>
+                    <Text style={styles.getInTouchText}>Get In Touch</Text>
+                </View>
+
+                <View style={styles.getInTouchContainer}>
+
+                    {/* Message Button */}
+                    <TouchableNativeFeedback onPress={() => {
+                        navigation.pop()
+                        navigation.pop()
+                        navigation.navigate('Chats',{
+                            screen:'ChatStack',
+                            params: {
+                                contact:route.params.user,
+                                user:signedInUser
+                            }
+                        })
+                        }}>
+                        <View style={globalStyles.outlineButton}>
+                            <Text style={globalStyles.outlineButtonText}>Message</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+
+                    {/* Message on whatsapp */}
+                    <TouchableOpacity
+                    style={globalStyles.whatsappButtonContainer}
+                    onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
+                        <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
+                        <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
+                    </TouchableOpacity>
+
+                    {/* Call applicant's number */}
+                    <TouchableOpacity
+                    style={globalStyles.callButtonContainer}
+                    onPress={() => Linking.openURL('tel:'+user.number)}>
+                        <Ionicons name="ios-call" size={24} color="#6e6e6e" style={{marginRight:5}}/>
+                        <Text style={globalStyles.callButtonText}>Phone Call</Text>
+                    </TouchableOpacity>
+
+                </View>
+
+            </ScrollView>
             </View>
-
-            <View style={styles.getInTouchContainer}>
-
-                {/* Message Button */}
-                <TouchableNativeFeedback onPress={() => {
-                    navigation.pop()
-                    navigation.pop()
-                    navigation.navigate('Chats',{
-                        screen:'ChatStack',
-                        params: {
-                            contact:route.params.user,
-                            user:signedInUser
-                        }
-                    })
-                    }}>
-                    <View style={globalStyles.outlineButton}>
-                        <Text style={globalStyles.outlineButtonText}>Message</Text>
-                    </View>
-                </TouchableNativeFeedback>
-
-                {/* Message on whatsapp */}
-                <TouchableOpacity
-                style={globalStyles.whatsappButtonContainer}
-                onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
-                    <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
-                    <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
-                </TouchableOpacity>
-
-                {/* Call applicant's number */}
-                <TouchableOpacity
-                style={globalStyles.callButtonContainer}
-                onPress={() => Linking.openURL('tel:'+user.number)}>
-                    <Ionicons name="ios-call" size={24} color="#6e6e6e" style={{marginRight:5}}/>
-                    <Text style={globalStyles.callButtonText}>Phone Call</Text>
-                </TouchableOpacity>
-
-            </View>
-
-        </ScrollView>
         </View>
         
     );

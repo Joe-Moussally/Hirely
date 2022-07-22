@@ -89,8 +89,9 @@ const AddJob = () => {
 
     return (
         
+        
         <View style={styles.formContainer}>
-
+            
             <ScreenHeader text="Add Job"/>
 
             <ScrollView>

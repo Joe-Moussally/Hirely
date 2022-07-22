@@ -1,8 +1,5 @@
 import { Image, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useState } from "react";
-import { localhost } from "../globalVariables";
-import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 
 const ChatHeader = ({contact}) => {

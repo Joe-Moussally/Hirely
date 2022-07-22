@@ -84,13 +84,13 @@ export default function MainAppNavigation({ setTokenApp }) {
                 <Stack.Screen
                 name='MyJobDetailsStack'
                 component={JobDetails}
-                options={({route}) => ({title: route.params.position+' Job Details'})}
+                options={({route}) => ({title: route.params.position+' Job Details',headerShown:false})}
                 />
 
                 <Stack.Screen
                 name='ViewProfileStack'
                 component={ViewProfile}
-                options={({route}) => ({headerTitle: route.params.user.name+"'s Profile"})}
+                options={({route}) => ({headerTitle: route.params.user.name+"'s Profile",headerShown:false})}
                 />
 
             </Stack.Navigator>

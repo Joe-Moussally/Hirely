@@ -23,7 +23,7 @@ export default ScreenHeader;
 const styles = StyleSheet.create({
     headerContainer:{
         backgroundColor:'white',
-        padding:10,
+        padding:5,
         flexDirection:'row',
         alignItems:'center',
     },
