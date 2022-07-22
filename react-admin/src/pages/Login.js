@@ -27,7 +27,7 @@ const Login = () => {
                 url:'http://'+localhost+':8000/api/profile'
             }).then(res2 => {
                 console.log(res2.data.role)
-                if (res2.data.role) {displayError('Only Admin are allowed')}
+                if (res2.data.role) {displayError('Only Admins are allowed')}
             })
         })
     }
