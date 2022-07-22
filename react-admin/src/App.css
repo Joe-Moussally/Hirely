@@ -16,6 +16,39 @@
 
 .form-container {
   width: 400px;
+  height: 450px;
+  padding: 15px;
+  background: rgb(255,255,255);
+  background: linear-gradient(27deg, rgba(255,255,255,0.3676821070224965) 0%, rgba(255,255,255,0.26404065043986347) 29%, rgba(255,255,255,0.11558126668636204) 61%, rgba(255,255,255,0.3956933115042892) 100%);
+}
+
+#form-title {
+  color: white;
+  text-align: center;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-input {
+  border: none;
+  background-color: rgb(219, 219, 219,0.1);
+  height: 40px;
+  width: 100%;
+  font-size: 19px;
+  color: rgb(255, 255, 255,0.8);
+  padding: 10px;
+  margin: 20px 0;
+}
+
+.login-input:focus {
+  outline: none;
+}
+
+.login-input::placeholder {
+  color: rgb(255, 255, 255,0.8);
 }
 
 .hero-container {

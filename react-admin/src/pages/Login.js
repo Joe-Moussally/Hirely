@@ -9,7 +9,7 @@ const Login = () => {
                 </div>
 
                 <div className="form-container">
-                    <h1>Admin Panel</h1>
+                    <h1 id='form-title'>Admin Panel</h1>
                     <input type='email' placeholder="Email" className='login-input'/>
                     <input type='password' placeholder="Password" className='login-input'/>
                     <button className="">Log In</button>
