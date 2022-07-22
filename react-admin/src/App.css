@@ -18,18 +18,17 @@
   width: 400px;
   height: 450px;
   padding: 15px;
-  background: rgb(255,255,255);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   background: linear-gradient(27deg, rgba(255,255,255,0.3676821070224965) 0%, rgba(255,255,255,0.26404065043986347) 29%, rgba(255,255,255,0.11558126668636204) 61%, rgba(255,255,255,0.3956933115042892) 100%);
 }
 
 #form-title {
   color: white;
   text-align: center;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  transform: translateY(-20px);
 }
 
 .login-input {
@@ -41,10 +40,13 @@
   color: rgb(255, 255, 255,0.8);
   padding: 10px;
   margin: 20px 0;
+  border-bottom: 2.5px black solid;
 }
 
 .login-input:focus {
   outline: none;
+  transition: .6s;
+  border-bottom: 2.5px white solid;
 }
 
 .login-input::placeholder {
@@ -59,11 +61,30 @@
 }
 
 #hero-logo {
-  width: 500px;
+  width: 300px;
 }
 
 #hero-text {
   color: #fff;
   text-align: center;
   font-size: 45px;
+}
+
+.outline-button {
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255,0.8);
+  color: black;
+  font-weight: 700;
+  font-size: 21px;
+  padding: 7px 30px;
+  transition: .3s;
+  border: none;
+  margin-top: 30px;
+}
+
+.outline-button:hover {
+  cursor: pointer;
+  background-color: rgb(0, 0, 0,0.8);
+  color: white;
+  transition: .3s;
 }
