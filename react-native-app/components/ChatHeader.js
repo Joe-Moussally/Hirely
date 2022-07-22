@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderBottomColor:'gray',
         borderBottomWidth:.4,
-        backgroundColor:'#1c99ff'
+        backgroundColor:'#00a6ff'
     },
     backArrow:{
         margin:10,
