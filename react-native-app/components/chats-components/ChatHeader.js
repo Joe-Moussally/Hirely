@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 
@@ -7,17 +7,6 @@ const ChatHeader = ({contact}) => {
     //defining react navigation
     const navigation = useNavigation()
 
-    // const [contact,setContact] = useState('')
-
-    // useEffect(()=>{
-    //     //get the user's information
-    //     axios({
-    //         method:'GET',
-    //         url:'http://'+localhost+':8000/api/users/'+contactId,
-    //     }).then((res) => {
-    //         setContact(res.data.contact[0])
-    //     })
-    // },[])
 
     return (
         <View style={styles.headerContainer}>
@@ -38,11 +27,13 @@ const ChatHeader = ({contact}) => {
                 style={styles.picture}/>:
                 <Image
                 style={styles.picture}
-                source={require('../assets/profile/default_picture.jpg')}/>
+                source={require('../../assets/profile/default_picture.jpg')}/>
             }
 
 
             <Text style={styles.name}>{contact.name}</Text>
+
+            <Ionicons name="call" size={30} color="white" />
 
         </View>
     );
@@ -56,6 +47,7 @@ const styles = StyleSheet.create({
         width:'100%',
         flexDirection:'row',
         alignItems:'center',
+        justifyContent:'space-between',
         borderBottomColor:'gray',
         borderBottomWidth:.4,
         backgroundColor:'#00a6ff'
@@ -74,6 +66,6 @@ const styles = StyleSheet.create({
          fontSize:21,
          fontWeight:'600',
          marginHorizontal:20,
-         color:'white'
+         color:'white',
     }
 })
