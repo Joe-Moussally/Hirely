@@ -1,7 +1,12 @@
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { globalStyles } from "../styles/global";
 
 const ScreenHeader = ({ text, }) => {
+
+    const navigation = useNavigation()
+
     return (
         <View style={styles.headerContainer}>
             <TouchableOpacity
@@ -17,6 +22,8 @@ export default ScreenHeader;
 
 const styles = StyleSheet.create({
     headerContainer:{
+        backgroundColor:'white',
+        padding:10,
         flexDirection:'row',
         alignItems:'center'
     }

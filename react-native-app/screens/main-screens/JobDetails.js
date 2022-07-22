@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import InterestButton from "../../components/buttons/InterestButton";
 import RemoveOfferButton from "../../components/buttons/RemoveOfferButton";
 import InterestedApplicantsList from "../../components/InterestedApplicantsList";
+import ScreenHeader from "../../components/ScreenHeader";
 
 
 
@@ -77,112 +78,117 @@ const JobDetails = ({route}) => {
             color='#00a6ff'/> 
         </View>
         :
+        
+        <View >
 
-        <ScrollView style={{backgroundColor:'white'}}>
-        <View style={globalStyles.container}>
+            <ScreenHeader text="Job Details"/>
 
-            {/* Job Details Header */}
-            <View style={styles.header}>
+            <ScrollView style={{backgroundColor:'white'}}>
+            <View style={globalStyles.container}>
+
+                {/* Job Details Header */}
+                <View style={styles.header}>
+
+                    {
+                        details.user.picture_base64?
+                        <Image source={{uri:'data:image/png;base64,'+details.user.picture_base64}} style={styles.picture}/>:
+                        <Image source={require('../../assets/profile/default_picture.jpg')} style={styles.picture}/>
+                    }
+                    <Text style={styles.name}>{details.user['name']}</Text>
+
+                </View>
+
+                {/* postion */}
+                <View style={styles.section}>
+
+                    <Text style={styles.title}>Position</Text>
+                    <Text style={styles.textDetails}>{details.offer['position']}</Text>
+
+                </View>
+
+                {/* location */}
+                <View style={styles.section}>
+
+                    <Text style={styles.title}>Location</Text>
+                    <Text style={styles.textDetails}>{route.params.address}</Text>
+
+                </View>
+
+                {/* description */}
+                {
+                    //checking if job details record exists
+                    details.offer['description']?
+                    <View style={styles.section}>
+
+                        <Text style={styles.title}>Description</Text>
+                        <Text style={styles.textDetails}>{details.offer['description']}</Text>
+
+                    </View>
+                    :<></>
+                }
 
                 {
-                    details.user.picture_base64?
-                    <Image source={{uri:'data:image/png;base64,'+details.user.picture_base64}} style={styles.picture}/>:
-                    <Image source={require('../../assets/profile/default_picture.jpg')} style={styles.picture}/>
+                    //checking if job salary exists
+                    details.offer['salary']?
+                    <View style={styles.section}>
+                        <Text style={styles.title}>Salary</Text>
+                        <Text style={styles.textDetails}>{details.offer.salary} $/{details.offer.salary_period}</Text>
+                    </View>:<></>
+
                 }
-                <Text style={styles.name}>{details.user['name']}</Text>
-
-            </View>
-
-            {/* postion */}
-            <View style={styles.section}>
-
-                <Text style={styles.title}>Position</Text>
-                <Text style={styles.textDetails}>{details.offer['position']}</Text>
-
-            </View>
-
-            {/* location */}
-            <View style={styles.section}>
-
-                <Text style={styles.title}>Location</Text>
-                <Text style={styles.textDetails}>{route.params.address}</Text>
-
-            </View>
-
-            {/* description */}
-            {
-                //checking if job details record exists
-                details.offer['description']?
-                <View style={styles.section}>
-
-                    <Text style={styles.title}>Description</Text>
-                    <Text style={styles.textDetails}>{details.offer['description']}</Text>
-
-                </View>
-                :<></>
-            }
-
-            {
-                //checking if job salary exists
-                details.offer['salary']?
-                <View style={styles.section}>
-                    <Text style={styles.title}>Salary</Text>
-                    <Text style={styles.textDetails}>{details.offer.salary} $/{details.offer.salary_period}</Text>
-                </View>:<></>
-
-            }
 
 
-            {/* requirements */}
-            {
-                //checking if there are requirements for display
-                details.requirements.length?
-                <View style={styles.section}>
+                {/* requirements */}
+                {
+                    //checking if there are requirements for display
+                    details.requirements.length?
+                    <View style={styles.section}>
 
-                    <Text style={styles.title}>Requirements</Text>
-                    {
-                        details.requirements.map((req) => (
-                            <View style={styles.requirementsContainer}>
-                                <Text style={styles.requirementText}>• {req.requirement}</Text>
-                            </View>
-                        ))
-                    }
+                        <Text style={styles.title}>Requirements</Text>
+                        {
+                            details.requirements.map((req) => (
+                                <View style={styles.requirementsContainer}>
+                                    <Text style={styles.requirementText}>• {req.requirement}</Text>
+                                </View>
+                            ))
+                        }
 
-                </View>
-                :<></>
-            }
-            
-            {
-                //check if user is the job poster
-                (userId == details.user['id'])?
+                    </View>
+                    :<></>
+                }
                 
-                //remove offer button
-                <RemoveOfferButton offerId={route.params.id}/>
-                :<></>
-            }
+                {
+                    //check if user is the job poster
+                    (userId == details.user['id'])?
+                    
+                    //remove offer button
+                    <RemoveOfferButton offerId={route.params.id}/>
+                    :<></>
+                }
 
 
-            {/* Interested Button */}
-            {
-                (userId != details.user['id'])?
-                <InterestButton
-                interested={interested}
-                setInterested={setIntersted}
-                offerId={route.params.id}/>:
-                <></>
-            }
-            
+                {/* Interested Button */}
+                {
+                    (userId != details.user['id'])?
+                    <InterestButton
+                    interested={interested}
+                    setInterested={setIntersted}
+                    offerId={route.params.id}/>:
+                    <></>
+                }
+                
 
-            {/* interested applicants section */}
-            {
-                (userId != details.user['id'])?
-                <></>:
-                <InterestedApplicantsList offerId={route.params.id}/>
-            }
-            
+                {/* interested applicants section */}
+                {
+                    (userId != details.user['id'])?
+                    <></>:
+                    <InterestedApplicantsList offerId={route.params.id}/>
+                }
+                
 
+            </View>
+            </ScrollView>
         </View>
-        </ScrollView>
      );
 }
  
