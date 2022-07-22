@@ -11,6 +11,12 @@ const Login = () => {
     },[])
 
     const handleLogin = () => {
+
+        if (document.getElementById('email').value == '' || document.getElementById('password').value == '') {
+            displayError('All fields are required')
+            return
+        }
+
         const data = new FormData()
         //function to handle signup
         data.append('email',document.getElementById('email').value)
@@ -29,6 +35,10 @@ const Login = () => {
                 console.log(res2.data.role)
                 if (res2.data.role) {displayError('Only Admins are allowed')}
             })
+        }).catch((err) => {
+            if (err.response.status == 401) {
+                displayError('Email/Password is incorrect')
+            }
         })
     }
 
