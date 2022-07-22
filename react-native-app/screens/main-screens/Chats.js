@@ -9,6 +9,8 @@ import ChatsList from "../../components/chats-components/ChatsList";
 import { globalStyles } from "../../styles/global";
 import EmptyScreenText from "../../components/EmptyScreenText";
 
+import * as Notifications from 'expo-notifications';
+
 export default function Chats() {
 
     const [user,setUser] = useState('')
@@ -40,6 +42,17 @@ export default function Chats() {
 
             //fetching the messages from firestore
             onSnapshot(q2,(snapshot) => {
+
+                Notifications.scheduleNotificationAsync({
+                    content:{
+                        title:'You a new message!',
+                        body:'THIS IS BODY'
+                    },
+                    trigger:{
+                        seconds:2
+                    }
+                })
+
                 let chats = []
                 snapshot.docs.forEach((message) => {
                     chats.push(message.data())

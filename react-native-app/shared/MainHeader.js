@@ -7,7 +7,7 @@ export default function MainHeader() {
     return(
         <View style={styles.header}>
 
-            {/* <StatusBar backgroundColor={'transparent'} barStyle = "light-content" animated={true} hidden = {false} translucent = {true}/> */}
+            <StatusBar backgroundColor={'#00a6ff'} barStyle = "light-content" animated={true} hidden = {false} translucent = {false}/>
             
             <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back}/>
             <Image
