@@ -42,14 +42,22 @@ export default function Chats() {
 
             //fetching the messages from firestore
             onSnapshot(q2,(snapshot) => {
+                Notifications.setNotificationChannelAsync('default', {
+                    name: 'default',
+                    importance: Notifications.AndroidImportance.MAX,
+                    vibrationPattern: [0, 250, 250, 250],
+                    lightColor: '#FF231F7C',
+                });
 
                 Notifications.scheduleNotificationAsync({
                     content:{
                         title:'You a new message!',
-                        body:'THIS IS BODY'
+                        body:'THIS IS BODY',
+                        data: { data: 'goes here' }
                     },
                     trigger:{
-                        seconds:2
+                        seconds:2,
+                        channelId:'default'
                     }
                 })
 

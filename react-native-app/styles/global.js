@@ -153,6 +153,12 @@ const globalStyles = StyleSheet.create({
         fontSize:17,
         alignSelf:'center',
         marginVertical:10
+    },
+    errorMessageContainer:{
+        backgroundColor:'#ffc7c7',
+        width:'70%',
+        alignSelf:'center',
+        borderRadius:30
     }
 
 },)

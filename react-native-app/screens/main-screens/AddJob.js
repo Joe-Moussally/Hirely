@@ -184,8 +184,14 @@ const AddJob = () => {
                 }
             </View>
 
-            {/* Error Message Text */}
-            <Text style={styles.error}>{errorMessage}</Text>
+            {/* Error Message Text */
+                errorMessage?
+                <View style={globalStyles.errorMessageContainer}>
+                    <Text style={globalStyles.errorMessage}>{errorMessage}</Text>
+                </View>:<></>
+            }
+
+            
 
             {/* Post Job Offer Button */}
             <TouchableOpacity

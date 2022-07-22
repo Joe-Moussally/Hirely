@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { localhost } from "./globalVariables";
 
-
 export default function App() {
 
   
