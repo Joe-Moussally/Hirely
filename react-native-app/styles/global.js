@@ -155,7 +155,8 @@ const globalStyles = StyleSheet.create({
         marginVertical:10
     },
     errorMessageContainer:{
-        backgroundColor:'#ffc7c7',
+        backgroundColor:'#ffdede',
+        marginVertical:14,
         width:'70%',
         alignSelf:'center',
         borderRadius:30

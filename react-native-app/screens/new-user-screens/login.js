@@ -90,7 +90,14 @@ export default function LogIn({setToken}) {
                 onChangeText={password=> setPassword(password)}/>
             </View>
 
-            <Text style={globalStyles.errorMessage}>{errorMessage}</Text>
+            {
+                //error message
+                errorMessage?
+                <View style={globalStyles.errorMessageContainer}>
+                    <Text style={globalStyles.errorMessage}>{errorMessage}</Text>
+                </View>:<></>
+            }
+            
 
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
