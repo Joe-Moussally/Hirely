@@ -7,6 +7,7 @@ import EditProfileSkills from "../../components/profile-components/EditProfileSk
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AntDesign } from '@expo/vector-icons';
 
 
 const EditProfile = ({route}) => {
@@ -49,8 +50,14 @@ const EditProfile = ({route}) => {
     return (
         
         <View style={globalStyles.container}>
-
-            <Text style={globalStyles.blueTitle}>Profile Activities</Text>
+            
+            <View style={styles.headerContainer}>
+                <TouchableOpacity
+                onPress={() => {navigation.pop()}}>
+                    <AntDesign name="back" size={24} color="black" style={{marginRight:20}}/>
+                </TouchableOpacity>
+                <Text style={globalStyles.blueTitle}>Profile Activities</Text>
+            </View>
 
             <ScrollView>
 
@@ -105,5 +112,9 @@ const styles = StyleSheet.create({
     characterCoutner:{
         color:'gray',
         marginLeft:5
+    },
+    headerContainer:{
+        flexDirection:'row',
+        alignItems:'center'
     }
 })

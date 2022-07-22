@@ -135,7 +135,14 @@ export default function SignUp() {
                 onChangePhoneNumber={setNumber}/>
             </View>
 
-            <Text style={globalStyles.errorMessage}>{errorMsg}</Text>
+            {
+                //error message
+                errorMsg?
+                <View style={globalStyles.errorMessageContainer}>
+                    <Text style={globalStyles.errorMessage}>{errorMsg}</Text>
+                </View>:<></>
+            }
+            
             
             <TouchableOpacity
             style={globalStyles.fullWidthButton}
