@@ -8,6 +8,7 @@ import { localhost } from "../../globalVariables";
 import axios from 'axios'
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from "@react-native-picker/picker";
+import ScreenHeader from "../../components/ScreenHeader";
 
 const AddJob = () => {
 
@@ -89,6 +90,9 @@ const AddJob = () => {
     return (
         
         <View style={styles.formContainer}>
+
+            <ScreenHeader text="Add Job"/>
+
             <ScrollView>
             
             {/* JOB TITLE */}

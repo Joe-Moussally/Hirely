@@ -79,7 +79,7 @@ const JobDetails = ({route}) => {
         </View>
         :
         
-        <View >
+        <View style={{flex:1}}>
 
             <ScreenHeader text={details.offer.position+' Job Position'}/>
 
