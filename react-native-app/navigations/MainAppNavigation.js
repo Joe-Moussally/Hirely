@@ -120,7 +120,7 @@ export default function MainAppNavigation({ setTokenApp }) {
 
                 <Stack.Screen
                 name='JobDetailsStack'
-                options={({route}) => ({title: route.params.position+' Job Details'})}
+                options={({route}) => ({title: route.params.position+' Job Details'},{headerShown: false})}
                 component={JobDetails}
                 />
 
@@ -137,7 +137,6 @@ export default function MainAppNavigation({ setTokenApp }) {
                 navigation.setOptions({
                     tabBarStyle: styles.hiddenTabBar,
                     headerShown:false,
-                    
                 });
             }else {
                 navigation.setOptions({tabBarStyle: styles.tabBar, headerShown:true});
