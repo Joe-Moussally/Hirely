@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { localhost } from '../globalVariables';
 
 const Login = () => {
+
+    const [errorMessage,setErrorMessage] = useState('')
 
     useEffect(()=>{
         document.getElementById('login-btn').addEventListener('click',handleLogin)
@@ -17,9 +19,25 @@ const Login = () => {
             method:'POST',
             url:'http://'+localhost+':8000/api/login',
             data:data
-        }).then(res => {
-            console.log(res.data)
+        }).then(res1 => {
+            //check if user is an admin
+            axios({
+                headers:{'Authorization':'Bearer '+res1.data.access_token},
+                method:'POST',
+                url:'http://'+localhost+':8000/api/profile'
+            }).then(res2 => {
+                console.log(res2.data.role)
+                if (res2.data.role) {displayError('Only Admin are allowed')}
+            })
         })
+    }
+
+    //function to display errors
+    const displayError = (message) => {
+        setErrorMessage(message)
+        setTimeout(()=>{
+            setErrorMessage('')
+        },3000)
     }
 
     return (
@@ -33,6 +51,7 @@ const Login = () => {
                 <div className="form-container">
                     <img id='hero-logo' src={require('../assets/white-brand.png')}/>
                     <h1 id='form-title'>Admin Panel</h1>
+                    <p className='error-message'>{errorMessage}</p>
                     <input type='email' placeholder="Email" className='login-input' id='email'/>
                     <input type='password' placeholder="Password" className='login-input' id='password'/>
                     <button className="outline-button" id='login-btn'>Log In</button>

@@ -88,3 +88,8 @@
   color: white;
   transition: .3s;
 }
+
+.error-message {
+  color: red;
+  font-size: 32px;
+}
