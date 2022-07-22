@@ -1,12 +1,12 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, Linking, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
+import { useEffect } from "react";
 
 const ChatHeader = ({contact}) => {
 
     //defining react navigation
     const navigation = useNavigation()
-
 
     return (
         <View style={styles.headerContainer}>
@@ -33,7 +33,11 @@ const ChatHeader = ({contact}) => {
 
             <Text style={styles.name}>{contact.name}</Text>
 
-            <Ionicons name="call" size={30} color="white" />
+            <TouchableOpacity
+            style={styles.callIcon}
+            onPress={() => Linking.openURL('tel:'+contact.number)}>
+                <Ionicons name="call" size={24} color="white"/>
+            </TouchableOpacity>
 
         </View>
     );
@@ -47,7 +51,6 @@ const styles = StyleSheet.create({
         width:'100%',
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'space-between',
         borderBottomColor:'gray',
         borderBottomWidth:.4,
         backgroundColor:'#00a6ff'
@@ -67,5 +70,9 @@ const styles = StyleSheet.create({
          fontWeight:'600',
          marginHorizontal:20,
          color:'white',
+    },
+    callIcon:{
+        margin:15,
+        marginLeft:'auto'
     }
 })
