@@ -12,6 +12,8 @@ function App() {
     console.log('token',token)
     if (token == 'null') {
       nav('/login')
+    }else {
+      nav('/dashboard')
     }
   },[])
 
