@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminMiddleware
 {
@@ -16,6 +17,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $user = Auth::user();
+        if($user && $user->role == 'admin') {
+            return $next($request);
+        }
+        return redirect(route("not-found"));
     }
 }

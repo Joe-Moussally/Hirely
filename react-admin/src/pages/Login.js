@@ -38,6 +38,7 @@ const Login = () => {
                 console.log(res2.data.role)
                 if (res2.data.role == 'user') {displayError('Only Admins are allowed')}
                 if (res2.data.role == 'admin') {
+                    localStorage.setItem('token',res1.data.access_token)
                     nav('/dashboard')
                 }
             })

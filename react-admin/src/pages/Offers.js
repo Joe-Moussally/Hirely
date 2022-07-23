@@ -1,5 +1,11 @@
+import Navbar from "../components/dashboard-components/Navbar";
+
 const Offers = () => {
-    return (<h1>Offers</h1>);
+    return (
+        <>
+            <Navbar />
+        </>
+    );
 }
  
 export default Offers;

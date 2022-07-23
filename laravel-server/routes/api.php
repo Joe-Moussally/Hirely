@@ -8,6 +8,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\AdminController;
 
 
 Route::middleware(['cors'])->group(function () {
@@ -49,5 +50,12 @@ Route::middleware(['cors'])->group(function () {
     Route::group(['prefix' => 'activities'], function(){
         Route::post('/{id?}',[SkillController::class, 'addActivities']);
         Route::get('/{id?}',[SkillController::class, 'getActivities']);
+    });
+
+    //admin apis
+    Route::group(['prefix' => 'admin'], function(){
+        Route::group(['middleware' => 'admin'], function(){
+            Route::get('/stats',[AdminController::class, 'getStats']);
+        });
     });
 });

@@ -1,5 +1,11 @@
+import Navbar from "../components/dashboard-components/Navbar";
+
 const Users = () => {
-    return (<h1>Users</h1>);
+    return (
+        <>
+            <Navbar />
+        </>
+    );
 }
  
 export default Users;
