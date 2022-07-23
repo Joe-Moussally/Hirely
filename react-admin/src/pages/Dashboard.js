@@ -12,7 +12,6 @@ const Dashboard = () => {
             method:'GET',
             url:'http://'+localhost+':8000/api/admin/stats'
         }).then(res => {
-            console.log(res.data)
             setStats(res.data)
         })
         .catch(err => console.log(err))

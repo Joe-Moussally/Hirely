@@ -31,4 +31,12 @@ class AdminController extends Controller
             'cities' => $cities
         ],200);
     }
+
+    public function searchUsers(Request $Request) {
+        $users = User::where('name','LIKE',"%$Request->name%")->get();
+
+        return response()->json([
+            'users' => $users
+        ],200);
+    }
 }

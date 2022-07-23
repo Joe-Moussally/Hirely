@@ -24,6 +24,10 @@ const Users = () => {
     //function to handle search
     const handleSearch = (e) => {
         console.log(e.target.value)
+        axios({
+            headers:{'Authorization':'Bearer '+localStorage.getItem('token')},
+            method:'GET'
+        })
     }
 
     return (
