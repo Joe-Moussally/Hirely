@@ -1,6 +1,6 @@
 const SkillCard = ({ skill }) => {
     return (
-        <div>{skill}</div>
+        <div className="skill-card-container">{skill}</div>
     );
 }
  

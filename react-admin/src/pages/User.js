@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import axios from 'axios'
 import { localhost } from '../globalVariables';
+import SkillCard from "../components/users/SkillCard";
 
 const User = () => {
 
@@ -41,6 +42,17 @@ const User = () => {
                 <div>
                     <h2 className="secondary-title">About</h2>
                     <p className="about">{user.about}</p>
+                </div>
+
+                <div>
+                    <h2 className="secondary-title">Skills</h2>
+                    <div id="skills-container">
+                        {
+                            skills.map(skill => (
+                                <SkillCard skill={skill.skill}/>
+                            ))
+                        }
+                    </div>
                 </div>
 
             </div>
