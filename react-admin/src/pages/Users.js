@@ -55,7 +55,7 @@ const Users = () => {
                 <div id="stats-container">
                     <input type='text' className="search-input" placeholder="Search a user" onChange={handleSearch}/>
 
-                    <div className="user-card-container">
+                    <div id="user-cards-container">
                         {
                             users.map(user => (
                                 <UserCard user={user}/>

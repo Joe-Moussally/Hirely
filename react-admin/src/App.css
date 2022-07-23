@@ -249,14 +249,39 @@ body {
 }
 
 /* user card */
-.user-card {
+#user-cards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
+.user-card {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  border-bottom:#a9a9a9 .5px solid;
+  padding: 20px 20px;
+  transition: .3s;
+}
+
+.user-card:hover {
+  cursor: pointer;
+  transition: .3s;
+  transform: scale(1.08);
 }
 
 .user-card-picture {
-
+  width: 100px;
+  border-radius: 50px;
+  border: 2px white solid;
+  outline:2px solid #0068b8;
 }
 
 .user-card-name {
-  
+  margin: 30px;
+  font-size: 29px;
+  font-weight: 500;
+  color:#616161;
 }
