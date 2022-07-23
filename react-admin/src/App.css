@@ -114,6 +114,7 @@
 
 #nav-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 70px;
   background: linear-gradient(27deg, rgba(0,203,255,1) 0%, rgba(0,138,255,1) 100%);
@@ -126,6 +127,20 @@
 #nav-ul {
   list-style: none;
   display: flex;
+  justify-content: space-between;
+  width: 300px;
+  margin-right: 40px;
+}
+
+#nav-ul > li {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#nav-ul > li:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 /*--------------DASHBOARD--------------*/
