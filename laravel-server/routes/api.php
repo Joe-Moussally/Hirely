@@ -9,6 +9,7 @@ use App\Http\Controllers\InterestController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StatController;
 
 
 Route::middleware(['cors'])->group(function () {
@@ -50,6 +51,12 @@ Route::middleware(['cors'])->group(function () {
     Route::group(['prefix' => 'activities'], function(){
         Route::post('/{id?}',[SkillController::class, 'addActivities']);
         Route::get('/{id?}',[SkillController::class, 'getActivities']);
+    });
+
+    //stat apis
+    Route::group(['prefix' => 'stats'], function(){
+        Route::post('/increment_login',[StatController::class, 'incrementLogin']);
+        Route::post('/increment_signup',[StatController::class, 'incrementSignup']);
     });
 
     //admin apis
