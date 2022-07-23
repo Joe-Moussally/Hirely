@@ -20,6 +20,8 @@ const Dashboard = () => {
     },[])
     
     return (
+        stats.length == 0?
+        <></>:
         <>
             <Navbar />
             <div className="section-container">

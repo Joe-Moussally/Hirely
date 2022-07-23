@@ -10,6 +10,11 @@
   color: #00b3ff;
 }
 
+.secondary-title {
+  font-size: 32px;
+  color: #0068b8;
+}
+
 .section-container {
   padding: 30px;
   max-width: 900px;
@@ -186,4 +191,8 @@ body {
 
 .stat-container > span {
   color: #616161;
+}
+
+#top-cities-container {
+  margin-top: 30px;
 }
