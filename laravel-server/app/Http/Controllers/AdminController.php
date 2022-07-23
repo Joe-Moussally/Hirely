@@ -43,11 +43,11 @@ class AdminController extends Controller
 
     public function getProfile($id) {
         $user = User::find($id);
-        $skills = Skills::where('user_id',$id);
+        $skills = Skill::where('user_id',$id)->get();
 
         return response()->json([
             'user' => $user,
             'skills' => $skills
-        ],200)
+        ],200);
     }
 }
