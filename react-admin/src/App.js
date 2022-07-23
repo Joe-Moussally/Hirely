@@ -13,7 +13,6 @@ function App() {
     if (token == 'null') {
       nav('/login')
     }
-    
   },[])
 
   return (

@@ -10,16 +10,18 @@ import {
     Route,
   } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
+import Navbar from './components/dashboard-components/Navbar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
         <BrowserRouter>
+            <Navbar />
             <Routes>
 
             <Route path="/" element={<App />}/>
-            <Route path="login" element={<Login />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
 
             </Routes>

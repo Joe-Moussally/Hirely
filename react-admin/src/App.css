@@ -22,6 +22,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  border-radius: 10px;
   background: linear-gradient(27deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.4) 29%, rgba(255,255,255,0.3) 61%, rgba(255,255,255,0.2) 100%);
 }
 
@@ -40,7 +41,9 @@
   color: rgb(255, 255, 255,0.8);
   padding: 10px;
   margin: 20px 0;
-  border-bottom: 2.5px black solid;
+  border-bottom: 2.5px #006996 solid;
+  transition: .3s;
+  border-radius: 10px;
 }
 
 .login-input:focus {
@@ -80,6 +83,7 @@
   transition: .3s;
   border: none;
   margin: 30px 0 40px 0;
+  border-radius: 10px;
 }
 
 .outline-button:hover {
@@ -105,3 +109,23 @@
     min-width: 500px;
   }
 }
+
+/*--------------NAVBAR--------------*/
+
+#nav-container {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background: linear-gradient(27deg, rgba(0,203,255,1) 0%, rgba(0,138,255,1) 100%);
+}
+
+#nav-logo {
+  height: 60px;
+}
+
+#nav-ul {
+  list-style: none;
+  display: flex;
+}
+
+/*--------------DASHBOARD--------------*/

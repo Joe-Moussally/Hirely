@@ -65,7 +65,7 @@ const Login = () => {
                 </div>
 
                 <div className="form-container">
-                    <img id='hero-logo' src={require('../assets/white-brand.png')}/>
+                    <img id='hero-logo' src={require('../assets/blue-brand.png')}/>
                     <h1 id='form-title'>Admin Panel</h1>
                     <p className='error-message'>{errorMessage}</p>
                     <input type='email' placeholder="Email" className='login-input' id='email'/>
