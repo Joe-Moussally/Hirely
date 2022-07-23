@@ -168,16 +168,20 @@ body {
   display: flex;
   gap: 20px;
   margin-top: 40px;
+  flex-wrap: wrap;
 }
 
 .stat-container {
   display: flex;
+  font-size: 24px;
+  display: flex;
+  width: 220px;
 }
 
 .stat-container > p {
   font-weight: 800;
   margin: 0 10px;
-  color: #00648f;
+  color: #00477d;
 }
 
 .stat-container > span {

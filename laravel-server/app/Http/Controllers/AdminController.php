@@ -21,11 +21,14 @@ class AdminController extends Controller
         //get number of all time logins and signups
         $stats = Stat::find(1);
 
+        $cities = User::all()->groupBy('city');
+
         return response()->json([
             'user_count' => $user_count,
             'offer_count' => $offer_count,
             'login_count' => $stats->user_login_count,
             'signup_count' => $stats->user_signup_count,
+            'cities' => $cities
         ],200);
     }
 }

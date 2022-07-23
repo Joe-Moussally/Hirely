@@ -4,15 +4,15 @@ import { localhost } from '../globalVariables'
 import Navbar from "../components/dashboard-components/Navbar";
 const Dashboard = () => {
 
-    const [stats,setStats] = useState();
+    const [stats,setStats] = useState('')
 
-    useEffect(() => {
-        
+    useEffect(() => {        
         axios({
             headers:{'Authorization':'Bearer '+localStorage.getItem('token')},
             method:'GET',
             url:'http://'+localhost+':8000/api/admin/stats'
         }).then(res => {
+            console.log(res.data)
             setStats(res.data)
         })
         .catch(err => console.log(err))
@@ -47,6 +47,17 @@ const Dashboard = () => {
                         <span>{stats.signup_count}</span>
                     </div>
 
+                </div>
+
+                <div id="top-cities-container">
+
+                    <h2 className="secondary-title">Top 3 Cities</h2>
+                
+                    {
+                        Object.keys(stats.cities).map(city => (
+                            <p>{city}</p>
+                        ))
+                    }
                 </div>
 
             </div>
