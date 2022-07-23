@@ -12,6 +12,7 @@ import {
 import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
 import Offers from './pages/Offers';
+import User from './pages/User';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,7 +23,8 @@ root.render(
             <Route path="/" element={<App />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
+            <Route path="/users" element={<Users />}/>
+            <Route path='/users/:id' element={<User />}/>
             <Route path="/offers" element={<Offers />} />
 
 

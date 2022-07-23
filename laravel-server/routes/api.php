@@ -63,6 +63,7 @@ Route::middleware(['cors'])->group(function () {
     Route::group(['prefix' => 'admin'], function(){
         Route::group(['middleware' => 'admin'], function(){
             Route::get('/stats',[AdminController::class, 'getStats']);
+            Route::get('/user/{id}',[AdminController::class, 'getProfile']);
             Route::get('/users/{name}',[AdminController::class, 'searchUsers']);
         });
     });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Offer;
 use App\Models\Stat;
+use App\Models\Skill;
 
 class AdminController extends Controller
 {
@@ -38,5 +39,15 @@ class AdminController extends Controller
         return response()->json([
             'users' => $users
         ],200);
+    }
+
+    public function getProfile($id) {
+        $user = User::find($id);
+        $skills = Skills::where('user_id',$id);
+
+        return response()->json([
+            'user' => $user,
+            'skills' => $skills
+        ],200)
     }
 }
