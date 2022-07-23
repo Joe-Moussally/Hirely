@@ -1,16 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
     const nav = useNavigate()
-    const location = useLocation()
 
-    const [path,setPath] = useState(location.pathname)
-
-    useEffect(() => {
-        console.log(location.pathname)
-    },[])
 
     return (
         <div id="nav-container">

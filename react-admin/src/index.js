@@ -11,6 +11,8 @@ import {
   } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/dashboard-components/Navbar';
+import Users from './pages/Users';
+import Offers from './pages/Offers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,6 +24,8 @@ root.render(
             <Route path="/" element={<App />}/>
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/offers" element={<Offers />} />
 
 
             </Routes>
