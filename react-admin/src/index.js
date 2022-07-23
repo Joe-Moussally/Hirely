@@ -10,7 +10,6 @@ import {
     Route,
   } from "react-router-dom";
 import Dashboard from './pages/Dashboard';
-import Navbar from './components/dashboard-components/Navbar';
 import Users from './pages/Users';
 import Offers from './pages/Offers';
 

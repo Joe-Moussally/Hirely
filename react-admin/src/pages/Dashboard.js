@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import axios from 'axios'
 import { localhost } from '../globalVariables'
-import Navbar from "../components/dashboard-components/Navbar";
+import Navbar from "../components/Navbar";
 const Dashboard = () => {
 
     const [stats,setStats] = useState('')

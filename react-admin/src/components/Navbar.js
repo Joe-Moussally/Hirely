@@ -7,7 +7,7 @@ const Navbar = () => {
 
     return (
         <div id="nav-container">
-            <img src={require('../../assets/white-brand.png')} id="nav-logo"/>
+            <img src={require('../assets/white-brand.png')} id="nav-logo"/>
 
             <ul id='nav-ul'>
 

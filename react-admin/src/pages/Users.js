@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Navbar from "../components/dashboard-components/Navbar";
+import Navbar from "../components/Navbar";
+import UserCard from "../components/users/UserCard";
 import { localhost } from "../globalVariables";
 
 const Users = () => {
@@ -23,13 +24,17 @@ const Users = () => {
 
     //function to handle search
     const handleSearch = (e) => {
+        if (e.target.value == '') {
+            setUsers([])
+            return
+        }
 
         axios({
             headers:{'Authorization':'Bearer '+localStorage.getItem('token')},
             method:'GET',
             url:'http://'+localhost+':8000/api/admin/users/'+e.target.value,
         }).then(res => {
-            console.log(res.data.users)
+            setUsers(res.data.users)
         })
     }
 
@@ -43,6 +48,15 @@ const Users = () => {
 
                 <div id="stats-container">
                     <input type='text' className="search-input" placeholder="Search a user" onChange={handleSearch}/>
+
+                    <div className="user-card-container">
+                        {
+                            users.map(user => (
+                                <UserCard user={user}/>
+                            ))
+                        }
+                    </div>
+
                 </div>
 
             </div>

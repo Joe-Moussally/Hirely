@@ -1,4 +1,4 @@
-import Navbar from "../components/dashboard-components/Navbar";
+import Navbar from "../components/Navbar";
 
 const Offers = () => {
     return (

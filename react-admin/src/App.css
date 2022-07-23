@@ -241,9 +241,22 @@ body {
 .search-input:focus {
   transition: .3s;
   outline: none;
-  border-bottom: 5px black solid;
+  border-bottom: 5px rgb(0, 48, 120) solid;
 }
 
 .search-input::placeholder {
   color: #a9a9a9;
+}
+
+/* user card */
+.user-card {
+
+}
+
+.user-card-picture {
+
+}
+
+.user-card-name {
+  
 }
