@@ -23,10 +23,13 @@ const Users = () => {
 
     //function to handle search
     const handleSearch = (e) => {
-        console.log(e.target.value)
+
         axios({
             headers:{'Authorization':'Bearer '+localStorage.getItem('token')},
-            method:'GET'
+            method:'GET',
+            url:'http://'+localhost+':8000/api/admin/users/'+e.target.value,
+        }).then(res => {
+            console.log(res.data.users)
         })
     }
 

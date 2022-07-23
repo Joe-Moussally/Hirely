@@ -32,8 +32,8 @@ class AdminController extends Controller
         ],200);
     }
 
-    public function searchUsers(Request $Request) {
-        $users = User::where('name','LIKE',"%$Request->name%")->get();
+    public function searchUsers($name) {
+        $users = User::where('name','LIKE',"%$name%")->get();
 
         return response()->json([
             'users' => $users
