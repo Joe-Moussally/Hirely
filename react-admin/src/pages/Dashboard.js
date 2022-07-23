@@ -20,53 +20,56 @@ const Dashboard = () => {
     },[])
     
     return (
-        stats.length == 0?
-        <></>:
+
         <>
             <Navbar />
-            <div className="section-container">
-                <h1 className="page-title">Dashboard</h1>
+            {
+                stats.length == 0?
+                <></>:
+                <div className="section-container">
+                    <h1 className="page-title">Dashboard</h1>
 
-                <div id="stats-container">
-                    
-                    <div className="stat-container">
-                        <p>Total users</p>
-                        <span>{stats.user_count}</span>
+                    <div id="stats-container">
+                        
+                        <div className="stat-container">
+                            <p>Total users</p>
+                            <span>{stats.user_count}</span>
+                        </div>
+
+                        <div className="stat-container">
+                            <p>Total job offers</p>
+                            <span>{stats.offer_count}</span>
+                        </div>
+
+                        <div className="stat-container">
+                            <p>Total logins</p>
+                            <span>{stats.login_count}</span>
+                        </div>
+
+                        <div className="stat-container">
+                            <p>Total signups</p>
+                            <span>{stats.signup_count}</span>
+                        </div>
+
                     </div>
 
-                    <div className="stat-container">
-                        <p>Total job offers</p>
-                        <span>{stats.offer_count}</span>
-                    </div>
+                    <div id="top-cities-container">
 
-                    <div className="stat-container">
-                        <p>Total logins</p>
-                        <span>{stats.login_count}</span>
-                    </div>
-
-                    <div className="stat-container">
-                        <p>Total signups</p>
-                        <span>{stats.signup_count}</span>
+                        <h2 className="secondary-title">Cities</h2>
+                        <div id="cities-container">
+                            {
+                                Object.keys(stats.cities).map(city => (
+                                    <div key={city} className='city-container'>
+                                        <p className="city">-{city}</p>
+                                        <span className="city-users-count">{stats.cities[city].length}</span>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
 
                 </div>
-
-                <div id="top-cities-container">
-
-                    <h2 className="secondary-title">Cities</h2>
-                    <div id="cities-container">
-                        {
-                            Object.keys(stats.cities).map(city => (
-                                <div key={city} className='city-container'>
-                                    <p className="city">-{city}</p>
-                                    <span className="city-users-count">{stats.cities[city].length}</span>
-                                </div>
-                            ))
-                        }
-                    </div>
-                </div>
-
-            </div>
+            }
         </>
     );
 }

@@ -13,6 +13,12 @@
 .secondary-title {
   font-size: 32px;
   color: #0068b8;
+  margin: 10px 0;
+}
+
+.number {
+  color: #616161;
+  font-weight: 400;
 }
 
 .section-container {
@@ -26,7 +32,7 @@
 }
 
 body {
-  background-color: rgba(128, 128, 128, 0.173);
+  background-color: rgba(128, 128, 128, 0.048);
 }
 
 /* LOGIN */
@@ -217,4 +223,27 @@ body {
   font-size: 22px;
   font-weight: 500;
   color:#0b273b;
+}
+
+/*--------------USERS--------------*/
+.search-input {
+  border: 1px rgba(0, 0, 0, 0.258) solid;
+  width: 500px;
+  margin: 0 auto;
+  padding: 8px 13px;
+  font-size: 21px;
+  transition: .3s;
+  border-bottom: 3px #007bb8 solid;
+  border-radius: 10px;
+  color: #696969;
+}
+
+.search-input:focus {
+  transition: .3s;
+  outline: none;
+  border-bottom: 5px black solid;
+}
+
+.search-input::placeholder {
+  color: #a9a9a9;
 }
