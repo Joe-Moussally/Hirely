@@ -53,13 +53,17 @@ const Dashboard = () => {
 
                 <div id="top-cities-container">
 
-                    <h2 className="secondary-title">Top 3 Cities</h2>
-                
-                    {
-                        Object.keys(stats.cities).map(city => (
-                            <p>{city}</p>
-                        ))
-                    }
+                    <h2 className="secondary-title">Cities</h2>
+                    <div id="cities-container">
+                        {
+                            Object.keys(stats.cities).map(city => (
+                                <div key={city} className='city-container'>
+                                    <p className="city">-{city}</p>
+                                    <span className="city-users-count">{stats.cities[city].length}</span>
+                                </div>
+                            ))
+                        }
+                    </div>
                 </div>
 
             </div>
