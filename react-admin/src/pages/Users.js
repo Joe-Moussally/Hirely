@@ -35,6 +35,12 @@ const Users = () => {
             url:'http://'+localhost+':8000/api/admin/users/'+e.target.value,
         }).then(res => {
             setUsers(res.data.users)
+
+            //fixing search bug still apearing results
+            if (e.target.value == '') {
+                setUsers([])
+                return
+            }
         })
     }
 
