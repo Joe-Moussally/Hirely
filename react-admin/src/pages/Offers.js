@@ -4,6 +4,9 @@ const Offers = () => {
     return (
         <>
             <Navbar />
+            <div className="section-container">
+                <h1 className="page-title">Offers</h1>
+            </div>
         </>
     );
 }

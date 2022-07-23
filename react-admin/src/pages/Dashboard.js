@@ -18,8 +18,8 @@ const Dashboard = () => {
     return (
         <>
             <Navbar />
-            <div id="dashboard-container">
-                <h1>Dashboard</h1>
+            <div className="section-container">
+                <h1 className="page-title">Dashboard</h1>
             </div>
         </>
     );

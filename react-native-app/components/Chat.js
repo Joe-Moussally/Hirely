@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 
 //firebase
-import { collection, getDocs,addDoc, query, where, onSnapshot } from "firebase/firestore";
+import { collection, getDocs,addDoc, query, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import ChatHeader from "./chats-components/ChatHeader";
 
@@ -35,6 +35,19 @@ export default function Chat({ route }) {
             let contactId = route.params.contact.id
             snapshot.docs.forEach((message) => {
                 if((message.data().from == contactId && message.data().to == route.params.user.id) || (message.data().from == route.params.user.id && message.data().to == contactId)) {
+
+                    // //adding contact's picture to message
+                    // let userData
+                    // if(message.data().user.name == route.params.contact.name) {
+                    //     userData = {
+                    //         _id:message.data().user.id,
+                    //         name:message.data().user.name,
+                    //         avatar:route.params.contact.picture_base64
+                    //     }
+                    // } else {
+                    //     userData = message.data().user
+                    // }
+
                     array.push({
                         _id: message.data()._id,
                         text: message.data().text,
@@ -80,7 +93,7 @@ export default function Chat({ route }) {
             <ChatHeader contact={route.params.contact}/>
             <GiftedChat 
             messages={messages}
-            showAvatarForEveryMessage={false}
+            showAvatarForEveryMessage={true}
             renderAvatar={()=>{return <View/>}}
             onSend={messages => onSend(messages)}
             user={{

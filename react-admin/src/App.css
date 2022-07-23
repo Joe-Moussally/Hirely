@@ -4,6 +4,26 @@
   box-sizing: border-box;
 }
 
+/* --------SHARED-------- */
+.page-title {
+  margin: 30px;
+  font-size: 67px;
+  color: #00b3ff;
+}
+
+.section-container {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.147);
+}
+
+body {
+  background-color: rgba(128, 128, 128, 0.173);
+}
+
 /* LOGIN */
 .login-container {
   display: flex;
