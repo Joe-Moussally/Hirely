@@ -46,25 +46,18 @@ const EditProfileActivities = ({route,setAppToken}) => {
                 url:'http://'+localhost+':8000/api/activities/'+Response.data.user.id,
                 data:data
             }).then(res=>{
-                console.log(res.data)
-                navigation.pop()
-                navigation.pop()
-                navigation.navigate('LogIn')
-            }).catch(err=>console.warn(err.response.status))
 
-            //adding about
-
-
-        }).catch((Error) => {
-
-            console.warn(Error.response.status)
-
+                //on successful register -> increment sign up in stats
+                axios({
+                    method:'POST',
+                    url:'http://'+localhost+':8000/api/stats/increment_signup'
+                }).then((res) => {
+                    navigation.pop()
+                    navigation.pop()
+                    navigation.navigate('LogIn')            
+                })
+            })
         })
-
-
-
-        
-        // 3) set the user token to redirect to the main app navigation
     }
 
     return (

@@ -39,12 +39,20 @@ export default function LogIn({setToken}) {
             headers: { 'Content-Type':'multipart/form-data;' },
         }).then(async (Response)=>{
 
-            await AsyncStorage.setItem('token', Response.data["access_token"])
-            setToken(Response.data["access_token"])
-            console.log('LOGIN.JS ',Response.data['access_token'])
+            //on successful login -> increment login count
+            axios({
+                method:'POST',
+                url:'http://'+localhost+':8000/api/stats/increment_login'
+            }).then(async(res) => {
+                await AsyncStorage.setItem('token', Response.data["access_token"])
+                setToken(Response.data["access_token"])
+                console.log('LOGIN.JS ',Response.data['access_token'])
+    
+                //fetch user data to store locally
+                setUser(Response.data["access_token"])
+            })
 
-            //fetch user data to store locally
-            setUser(Response.data["access_token"])
+
 
         }).catch((err) => {
             if (err.response.status) {
