@@ -76,7 +76,7 @@ const User = () => {
                     </div>:<></>
                 }
 
-                <div id="remove-user-btn-container" onClick={handleRemove}>
+                <div id="remove-btn-container" onClick={handleRemove}>
                     <button>Remove User</button>
                 </div>
 

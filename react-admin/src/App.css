@@ -331,13 +331,13 @@ body {
   background-color: #00b3ff;
 }
 
-#remove-user-btn-container {
+#remove-btn-container {
   display: flex;
   justify-content: center;
   margin-top: 45px;
 }
 
-#remove-user-btn-container > button {
+#remove-btn-container > button {
   background-color: crimson;
   color: white;
   border: none;
@@ -348,7 +348,7 @@ body {
   border: 2px white solid;
 }
 
-#remove-user-btn-container > button:hover {
+#remove-btn-container > button:hover {
   color: crimson;
   background-color: white;
   border: 2px crimson solid;
@@ -371,4 +371,21 @@ body {
 .card-details-container {
   display: flex;
   align-items: center;
+}
+
+/*--------------OFFER DETAILS--------------*/
+#posted-by-picture {
+  width: 50px;
+  margin: 0 10px;
+}
+
+#posted-by-container {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#posted-by {
+  color: #00477d;
+  font-weight: 600;
 }

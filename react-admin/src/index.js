@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
 import Offers from './pages/Offers';
 import User from './pages/User';
+import Offer from './pages/Offer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
             <Route path="/users" element={<Users />}/>
             <Route path='/users/:id' element={<User />}/>
             <Route path="/offers" element={<Offers />} />
+            <Route path="/offer" element={<Offer />} />
 
 
             </Routes>

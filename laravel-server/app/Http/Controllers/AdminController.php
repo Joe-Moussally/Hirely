@@ -61,6 +61,7 @@ class AdminController extends Controller
         ],200);
     }
 
+    //retrieve offers according to search input
     public function searchOffers($name) {
         $offers = Offer::where('position','LIKE',"%$name%")->get();
         foreach ($offers as $offer) {
