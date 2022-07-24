@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import axios from 'axios'
 import { localhost } from '../globalVariables';
@@ -8,6 +8,7 @@ import SkillCard from "../components/users/SkillCard";
 const User = () => {
 
     let params = useParams()
+    let nav = useNavigate()
 
     const [user,setUser] = useState('')
     const [skills,setSkills] = useState([])
@@ -26,7 +27,16 @@ const User = () => {
 
     const handleRemove = () => {
         let id = params.id;
-        console.log(id)
+
+        axios({
+            headers:{'Authorization':'Bearer '+localStorage.getItem('token')},
+            method:'POST',
+            data:{id:id},
+            url:'http://'+localhost+':8000/api/admin/remove_user/',
+        }).then(res => {
+            console.log(res.data)
+            nav('/users')
+        })
     }
 
     return (
