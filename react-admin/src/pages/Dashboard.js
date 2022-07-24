@@ -10,19 +10,64 @@ const Dashboard = () => {
 
     const [stats,setStats] = useState('')
 
-    useEffect(() => {        
+    //track the user numbers in each city to display in histogram
+    const [userNumber,setUserNumbers] = useState([])
+
+    useEffect(() => {
+
         axios({
             headers:{'Authorization':'Bearer '+localStorage.getItem('token')},
             method:'GET',
             url:'http://'+localhost+':8000/api/admin/stats'
         }).then(res => {
             setStats(res.data)
+            console.log(Object.values(stats.cities))
+
+            let temp = []
+            Object.values(stats.cities).forEach(array => {
+                temp.push(array.length)
+            })
+            setUserNumbers(temp)
+
+            //display histogram when data is successfully fetched
+            Highcharts.chart('chart-container',{
+                chart:{type:'column'},
+                title:{text:''},
+                subtitle: {text: ''},
+                xAxis:{
+                    categories:Object.keys(stats.cities),
+                    crosshair:true
+                },
+                yAxis: {
+                    min:0,
+                    title:{text:''}
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                      '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                      pointPadding: 0,
+                      borderWidth: 0,
+                      groupPadding: 0,
+                      shadow: false
+                    }
+                },
+                series:[{
+                    name:'Number of users in each city',
+                    data:userNumber
+                }]
+            })
+
         })
         .catch(err => console.log(err))
 
-        Highcharts.chart('chart-container',{
-
-        })
+        
     },[])
     
     return (
