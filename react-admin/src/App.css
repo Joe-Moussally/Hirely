@@ -299,7 +299,8 @@ body {
 }
 
 .profile-header-picture {
-  width: 300px;
+  width: 250px;
+  margin: 20px;
   border-radius: 150px;
   border: 2px white solid;
   outline:#0068b8 2px solid;

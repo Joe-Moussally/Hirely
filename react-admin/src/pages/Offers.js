@@ -8,10 +8,6 @@ const Offers = () => {
 
     const [offers,setOffers] = useState([])
 
-    // axios({
-    //     method:'GET',
-    //     url:'http://'+localhost+':8000/api/admin/stats'
-    // })
 
     //function to handle search
     const handleSearch = (e) => {
@@ -40,8 +36,6 @@ const Offers = () => {
             <Navbar />
             <div className="section-container">
                 <h1 className="page-title">Offers</h1>
-
-                <h2 className="secondary-title">Total Offers <span className="number">29</span></h2>
 
                 <div id="stats-container">
                     <input type='text' className="search-input" placeholder="Search a job offer..." onChange={handleSearch}/>
