@@ -158,7 +158,6 @@ export default function Profile({ setTokenApp }) {
     return (
         user?
         <ScrollView style={{backgroundColor:'white'}}>
-            <MenuProvider>
         <View style={styles.profileContainer}>
 
         {/* Display Menu for logout option */}
@@ -287,7 +286,6 @@ export default function Profile({ setTokenApp }) {
 
         
         </View>
-        </MenuProvider>
         </ScrollView>:
 
         <View style={globalStyles.loadingContainer}>

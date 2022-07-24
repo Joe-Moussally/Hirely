@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { localhost } from "./globalVariables";
+import { MenuProvider } from 'react-native-popup-menu';
 
 export default function App() {
 
@@ -43,7 +44,10 @@ export default function App() {
 
       {!token?
       <GuestStack setTokenApp={setToken}/>
-      :<MainAppNavigation setTokenApp={setToken}/>}
+      :<MenuProvider>
+        <MainAppNavigation setTokenApp={setToken}/>
+      </MenuProvider>
+      }
       
     </NavigationContainer>
     
