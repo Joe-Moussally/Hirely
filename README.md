@@ -12,7 +12,7 @@
 
 <img src="./readme/title2.svg"/>
 
->Hirely is an app that connects recruites with job seekers. It's purpose is to allow the job seeker to upload his CV and personal details to the app so that recruiters can check them out, as well as, recruiters will be able to post job offers with description and requirements, to be displayed to the job seeker.
+>Hirely is an app that connects recruiters with job seekers. Its purpose is to allow the job seeker to set personal details to the app so that recruiters can check them out, as well as, recruiters will be able to post job offers with description, salary and requirements, to be displayed to the job seeker.
 > 
 ### User Stories
 - As a job seeker, I want to apply for a suitable job according to my skills and knowledge.
@@ -22,7 +22,7 @@
 >
 - As a recruiter, I want to post a job offer so that interested applicants can apply
 - As as recruiter, I want the check out profiles of applicants who applied for the job I posted.
-- As a recruiter, I want to message an applicant I am interested in.
+- As a recruiter, I want to be in touch with an applicant I am interested in hiring.
 
 <br><br>
 
