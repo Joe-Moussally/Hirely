@@ -61,7 +61,9 @@ const User = () => {
                     </div>:<></>
                 }
 
-                <button id="remove-user-btn">Remove User</button>
+                <div id="remove-user-btn-container">
+                    <button>Remove User</button>
+                </div>
 
             </div>
         </>
