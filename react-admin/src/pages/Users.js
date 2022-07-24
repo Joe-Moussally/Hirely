@@ -53,7 +53,7 @@ const Users = () => {
                 <h2 className="secondary-title">Total Users <span className="number">{stats.user_count}</span></h2>
 
                 <div id="stats-container">
-                    <input type='text' className="search-input" placeholder="Search a user" onChange={handleSearch}/>
+                    <input type='text' className="search-input" placeholder="Search a user..." onChange={handleSearch}/>
 
                     <div id="user-cards-container">
                         {

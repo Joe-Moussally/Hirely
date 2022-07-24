@@ -51,12 +51,23 @@ class AdminController extends Controller
         ],200);
     }
 
+    //function to remove a specific user
     public function removeUser(Request $Request) {
         $user = User::find($Request->id);
         $user->delete();
 
         return response()->json([
             'status' => 'deleted'
+        ],200);
+    }
+
+    public function searchOffers($name) {
+        $offers = Offer::where('position','LIKE',"%$name%")->get();
+        foreach ($offers as $offer) {
+            $offer['user'] = $offer->user;
+        }
+        return response()->json([
+            'offers' => $offers
         ],200);
     }
 }
