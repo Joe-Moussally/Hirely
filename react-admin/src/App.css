@@ -389,3 +389,8 @@ body {
   color: #00477d;
   font-weight: 600;
 }
+
+/* HICHART CONTAINER */
+#chart-container {
+  margin-top: 40px;
+}

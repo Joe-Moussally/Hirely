@@ -21,14 +21,19 @@ const Dashboard = () => {
             url:'http://'+localhost+':8000/api/admin/stats'
         }).then(res => {
             setStats(res.data)
-            console.log(Object.values(stats.cities))
 
-            let temp = []
-            Object.values(stats.cities).forEach(array => {
-                temp.push(array.length)
+            // let temp = []
+            Object.values(res.data.cities).forEach(array => {
+                // temp.push(array.length)
+                setUserNumbers(prevArray => ([...prevArray,array.length]))
             })
-            setUserNumbers(temp)
+        })
+        .catch(err => console.log(err))
+        
+    },[])
 
+    useEffect(() => {
+        if(stats != '' && userNumber != []){ 
             //display histogram when data is successfully fetched
             Highcharts.chart('chart-container',{
                 chart:{type:'column'},
@@ -42,20 +47,20 @@ const Dashboard = () => {
                     min:0,
                     title:{text:''}
                 },
-                tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                      '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                    footerFormat: '</table>',
-                    shared: true,
-                    useHTML: true
-                },
+                // tooltip: {
+                //     headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                //     pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                //       '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                //     footerFormat: '</table>',
+                //     shared: true,
+                //     useHTML: true
+                // },
                 plotOptions: {
                     column: {
-                      pointPadding: 0,
-                      borderWidth: 0,
-                      groupPadding: 0,
-                      shadow: false
+                    pointPadding: 0,
+                    borderWidth: 0,
+                    groupPadding: 0,
+                    shadow: false
                     }
                 },
                 series:[{
@@ -63,12 +68,8 @@ const Dashboard = () => {
                     data:userNumber
                 }]
             })
-
-        })
-        .catch(err => console.log(err))
-
-        
-    },[])
+        }
+    },[stats])
     
     return (
 
@@ -119,7 +120,10 @@ const Dashboard = () => {
                         </div>
                     </div>
 
-                    <div id="chart-container"></div>
+                    {
+                        stats?
+                        <div id="chart-container"></div>:<></>
+                    }
 
                 </div>
             }
