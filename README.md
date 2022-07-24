@@ -28,16 +28,16 @@
 
 <img src="./readme/title3.svg"/>
 
-<!-- > The below screenshots show some aspects of the design that was planned before on paper, then moved to Figma app for the fine details.
+> The below screenshots show some aspects of the design that was planned before on paper, then moved to Figma app for the fine details.
 
 
-| Login/Sign up  | Home/Freelancers in category  |
+| Landing/Log In  | My Jobs/Add Job |
 | -----------| -----|
-| <img src="./readme/figma1.png"/> |<img src="./readme/figma2.png"/>|
+| <img src="./readme/screens/landing-login.JPG"/> |<img src="./readme/screens/myjobs-addoffer.JPG"/>|
 
-| Freelancer profile/Add review  | My profile/Edit work profile  |
+| Chats/Conversation  | My Profile/View Job Offer  |
 | -----------------| -----|
-|  <img src="./readme/figma3.png"/>|<img src="./readme/figma4.png"/>  | -->
+|  <img src="./readme/screens/chats-conversation.JPG"/>|<img src="./readme/screens/profile-viewjob.JPG"/>  |
 
 
 <br><br>
