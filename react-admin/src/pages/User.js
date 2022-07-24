@@ -36,24 +36,32 @@ const User = () => {
                     require('../assets/default_picture.jpg')
                     }
                     className='profile-header-picture'/>
-                    <h1 className="page-title">{user.name}</h1>
+                    <h1 id="profile-name">{user.name}</h1>
                 </div>
 
-                <div>
-                    <h2 className="secondary-title">About</h2>
-                    <p className="about">{user.about}</p>
-                </div>
+                {
+                    user.about?
+                    <div>
+                        <h2 className="secondary-title">About</h2>
+                        <p className="about">{user.about}</p>
+                    </div>:<></>
+                }
 
-                <div>
-                    <h2 className="secondary-title">Skills</h2>
-                    <div id="skills-container">
-                        {
-                            skills.map(skill => (
-                                <SkillCard skill={skill.skill}/>
-                            ))
-                        }
-                    </div>
-                </div>
+                {
+                    skills == []?
+                    <div style={{marginTop:50}}>
+                        <h2 className="secondary-title">Skills</h2>
+                        <div id="skills-container">
+                            {
+                                skills.map(skill => (
+                                    <SkillCard skill={skill.skill}/>
+                                ))
+                            }
+                        </div>
+                    </div>:<></>
+                }
+
+                <button id="remove-user-btn">Remove User</button>
 
             </div>
         </>

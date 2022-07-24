@@ -24,8 +24,7 @@
 .section-container {
   padding: 50px;
   max-width: 900px;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 50px auto;
   border-radius: 20px;
   background-color: white;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.147);
@@ -147,7 +146,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 80px;
   background: linear-gradient(27deg, rgba(0,203,255,1) 0%, rgba(0,138,255,1) 100%);
 }
 
@@ -292,6 +291,11 @@ body {
   align-items: center;
   justify-content: space-evenly;
   margin-bottom: 55px;
+}
+
+#profile-name {
+  color: #00b3ff;
+  font-size: 55px;
 }
 
 .profile-header-picture {
