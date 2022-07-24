@@ -50,4 +50,13 @@ class AdminController extends Controller
             'skills' => $skills
         ],200);
     }
+
+    public function removeUser(Request $Request) {
+        $user = User::find($Request->id);
+        $user->delete();
+
+        return response()->json([
+            'status' => 'deleted'
+        ],200);
+    }
 }

@@ -65,6 +65,7 @@ Route::middleware(['cors'])->group(function () {
             Route::get('/stats',[AdminController::class, 'getStats']);
             Route::get('/user/{id}',[AdminController::class, 'getProfile']);
             Route::get('/users/{name}',[AdminController::class, 'searchUsers']);
+            Route::post('/remove_user',[AdminController::class, 'removeUser']);
         });
     });
 });

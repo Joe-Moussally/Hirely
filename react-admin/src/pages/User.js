@@ -24,6 +24,11 @@ const User = () => {
         })
     },[])
 
+    const handleRemove = () => {
+        let id = params.id;
+        console.log(id)
+    }
+
     return (
         user?
         <>
@@ -61,7 +66,7 @@ const User = () => {
                     </div>:<></>
                 }
 
-                <div id="remove-user-btn-container">
+                <div id="remove-user-btn-container" onClick={handleRemove}>
                     <button>Remove User</button>
                 </div>
 
