@@ -4,6 +4,10 @@ import { localhost } from '../globalVariables'
 import Navbar from "../components/Navbar";
 const Dashboard = () => {
 
+    //using highcharts to display histogram
+    var Highcharts = require('highcharts');
+    require('highcharts/modules/exporting')(Highcharts); 
+
     const [stats,setStats] = useState('')
 
     useEffect(() => {        
@@ -16,6 +20,9 @@ const Dashboard = () => {
         })
         .catch(err => console.log(err))
 
+        Highcharts.chart('chart-container',{
+
+        })
     },[])
     
     return (
@@ -66,6 +73,8 @@ const Dashboard = () => {
                             }
                         </div>
                     </div>
+
+                    <div id="chart-container"></div>
 
                 </div>
             }
