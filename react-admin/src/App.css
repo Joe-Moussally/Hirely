@@ -354,3 +354,20 @@ body {
   cursor: pointer;
   transition: .3s;
 }
+
+/*--------------OFFERS SECTION--------------*/
+.offer-info-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 30px;
+}
+
+.job-card-icon {
+  width: 15px;
+  margin-right: 12px;
+}
+
+.card-details-container {
+  display: flex;
+  align-items: center;
+}

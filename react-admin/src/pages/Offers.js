@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import OfferCard from "../components/offers/OfferCard";
 import { localhost } from "../globalVariables";
 
 const Offers = () => {
@@ -46,11 +47,11 @@ const Offers = () => {
                     <input type='text' className="search-input" placeholder="Search a job offer..." onChange={handleSearch}/>
 
                     <div id="user-cards-container">
-                        {/* {
-                            users.map(user => (
-                                <UserCard user={user}/>
+                        {
+                            offers.map(offer => (
+                                <OfferCard offer={offer}/>
                             ))
-                        } */}
+                        }
                     </div>
 
                 </div>
