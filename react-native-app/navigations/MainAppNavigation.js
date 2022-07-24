@@ -202,7 +202,7 @@ export default function MainAppNavigation({ setTokenApp }) {
     return(
         <Tab.Navigator
         screenOptions={{
-        headerTitle: ()=><MainHeader />,
+        headerTitle: ()=><MainHeader setTokenApp={setTokenApp}/>,
         headerTintColor:'white',
         headerStyle:{
             backgroundColor:'#00a6ff',

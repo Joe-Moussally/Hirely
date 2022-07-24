@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
+import { Entypo, SimpleLineIcons } from '@expo/vector-icons';
 import { StatusBar } from "react-native";
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu";
 
-export default function MainHeader() {
+export default function MainHeader({ setTokenApp }) {
     return(
         <View style={styles.header}>
 
@@ -13,20 +13,17 @@ export default function MainHeader() {
             <Image
             source={require('../assets/app-logos/white-brand.png')}
             style={styles.image}/>
-                {/* <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back}/> */}
 
             <Menu>
-                <MenuTrigger text='Select action' />
+                <MenuTrigger text={<Entypo name="menu" size={30} color="white" />} />
                 <MenuOptions>
-                    <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-                    <MenuOption onSelect={() => alert(`Delete`)} >
-                    <Text style={{color: 'red'}}>Delete</Text>
+                    <MenuOption onSelect={() => setTokenApp(null)}  style={styles.logoutContainer}>
+                        <SimpleLineIcons name="logout" size={20} color="red" />
+                        <Text style={styles.logoutText}>Log Out</Text>
                     </MenuOption>
-                    <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
                 </MenuOptions>
             </Menu>
 
-            {/* <Text style={{fontSize:37,color:'white',fontWeight:'bold',marginLeft:'-10%'}}>:</Text> */}
         </View>
     )
 }
@@ -41,13 +38,21 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'space-between',
         marginLeft:'37%',
-
-        // borderWidth:2,
-        // borderColor:'red'
     },
     image:{
         resizeMode:'contain',
-        // height:'100%',
         width:'46%'
+    },
+    logoutContainer:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        color:'red',
+        height:30,
+    },
+    logoutText:{
+        color:'red',
+        marginLeft:5,
+        transform:[{translateY:-1}]
     }
 })

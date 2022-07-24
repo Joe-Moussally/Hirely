@@ -10,10 +10,8 @@ import WebView from "react-native-webview"; // used for pdf display
 import PdfReader from "rn-pdf-reader-js"; // used for pdf display
 import axios from "axios";
 import { AntDesign } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { MenuProvider, MenuOption, MenuOptions, MenuTrigger, Menu } from "react-native-popup-menu";
 
 export default function Profile({ setTokenApp }) {
 
@@ -159,20 +157,6 @@ export default function Profile({ setTokenApp }) {
         user?
         <ScrollView style={{backgroundColor:'white'}}>
         <View style={styles.profileContainer}>
-
-        {/* Display Menu for logout option */}
-        
-            <Menu>
-            <MenuTrigger text='Select action' />
-            <MenuOptions>
-                <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-                <MenuOption onSelect={() => alert(`Delete`)} >
-                <Text style={{color: 'red'}}>Delete</Text>
-                </MenuOption>
-                <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
-            </MenuOptions>
-            </Menu>
-        
 
             {
                 //check if user has a profile picture
