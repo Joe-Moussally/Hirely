@@ -6,13 +6,14 @@ import { globalStyles } from "../../styles/global";
 import * as ImagePicker from 'expo-image-picker';
 import * as DocumentPicker from 'expo-document-picker';
 import * as FileSystem from 'expo-file-system';
-import WebView from "react-native-webview";
+import WebView from "react-native-webview"; // used for pdf display
+import PdfReader from "rn-pdf-reader-js"; // used for pdf display
 import axios from "axios";
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import SkillCard from "../../components/new-user-components/skills/SkillCard";
-import PdfReader from "rn-pdf-reader-js";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { MenuProvider, MenuOption, MenuOptions, MenuTrigger, Menu } from "react-native-popup-menu";
 
 export default function Profile({ setTokenApp }) {
 
@@ -157,7 +158,22 @@ export default function Profile({ setTokenApp }) {
     return (
         user?
         <ScrollView style={{backgroundColor:'white'}}>
+            <MenuProvider>
         <View style={styles.profileContainer}>
+
+        {/* Display Menu for logout option */}
+        
+            <Menu>
+            <MenuTrigger text='Select action' />
+            <MenuOptions>
+                <MenuOption onSelect={() => alert(`Save`)} text='Save' />
+                <MenuOption onSelect={() => alert(`Delete`)} >
+                <Text style={{color: 'red'}}>Delete</Text>
+                </MenuOption>
+                <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+            </MenuOptions>
+            </Menu>
+        
 
             {
                 //check if user has a profile picture
@@ -260,16 +276,18 @@ export default function Profile({ setTokenApp }) {
             </TouchableOpacity>
 
             {/* Log Out Button */}
-            <TouchableNativeFeedback
+            {/* <TouchableNativeFeedback
             onPress={()=>setTokenApp(null)}>
                 <View style={styles.logOutContainer}>
                     <MaterialIcons name="logout" size={21} color="#bf0000"/>
                     <Text style={styles.logOutText}>Log Out</Text>
                 </View>
-            </TouchableNativeFeedback>
+            </TouchableNativeFeedback> */}
+
 
         
         </View>
+        </MenuProvider>
         </ScrollView>:
 
         <View style={globalStyles.loadingContainer}>

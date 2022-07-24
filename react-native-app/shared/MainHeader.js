@@ -9,12 +9,12 @@ export default function MainHeader() {
 
             <StatusBar backgroundColor={'#00a6ff'} barStyle = "light-content" animated={true} hidden = {false} translucent = {false}/>
             
-            <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back}/>
+            {/* <Ionicons name="arrow-back-sharp" size={24} color="white" style={styles.back}/> */}
             <Image
             source={require('../assets/app-logos/white-brand.png')}
             style={styles.image}/>
     
-            <Text style={{fontSize:37,color:'white',fontWeight:'bold',marginLeft:'-10%'}}>:</Text>
+            {/* <Text style={{fontSize:37,color:'white',fontWeight:'bold',marginLeft:'-10%'}}>:</Text> */}
         </View>
     )
 }

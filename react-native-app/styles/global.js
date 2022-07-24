@@ -63,6 +63,7 @@ const globalStyles = StyleSheet.create({
         width:225,
         height:225,
         borderRadius:Dimensions.get('window').width/2,
+        zIndex:1
     },
     loadingContainer:{
         flex:1,
