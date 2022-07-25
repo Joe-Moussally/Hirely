@@ -44,13 +44,29 @@ const Search = ({setValue}) => {
 
                     <View style={styles.minContainer}>
                         <Text style={styles.rateTitle}>Min. rate($/{salaryPeriod})</Text>
-                        <TextInput/>
+                        <TextInput style={styles.filterInput} placeholder="ex: 0"/>
                     </View>
 
                     <View style={styles.maxContainer}>
                         <Text style={styles.rateTitle}>Max. rate($/{salaryPeriod})</Text>
-                        <TextInput/>
+                        <TextInput style={styles.filterInput} placeholder="ex: 2000"/>
                     </View>
+
+                </View>
+
+                <View style={styles.filterButtonsContainer}>
+
+                    <TouchableNativeFeedback>
+                        <View style={styles.outlineButton}>
+                            <Text style={styles.outlineButtonText}>Clear</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+
+                    <TouchableNativeFeedback>
+                        <View style={styles.filledButton}>
+                            <Text style={styles.filledButtonText}>Apply</Text>
+                        </View>
+                    </TouchableNativeFeedback>
 
                 </View>
 
@@ -140,7 +156,7 @@ const styles = StyleSheet.create({
     modalContainer:{
         backgroundColor:'#fcfcfc',
         flex:1,
-        marginVertical:'60%',
+        marginVertical:'30%',
         marginHorizontal:'5%',
         borderRadius:20,
         shadowColor:'black',
@@ -170,24 +186,61 @@ const styles = StyleSheet.create({
 
     //min max container
     minMaxContainer:{
-        borderWidth:1,
-        borderColor:'red',
         flexDirection:'row',
         justifyContent:'space-evenly'
     },
     minContainer:{
-        borderWidth:1,
-        borderColor:'blue',
         width:'40%',
     },
     maxContainer:{
-        borderWidth:1,
-        borderColor:'blue',
         width:'40%'
     },
     rateTitle:{
         fontWeight:'600',
         textAlign:'center',
         color:'#1b2c69'
+    },
+    filterInput:{
+        borderWidth:2,
+        borderColor:'#384c5e',
+        margin:0,
+        paddingHorizontal:5,
+        paddingVertical:4,
+        borderRadius:10
+    },
+    // Modal buttons
+    filterButtonsContainer:{
+        flexDirection:'row',
+        justifyContent:'space-around',
+        marginTop:20
+    },
+    outlineButton:{
+        borderWidth:2,
+        borderColor:'#009dff',
+        width:'26%',
+        paddingHorizontal:15,
+        paddingVertical:5,
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:10
+    },
+    outlineButtonText:{
+        textAlign:'center',
+        fontWeight:'800',
+        color:'#009dff'
+    },
+    filledButton:{
+        backgroundColor:'#009dff',
+        width:'26%',
+        paddingHorizontal:15,
+        paddingVertical:5,
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:10
+    },
+    filledButtonText:{
+        textAlign:'center',
+        color:'white',
+        fontWeight:'800'
     }
 })
