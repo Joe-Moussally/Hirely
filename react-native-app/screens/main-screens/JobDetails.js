@@ -112,7 +112,7 @@ const JobDetails = ({route}) => {
                 {/* location */}
                 <View style={styles.section}>
 
-                    <Text style={styles.title}>Location</Text>
+                    <Text style={styles.title}>City</Text>
                     <Text style={styles.textDetails}>{route.params.address}</Text>
 
                 </View>
@@ -160,23 +160,27 @@ const JobDetails = ({route}) => {
                     :<></>
                 }
 
-                <MapView
-                    initialRegion={{
-                        latitude: Number(details.user.lat),
-                        longitude: Number(details.user.lng),
-                        latitudeDelta: 0.0922,
-                        longitudeDelta: 0.0421,
-                    }}
-                    style={styles.map}
-                >
-                   <Marker
-                        key={userId}
-                        coordinate={{ 
+                <View style={styles.section}>
+                    <Text style={styles.title}>Location</Text>
+
+                    <MapView
+                        initialRegion={{
                             latitude: Number(details.user.lat),
-                            longitude: Number(details.user.lng)
+                            longitude: Number(details.user.lng),
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
                         }}
-                    />
-                </MapView>
+                        style={styles.map}
+                    >
+                    <Marker
+                            key={userId}
+                            coordinate={{ 
+                                latitude: Number(details.user.lat),
+                                longitude: Number(details.user.lng)
+                            }}
+                        />
+                    </MapView>
+                </View>
                 
                 {
                     //check if user is the job poster
