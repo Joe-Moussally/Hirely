@@ -20,6 +20,10 @@ export default function Jobs() {
     //track when the data is loaded or not
     const [isLoading,setIsLoading] = useState(true)
 
+    // for filtering
+    const [minValue,setMinValue] = useState(0)
+    const [maxValue,setMaxValue] = useState(null)
+
     useLayoutEffect(()=>{
 
         let token
@@ -75,7 +79,7 @@ export default function Jobs() {
 
         <View style={{flex:1,backgroundColor:'white'}}>
             
-            <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
+            <Search setValue={setValue} setFilteredJobs={setFilteredJobs} setMinValue={setMinValue} setMaxValue={setMaxValue}/>
 
             {
                 isLoading?

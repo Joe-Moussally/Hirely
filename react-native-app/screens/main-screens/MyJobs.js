@@ -24,6 +24,10 @@ export default function MyJobs({navigation}) {
     //track when the data is loaded or not
     const [isLoading,setIsLoading] = useState(true)
 
+    // for filtering
+    const [minValue,setMinValue] = useState(0)
+    const [maxValue,setMaxValue] = useState(null)
+
     useEffect(()=>{
 
         //get the user's job offers
@@ -54,18 +58,40 @@ export default function MyJobs({navigation}) {
         }
 
         jobs.filter(job => {
-            let jobPositionLowercase = job.position.toLocaleLowerCase()
-            if(jobPositionLowercase.includes(lowerCaseSearch)) {
-                filteredArray.push(job)
-                setFilteredJobs(filteredArray)
+
+            //calcutate the job rate for filtering per day to compare all salarie with different salary periods
+            let jobRate
+            if(job.salary_period == 'hour') {
+                jobRate = job.salary*24
+            } else if (job.salary_period == 'month') {
+                jobRate = job.salary/30
+            } else {
+                jobRate = job.salary/365
             }
+
+            let jobPositionLowercase = job.position.toLocaleLowerCase()
+            if (maxValue == null) {
+                if(jobPositionLowercase.includes(lowerCaseSearch)) {
+                    filteredArray.push(job)
+                    setFilteredJobs(filteredArray)
+                }
+            } else {
+                if(jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
+                    filteredArray.push(job)
+                    setFilteredJobs(filteredArray)
+                }        
+            }
+
         })
-    },[value])
+    },[value,minValue,maxValue])
 
     return (        
         <View style={styles.container}>
 
-            <Search setValue={setValue} setFilteredJobs={setFilteredJobs}/>
+            <Text>{minValue}</Text>
+            <Text>{maxValue}</Text>
+
+            <Search setValue={setValue} setFilteredJobs={setFilteredJobs} setMinValue={setMinValue} setMaxValue={setMaxValue}/>
 
             {
                 isLoading?

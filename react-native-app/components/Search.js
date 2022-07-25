@@ -3,13 +3,37 @@ import { Ionicons,AntDesign } from '@expo/vector-icons';
 import { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 
-const Search = ({setValue}) => {
+const Search = ({setValue,setMinValue,setMaxValue}) => {
 
     const [textInput,setTextInput] = useState('')
 
     //track if filter modal is visible or not
     const [modalVisible, setModalVisible] = useState(false);
     const [salaryPeriod,setSalaryPeriod] = useState('hour')
+
+    const [min,setMin] = useState(0)
+    const [max,setMax] = useState(null)
+
+
+    //function to calculate the ralary rate filtered and set it to parent component
+    const handleFilter = () => {
+        //calcutate the job rate for filtering per day to compare all salarie with different salary periods
+        let minJobRate
+        let maxJobRate
+        if(salaryPeriod == 'hour') {
+            minJobRate = min*24
+            maxJobRate = max*24
+        } else if (salaryPeriod == 'month') {
+            minJobRate = min/30
+            maxJobRate = max/30
+        } else {
+            minJobRate = min/365
+            maxJobRate = max/365
+        }
+        setMinValue(minJobRate)
+        setMaxValue(maxJobRate)
+        setModalVisible(false)
+    }
 
     return (
         <View style={styles.mainContainer}>
@@ -44,25 +68,28 @@ const Search = ({setValue}) => {
 
                     <View style={styles.minContainer}>
                         <Text style={styles.rateTitle}>Min. rate($/{salaryPeriod})</Text>
-                        <TextInput style={styles.filterInput} placeholder="ex: 0"/>
+                        <TextInput style={styles.filterInput} placeholder="ex: 0" onChangeText={setMin} keyboardType='number-pad' value={min}/>
                     </View>
 
                     <View style={styles.maxContainer}>
                         <Text style={styles.rateTitle}>Max. rate($/{salaryPeriod})</Text>
-                        <TextInput style={styles.filterInput} placeholder="ex: 2000"/>
+                        <TextInput style={styles.filterInput} placeholder="ex: 2000" onChangeText={setMax} keyboardType='number-pad' value={max}/>
                     </View>
 
                 </View>
 
                 <View style={styles.filterButtonsContainer}>
 
-                    <TouchableNativeFeedback>
+                    <TouchableNativeFeedback onPress={() => {
+                        setMin(0)
+                        setMax(null)
+                    }}>
                         <View style={styles.outlineButton}>
                             <Text style={styles.outlineButtonText}>Clear</Text>
                         </View>
                     </TouchableNativeFeedback>
 
-                    <TouchableNativeFeedback>
+                    <TouchableNativeFeedback onPress={handleFilter}>
                         <View style={styles.filledButton}>
                             <Text style={styles.filledButtonText}>Apply</Text>
                         </View>
