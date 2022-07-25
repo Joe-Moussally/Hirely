@@ -32,13 +32,33 @@ const Search = ({setValue}) => {
                     <Picker
                     selectedValue={salaryPeriod}
                     onValueChange={setSalaryPeriod}
-                    style={{borderWidth:1,borderColor:'red',width:'50%'}}
+                    style={{width:'40%'}}
                     >
                         <Picker.item value="hour" label="Hour" />
                         <Picker.item value="month" label="Month" />
                         <Picker.item value="year" label="Year" />
                     </Picker>
                 </View>
+
+                <View style={styles.minMaxContainer}>
+
+                    <View style={styles.minContainer}>
+                        <Text style={styles.rateTitle}>Min. rate($/{salaryPeriod})</Text>
+                        <TextInput/>
+                    </View>
+
+                    <View style={styles.maxContainer}>
+                        <Text style={styles.rateTitle}>Max. rate($/{salaryPeriod})</Text>
+                        <TextInput/>
+                    </View>
+
+                </View>
+
+            </View>
+
+
+
+            <View>
 
             </View>
         </Modal>
@@ -120,11 +140,13 @@ const styles = StyleSheet.create({
     modalContainer:{
         backgroundColor:'#fcfcfc',
         flex:1,
-        marginVertical:'70%',
+        marginVertical:'60%',
         marginHorizontal:'5%',
         borderRadius:20,
         shadowColor:'black',
-        elevation:10
+        elevation:10,
+        position:'absolute',
+        alignSelf:'center'
     },
     modalTitle:{
         textAlign:'center',
@@ -144,5 +166,28 @@ const styles = StyleSheet.create({
         fontSize:16,
         textAlign:'center',
         color:'#7a7a7a'
+    },
+
+    //min max container
+    minMaxContainer:{
+        borderWidth:1,
+        borderColor:'red',
+        flexDirection:'row',
+        justifyContent:'space-evenly'
+    },
+    minContainer:{
+        borderWidth:1,
+        borderColor:'blue',
+        width:'40%',
+    },
+    maxContainer:{
+        borderWidth:1,
+        borderColor:'blue',
+        width:'40%'
+    },
+    rateTitle:{
+        fontWeight:'600',
+        textAlign:'center',
+        color:'#1b2c69'
     }
 })
