@@ -1,6 +1,7 @@
 import { Alert, Modal, StyleSheet, Text, TextInput, TouchableNativeFeedback, View } from "react-native";
 import { Ionicons,AntDesign } from '@expo/vector-icons';
 import { useState } from "react";
+import { Picker } from "@react-native-picker/picker";
 
 const Search = ({setValue}) => {
 
@@ -8,10 +9,12 @@ const Search = ({setValue}) => {
 
     //track if filter modal is visible or not
     const [modalVisible, setModalVisible] = useState(false);
+    const [salaryPeriod,setSalaryPeriod] = useState('hour')
 
     return (
         <View style={styles.mainContainer}>
 
+        {/* Filter search modal */}
         <Modal
             animationType="slide"
             transparent={true}
@@ -21,7 +24,22 @@ const Search = ({setValue}) => {
             }}
         >
             <View style={styles.modalContainer}>
-                <Text>ASD</Text>
+                <Text style={styles.modalTitle}>Filter by salary</Text>
+
+                <View style={styles.periodContainer}>
+                    <Text style={styles.pickerTitle}>Salary Period</Text>
+
+                    <Picker
+                    selectedValue={salaryPeriod}
+                    onValueChange={setSalaryPeriod}
+                    style={{borderWidth:1,borderColor:'red',width:'50%'}}
+                    >
+                        <Picker.item value="hour" label="Hour" />
+                        <Picker.item value="month" label="Month" />
+                        <Picker.item value="year" label="Year" />
+                    </Picker>
+                </View>
+
             </View>
         </Modal>
 
@@ -107,5 +125,24 @@ const styles = StyleSheet.create({
         borderRadius:20,
         shadowColor:'black',
         elevation:10
+    },
+    modalTitle:{
+        textAlign:'center',
+        margin:10,
+        fontWeight:'500',
+        fontSize:22,
+        color:'#34416e'
+    },
+    periodContainer:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        width:'100%',
+    },
+    pickerTitle:{
+        margin:10,
+        fontSize:16,
+        textAlign:'center',
+        color:'#7a7a7a'
     }
 })
