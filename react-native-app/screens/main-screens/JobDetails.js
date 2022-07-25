@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, Dimensions } from 'react-native';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from "react-native";
 
 import axios from 'axios';
@@ -12,6 +12,9 @@ import InterestButton from "../../components/buttons/InterestButton";
 import RemoveOfferButton from "../../components/buttons/RemoveOfferButton";
 import InterestedApplicantsList from "../../components/InterestedApplicantsList";
 import ScreenHeader from "../../components/ScreenHeader";
+
+//map library
+import MapView, { Marker } from 'react-native-maps'
 
 
 
@@ -156,6 +159,24 @@ const JobDetails = ({route}) => {
                     </View>
                     :<></>
                 }
+
+                <MapView
+                    initialRegion={{
+                        latitude: Number(details.user.lat),
+                        longitude: Number(details.user.lng),
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                    style={styles.map}
+                >
+                   <Marker
+                        key={userId}
+                        coordinate={{ 
+                            latitude: Number(details.user.lat),
+                            longitude: Number(details.user.lng)
+                        }}
+                    />
+                </MapView>
                 
                 {
                     //check if user is the job poster
@@ -229,4 +250,10 @@ const styles = StyleSheet.create({
     requirementText:{
         fontSize:17,
     },
+    map:{
+        width:'100%'
+        ,height:300,
+        margin:20,
+        alignSelf:'center',
+    }
 })
