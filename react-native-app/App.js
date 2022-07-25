@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { localhost } from "./globalVariables";
 import { MenuProvider } from 'react-native-popup-menu';
+import { LogBox } from 'react-native';
 
 export default function App() {
 
@@ -15,6 +16,9 @@ export default function App() {
 
   //validate if token has expired
   useEffect(()=>{
+
+    LogBox.ignoreAllLogs()
+
     AsyncStorage.getItem('token').then((value)=>{
       setToken(value)
 

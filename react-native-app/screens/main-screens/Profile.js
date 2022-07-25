@@ -224,8 +224,8 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
-            {/* Upload CV Button OR View CV Button
-            {
+            {/* Upload CV Button OR View CV Button */}
+            {/* {
                 !user.cv_base64?
                 <TouchableNativeFeedback
                 onPress={fetchPDF}>
@@ -239,16 +239,17 @@ export default function Profile({ setTokenApp }) {
             {/* {
                 user.cv_base64?
                 <WebView
-                originWhitelist={['*']} 
-                source={{uri:'data:application/pdf;base64,'+user.cv_base64}}
-                style={{height:200,width:200,borderWidth:1,borderColor:'black',alignSelf:'center'}}/>:
+                scrollEnabled={true}
+                // source={{baseUrl:'data:image/jpg;base64,'+user.cv_base64}}
+                style={{height:400,width:'95%',borderWidth:1,borderColor:'black',alignSelf:'center'}}
+                source={{
+                    uri:'data:application/pdf;base64,'+user.cv_base64
+                }}
+                />:
                 <></>
             } */}
 
-            {/* <PdfReader
-            source={{base64:'data:application/pdf;base64,'+Base64.atob(user.cv_base64)}}
-            style={{height:200,width:'80%'}}/> */}
-            
+
             {/* Edit Profile Activites Button */}
             <TouchableOpacity
             style={globalStyles.outlineButton}
@@ -257,17 +258,6 @@ export default function Profile({ setTokenApp }) {
             }}>
                 <Text style={globalStyles.outlineButtonText}>Edit Profile</Text>
             </TouchableOpacity>
-
-            {/* Log Out Button */}
-            {/* <TouchableNativeFeedback
-            onPress={()=>setTokenApp(null)}>
-                <View style={styles.logOutContainer}>
-                    <MaterialIcons name="logout" size={21} color="#bf0000"/>
-                    <Text style={styles.logOutText}>Log Out</Text>
-                </View>
-            </TouchableNativeFeedback> */}
-
-
         
         </View>
         </ScrollView>:
