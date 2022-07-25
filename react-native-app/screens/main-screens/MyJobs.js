@@ -88,9 +88,6 @@ export default function MyJobs({navigation}) {
     return (        
         <View style={styles.container}>
 
-            <Text>{minValue}</Text>
-            <Text>{maxValue}</Text>
-
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs} setMinValue={setMinValue} setMaxValue={setMaxValue}/>
 
             {

@@ -66,13 +66,30 @@ export default function Jobs() {
         }
 
         jobs.filter(job => {
+            //calcutate the job rate for filtering per day to compare all salarie with different salary periods
+            let jobRate
+            if(job.salary_period == 'hour') {
+                jobRate = job.salary*24
+            } else if (job.salary_period == 'month') {
+                jobRate = job.salary/30
+            } else {
+                jobRate = job.salary/365
+            }
+
             let jobPositionLowercase = job.position.toLocaleLowerCase()
-            if(jobPositionLowercase.includes(lowerCaseSearch)) {
-                filteredArray.push(job)
-                setFilteredJobs(filteredArray)
+            if (maxValue == null) {
+                if(jobPositionLowercase.includes(lowerCaseSearch)) {
+                    filteredArray.push(job)
+                    setFilteredJobs(filteredArray)
+                }
+            } else {
+                if(jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
+                    filteredArray.push(job)
+                    setFilteredJobs(filteredArray)
+                }        
             }
         })
-    },[value])
+    },[value,minValue,maxValue])
 
     return (
 
