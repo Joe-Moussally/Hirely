@@ -11,8 +11,6 @@ import EmptyScreenText from "../../components/EmptyScreenText";
 
 export default function Jobs() {
 
-    const [log,setLog] = useState('')
-
     const [jobs,setJobs] = useState([])
     const [filteredJobs,setFilteredJobs] = useState([])
 
@@ -67,7 +65,6 @@ export default function Jobs() {
         }
 
         if (minValue == 0 && maxValue == Infinity) {
-            setLog('HERE')
            jobs.filter(job => {
             let jobPositionLowercase = job.position.toLocaleLowerCase()
             if (jobPositionLowercase.includes(lowerCaseSearch)) {
@@ -94,12 +91,6 @@ export default function Jobs() {
                 filteredArray.push(job)
                 setFilteredJobs(filteredArray)
             }
-            // } else {
-            //     if(jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
-            //         filteredArray.push(job)
-            //         setFilteredJobs(filteredArray)
-            //     }        
-            // }
         })
     },[value,minValue,maxValue])
 
@@ -107,8 +98,6 @@ export default function Jobs() {
 
 
         <View style={{flex:1,backgroundColor:'white'}}>
-
-            <Text>{log}</Text>
             
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs} setMinValue={setMinValue} setMaxValue={setMaxValue}/>
 

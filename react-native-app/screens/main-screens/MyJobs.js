@@ -26,7 +26,7 @@ export default function MyJobs({navigation}) {
 
     // for filtering
     const [minValue,setMinValue] = useState(0)
-    const [maxValue,setMaxValue] = useState(null)
+    const [maxValue,setMaxValue] = useState(Infinity)
 
     useEffect(()=>{
 
@@ -57,6 +57,17 @@ export default function MyJobs({navigation}) {
             setFilteredJobs(jobs)
         }
 
+        if (minValue == 0 && maxValue == Infinity) {
+            jobs.filter(job => {
+             let jobPositionLowercase = job.position.toLocaleLowerCase()
+             if (jobPositionLowercase.includes(lowerCaseSearch)) {
+                 filteredArray.push(job)
+                 setFilteredJobs(filteredArray)
+             }
+            }) 
+            return
+         }
+
         jobs.filter(job => {
 
             //calcutate the job rate for filtering per day to compare all salarie with different salary periods
@@ -70,18 +81,10 @@ export default function MyJobs({navigation}) {
             }
 
             let jobPositionLowercase = job.position.toLocaleLowerCase()
-            if (maxValue == null) {
-                if(jobPositionLowercase.includes(lowerCaseSearch)) {
-                    filteredArray.push(job)
-                    setFilteredJobs(filteredArray)
-                }
-            } else {
-                if(jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
-                    filteredArray.push(job)
-                    setFilteredJobs(filteredArray)
-                }        
+            if (jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
+                filteredArray.push(job)
+                setFilteredJobs(filteredArray)
             }
-
         })
     },[value,minValue,maxValue])
 
