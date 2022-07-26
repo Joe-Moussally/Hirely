@@ -239,7 +239,8 @@ const styles = StyleSheet.create({
         height:65,
         position:'absolute',
         paddingBottom:7,
-        backgroundColor:'#00a6ff'
+        // backgroundColor:'#00a6ff'
+        backgroundColor:'#0079c4'
     },
     hiddenTabBar:{
         display:'none'

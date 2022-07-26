@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState, useCallback } from "react";
 import { Text, View } from "react-native";
-import { GiftedChat } from "react-native-gifted-chat";
+import { Bubble, GiftedChat } from "react-native-gifted-chat";
 
 //firebase
 import { collection, getDocs,addDoc, query, onSnapshot } from "firebase/firestore";
@@ -93,6 +93,13 @@ export default function Chat({ route }) {
             <ChatHeader contact={route.params.contact}/>
             <GiftedChat 
             messages={messages}
+            renderBubble={(props) => (
+                <Bubble {...props} wrapperStyle={{
+                    right:{
+                        backgroundColor:'#0079c4'
+                    }
+                }}/>
+            )}
             showAvatarForEveryMessage={true}
             renderAvatar={()=>{return <View/>}}
             onSend={messages => onSend(messages)}
