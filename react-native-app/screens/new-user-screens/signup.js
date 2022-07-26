@@ -145,14 +145,14 @@ export default function SignUp() {
             
             
             <TouchableOpacity
-            style={globalStyles.fullWidthButton}
+            style={[globalStyles.fullWidthButton,{backgroundColor:'#0086d9'}]}
             onPress={handleSignUp}>
-                <LinearGradient
+                {/* <LinearGradient
             colors={['#006eff','#00d3eb']}
             style={{borderRadius:10}}
-            start={[0, 1]} end={[1, 0]}>
+            start={[0, 1]} end={[1, 0]}> */}
                 <Text style={globalStyles.fullWidthButtonText}>Sign Up</Text>
-                </LinearGradient>
+                {/* </LinearGradient> */}
             </TouchableOpacity>
             
         </ScrollView>

@@ -108,14 +108,14 @@ export default function LogIn({setToken}) {
             
 
             <TouchableOpacity
-            style={globalStyles.fullWidthButton}
+            style={[globalStyles.fullWidthButton,{backgroundColor:'#0086d9'}]}
             onPress={handleLogIn}>
-                <LinearGradient
+                {/* <LinearGradient
             colors={['#006eff','#00d3eb']}
             style={{borderRadius:10}}
-            start={[0, 1]} end={[1, 0]}>
+            start={[0, 1]} end={[1, 0]}> */}
                 <Text style={globalStyles.fullWidthButtonText}>Log In</Text>
-                </LinearGradient>
+                {/* </LinearGradient> */}
             </TouchableOpacity>
             
 
