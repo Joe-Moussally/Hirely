@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
         position:'absolute',
         paddingBottom:7,
         // backgroundColor:'#00a6ff'
-        backgroundColor:'#0079c4'
+        backgroundColor:'#0086d9'
     },
     hiddenTabBar:{
         display:'none'

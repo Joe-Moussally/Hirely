@@ -93,6 +93,7 @@ const ViewProfile = ({route}) => {
                     <Text style={styles.getInTouchText}>Get In Touch</Text>
                 </View>
 
+                {/* GET IN TOUCH SECTION */}
                 <View style={styles.getInTouchContainer}>
 
                     {/* Message Button */}
@@ -107,25 +108,25 @@ const ViewProfile = ({route}) => {
                             }
                         })
                         }}>
-                        <View style={globalStyles.outlineButton}>
-                            <Text style={globalStyles.outlineButtonText}>Message</Text>
+                        <View style={styles.messageButton}>
+                            <Text style={styles.messageButtonText}>Message</Text>
                         </View>
                     </TouchableNativeFeedback>
 
                     {/* Message on whatsapp */}
                     <TouchableOpacity
-                    style={globalStyles.whatsappButtonContainer}
+                    style={styles.whatsappButton}
                     onPress={() => Linking.openURL('whatsapp://send?text='+whatsappMessage+'&phone='+user.number)}>
-                        <FontAwesome name="whatsapp" size={24} color="#6adb00" style={{marginRight:5}}/>
-                        <Text style={globalStyles.whatsappButtonText}>WhatsApp Message</Text>
+                        <FontAwesome name="whatsapp" size={24} color="white" style={{marginRight:5}}/>
+                        <Text style={styles.whatsappButtonText}>WhatsApp Message</Text>
                     </TouchableOpacity>
 
                     {/* Call applicant's number */}
                     <TouchableOpacity
-                    style={globalStyles.callButtonContainer}
+                    style={styles.callButton}
                     onPress={() => Linking.openURL('tel:'+user.number)}>
-                        <Ionicons name="ios-call" size={24} color="#6e6e6e" style={{marginRight:5}}/>
-                        <Text style={globalStyles.callButtonText}>Phone Call</Text>
+                        <Ionicons name="ios-call" size={24} color="white" style={{marginRight:5}}/>
+                        <Text style={styles.callButtonText}>Phone Call</Text>
                     </TouchableOpacity>
 
                 </View>
@@ -166,5 +167,61 @@ const styles = StyleSheet.create({
         paddingVertical:30,
         borderRadius:20,
         zIndex:0
+    },
+    //get in touch buttons
+    messageButton:{
+        backgroundColor:'#0086d9',
+        width:'85%',
+        alignSelf:'center',
+        paddingVertical:7,
+        borderRadius:10,
+        marginVertical:10,
+        elevation:2
+    },
+    messageButtonText:{
+        fontSize:21,
+        fontWeight:'bold',
+        color:'white',
+        textAlign:'center'
+    },
+    //whatsapp button
+    whatsappButton:{
+        backgroundColor:'#32c700',
+        width:'85%',
+        alignSelf:'center',
+        paddingVertical:7,
+        borderRadius:10,
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        marginVertical:10,
+        elevation:2
+    },
+    whatsappButtonText:{
+        fontSize:21,
+        fontWeight:'bold',
+        color:'white',
+        textAlign:'center'
+    },
+    //phone call button
+    callButton:{
+        backgroundColor:'#858585',
+        width:'85%',
+        alignSelf:'center',
+        paddingVertical:7,
+        borderRadius:10,
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        marginVertical:10,
+        elevation:2
+    },
+    callButtonText:{
+        fontSize:21,
+        fontWeight:'bold',
+        color:'white',
+        textAlign:'center'
     }
 })
