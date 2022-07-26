@@ -25,8 +25,7 @@ export default function Jobs() {
     const [maxValue,setMaxValue] = useState(null)
 
     useLayoutEffect(()=>{
-
-        let token
+        
         const getOffers = async () => {
             //getting the user's Id
             token = await AsyncStorage.getItem('token').then((val)=>{
@@ -61,7 +60,7 @@ export default function Jobs() {
         let filteredArray = []
         let lowerCaseSearch = value.toLocaleLowerCase()
 
-        if(value === '') {
+        if(value === '' && maxValue == null) {
             setFilteredJobs(jobs)
         }
 

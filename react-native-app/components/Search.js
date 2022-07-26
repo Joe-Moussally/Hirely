@@ -83,6 +83,8 @@ const Search = ({setValue,setMinValue,setMaxValue}) => {
                     <TouchableNativeFeedback onPress={() => {
                         setMin(0)
                         setMax(null)
+                        setMaxValue(null)
+                        setMinValue(0)
                     }}>
                         <View style={styles.outlineButton}>
                             <Text style={styles.outlineButtonText}>Clear</Text>
