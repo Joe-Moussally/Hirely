@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
         paddingVertical:7,
         borderRadius:10,
         marginVertical:10,
-        elevation:2
+        elevation:1
     },
     messageButtonText:{
         fontSize:21,
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         marginVertical:10,
-        elevation:2
+        elevation:1
     },
     whatsappButtonText:{
         fontSize:21,
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         marginVertical:10,
-        elevation:2
+        elevation:1
     },
     callButtonText:{
         fontSize:21,
