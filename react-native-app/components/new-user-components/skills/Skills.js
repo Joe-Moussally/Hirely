@@ -59,8 +59,8 @@ const Skills = ({ setSkillsArray }) => {
 
                     <TouchableOpacity
                     onPress={addSkill}>
-                        <View style={globalStyles.outlineButton}>
-                            <Text style={globalStyles.outlineButtonText}>Add Skill</Text>
+                        <View style={styles.addSkillButton}>
+                            <Text style={styles.addSkillButtonText}>Add Skill</Text>
                         </View>
                     </TouchableOpacity>
             </View>
@@ -92,5 +92,22 @@ const styles = StyleSheet.create({
     characterCoutner:{
         color:'gray',
         marginLeft:5
+    },
+    addSkillButton:{
+        width:'100%',
+        borderColor:'#00aeff',
+        borderRadius:10,
+        borderWidth:4,
+        color:'red',
+        marginVertical:10,
+        marginHorizontal:'7.5%',
+        paddingVertical:7,
+        alignSelf:'center'
+    },
+    addSkillButtonText:{
+        color:'#00aeff',
+        fontWeight:'bold',
+        textAlign:'center',
+        fontSize:19
     }
 })
