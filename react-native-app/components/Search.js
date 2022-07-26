@@ -12,7 +12,7 @@ const Search = ({setValue,setMinValue,setMaxValue}) => {
     const [salaryPeriod,setSalaryPeriod] = useState('hour')
 
     const [min,setMin] = useState(0)
-    const [max,setMax] = useState(null)
+    const [max,setMax] = useState(Infinity)
 
 
     //function to calculate the ralary rate filtered and set it to parent component
@@ -82,9 +82,10 @@ const Search = ({setValue,setMinValue,setMaxValue}) => {
 
                     <TouchableNativeFeedback onPress={() => {
                         setMin(0)
-                        setMax(null)
-                        setMaxValue(null)
+                        setMax(Infinity)
+                        setMaxValue(Infinity)
                         setMinValue(0)
+                        setModalVisible(false)
                     }}>
                         <View style={styles.outlineButton}>
                             <Text style={styles.outlineButtonText}>Clear</Text>
@@ -98,12 +99,6 @@ const Search = ({setValue,setMinValue,setMaxValue}) => {
                     </TouchableNativeFeedback>
 
                 </View>
-
-            </View>
-
-
-
-            <View>
 
             </View>
         </Modal>

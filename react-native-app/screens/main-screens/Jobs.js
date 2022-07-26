@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { FlatList, ActivityIndicator, View } from "react-native";
+import { FlatList, ActivityIndicator, View, Text } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
 import { localhost } from "../../globalVariables";
@@ -10,6 +10,8 @@ import EmptyScreenText from "../../components/EmptyScreenText";
 
 
 export default function Jobs() {
+
+    const [log,setLog] = useState('')
 
     const [jobs,setJobs] = useState([])
     const [filteredJobs,setFilteredJobs] = useState([])
@@ -22,7 +24,7 @@ export default function Jobs() {
 
     // for filtering
     const [minValue,setMinValue] = useState(0)
-    const [maxValue,setMaxValue] = useState(null)
+    const [maxValue,setMaxValue] = useState(Infinity)
 
     useLayoutEffect(()=>{
         
@@ -59,9 +61,21 @@ export default function Jobs() {
         //filter data according to search
         let filteredArray = []
         let lowerCaseSearch = value.toLocaleLowerCase()
-
-        if(value === '' && maxValue == null) {
+        
+        if(value === '') {
             setFilteredJobs(jobs)
+        }
+
+        if (minValue == 0 && maxValue == Infinity) {
+            setLog('HERE')
+           jobs.filter(job => {
+            let jobPositionLowercase = job.position.toLocaleLowerCase()
+            if (jobPositionLowercase.includes(lowerCaseSearch)) {
+                filteredArray.push(job)
+                setFilteredJobs(filteredArray)
+            }
+           }) 
+           return
         }
 
         jobs.filter(job => {
@@ -76,17 +90,16 @@ export default function Jobs() {
             }
 
             let jobPositionLowercase = job.position.toLocaleLowerCase()
-            if (maxValue == null) {
-                if(jobPositionLowercase.includes(lowerCaseSearch)) {
-                    filteredArray.push(job)
-                    setFilteredJobs(filteredArray)
-                }
-            } else {
-                if(jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
-                    filteredArray.push(job)
-                    setFilteredJobs(filteredArray)
-                }        
+            if (jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
+                filteredArray.push(job)
+                setFilteredJobs(filteredArray)
             }
+            // } else {
+            //     if(jobPositionLowercase.includes(lowerCaseSearch) && jobRate > minValue && jobRate < maxValue) {
+            //         filteredArray.push(job)
+            //         setFilteredJobs(filteredArray)
+            //     }        
+            // }
         })
     },[value,minValue,maxValue])
 
@@ -94,6 +107,8 @@ export default function Jobs() {
 
 
         <View style={{flex:1,backgroundColor:'white'}}>
+
+            <Text>{log}</Text>
             
             <Search setValue={setValue} setFilteredJobs={setFilteredJobs} setMinValue={setMinValue} setMaxValue={setMaxValue}/>
 
