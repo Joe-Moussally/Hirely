@@ -76,6 +76,12 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 
+| Admin Dashboard |
+|----------|-----------|-----------|
+|<img src="./readme/admin/admin.gif"  />  |
+
+
+
 <!-- | Filter by maximum rate and distance| Freelancer profile | Whatsapp redirection|
 | ------------|----------|----------|
 |<img src="./readme/sccreenshot12.png" /> |<img src="./readme/sccreenshot5.png" />|<img src="./readme/sccreenshot7.png" />  |  -->
