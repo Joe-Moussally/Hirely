@@ -171,10 +171,10 @@ const AddJob = () => {
 
             {/* Add Requirement button */}
             <TouchableOpacity
-            style={globalStyles.outlineButton}
+            style={styles.addSkillButton}
             onPress={addRequirement}
             >
-                <Text style={globalStyles.outlineButtonText}>Add Requirement</Text>
+                <Text style={styles.addSkillButtonText}>Add Requirement</Text>
             </TouchableOpacity>
         
             {/* JOB REQUIREMENTS DISPLAY */}
@@ -258,5 +258,22 @@ const styles = StyleSheet.create({
     dollarSign:{
         fontSize:22,
         color:'#6e6e6e'
+    },
+    addSkillButton:{
+        width:'100%',
+        borderColor:'#00aeff',
+        borderRadius:10,
+        borderWidth:4,
+        color:'red',
+        marginVertical:10,
+        marginHorizontal:'7.5%',
+        paddingVertical:7,
+        alignSelf:'center'
+    },
+    addSkillButtonText:{
+        color:'#00aeff',
+        fontWeight:'bold',
+        textAlign:'center',
+        fontSize:19
     }
 })
