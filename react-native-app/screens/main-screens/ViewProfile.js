@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     },
     //get in touch buttons
     messageButton:{
-        backgroundColor:'#0086d9',
+        backgroundColor:'#0094d4',
         width:'85%',
         alignSelf:'center',
         paddingVertical:7,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     },
     //whatsapp button
     whatsappButton:{
-        backgroundColor:'#32c700',
+        backgroundColor:'#00bd52',
         width:'85%',
         alignSelf:'center',
         paddingVertical:7,
