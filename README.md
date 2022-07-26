@@ -70,6 +70,12 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 
+| Whatsapp Redirection | Search | Filter  |
+|----------|-----------|-----------|
+|<img src="./readme/screenshots/whatsapp.jpg"  />  | <img src="./readme/screenshots/search.jpg"  /> |<img src="./readme/screenshots/filter.jpg"/>  |
+
+
+
 <!-- | Filter by maximum rate and distance| Freelancer profile | Whatsapp redirection|
 | ------------|----------|----------|
 |<img src="./readme/sccreenshot12.png" /> |<img src="./readme/sccreenshot5.png" />|<img src="./readme/sccreenshot7.png" />  |  -->
