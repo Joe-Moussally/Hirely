@@ -5,8 +5,8 @@ import { Bubble, GiftedChat } from "react-native-gifted-chat";
 
 //firebase
 import { collection, getDocs,addDoc, query, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
-import ChatHeader from "./chats-components/ChatHeader";
+import { db } from "../../firebase";
+import ChatHeader from "./ChatHeader";
 
 export default function Chat({ route }) {
 

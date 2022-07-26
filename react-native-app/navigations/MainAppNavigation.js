@@ -15,7 +15,7 @@ import AddJob from '../screens/main-screens/AddJob';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import JobDetails from '../screens/main-screens/JobDetails';
 import ViewProfile from '../screens/main-screens/ViewProfile';
-import Chat from '../components/Chat';
+import Chat from '../components/chats-components/Chat';
 import EditProfile from '../screens/main-screens/EditProfile';
 
 
