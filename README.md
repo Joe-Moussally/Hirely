@@ -78,7 +78,7 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 | Admin Dashboard |
 |----------|
-|<img src="./readme/admin/admin.gif"  />  |
+|<img src="./readme/admin/admin.gif" />  |
 
 
 
