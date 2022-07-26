@@ -63,7 +63,7 @@ const User = () => {
                 }
 
                 {
-                    skills == []?
+                    skills?
                     <div style={{marginTop:50}}>
                         <h2 className="secondary-title">Skills</h2>
                         <div id="skills-container">
