@@ -415,3 +415,22 @@ body {
 #chart-container {
   margin-top: 40px;
 }
+
+/* logout */
+
+#dropdown-menu {
+  position: absolute;
+  transform: translateX(-40px);
+  color: #00477d;
+  background-color: rgb(255, 255, 255);
+  border:#0b273b .7px solid;
+  padding: 2px 10px;
+}
+
+#dropdown-menu:hover {
+  text-decoration: underline;
+}
+
+.menu-hidden {
+  display:none;
+}

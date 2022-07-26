@@ -49,17 +49,16 @@ export default function Chats() {
                     lightColor: '#FF231F7C',
                 });
 
-                Notifications.scheduleNotificationAsync({
-                    content:{
-                        title:'You a new message!',
-                        body:'THIS IS BODY',
-                        data: { data: 'goes here' }
-                    },
-                    trigger:{
-                        seconds:2,
-                        channelId:'default'
-                    }
-                })
+                // Notifications.scheduleNotificationAsync({
+                //     content:{
+                //         title:'You a new message!',
+                //         data: { data: 'goes here' }
+                //     },
+                //     trigger:{
+                //         seconds:2,
+                //         channelId:'default'
+                //     }
+                // })
 
                 let chats = []
                 snapshot.docs.forEach((message) => {
