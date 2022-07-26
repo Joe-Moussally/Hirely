@@ -58,9 +58,9 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are some screenshots from the real app
 
-| Splash screen | Home screen |Search  |
+| Splash screen | Signup Screen | Jobs Screen  |
 |----------|-----------|-----------|
-|<img src="./readme/screenshots/splash.jpg"  />  | <img src="./readme/sccreenshot3.png"  /> |<img src="./readme/sccreenshot11.png"/>  |
+|<img src="./readme/screenshots/splash.jpg"  />  | <img src="./readme/screenshots/signup.jpg"  /> |<img src="./readme/screenshots/jobs.jpg"/>  |
 
 
 
