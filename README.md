@@ -87,7 +87,7 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 |<img src="./readme/sccreenshot12.png" /> |<img src="./readme/sccreenshot5.png" />|<img src="./readme/sccreenshot7.png" />  |  -->
 
 <br></br>
-<!-- > Here's some short gifs from the real app -->
+> Here's some short gifs from the real app
 
 
 <!-- | Register| Home | Contact |Review|
