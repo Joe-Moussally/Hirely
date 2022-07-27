@@ -90,6 +90,12 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 
+| Phonecall Redirection | Whatsapp Redirection | Realtime Chat | Change Picture |
+| ------------|----------|-----------|-----------|
+|<img src="./readme/gifs/phonecall_redirection.gif" />|<img src="./readme/gifs/whatsapp_redirection.gif"  />  |<img src="./readme/gifs/realtime_chat.gif"/>  |<img src="./readme/gifs/change_picture.gif"/>  |
+
+
+
 | Admin Dashboard |
 |----------|
 |<img src="./readme/admin/admin.gif" />  |
