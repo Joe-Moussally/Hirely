@@ -96,13 +96,16 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 
+| Search | Filter | Edit Profile | View Profile |
+| ------------|----------|-----------|-----------|
+|<img src="./readme/gifs/search.gif" />|<img src="./readme/gifs/filter.gif"  />  |<img src="./readme/gifs/edit_profile.gif"/>  |<img src="./readme/gifs/view_profile.gif"/>  |
+
+
+
 | Admin Dashboard |
 |----------|
 |<img src="./readme/admin/admin.gif" />  |
 
-<!-- |Search |Filter |Filter |Add work profile |
-|-----------|-----------|-----------|-----------|
-|<img src="./readme/chrome-capture4.gif"/>  |<img src="./readme/chrome-capture5.gif"/>  |<img src="./readme/chrome-capture6.gif"/>  |<img src="./readme/chrome-capture7.gif"/>  | -->
 
 <br><br>
 <img src="./readme/title6.svg"/>
@@ -140,28 +143,3 @@ Here's a brief high-level overview of the tech stack used in Hirely:
    expo start
    ```
 4. Scan the generated QR code with your camera (ios) or through the Expo Go application (android).
-
-<!-- This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
- -->
