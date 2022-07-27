@@ -161,6 +161,23 @@ const globalStyles = StyleSheet.create({
         width:'70%',
         alignSelf:'center',
         borderRadius:30
+    },
+    fullWidthOutlineButton:{
+        width:'100%',
+        borderColor:'#00aeff',
+        borderRadius:10,
+        borderWidth:4,
+        color:'red',
+        marginVertical:10,
+        marginHorizontal:'7.5%',
+        paddingVertical:7,
+        alignSelf:'center'
+    },
+    fullWidthOutlineButtonText:{
+        color:'#00aeff',
+        fontWeight:'bold',
+        textAlign:'center',
+        fontSize:19
     }
 
 },)
