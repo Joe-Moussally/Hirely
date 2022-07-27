@@ -90,11 +90,11 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 > Here's some short gifs from the real app
 
 
-<!-- | Register| Home | Contact |Review|
+| Add Job | Apply | Applicants List | Hirely Message |
 | ------------|----------|-----------|-----------|
-|<img src="./readme/chrome-capture.gif" />|<img src="./readme/chrome-capture1.gif"  />  |<img src="./readme/chrome-capture2.gif"/>  |<img src="./readme/chrome-capture3.gif"/>  |
+|<img src="./readme/gifs/add_job.gif" />|<img src="./readme/gifs/apply.gif"  />  |<img src="./readme/gifs/applicants_list.gif"/>  |<img src="./readme/gifs/hirely_message.gif"/>  |
 
-|Search |Filter |Filter |Add work profile |
+<!-- |Search |Filter |Filter |Add work profile |
 |-----------|-----------|-----------|-----------|
 |<img src="./readme/chrome-capture4.gif"/>  |<img src="./readme/chrome-capture5.gif"/>  |<img src="./readme/chrome-capture6.gif"/>  |<img src="./readme/chrome-capture7.gif"/>  | -->
 
