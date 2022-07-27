@@ -76,12 +76,6 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 
-| Admin Dashboard |
-|----------|
-|<img src="./readme/admin/admin.gif" />  |
-
-
-
 <!-- | Filter by maximum rate and distance| Freelancer profile | Whatsapp redirection|
 | ------------|----------|----------|
 |<img src="./readme/sccreenshot12.png" /> |<img src="./readme/sccreenshot5.png" />|<img src="./readme/sccreenshot7.png" />  |  -->
@@ -93,6 +87,12 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 | Add Job | Apply | Applicants List | Hirely Message |
 | ------------|----------|-----------|-----------|
 |<img src="./readme/gifs/add_job.gif" />|<img src="./readme/gifs/apply.gif"  />  |<img src="./readme/gifs/applicants_list.gif"/>  |<img src="./readme/gifs/hirely_message.gif"/>  |
+
+
+
+| Admin Dashboard |
+|----------|
+|<img src="./readme/admin/admin.gif" />  |
 
 <!-- |Search |Filter |Filter |Add work profile |
 |-----------|-----------|-----------|-----------|
