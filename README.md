@@ -49,7 +49,7 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 - React Native, a JavaScript framework for writing mobile applications.
 - Laravel, a PHP framework. It follows a model-view-controller design pattern.
 - MySQL, a relational database management system (RDBMS) that is based on structured query language (SQL).
-- Firebase is a Google-backed application development software that enables developers to develop iOS, Android and Web apps. Firebase provides tools for tracking analytics, reporting and fixing app crashes, creating marketing and product experiment.
+- Firebase, a Google-backed application development software that enables developers to develop iOS, Android and Web apps. Firebase provides tools for tracking analytics, reporting and fixing app crashes, creating marketing and product experiment.
 
 
 
@@ -75,10 +75,6 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 |<img src="./readme/screenshots/whatsapp.jpg"  />  | <img src="./readme/screenshots/search.jpg"  /> |<img src="./readme/screenshots/filter.jpg"/>  |
 
 
-
-<!-- | Filter by maximum rate and distance| Freelancer profile | Whatsapp redirection|
-| ------------|----------|----------|
-|<img src="./readme/sccreenshot12.png" /> |<img src="./readme/sccreenshot5.png" />|<img src="./readme/sccreenshot7.png" />  |  -->
 
 <br></br>
 > Here's some short gifs from the real app
