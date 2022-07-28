@@ -53,6 +53,11 @@ const Offer = () => {
                     <span id="posted-by-name">{offer.user.name}</span>
                 </div>
 
+                <div>
+                    <h2 className="secondary-title">City</h2>
+                    <span>{offer.user.city}</span>
+                </div>
+
                 {
                     offer.description?
                     <>
@@ -86,6 +91,7 @@ const Offer = () => {
                     :
                     <></>
                 }
+
                 
                 <div id="remove-btn-container" onClick={removeOffer}>
                     <button>Remove Offer</button>
