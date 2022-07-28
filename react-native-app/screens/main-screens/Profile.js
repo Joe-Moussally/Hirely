@@ -25,6 +25,7 @@ export default function Profile({ setTokenApp }) {
     const [image,setImage] = useState(null)
     const [skills,setSkills] = useState([])
 
+    //convert PDF Base64 to object
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
     const Base64 = {
         btoa: (input = '')  => {
@@ -224,7 +225,7 @@ export default function Profile({ setTokenApp }) {
                 <></>
             }
 
-            {/* Upload CV Button OR View CV Button */}
+            {/* Upload CV Button OR View CV Section*/}
             {/* {
                 !user.cv_base64?
                 <TouchableNativeFeedback

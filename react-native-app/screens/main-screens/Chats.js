@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, Button, Text, View } from "react-native";
+import { ActivityIndicator, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // //firebase
-import { collection, getDocs,addDoc, query, where, onSnapshot, doc } from "firebase/firestore";
+import { collection, query, where, onSnapshot, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import ChatsList from "../../components/chats-components/ChatsList";
 import { globalStyles } from "../../styles/global";
@@ -52,7 +52,6 @@ export default function Chats() {
                 // Notifications.scheduleNotificationAsync({
                 //     content:{
                 //         title:'You a new message!',
-                //         data: { data: 'goes here' }
                 //     },
                 //     trigger:{
                 //         seconds:2,
