@@ -1,8 +1,7 @@
-import { TabRouter, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import Skills from "../../components/new-user-components/skills/Skills";
 import EditProfileSkills from "../../components/profile-components/EditProfileSkills";
 import { localhost } from "../../globalVariables";
 import { globalStyles } from "../../styles/global";

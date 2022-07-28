@@ -1,4 +1,4 @@
-import { ActivityIndicator, DevSettings, FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
 import { globalStyles } from '../../styles/global'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { useState, useEffect } from "react";

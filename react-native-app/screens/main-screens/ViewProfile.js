@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Text, View,Image, StyleSheet, Dimensions, TouchableNativeFeedback, ScrollView, TouchableOpacity, Linking } from "react-native";
+import { Text, View,Image, StyleSheet, TouchableNativeFeedback, ScrollView, TouchableOpacity, Linking } from "react-native";
 import { globalStyles } from "../../styles/global";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from "axios";
