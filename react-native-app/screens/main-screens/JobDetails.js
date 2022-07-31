@@ -31,6 +31,9 @@ const JobDetails = ({ route }) => {
 
     const [userSkills,setUserSkills] = useState([])
 
+    //user compatibility
+    const [isCompatible, setIsCompatible] = useState(false)
+
     useEffect(()=>{
 
         //get user's id
@@ -66,16 +69,19 @@ const JobDetails = ({ route }) => {
             url:'http://'+localhost+':8000/api/offers/'+route.params.id //offer id
         }).then(async (Response) => {
             setDetails(Response.data)
+
+            //check user compatibility with job after fetching job details
+            checkCompatibility(Response.data)
         }).catch((err)=>{
             console.log("ERROR JOB DETAILS")
         })
 
-        checkCompatibility()
+        
 
     },[])
 
     //function to check the users compatibility with the job
-    const checkCompatibility = () => {
+    const checkCompatibility = (jobDetails) => {
         //get user ID
         AsyncStorage.getItem('user').then(obj => {
 
@@ -84,16 +90,31 @@ const JobDetails = ({ route }) => {
                 method:'GET',
                 url:'http://'+localhost+':8000/api/activities/'+JSON.parse(obj).id
             }).then((res) => {
+                //update state of user skills
                 res.data.skills.forEach(skill => {
                     setUserSkills(userSkills.push(skill.skill))
                 });
-                console.log(userSkills)
-            }).catch(err => {
-                console.log(err)
+                //see the job keywords if they match with user's skills
+                findKeyword(jobDetails)
             })
         
         })
     }
+
+    //function to match the skills and job details keyword
+    const findKeyword = (jobDetails) => {
+        
+        //the following is an algorithm the check the job keywords
+        let description = jobDetails.offer.description
+        console.log(userSkills)
+        userSkills.forEach(skill => {
+            //if skill is mentioned in description -> set user is interested
+            if(description.includes(skill)) {
+                
+            }
+        })
+    }
+
 
     return (
 
