@@ -20,8 +20,6 @@ const InterestButton = ({interested, setInterested, offerId}) => {
                 url:'http://'+localhost+':8000/api/interests/'+offerId,
             }).then(()=>{
                 setInterested(true)
-            }).catch((err)=>{
-                console.log("ERROR INTEREST BUTTON",err)
             })
         })
     }

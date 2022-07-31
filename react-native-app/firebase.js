@@ -1,5 +1,5 @@
 import firebase from "firebase/compat/app";
-import { getFirestore, collection, getDoc, getDocs } from 'firebase/firestore'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDVbGHyoM8e2-6RzlS-UYbqb8eLz0SuAAo",
@@ -10,7 +10,6 @@ const firebaseConfig = {
     appId: "1:705941731328:web:e906c5fd0bb02ca26280e5",
     measurementId: "G-TBM2RFRSYZ"
 };
-
 
 firebase.initializeApp(firebaseConfig)
 

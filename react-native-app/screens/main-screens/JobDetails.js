@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator, Dimensions } from 'react-native';
 import { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableNativeFeedback, View, TouchableOpacity } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import axios from 'axios';
 import { localhost } from "../../globalVariables";
@@ -17,8 +17,7 @@ import ScreenHeader from "../../components/ScreenHeader";
 import MapView, { Marker } from 'react-native-maps'
 
 
-
-const JobDetails = ({route}) => {
+const JobDetails = ({ route }) => {
     const navigation = useNavigation()
 
     //job details
@@ -30,12 +29,13 @@ const JobDetails = ({route}) => {
     //check if user already applied for the job
     const [interested,setIntersted] = useState(false)
 
+    const [userSkills,setUserSkills] = useState([])
+
     useEffect(()=>{
-        console.log("BEFOREEEE",interested)
 
         //get user's id
-        const getUserId = async () => {
-            await AsyncStorage.getItem('user').then((user)=> setUserId(JSON.parse(user).id))//logged in user id
+        const getUserId = () => {
+            AsyncStorage.getItem('user').then((user)=> setUserId(JSON.parse(user).id))//logged in user id
         }
 
         
@@ -70,7 +70,30 @@ const JobDetails = ({route}) => {
             console.log("ERROR JOB DETAILS")
         })
 
+        checkCompatibility()
+
     },[])
+
+    //function to check the users compatibility with the job
+    const checkCompatibility = () => {
+        //get user ID
+        AsyncStorage.getItem('user').then(obj => {
+
+            //fetch the users skills
+            axios({
+                method:'GET',
+                url:'http://'+localhost+':8000/api/activities/'+JSON.parse(obj).id
+            }).then((res) => {
+                res.data.skills.forEach(skill => {
+                    setUserSkills(userSkills.push(skill.skill))
+                });
+                console.log(userSkills)
+            }).catch(err => {
+                console.log(err)
+            })
+        
+        })
+    }
 
     return (
 

@@ -13,7 +13,6 @@ const Offer = () => {
     const [requirements,setRequirements] = useState([])
 
     useEffect(() => {
-        console.log(location.state.offer)
 
         //get the offer's requirements
         axios({

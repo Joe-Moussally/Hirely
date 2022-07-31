@@ -36,7 +36,7 @@ export default function LogIn({setToken}) {
             method:'post',
             url:'http://'+localhost+':8000/api/login',
             data:data,
-            headers: { 'Content-Type':'multipart/form-data;' },
+            headers: {'Content-Type':'multipart/form-data;'},
         }).then(async (Response)=>{
 
             //on successful login -> increment login count
