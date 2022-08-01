@@ -31,7 +31,7 @@ const InterestButton = ({interested, setInterested, offerId}) => {
         style={styles.interested}>
             <Text style={styles.interestText}>
                 <Entypo name="check" size={24} color="#22e000" />
-                Profile Sent
+                Profile Shared
             </Text> 
         </TouchableOpacity>
 
@@ -40,7 +40,7 @@ const InterestButton = ({interested, setInterested, offerId}) => {
         <TouchableOpacity
         style={styles.notInterested}
         onPress={handleSubmit}>
-            <Text style={styles.notInterestText}>Send Your Profile</Text> 
+            <Text style={styles.notInterestText}>Share Your Profile</Text> 
         </TouchableOpacity>
     );
 }
