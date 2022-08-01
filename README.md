@@ -70,9 +70,9 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 
-| Whatsapp Redirection | Search | Filter  |
-|----------|-----------|-----------|
-|<img src="./readme/screenshots/whatsapp.jpg"  />  | <img src="./readme/screenshots/search.jpg"  /> |<img src="./readme/screenshots/filter.jpg"/>  |
+| Whatsapp Redirection | Search | Filter | User Compatibility |
+|----------|-----------|-----------|-----------|
+|<img src="./readme/screenshots/whatsapp.jpg"  />  | <img src="./readme/screenshots/search.jpg"  /> |<img src="./readme/screenshots/filter.jpg"/>|<img src="./readme/screenshots/compatibility.jpg"/>|
 
 
 
