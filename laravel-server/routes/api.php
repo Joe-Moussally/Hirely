@@ -23,7 +23,7 @@ Route::middleware(['cors'])->group(function () {
         Route::post('/cv', [JWTController::class, 'uploadPDF']);
         Route::post('/picture', [JWTController::class, 'uploadPicture']);
         Route::post('/remove_picture', [JWTController::class, 'removePicture']);
-        Route::post('/update', [JWTController::class, 'updateProfile']);
+        Route::put('/', [JWTController::class, 'updateProfile']);
     });
 
     //offer apis
