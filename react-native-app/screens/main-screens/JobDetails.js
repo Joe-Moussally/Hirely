@@ -161,7 +161,9 @@ const JobDetails = ({ route }) => {
 
                 {
                     isCompatible?
-                    <Text>THIS JOB MIGHT BE SUITABLE FOR YOU</Text>
+                    <View style={styles.suitableContainer}>
+                        <Text style={styles.suitableText}>This job might be suitable for you</Text>
+                    </View>
                     :
                     <></>
                 }
@@ -324,5 +326,18 @@ const styles = StyleSheet.create({
         ,height:300,
         margin:20,
         alignSelf:'center',
+    },
+    suitableContainer:{
+        alignSelf:'center',
+        width:'90%',
+        backgroundColor:'#8cc0ed',
+        borderRadius:20,
+        paddingVertical:10
+    },
+    suitableText:{
+        textAlign:'center',
+        fontSize:15,
+        fontWeight:'bold',
+        color:'#0462b5'
     }
 })
