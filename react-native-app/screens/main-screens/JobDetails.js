@@ -105,13 +105,27 @@ const JobDetails = ({ route }) => {
     const findKeyword = (jobDetails) => {
         
         //the following is an algorithm the check the job keywords
-        let description = jobDetails.offer.description
+
+        //check job description keywords
+        let description = jobDetails.offer.description.toLowerCase()
         console.log(userSkills)
         userSkills.forEach(skill => {
             //if skill is mentioned in description -> set user is interested
-            if(description.includes(skill)) {
-                
+            if(description.includes(skill.toLowerCase())) {
+                setIsCompatible(true)
+                return
             }
+        })
+
+        //check job requirements keywords
+        jobDetails.requirements.forEach(req => {
+            console.log(req.requirement.toLowerCase())
+            userSkills.forEach(skill => {
+                if(req.requirement.toLowerCase().includes(skill.toLowerCase())) {
+                    setIsCompatible(true)
+                    return
+                }
+            })
         })
     }
 
@@ -144,6 +158,13 @@ const JobDetails = ({ route }) => {
                     <Text style={styles.name}>{details.user['name']}</Text>
 
                 </View>
+
+                {
+                    isCompatible?
+                    <Text>THIS JOB MIGHT BE SUITABLE FOR YOU</Text>
+                    :
+                    <></>
+                }
 
                 {/* postion */}
                 <View style={styles.section}>
