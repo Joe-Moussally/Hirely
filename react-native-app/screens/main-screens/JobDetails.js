@@ -160,7 +160,7 @@ const JobDetails = ({ route }) => {
                 </View>
 
                 {
-                    isCompatible?
+                    (isCompatible && details.user.id != userId)?
                     <View style={styles.suitableContainer}>
                         <Text style={styles.suitableText}>This job might be suitable for you</Text>
                     </View>
