@@ -21,7 +21,7 @@ export default function Splash({navigation}) {
 
             </LinearGradient>
 
-                <Text style={styles.splashText}>Find the talent you're looking for, or find the job of your dreams.</Text>
+                <Text style={styles.splashText}>Find the talent you're looking for or find the job of your dreams.</Text>
                 
                 <View style={styles.buttonsContainer}>
 
