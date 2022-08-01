@@ -330,7 +330,7 @@ const styles = StyleSheet.create({
     suitableContainer:{
         alignSelf:'center',
         width:'90%',
-        backgroundColor:'#8cc0ed',
+        backgroundColor:'#d9edff',
         borderRadius:20,
         paddingVertical:10
     },
