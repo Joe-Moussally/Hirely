@@ -55,7 +55,6 @@ const JobDetails = ({ route }) => {
                         console.log("ISSS INTERESTED")
                         setIntersted(true)
                     }
-                    console.log("AFTERRRRRRRR",interested)
                 })
             })
         }
@@ -72,8 +71,6 @@ const JobDetails = ({ route }) => {
 
             //check user compatibility with job after fetching job details
             checkCompatibility(Response.data)
-        }).catch((err)=>{
-            console.log("ERROR JOB DETAILS")
         })
 
         
@@ -108,7 +105,6 @@ const JobDetails = ({ route }) => {
 
         //check job description keywords
         let description = jobDetails.offer.description.toLowerCase()
-        console.log(userSkills)
         userSkills.forEach(skill => {
             //if skill is mentioned in description -> set user is interested
             if(description.includes(skill.toLowerCase())) {
@@ -119,7 +115,6 @@ const JobDetails = ({ route }) => {
 
         //check job requirements keywords
         jobDetails.requirements.forEach(req => {
-            console.log(req.requirement.toLowerCase())
             userSkills.forEach(skill => {
                 if(req.requirement.toLowerCase().includes(skill.toLowerCase())) {
                     setIsCompatible(true)

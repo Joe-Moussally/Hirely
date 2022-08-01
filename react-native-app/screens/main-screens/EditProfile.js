@@ -30,8 +30,8 @@ const EditProfile = ({route}) => {
 
             axios({
                 headers:{'Authorization':'Bearer '+token,},
-                method:'POST',
-                url:'http://'+localhost+':8000/api/update',
+                method:'PUT',
+                url:'http://'+localhost+':8000/api/',
                 data:{
                     name:name,
                     about:about,
