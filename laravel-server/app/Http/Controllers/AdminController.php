@@ -18,7 +18,7 @@ class AdminController extends Controller
 
         //get offers count
         $offer_count = Offer::all()->count();
-        
+
         //get number of all time logins and signups
         $stats = Stat::find(1);
 
@@ -34,8 +34,15 @@ class AdminController extends Controller
         )->orderBy('month')
         ->groupBy( User::raw("MONTH(created_at)"))->get();
 
+        $offer_registered_per_month = Offer::select(
+            Offer::raw("MONTH(created_at) as month"),
+            Offer::raw("COUNT(*) as number_of_offers")
+        )->orderBy('month')
+        ->groupBy(Offer::raw("MONTH(created_at)"))->get();
+
         return response()->json([
             'users_per_month' => $user_registered_per_month,
+            'offers_per_month' => $offer_registered_per_month,
             'user_count' => $user_count,
             'offer_count' => $offer_count,
             'login_count' => $stats->user_login_count,
