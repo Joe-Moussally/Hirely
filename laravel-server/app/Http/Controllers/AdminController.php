@@ -22,7 +22,11 @@ class AdminController extends Controller
         //get number of all time logins and signups
         $stats = Stat::find(1);
 
-        $cities = User::all()->groupBy('city');
+        $cities = User::select(
+            User::raw("city"),
+            User::raw("COUNT(*) as users_per_city")
+        )->orderBy('city')
+        ->groupBy( User::raw("city"))->get();
 
         $user_registered_per_month = User::select(
             User::raw("MONTH(created_at) as month"),

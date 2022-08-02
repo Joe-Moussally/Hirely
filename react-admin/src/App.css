@@ -416,6 +416,10 @@ body {
   margin-top: 40px;
 }
 
+#line-chart-users {
+  margin-top: 90px;
+}
+
 /* logout */
 
 #dropdown-menu {
