@@ -24,12 +24,19 @@ class AdminController extends Controller
 
         $cities = User::all()->groupBy('city');
 
+        $user_registered_per_month = User::select(
+            User::raw("MONTH(created_at) as month"),
+            User::raw("COUNT(*) as number_of_users")
+        )->orderBy('month')
+        ->groupBy( User::raw("MONTH(created_at)"))->get();
+
         return response()->json([
+            'test' => $user_registered_per_month,
             'user_count' => $user_count,
             'offer_count' => $offer_count,
             'login_count' => $stats->user_login_count,
             'signup_count' => $stats->user_signup_count,
-            'cities' => $cities
+            // 'cities' => $cities
         ],200);
     }
 

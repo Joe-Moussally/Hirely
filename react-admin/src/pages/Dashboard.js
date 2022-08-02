@@ -114,7 +114,10 @@ const Dashboard = () => {
 
                     {
                         stats?
-                        <div id="chart-container"></div>:<></>
+                        <div>
+                            <div id="chart-container"></div>
+                        </div>
+                        :<></>
                     }
 
                 </div>
