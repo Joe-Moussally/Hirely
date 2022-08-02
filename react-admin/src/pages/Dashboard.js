@@ -21,6 +21,7 @@ const Dashboard = () => {
             url:'http://'+localhost+':8000/api/admin/stats'
         }).then(res => {
             setStats(res.data)
+            console.log('STATS', res.data)
 
             // let temp = []
             Object.values(res.data.cities).forEach(array => {
@@ -60,6 +61,49 @@ const Dashboard = () => {
                     data:userNumber
                 }]
             })
+
+            //display line chart for number of users per month
+
+            const usersPerMonth = []
+            stats.users_per_month.forEach(element => {
+                usersPerMonth[element.month - 1] = element.number_of_users
+            })
+
+            for (let i=0;i<12;i++) {
+                if(usersPerMonth[i] == null) {usersPerMonth[i] = 0}
+            }
+
+            Highcharts.chart('line-chart-users', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Monthly Users'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of users'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Users',
+                    data: usersPerMonth
+                }]
+            });
         }
     },[stats])
     
@@ -116,6 +160,7 @@ const Dashboard = () => {
                         stats?
                         <div>
                             <div id="chart-container"></div>
+                            <div id="line-chart-users"></div>
                         </div>
                         :<></>
                     }

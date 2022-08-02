@@ -31,7 +31,7 @@ class AdminController extends Controller
         ->groupBy( User::raw("MONTH(created_at)"))->get();
 
         return response()->json([
-            'test' => $user_registered_per_month,
+            'users_per_month' => $user_registered_per_month,
             'user_count' => $user_count,
             'offer_count' => $offer_count,
             'login_count' => $stats->user_login_count,
