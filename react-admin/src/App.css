@@ -412,12 +412,24 @@ body {
 }
 
 /* HICHART CONTAINER */
+.chats-container-row {
+  display: flex;
+}
+
 #chart-container {
   margin-top: 40px;
 }
 
 #line-chart-users {
   margin-top: 90px;
+  width: 50%;
+  margin-right: 20px;
+}
+
+#line-chart-offers {
+  margin-top: 90px;
+  width: 50%;
+  margin-left: 20px;
 }
 
 /* logout */

@@ -65,7 +65,6 @@ const Dashboard = () => {
             })
 
             //display line chart for number of users per month
-
             const usersPerMonth = []
             stats.users_per_month.forEach(element => {
                 usersPerMonth[element.month - 1] = element.number_of_users
@@ -104,6 +103,48 @@ const Dashboard = () => {
                 series: [{
                     name: 'Users',
                     data: usersPerMonth
+                }]
+            });
+
+            //display line chart for number of offers per month
+            const offersPerMonth = []
+            stats.offers_per_month.forEach(element => {
+                offersPerMonth[element.month - 1] = element.number_of_offers
+            })
+
+            for (let i=0;i<12;i++) {
+                if(offersPerMonth[i] == null) {offersPerMonth[i] = 0}
+            }
+
+            Highcharts.chart('line-chart-offers', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Monthly Offers'
+                },
+                subtitle: {
+                    text: ''
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of offers'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: false
+                    }
+                },
+                series: [{
+                    name: 'Offers',
+                    data: offersPerMonth
                 }]
             });
         }
@@ -146,8 +187,11 @@ const Dashboard = () => {
                     {
                         stats?
                         <div>
-                            <div id="chart-container"></div>
-                            <div id="line-chart-users"></div>
+                            <div className="chats-container-row">
+                                <div id="line-chart-users"></div>
+                                <div id="line-chart-offers"></div>
+                            </div> 
+                            <div id="chart-container"></div>   
                         </div>
                         :<></>
                     }
