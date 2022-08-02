@@ -36,7 +36,7 @@ class AdminController extends Controller
             'offer_count' => $offer_count,
             'login_count' => $stats->user_login_count,
             'signup_count' => $stats->user_signup_count,
-            // 'cities' => $cities
+            'cities' => $cities
         ],200);
     }
 
