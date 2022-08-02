@@ -40,6 +40,7 @@ const Dashboard = () => {
             //display histogram when data is successfully fetched
             Highcharts.chart('chart-container',{
                 chart:{type:'column'},
+                colors:['#2d6c75'],
                 title:{text:''},
                 subtitle: {text: ''},
                 xAxis:{
@@ -97,8 +98,9 @@ const Dashboard = () => {
                         dataLabels: {
                             enabled: true
                         },
-                        enableMouseTracking: false
-                    }
+                        enableMouseTracking: true,
+                        color:'#00ffd0'
+                    },
                 },
                 series: [{
                     name: 'Users',
@@ -139,7 +141,8 @@ const Dashboard = () => {
                         dataLabels: {
                             enabled: true
                         },
-                        enableMouseTracking: false
+                        enableMouseTracking: true,
+                        color:'#0095ff'
                     }
                 },
                 series: [{
