@@ -53,10 +53,10 @@ const Dashboard = () => {
                 },
                 plotOptions: {
                     column: {
-                    pointPadding: 0,
+                    pointPadding: .2,
                     borderWidth: 0,
                     groupPadding: 0,
-                    shadow: false
+                    shadow: false,
                     }
                 },
                 series:[{
