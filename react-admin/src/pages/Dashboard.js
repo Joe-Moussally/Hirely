@@ -10,9 +10,6 @@ const Dashboard = () => {
 
     const [stats,setStats] = useState('')
 
-    //track the user numbers in each city to display in histogram
-    const [userNumber,setUserNumbers] = useState([])
-
     useEffect(() => {
 
         axios({
@@ -22,26 +19,31 @@ const Dashboard = () => {
         }).then(res => {
             setStats(res.data)
             console.log('STATS', res.data)
-
-            // let temp = []
-            Object.values(res.data.cities).forEach(array => {
-                // temp.push(array.length)
-                setUserNumbers(prevArray => ([...prevArray,array.length]))
-            })
         })
         .catch(err => console.log(err))
         
     },[])
 
     useEffect(() => {
-        if(stats != '' && userNumber != []){ 
+
+        if(stats != ''){ 
+
+            //saving user cities
+            let cities = []
+            let user_number = []
+
+            for(let i=0;i<stats.cities.length;i++) {
+                cities[i] = stats.cities[i].city
+                user_number[i] = stats.cities[i].users_per_city
+            }
+
             //display histogram when data is successfully fetched
             Highcharts.chart('chart-container',{
                 chart:{type:'column'},
                 title:{text:''},
                 subtitle: {text: ''},
                 xAxis:{
-                    categories:Object.keys(stats.cities),
+                    categories:cities,
                     crosshair:true
                 },
                 yAxis: {
@@ -58,7 +60,7 @@ const Dashboard = () => {
                 },
                 series:[{
                     name:'Number of users in each city',
-                    data:userNumber
+                    data:user_number
                 }]
             })
 
@@ -139,21 +141,6 @@ const Dashboard = () => {
                             <span>{stats.signup_count}</span>
                         </div>
 
-                    </div>
-
-                    <div id="top-cities-container">
-
-                        <h2 className="secondary-title">Cities</h2>
-                        <div id="cities-container">
-                            {
-                                Object.keys(stats.cities).map(city => (
-                                    <div key={city} className='city-container'>
-                                        <p className="city">-{city}</p>
-                                        <span className="city-users-count">{stats.cities[city].length}</span>
-                                    </div>
-                                ))
-                            }
-                        </div>
                     </div>
 
                     {
