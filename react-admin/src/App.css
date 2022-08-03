@@ -60,7 +60,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url('./assets/login-bkg.jpg');
+  background-image: url('./assets/login-bkg2.jpg');
   background-size: cover;
   height: 100vh;
 }
@@ -74,7 +74,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   border-radius: 10px;
-  background: linear-gradient(27deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.4) 29%, rgba(255,255,255,0.3) 61%, rgba(255,255,255,0.2) 100%);
+  background: linear-gradient(27deg, rgba(255, 255, 255, 0.71) 0%, rgba(255, 255, 255, 0.553) 29%, rgba(255,255,255,0.3) 61%, rgba(255, 255, 255, 0.356) 100%);
 }
 
 #form-title {
