@@ -56,28 +56,8 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 <br><br>
 <img src="./readme/title5.svg"/>
 
-> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are some screenshots from the real app
+> Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are some gifs from the real app
 
-| Splash screen | Signup | Complete Profile |
-|----------|-----------|-----------|
-|<img src="./readme/screenshots/splash.jpg"  />  | <img src="./readme/screenshots/signup.jpg"  /> |<img src="./readme/screenshots/complete profile.jpg"/>  |
-
-
-
-| Jobs | Realtime Chatting | Add Job  |
-|----------|-----------|-----------|
-|<img src="./readme/screenshots/jobs.jpg"  />  | <img src="./readme/screenshots/chatting.jpg"  /> |<img src="./readme/screenshots/add.jpg"/>  |
-
-
-
-| Whatsapp Redirection | Search | Filter | User Compatibility |
-|----------|-----------|-----------|-----------|
-|<img src="./readme/screenshots/whatsapp.jpg"  />  | <img src="./readme/screenshots/search.jpg"  /> |<img src="./readme/screenshots/filter.jpg"/>|<img src="./readme/screenshots/compatibility.jpg"/>|
-
-
-
-<br></br>
-> Here's some short gifs from the real app
 
 
 | Add Job | Apply | Applicants List | Hirely Message |
@@ -101,6 +81,29 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 | Admin Dashboard |
 |----------|
 |<img src="./readme/admin/admin.gif" />  |
+
+
+
+<br></br>
+> Here's some short screenshots from the real app
+
+
+| Splash screen | Signup | Complete Profile |
+|----------|-----------|-----------|
+|<img src="./readme/screenshots/splash.jpg"  />  | <img src="./readme/screenshots/signup.jpg"  /> |<img src="./readme/screenshots/complete profile.jpg"/>  |
+
+
+
+| Jobs | Realtime Chatting | Add Job  |
+|----------|-----------|-----------|
+|<img src="./readme/screenshots/jobs.jpg"  />  | <img src="./readme/screenshots/chatting.jpg"  /> |<img src="./readme/screenshots/add.jpg"/>  |
+
+
+
+| Whatsapp Redirection | Search | Filter | User Compatibility |
+|----------|-----------|-----------|-----------|
+|<img src="./readme/screenshots/whatsapp.jpg"  />  | <img src="./readme/screenshots/search.jpg"  /> |<img src="./readme/screenshots/filter.jpg"/>|<img src="./readme/screenshots/compatibility.jpg"/>|
+
 
 
 <br><br>
