@@ -18,7 +18,7 @@ class OfferController extends Controller
     //except the logged in user's offers
     public function getOffers() {
         
-        $user_id = Auth::user()['id'];
+        $user_id = Auth::id();
         $offers = Offer::select('id','position','salary','salary_period','user_id')->where('user_id','!=',$user_id)->orderBy('created_at','desc')->get();
 
         foreach ($offers as $offer) {
@@ -33,7 +33,7 @@ class OfferController extends Controller
 
     //get job offers posted by the user
     public function getUserOffers() {
-        $user_id = Auth::user()['id'];
+        $user_id = Auth::id();
         $offers = Offer::select('id','position','user_id','salary','salary_period')->where('user_id',$user_id)->get();
 
         foreach ($offers as $offer) {
