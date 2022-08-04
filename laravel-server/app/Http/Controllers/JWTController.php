@@ -113,7 +113,7 @@ class JWTController extends Controller
 
     //function to update user's name, about and skills
     public function updateProfile(Request $Request) {
-        $id = Auth::user()->id;
+        $id = Auth::id();
 
         //delete all user's previous skills and store new ones
         $previous_skills = Skill::where('user_id',$id)->get();
@@ -131,7 +131,7 @@ class JWTController extends Controller
         }
 
         //update user's name and about
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $user->name = $Request->name;
         $user->about = $Request->about;
         $user->save();
@@ -145,7 +145,7 @@ class JWTController extends Controller
 
     //function to upload user picture
     public function uploadPicture(Request $Request) {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $user->picture_base64 = $Request->picture_base64;
         $user->save();
 
@@ -156,7 +156,7 @@ class JWTController extends Controller
 
     //function to remove puctire from user's profile
     public function removePicture() {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $user->picture_base64 = null;
         $user->save();
 
@@ -166,7 +166,7 @@ class JWTController extends Controller
     }
 
     public function uploadPDF(Request $Request) {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
         $user->cv_base64 = $Request->cv_base64;
         $user->save();
 

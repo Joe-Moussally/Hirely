@@ -15,7 +15,7 @@ class InterestController extends Controller
     //api to add interest of a user in an offer
     public function addInterest($id) {
         $interest = new Interest;
-        $interest->user_id = Auth::user()->id;
+        $interest->user_id = Auth::id();
         $interest->offer_id = $id;
         $interest->save();
 
@@ -42,7 +42,7 @@ class InterestController extends Controller
 
     //api to check if user in interested in offer
     public function checkInterest($id) {
-        $user_id = Auth::user()->id;
+        $user_id = Auth::id();
         $check = Interest::where('offer_id',$id)
         ->where('user_id',$user_id)
         ->get();
