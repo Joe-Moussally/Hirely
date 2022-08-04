@@ -4,13 +4,14 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
+**[PROJECT PHILOSOPHY](https://github.com/Joe-Moussally/Hirely#title1) • [WIREFRAMES](https://github.com/Joe-Moussally/Hirely) • [TECH STACK](https://github.com/Joe-Moussally/Hirely) • [IMPLEMENTATION](https://github.com/Joe-Moussally/Hirely) • [HOW TO RUN?](https://github.com/Joe-Moussally/Hirely)**
 
 </div>
 
 <br><br>
 
 
-<img src="./readme/title2.svg"/>
+<img src="./readme/title2.svg" id='title1'/>
 
 >Hirely is an app that connects recruiters with job seekers. It's purpose is to allow the job seeker to present themselves and personal details to the app so that recruiters can check them out, as well as, recruiters will be able to post job offers with description and requirements, to be displayed to the job seeker.
 > 
