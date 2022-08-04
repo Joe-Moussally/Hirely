@@ -4,14 +4,14 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](https://github.com/Joe-Moussally/Hirely#title1) • [WIREFRAMES](https://github.com/Joe-Moussally/Hirely) • [TECH STACK](https://github.com/Joe-Moussally/Hirely) • [IMPLEMENTATION](https://github.com/Joe-Moussally/Hirely) • [HOW TO RUN?](https://github.com/Joe-Moussally/Hirely)**
+**[PROJECT PHILOSOPHY](https://github.com/Joe-Moussally/Hirely#title2) • [WIREFRAMES](https://github.com/Joe-Moussally/Hirely#title3) • [TECH STACK](https://github.com/Joe-Moussally/Hirely#title4) • [IMPLEMENTATION](https://github.com/Joe-Moussally/Hirely#title5) • [HOW TO RUN?](https://github.com/Joe-Moussally/Hirely#title6)**
 
 </div>
 
 <br><br>
 
 
-<img src="./readme/title2.svg" id='title1'/>
+<img src="./readme/title2.svg" id='title2'/>
 
 >Hirely is an app that connects recruiters with job seekers. It's purpose is to allow the job seeker to present themselves and personal details to the app so that recruiters can check them out, as well as, recruiters will be able to post job offers with description and requirements, to be displayed to the job seeker.
 > 
@@ -31,7 +31,7 @@
 
 <br><br>
 
-<img src="./readme/title3.svg"/>
+<img src="./readme/title3.svg" id='title3'/>
 
 > The below screenshots show some aspects of the design that was planned before on paper, then moved to Figma app for the fine details.
 
@@ -47,7 +47,7 @@
 
 <br><br>
 
-<img src="./readme/title4.svg"/>
+<img src="./readme/title4.svg" id='title4'/>
 
 Here's a brief high-level overview of the tech stack used in Hirely:
 
@@ -60,7 +60,7 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 <br><br>
-<img src="./readme/title5.svg"/>
+<img src="./readme/title5.svg" id='title5'/>
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user sotries we have, the implementation of the app is shown as below, these are some gifs from the real app
 
@@ -113,7 +113,7 @@ Here's a brief high-level overview of the tech stack used in Hirely:
 
 
 <br><br>
-<img src="./readme/title6.svg"/>
+<img src="./readme/title6.svg" id='title6'/>
 
 
 >To get a local copy up and running follow these simple example steps.
