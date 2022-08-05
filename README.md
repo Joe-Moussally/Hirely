@@ -16,15 +16,19 @@
 >Hirely is an app that connects recruiters with job seekers. It's purpose is to allow the job seeker to present themselves and personal details to the app so that recruiters can check them out, as well as, recruiters will be able to post job offers with description and requirements, to be displayed to the job seeker.
 > 
 ### User Stories
+
+#### Job Seeker
 - As a job seeker, I want to apply for a suitable job according to my skills and knowledge.
 - As a job seeker, i want to search a specific position I'm interested in.
 - As a job seeker, I want to upload my CV and showcase my experiences and skills.
 - As a job seeker,  I want to be in touch with recruiters to demonstrate my knowledge in the wanted position.
 >
+#### Recuiter
 - As a recruiter, I want to post a job offer so that interested applicants can apply
 - As a recruiter, I want the check out profiles of applicants who applied for the job I posted.
 - As a recruiter, I want to message an applicant I am interested in.
 >
+#### Admin
 - As an admin, I want to see the statistics of the app in the dashboard, such as monthly users, monthly offers, users per city...
 - As an admin, I want to search users and check their profile, as well as remove a specific user from the app.
 - As an admin, I want to search offers and check them out, as well as remove a specific job offer from the app.
